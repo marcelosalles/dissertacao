@@ -16,7 +16,7 @@ def update(d, u):
             d[k] = v
     return d
 
-SAMPLE_SIZE = 2000
+SAMPLE_SIZE = 20
 SAMPLE_NAME = 'sample_cpeq.csv'
 N_CLUSTERS = 10
 
