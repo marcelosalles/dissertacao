@@ -1,0 +1,212 @@
+Material,
+    aluminio,                !- Name
+    MediumSmooth,            !- Roughness
+    0.000006,                !- Thickness {m}
+    230,                     !- Conductivity {W/m-K}
+    2700,                    !- Density {kg/m3}
+    880,                     !- Specific Heat {J/kg-K}
+    0.2,                     !- Thermal Absorptance
+    0.4,                     !- Solar Absorptance
+    0.4;                     !- Visible Absorptance
+Material,
+    fibrocimento telha,      !- Name
+    MediumRough,             !- Roughness
+    0.008,                   !- Thickness {m}
+    0.65,                    !- Conductivity {W/m-K}
+    1700,                    !- Density {kg/m3}
+    840,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    gesso_forro,             !- Name
+    Smooth,                  !- Roughness
+    0.0125,                  !- Thickness {m}
+    0.35,                    !- Conductivity {W/m-K}
+    900,                     !- Density {kg/m3}
+    870,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    Tijolo9x19x19,           !- Name
+    Rough,                   !- Roughness
+    0.013,                   !- Thickness {m}
+    0.9,                     !- Conductivity {W/m-K}
+    1600,                    !- Density {kg/m3}
+    920,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    argamassa_interna,       !- Name
+    MediumRough,             !- Roughness
+    0.025,                   !- Thickness {m}
+    1.15,                    !- Conductivity {W/m-K}
+    2000,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    argamassa_externa,       !- Name
+    MediumRough,             !- Roughness
+    0.025,                   !- Thickness {m}
+    1.15,                    !- Conductivity {W/m-K}
+    2000,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    concreto,                !- Name
+    Rough,                   !- Roughness
+    0.1,                     !- Thickness {m}
+    1.75,                    !- Conductivity {W/m-K}
+    2200,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    gesso,                   !- Name
+    Smooth,                  !- Roughness
+    0.0125,                  !- Thickness {m}
+    0.35,                    !- Conductivity {W/m-K}
+    900,                     !- Density {kg/m3}
+    870,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    placa_cimenticia,        !- Name
+    MediumSmooth,            !- Roughness
+    0.01,                    !- Thickness {m}
+    1.15,                    !- Conductivity {W/m-K}
+    2000,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    impermeabilizacao,       !- Name
+    Smooth,                  !- Roughness
+    0.0001,                  !- Thickness {m}
+    0.23,                    !- Conductivity {W/m-K}
+    1000,                    !- Density {kg/m3}
+    920,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    concreto_piso,           !- Name
+    MediumRough,             !- Roughness
+    0.05,                    !- Thickness {m}
+    1.75,                    !- Conductivity {W/m-K}
+    2200,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    contrapiso,              !- Name
+    MediumRough,             !- Roughness
+    0.02,                    !- Thickness {m}
+    1.15,                    !- Conductivity {W/m-K}
+    2000,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    piso_ceramico,           !- Name
+    Smooth,                  !- Roughness
+    0.0075,                  !- Thickness {m}
+    1.05,                    !- Conductivity {W/m-K}
+    2000,                    !- Density {kg/m3}
+    920,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material,
+    Forro Madeira,           !- Name
+    Smooth,                  !- Roughness
+    0.01,                    !- Thickness {m}
+    0.1,                     !- Conductivity {W/m-K}
+    400,                     !- Density {kg/m3}
+    2300,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.5,                     !- Solar Absorptance
+    0.5;                     !- Visible Absorptance
+Material,
+    Tijolo_macico,           !- Name
+    Rough,                   !- Roughness
+    0.1,                     !- Thickness {m}
+    1.05,                    !- Conductivity {W/m-K}
+    1800,                    !- Density {kg/m3}
+    920,                     !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.5,                     !- Solar Absorptance
+    0.5;                     !- Visible Absorptance
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL:NOMASS ===========
+Material:NoMass,
+    la_vidro_cob_5cm,        !- Name
+    Smooth,                  !- Roughness
+    1.25,                    !- Thermal Resistance {m2-K/W}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+Material:NoMass,
+    la_vidro_5cm,            !- Name
+    Smooth,                  !- Roughness
+    1.25,                    !- Thermal Resistance {m2-K/W}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL:AIRGAP ===========
+Material:AirGap,
+    camara_cobertura,        !- Name
+    0.21;                    !- Thermal Resistance {m2-K/W}
+Material:AirGap,
+    camara_rad_cobertura,    !- Name
+    0.61;                    !- Thermal Resistance {m2-K/W}
+Material:AirGap,
+    camara_parede,           !- Name
+    0.18;                    !- Thermal Resistance {m2-K/W}
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+Construction,
+    cob_1,                   !- Name
+    fibrocimento telha,      !- Outside Layer
+    camara_cobertura,        !- Layer 2
+    Forro Madeira;           !- Layer 3
+Construction,
+    cob_2,                   !- Name
+    fibrocimento telha,      !- Outside Layer
+    aluminio,                !- Layer 2
+    camara_rad_cobertura,    !- Layer 3
+    la_vidro_cob_5cm,        !- Layer 4
+    gesso_forro;             !- Layer 5
+Construction,
+    par_2,                   !- Name
+    argamassa_externa,       !- Outside Layer
+    Tijolo9x19x19,           !- Layer 2
+    camara_parede,           !- Layer 3
+    Tijolo9x19x19,           !- Layer 4
+    argamassa_interna;       !- Layer 5
+Construction,
+    par_1,                   !- Name
+    concreto;                !- Outside Layer
+Construction,
+    par_3,                   !- Name
+    placa_cimenticia,        !- Outside Layer
+    la_vidro_5cm,            !- Layer 2
+    gesso;                   !- Layer 3
+Construction,
+    par_4,                   !- Name
+    Tijolo_macico;           !- Outside Layer
+Construction,
+    piso_1,                  !- Name
+    impermeabilizacao,       !- Outside Layer
+    concreto_piso,           !- Layer 2
+    contrapiso,              !- Layer 3
+    piso_ceramico;           !- Layer 4

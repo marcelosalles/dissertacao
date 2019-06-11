@@ -1,0 +1,13 @@
+ ZoneInfiltration:DesignFlowRate,
+    OfficeZones Infiltration,       !- Name
+    OfficeZones,             !- Zone or ZoneList Name
+    Infiltration Sch,        !- Schedule Name
+    AirChanges/Hour,         !- Design Flow Rate Calculation Method
+    ,                        !- Design Flow Rate {m3/s}
+    ,                        !- Flow per Zone Floor Area {m3/s-m2}
+    ,                        !- Flow per Exterior Surface Area {m3/s-m2}
+    ,                     !- Air Changes per Hour
+    ,               !- Constant Term Coefficient
+    ,           !- Temperature Term Coefficient
+    ,               !- Velocity Term Coefficient
+    ;           !- Velocity Squared Term Coefficient

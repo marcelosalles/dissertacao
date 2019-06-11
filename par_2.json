@@ -1,0 +1,273 @@
+{
+    "Construction": {
+        "cob_1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "layer_2": "camara_cobertura",
+            "layer_3": "Forro Madeira",
+            "outside_layer": "fibrocimento telha"
+        },
+        "cob_2": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 6,
+            "layer_2": "aluminio",
+            "layer_3": "camara_rad_cobertura",
+            "layer_4": "la_vidro_cob_5cm",
+            "layer_5": "gesso_forro",
+            "outside_layer": "fibrocimento telha"
+        },
+        "par_1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "concreto"
+        },
+        "Exterior Wall": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 6,
+            "layer_2": "Tijolo9x19x19",
+            "layer_3": "camara_parede",
+            "layer_4": "Tijolo9x19x19",
+            "layer_5": "argamassa_interna",
+            "outside_layer": "argamassa_externa"
+        },
+        "par_3": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "layer_2": "la_vidro_5cm",
+            "layer_3": "gesso",
+            "outside_layer": "placa_cimenticia"
+        },
+        "par_4": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "Tijolo_macico"
+        },
+        "piso_1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 5,
+            "layer_2": "concreto_piso",
+            "layer_3": "contrapiso",
+            "layer_4": "piso_ceramico",
+            "outside_layer": "impermeabilizacao"
+        }
+    },
+    "Material": {
+        "Forro Madeira": {
+            "conductivity": 0.1,
+            "density": 400,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "Smooth",
+            "solar_absorptance": 0.5,
+            "specific_heat": 2300,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.01,
+            "visible_absorptance": 0.5
+        },
+        "Tijolo9x19x19": {
+            "conductivity": 0.9,
+            "density": 1600,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "Rough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 920,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.013,
+            "visible_absorptance": 0.7
+        },
+        "Tijolo_macico": {
+            "conductivity": 1.05,
+            "density": 1800,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "Rough",
+            "solar_absorptance": 0.5,
+            "specific_heat": 920,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.1,
+            "visible_absorptance": 0.5
+        },
+        "aluminio": {
+            "conductivity": 230,
+            "density": 2700,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "MediumSmooth",
+            "solar_absorptance": 0.4,
+            "specific_heat": 880,
+            "thermal_absorptance": 0.2,
+            "thickness": 6e-06,
+            "visible_absorptance": 0.4
+        },
+        "argamassa_externa": {
+            "conductivity": 1.15,
+            "density": 2000,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "MediumRough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 1000,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.025,
+            "visible_absorptance": 0.7
+        },
+        "argamassa_interna": {
+            "conductivity": 1.15,
+            "density": 2000,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "MediumRough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 1000,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.025,
+            "visible_absorptance": 0.7
+        },
+        "concreto": {
+            "conductivity": 1.75,
+            "density": 2200,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "Rough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 1000,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.1,
+            "visible_absorptance": 0.7
+        },
+        "concreto_piso": {
+            "conductivity": 1.75,
+            "density": 2200,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "MediumRough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 1000,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.05,
+            "visible_absorptance": 0.7
+        },
+        "contrapiso": {
+            "conductivity": 1.15,
+            "density": 2000,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "MediumRough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 1000,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.02,
+            "visible_absorptance": 0.7
+        },
+        "fibrocimento telha": {
+            "conductivity": 0.65,
+            "density": 1700,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "MediumRough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 840,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.008,
+            "visible_absorptance": 0.7
+        },
+        "gesso": {
+            "conductivity": 0.35,
+            "density": 900,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "Smooth",
+            "solar_absorptance": 0.7,
+            "specific_heat": 870,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.0125,
+            "visible_absorptance": 0.7
+        },
+        "gesso_forro": {
+            "conductivity": 0.35,
+            "density": 900,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "Smooth",
+            "solar_absorptance": 0.7,
+            "specific_heat": 870,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.0125,
+            "visible_absorptance": 0.7
+        },
+        "impermeabilizacao": {
+            "conductivity": 0.23,
+            "density": 1000,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "Smooth",
+            "solar_absorptance": 0.7,
+            "specific_heat": 920,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.0001,
+            "visible_absorptance": 0.7
+        },
+        "piso_ceramico": {
+            "conductivity": 1.05,
+            "density": 2000,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "Smooth",
+            "solar_absorptance": 0.7,
+            "specific_heat": 920,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.0075,
+            "visible_absorptance": 0.7
+        },
+        "placa_cimenticia": {
+            "conductivity": 1.15,
+            "density": 2000,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "roughness": "MediumSmooth",
+            "solar_absorptance": 0.7,
+            "specific_heat": 1000,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.01,
+            "visible_absorptance": 0.7
+        }
+    },
+    "Material:AirGap": {
+        "camara_cobertura": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "thermal_resistance": 0.21
+        },
+        "camara_parede": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "thermal_resistance": 0.18
+        },
+        "camara_rad_cobertura": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "thermal_resistance": 0.61
+        }
+    },
+    "Material:NoMass": {
+        "la_vidro_5cm": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 6,
+            "roughness": "Smooth",
+            "solar_absorptance": 0.7,
+            "thermal_absorptance": 0.9,
+            "thermal_resistance": 1.25,
+            "visible_absorptance": 0.7
+        },
+        "la_vidro_cob_5cm": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 6,
+            "roughness": "Smooth",
+            "solar_absorptance": 0.7,
+            "thermal_absorptance": 0.9,
+            "thermal_resistance": 1.25,
+            "visible_absorptance": 0.7
+        }
+    }
+}

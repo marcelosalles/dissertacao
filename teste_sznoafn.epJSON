@@ -1,0 +1,959 @@
+{
+    "Building": {
+        "teste_sznoafn": {
+            "loads_convergence_tolerance_value": 0.04,
+            "maximum_number_of_warmup_days": 25,
+            "north_axis": 0.0,
+            "solar_distribution": "FullInteriorAndExterior",
+            "temperature_convergence_tolerance_value": 0.4,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 8,
+            "terrain": "City"
+        }
+    },
+    "Zone": {
+        "office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 7,
+            "direction_of_relative_north": 0.0,
+            "multiplier": 1,
+            "x_origin": 0,
+            "y_origin": 0,
+            "z_origin": 0.0
+        }
+    },
+    "BuildingSurface:Detailed": {
+        "ceiling_office": {
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 3.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 3.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 3.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 3.0
+                }
+            ],
+            "zone_name": "office",
+            "construction_name": "Interior Ceiling",
+            "outside_boundary_condition": "Adiabatic",
+            "sun_exposure": "NoSun",
+            "surface_type": "Ceiling",
+            "wind_exposure": "NoWind",
+            "idf_max_extensible_fields": 12,
+            "idf_max_fields": 22,
+            "number_of_vertices": 4.0
+        },
+        "floor_office": {
+            "surface_type": "Floor",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 0.0
+                }
+            ],
+            "zone_name": "office",
+            "construction_name": "Interior Floor",
+            "outside_boundary_condition": "Adiabatic",
+            "sun_exposure": "NoSun",
+            "wind_exposure": "NoWind",
+            "idf_max_extensible_fields": 12,
+            "idf_max_fields": 22,
+            "number_of_vertices": 4.0
+        },
+        "wall-0_office": {
+            "surface_type": "Wall",
+            "construction_name": "Exterior Wall",
+            "outside_boundary_condition": "Outdoors",
+            "sun_exposure": "SunExposed",
+            "wind_exposure": "WindExposed",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 3.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 3.0
+                }
+            ],
+            "zone_name": "office",
+            "idf_max_extensible_fields": 12,
+            "idf_max_fields": 22,
+            "number_of_vertices": 4.0
+        },
+        "wall-1_office": {
+            "surface_type": "Wall",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 3.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 3.0
+                }
+            ],
+            "zone_name": "office",
+            "construction_name": "Interior Wall",
+            "outside_boundary_condition": "Adiabatic",
+            "sun_exposure": "NoSun",
+            "wind_exposure": "NoWind",
+            "idf_max_extensible_fields": 12,
+            "idf_max_fields": 22,
+            "number_of_vertices": 4.0
+        },
+        "wall-2_office": {
+            "surface_type": "Wall",
+            "construction_name": "Interior Wall",
+            "outside_boundary_condition": "Adiabatic",
+            "outside_boundary_condition_object": "",
+            "sun_exposure": "NoSun",
+            "wind_exposure": "NoWind",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 3.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 3.0
+                }
+            ],
+            "zone_name": "office",
+            "idf_max_extensible_fields": 12,
+            "idf_max_fields": 22,
+            "number_of_vertices": 4.0
+        },
+        "wall-3_office": {
+            "surface_type": "Wall",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 3.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 3.0
+                }
+            ],
+            "zone_name": "office",
+            "construction_name": "Exterior Wall",
+            "outside_boundary_condition": "Outdoors",
+            "sun_exposure": "SunExposed",
+            "wind_exposure": "WindExposed",
+            "idf_max_extensible_fields": 12,
+            "idf_max_fields": 22,
+            "number_of_vertices": 4.0
+        }
+    },
+    "FenestrationSurface:Detailed": {
+        "window_0_office": {
+            "building_surface_name": "wall-0_office",
+            "construction_name": "glass_construction_office",
+            "number_of_vertices": 4.0,
+            "surface_type": "Window",
+            "vertex_1_x_coordinate": 3.1591153825082112,
+            "vertex_1_y_coordinate": 3.162277660168379,
+            "vertex_1_z_coordinate": 2.4,
+            "vertex_2_x_coordinate": 3.1591153825082112,
+            "vertex_2_y_coordinate": 3.162277660168379,
+            "vertex_2_z_coordinate": 0.6000000000000001,
+            "vertex_3_x_coordinate": 0.0031622776601683794,
+            "vertex_3_y_coordinate": 3.162277660168379,
+            "vertex_3_z_coordinate": 0.6000000000000001,
+            "vertex_4_x_coordinate": 0.0031622776601683794,
+            "vertex_4_y_coordinate": 3.162277660168379,
+            "vertex_4_z_coordinate": 2.4,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 22
+        },
+        "window_side_office": {
+            "building_surface_name": "wall-3_office",
+            "construction_name": "glass_construction_office",
+            "number_of_vertices": 4.0,
+            "surface_type": "Window",
+            "vertex_1_x_coordinate": 0,
+            "vertex_1_y_coordinate": 3.159115382508211,
+            "vertex_1_z_coordinate": 2.4,
+            "vertex_2_x_coordinate": 0,
+            "vertex_2_y_coordinate": 3.159115382508211,
+            "vertex_2_z_coordinate": 0.6000000000000001,
+            "vertex_3_x_coordinate": 0,
+            "vertex_3_y_coordinate": 0.003162277660168379,
+            "vertex_3_z_coordinate": 0.6000000000000001,
+            "vertex_4_x_coordinate": 0,
+            "vertex_4_y_coordinate": 0.003162277660168379,
+            "vertex_4_z_coordinate": 2.4,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 22
+        }
+    },
+    "Shading:Building:Detailed": {
+        "shading_0": {
+            "idf_max_extensible_fields": 12,
+            "idf_max_fields": 15,
+            "transmittance_schedule_name": "",
+            "number_of_vertices": 4,
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 4.162277660168379,
+                    "vertex_z_coordinate": 2.4
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 2.4
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 2.4
+                },
+                {
+                    "vertex_x_coordinate": 3.1622776601683795,
+                    "vertex_y_coordinate": 4.162277660168379,
+                    "vertex_z_coordinate": 2.4
+                }
+            ]
+        },
+        "shading_3": {
+            "idf_max_extensible_fields": 12,
+            "idf_max_fields": 15,
+            "transmittance_schedule_name": "",
+            "number_of_vertices": 4,
+            "vertices": [
+                {
+                    "vertex_x_coordinate": -1.0,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 2.4
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 2.4
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 2.4
+                },
+                {
+                    "vertex_x_coordinate": -1.0,
+                    "vertex_y_coordinate": 3.162277660168379,
+                    "vertex_z_coordinate": 2.4
+                }
+            ]
+        }
+    },
+    "ElectricEquipment": {
+        "equip_office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 11,
+            "design_level_calculation_method": "Watts/Person",
+            "end_use_subcategory": "General",
+            "fraction_latent": 0.0,
+            "fraction_lost": 0.0,
+            "fraction_radiant": 0.5,
+            "schedule_name": "Sch_Equip_Computador",
+            "watts_per_person": 150,
+            "zone_or_zonelist_name": "office"
+        }
+    },
+    "Lights": {
+        "lights_office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 11,
+            "design_level_calculation_method": "Watts/Area",
+            "fraction_radiant": 0.72,
+            "fraction_replaceable": 1.0,
+            "fraction_visible": 0.18,
+            "return_air_fraction": 0.0,
+            "schedule_name": "Sch_Iluminacao",
+            "watts_per_zone_floor_area": 10.5,
+            "zone_or_zonelist_name": "office"
+        }
+    },
+    "People": {
+        "people_office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 10,
+            "activity_level_schedule_name": "Sch_Atividade",
+            "fraction_radiant": 0.3,
+            "number_of_people_calculation_method": "People/Area",
+            "number_of_people_schedule_name": "Sch_Ocupacao",
+            "people_per_zone_floor_area": 0.1,
+            "sensible_heat_fraction": "Autocalculate",
+            "zone_or_zonelist_name": "office"
+        }
+    },
+    "Material": {
+        "ArgamassaReboco(25mm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "conductivity": 1.15,
+            "density": 2000.0,
+            "roughness": "Rough",
+            "solar_absorptance": 0.5,
+            "specific_heat": 1000.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.025,
+            "visible_absorptance": 0.7
+        },
+        "Ceram Tij 8 fur circ (10 cm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 7,
+            "conductivity": 0.9,
+            "density": 1103.0,
+            "roughness": "Rough",
+            "specific_heat": 920.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.033
+        },
+        "ForroGesso(30mm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "conductivity": 0.35,
+            "density": 750.0,
+            "roughness": "Rough",
+            "solar_absorptance": 0.2,
+            "specific_heat": 840.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.02,
+            "visible_absorptance": 0.2
+        },
+        "ForroMadeira(15mm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "conductivity": 0.15,
+            "density": 600.0,
+            "roughness": "Rough",
+            "solar_absorptance": 0.4,
+            "specific_heat": 1340.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.015,
+            "visible_absorptance": 0.4
+        },
+        "LajeMacicaConcreto(100mm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "conductivity": 1.75,
+            "density": 2200.0,
+            "roughness": "Rough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 1000.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.1,
+            "visible_absorptance": 0.7
+        },
+        "concrete": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "conductivity": 1.75,
+            "density": 2200.0,
+            "roughness": "Rough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 1000.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.045454545454545456,
+            "visible_absorptance": 0.7
+        },
+        "PisoCeramico(10mm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "conductivity": 0.9,
+            "density": 1600.0,
+            "roughness": "Rough",
+            "solar_absorptance": 0.6,
+            "specific_heat": 920.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.01,
+            "visible_absorptance": 0.6
+        },
+        "PortaMadeira(30mm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "conductivity": 0.15,
+            "density": 614.0,
+            "roughness": "Rough",
+            "solar_absorptance": 0.9,
+            "specific_heat": 2300.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.03,
+            "visible_absorptance": 0.9
+        },
+        "TelhaCeramica": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 9,
+            "conductivity": 1.05,
+            "density": 2000.0,
+            "roughness": "Rough",
+            "solar_absorptance": 0.7,
+            "specific_heat": 920.0,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.01,
+            "visible_absorptance": 0.7
+        }
+    },
+    "Material:NoMass": {
+        "EPS": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 6,
+            "roughness": "Smooth",
+            "thermal_resistance": 0.204025974025974,
+            "thermal_absorptance": 0.9,
+            "solar_absorptance": 0.5,
+            "visible_absorptance": 0.7
+        }
+    },
+    "Material:AirGap": {
+        "Atico:CamaradeAr(>50mm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "thermal_resistance": 0.21,
+            "idf_order": 29
+        },
+        "CavidadeBloco:CamaradeAr(20-50mm)": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "thermal_resistance": 0.16
+        },
+        "F04 Wall air space resistance": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "idf_order": 27,
+            "thermal_resistance": 0.15
+        },
+        "F05 Ceiling air space resistance": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "idf_order": 28,
+            "thermal_resistance": 0.18
+        }
+    },
+    "WindowMaterial:SimpleGlazingSystem": {
+        "Clear 3mm": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "solar_heat_gain_coefficient": 0.8,
+            "u_factor": 5.7
+        },
+        "glass_material_office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "solar_heat_gain_coefficient": 0.87,
+            "u_factor": 5.7
+        }
+    },
+    "ZoneInfiltration:DesignFlowRate": {
+        "offices_infiltration": {
+            "design_flow_rate_calculation_method": "AirChanges/Hour",
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 12,
+            "schedule_name": "Sch_Ocupacao",
+            "zone_or_zonelist_name": "office",
+            "air_changes_per_hour": 30
+        }
+    },
+    "AirflowNetwork:MultiZone:Component:DetailedOpening": {
+        "Janela": {
+            "air_mass_flow_coefficient_when_opening_is_closed": 0.0001,
+            "air_mass_flow_exponent_when_opening_is_closed": 0.65,
+            "discharge_coefficient_for_opening_factor_1": 0.001,
+            "discharge_coefficient_for_opening_factor_2": 0.6,
+            "extra_crack_length_or_height_of_pivoting_axis": 0.0,
+            "height_factor_for_opening_factor_1": 0.0,
+            "height_factor_for_opening_factor_2": 1.0,
+            "number_of_sets_of_opening_factor_data": 2,
+            "opening_factor_1": 0.0,
+            "opening_factor_2": 1.0,
+            "start_height_factor_for_opening_factor_1": 0.0,
+            "start_height_factor_for_opening_factor_2": 0.0,
+            "type_of_rectangular_large_vertical_opening_lvo_": "NonPivoted",
+            "width_factor_for_opening_factor_1": 0.0,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 16,
+            "width_factor_for_opening_factor_2": 0.6
+        },
+        "Porta": {
+            "air_mass_flow_coefficient_when_opening_is_closed": 5e-05,
+            "air_mass_flow_exponent_when_opening_is_closed": 0.65,
+            "discharge_coefficient_for_opening_factor_1": 0.001,
+            "discharge_coefficient_for_opening_factor_2": 0.6,
+            "extra_crack_length_or_height_of_pivoting_axis": 0.0,
+            "height_factor_for_opening_factor_1": 0.0,
+            "height_factor_for_opening_factor_2": 1.0,
+            "number_of_sets_of_opening_factor_data": 2,
+            "opening_factor_1": 0.0,
+            "opening_factor_2": 1.0,
+            "start_height_factor_for_opening_factor_1": 0.0,
+            "start_height_factor_for_opening_factor_2": 0.0,
+            "type_of_rectangular_large_vertical_opening_lvo_": "NonPivoted",
+            "width_factor_for_opening_factor_1": 0.0,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 16,
+            "width_factor_for_opening_factor_2": 0.6
+        }
+    },
+    "Construction": {
+        "Interior Floor": {
+            "layer_2": "LajeMacicaConcreto(100mm)",
+            "layer_3": "PisoCeramico(10mm)",
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "outside_layer": "ForroGesso(30mm)"
+        },
+        "Exterior Floor": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "layer_2": "PisoCeramico(10mm)",
+            "outside_layer": "LajeMacicaConcreto(100mm)"
+        },
+        "Interior Ceiling": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "layer_2": "LajeMacicaConcreto(100mm)",
+            "layer_3": "ForroGesso(30mm)",
+            "outside_layer": "PisoCeramico(10mm)"
+        },
+        "Exterior Roof": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "layer_2": "Atico:CamaradeAr(>50mm)",
+            "layer_3": "ForroMadeira(15mm)",
+            "outside_layer": "TelhaCeramica"
+        },
+        "Interior Wall": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 6,
+            "layer_2": "Ceram Tij 8 fur circ (10 cm)",
+            "layer_3": "CavidadeBloco:CamaradeAr(20-50mm)",
+            "layer_4": "Ceram Tij 8 fur circ (10 cm)",
+            "layer_5": "ArgamassaReboco(25mm)",
+            "outside_layer": "ArgamassaReboco(25mm)"
+        },
+        "Exterior Wall": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "layer_2": "concrete",
+            "outside_layer": "EPS"
+        },
+        "Interior Door": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "PortaMadeira(30mm)"
+        },
+        "Exterior Window": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "Clear 3mm"
+        },
+        "InfraRed": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "idf_order": 113,
+            "outside_layer": "IR"
+        },
+        "glass_construction_office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "glass_material_office"
+        }
+    },
+    "Material:InfraredTransparent": {
+        "IR": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 1
+        }
+    },
+    "GlobalGeometryRules": {
+        "GlobalGeometryRules 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 5,
+            "coordinate_system": "Relative",
+            "daylighting_reference_point_coordinate_system": "Relative",
+            "rectangular_surface_coordinate_system": "Relative",
+            "starting_vertex_position": "UpperLeftCorner",
+            "vertex_entry_direction": "Counterclockwise"
+        }
+    },
+    "Output:Variable": {
+        "Output:Variable 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "Site Outdoor Air Drybulb Temperature"
+        },
+        "Output:Variable 2": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "Zone Operative Temperature"
+        },
+        "Output:Variable 3": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "Schedule Value"
+        },
+        "Output:Variable 4": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "AFN Zone Infiltration Air Change Rate"
+        }
+    },
+    "Output:VariableDictionary": {
+        "Output:VariableDictionary 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 1,
+            "key_field": "regular"
+        }
+    },
+    "OutputControl:Table:Style": {
+        "OutputControl:Table:Style 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "column_separator": "HTML",
+            "unit_conversion": "JtoKWH"
+        }
+    },
+    "RunPeriod": {
+        "Periodo": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 13,
+            "apply_weekend_holiday_rule": "No",
+            "begin_day_of_month": 1,
+            "begin_month": 1,
+            "day_of_week_for_start_day": "UseWeatherFile",
+            "end_day_of_month": 31,
+            "end_month": 12,
+            "increment_day_of_week_on_repeat": "No",
+            "number_of_times_runperiod_to_be_repeated": 1,
+            "use_weather_file_daylight_saving_period": "No",
+            "use_weather_file_holidays_and_special_days": "No",
+            "use_weather_file_rain_indicators": "No",
+            "use_weather_file_snow_indicators": "No"
+        }
+    },
+    "Schedule:Compact": {
+        "Always On": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: alldays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 1.0
+                }
+            ],
+            "idf_max_extensible_fields": 4,
+            "idf_max_fields": 6,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Sch_Atividade": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: alldays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 120
+                }
+            ],
+            "idf_max_extensible_fields": 4,
+            "idf_max_fields": 6,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Sch_Equip_Computador": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: Weekdays"
+                },
+                {
+                    "field": "Until: 08:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "Until: 18:00"
+                },
+                {
+                    "field": 1
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "For: allotherdays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                }
+            ],
+            "idf_max_extensible_fields": 11,
+            "idf_max_fields": 13,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Sch_Iluminacao": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: Weekdays"
+                },
+                {
+                    "field": "Until: 08:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "Until: 18:00"
+                },
+                {
+                    "field": 1
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "For: allotherdays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                }
+            ],
+            "idf_max_extensible_fields": 11,
+            "idf_max_fields": 13,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Sch_Ocupacao": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: Weekdays"
+                },
+                {
+                    "field": "Until: 08:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "Until: 18:00"
+                },
+                {
+                    "field": 1
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "For: allotherdays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                }
+            ],
+            "idf_max_extensible_fields": 11,
+            "idf_max_fields": 13,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Temp_setpoint": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: AllDays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 20
+                }
+            ],
+            "idf_max_extensible_fields": 4,
+            "idf_max_fields": 6,
+            "schedule_type_limits_name": "Temperature"
+        }
+    },
+    "ScheduleTypeLimits": {
+        "Qualquer": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 5,
+            "lower_limit_value": 0.0,
+            "numeric_type": "Continuous",
+            "unit_type": "Dimensionless",
+            "upper_limit_value": 100000.0
+        },
+        "Temperature": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "lower_limit_value": -60.0,
+            "numeric_type": "Continuous",
+            "upper_limit_value": 200.0
+        }
+    },
+    "SimulationControl": {
+        "SimulationControl 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 5,
+            "do_plant_sizing_calculation": "No",
+            "do_system_sizing_calculation": "No",
+            "do_zone_sizing_calculation": "No",
+            "run_simulation_for_sizing_periods": "No",
+            "run_simulation_for_weather_file_run_periods": "Yes"
+        }
+    },
+    "Site:GroundTemperature:BuildingSurface": {
+        "Site:GroundTemperature:BuildingSurface 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 12,
+            "april_ground_temperature": 20.2,
+            "august_ground_temperature": 17.82,
+            "december_ground_temperature": 21.05,
+            "february_ground_temperature": 21.32,
+            "january_ground_temperature": 21.45,
+            "july_ground_temperature": 17.72,
+            "june_ground_temperature": 18.12,
+            "march_ground_temperature": 20.79,
+            "may_ground_temperature": 18.93,
+            "november_ground_temperature": 20.28,
+            "october_ground_temperature": 19.29,
+            "september_ground_temperature": 18.41
+        }
+    },
+    "Timestep": {
+        "Timestep 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 1,
+            "number_of_timesteps_per_hour": 4
+        }
+    },
+    "Version": {
+        "Version 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 1,
+            "version_identifier": "8.9"
+        }
+    }
+}

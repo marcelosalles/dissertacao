@@ -1,0 +1,12 @@
+{
+    "ZoneInfiltration:DesignFlowRate": {
+        "OfficeZones Infiltration": {
+            "design_flow_rate_calculation_method": "AirChanges/Hour",
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 12,
+            "idf_order": 1,
+            "schedule_name": "Infiltration Sch",
+            "zone_or_zonelist_name": "OfficeZones"
+        }
+    }
+}

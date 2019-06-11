@@ -1,0 +1,408 @@
+{
+    "AirflowNetwork:MultiZone:Component:DetailedOpening": {
+        "Janela": {
+            "air_mass_flow_coefficient_when_opening_is_closed": 0.0001,
+            "air_mass_flow_exponent_when_opening_is_closed": 0.65,
+            "discharge_coefficient_for_opening_factor_1": 0.001,
+            "discharge_coefficient_for_opening_factor_2": 0.6,
+            "extra_crack_length_or_height_of_pivoting_axis": 0.0,
+            "height_factor_for_opening_factor_1": 0.0,
+            "height_factor_for_opening_factor_2": 1.0,
+            "number_of_sets_of_opening_factor_data": 2,
+            "opening_factor_1": 0.0,
+            "opening_factor_2": 1.0,
+            "start_height_factor_for_opening_factor_1": 0.0,
+            "start_height_factor_for_opening_factor_2": 0.0,
+            "type_of_rectangular_large_vertical_opening_lvo_": "NonPivoted",
+            "width_factor_for_opening_factor_1": 0.0,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 16,
+            "width_factor_for_opening_factor_2": 0.6
+        },
+        "Porta": {
+            "air_mass_flow_coefficient_when_opening_is_closed": 5e-05,
+            "air_mass_flow_exponent_when_opening_is_closed": 0.65,
+            "discharge_coefficient_for_opening_factor_1": 0.001,
+            "discharge_coefficient_for_opening_factor_2": 0.6,
+            "extra_crack_length_or_height_of_pivoting_axis": 0.0,
+            "height_factor_for_opening_factor_1": 0.0,
+            "height_factor_for_opening_factor_2": 1.0,
+            "number_of_sets_of_opening_factor_data": 2,
+            "opening_factor_1": 0.0,
+            "opening_factor_2": 1.0,
+            "start_height_factor_for_opening_factor_1": 0.0,
+            "start_height_factor_for_opening_factor_2": 0.0,
+            "type_of_rectangular_large_vertical_opening_lvo_": "NonPivoted",
+            "width_factor_for_opening_factor_1": 0.0,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 16,
+            "width_factor_for_opening_factor_2": 0.6
+        }
+    },
+    "Construction": {
+        "Interior Floor": {
+            "layer_2": "LajeMacicaConcreto(100mm)",
+            "layer_3": "PisoCeramico(10mm)",
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "outside_layer": "ForroGesso(30mm)"
+        },
+        "Exterior Floor": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "layer_2": "PisoCeramico(10mm)",
+            "outside_layer": "LajeMacicaConcreto(100mm)"
+        },
+        "Interior Ceiling": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "layer_2": "LajeMacicaConcreto(100mm)",
+            "layer_3": "ForroGesso(30mm)",
+            "outside_layer": "PisoCeramico(10mm)"
+        },
+        "Exterior Roof": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "layer_2": "Atico:CamaradeAr(>50mm)",
+            "layer_3": "ForroMadeira(15mm)",
+            "outside_layer": "TelhaCeramica"
+        },
+        "Interior Wall": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 6,
+            "layer_2": "Ceram Tij 8 fur circ (10 cm)",
+            "layer_3": "CavidadeBloco:CamaradeAr(20-50mm)",
+            "layer_4": "Ceram Tij 8 fur circ (10 cm)",
+            "layer_5": "ArgamassaReboco(25mm)",
+            "outside_layer": "ArgamassaReboco(25mm)"
+        },
+        "Interior Door": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "PortaMadeira(30mm)"
+        },
+        "Exterior Window": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "Clear 3mm"
+        },
+        "glass_construction_office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "glass_material_office"
+        }
+    },
+    "GlobalGeometryRules": {
+        "GlobalGeometryRules 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 5,
+            "coordinate_system": "Relative",
+            "daylighting_reference_point_coordinate_system": "Relative",
+            "rectangular_surface_coordinate_system": "Relative",
+            "starting_vertex_position": "UpperLeftCorner",
+            "vertex_entry_direction": "Counterclockwise"
+        }
+    },
+    "Output:Variable": {
+        "Output:Variable 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "Site Outdoor Air Drybulb Temperature"
+        },
+        "Output:Variable 2": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "Zone Operative Temperature"
+        },
+        "Output:Variable 3": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "Schedule Value"
+        },
+        "Output:Variable 4": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "AFN Zone Infiltration Air Change Rate"
+        }
+    },
+    "Output:VariableDictionary": {
+        "Output:VariableDictionary 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 1,
+            "key_field": "regular"
+        }
+    },
+    "OutputControl:Table:Style": {
+        "OutputControl:Table:Style 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "column_separator": "HTML",
+            "unit_conversion": "JtoKWH"
+        }
+    },
+    "RunPeriod": {
+        "Periodo": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 13,
+            "apply_weekend_holiday_rule": "No",
+            "begin_day_of_month": 1,
+            "begin_month": 1,
+            "day_of_week_for_start_day": "UseWeatherFile",
+            "end_day_of_month": 31,
+            "end_month": 12,
+            "increment_day_of_week_on_repeat": "No",
+            "number_of_times_runperiod_to_be_repeated": 1,
+            "use_weather_file_daylight_saving_period": "No",
+            "use_weather_file_holidays_and_special_days": "No",
+            "use_weather_file_rain_indicators": "No",
+            "use_weather_file_snow_indicators": "No"
+        }
+    },
+    "Schedule:Compact": {
+        "Always On": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: alldays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 1.0
+                }
+            ],
+            "idf_max_extensible_fields": 4,
+            "idf_max_fields": 6,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Sch_Atividade": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: alldays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 120
+                }
+            ],
+            "idf_max_extensible_fields": 4,
+            "idf_max_fields": 6,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Sch_Equip_Computador": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: Weekdays"
+                },
+                {
+                    "field": "Until: 08:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "Until: 18:00"
+                },
+                {
+                    "field": 1
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "For: allotherdays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                }
+            ],
+            "idf_max_extensible_fields": 11,
+            "idf_max_fields": 13,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Sch_Iluminacao": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: Weekdays"
+                },
+                {
+                    "field": "Until: 08:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "Until: 18:00"
+                },
+                {
+                    "field": 1
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "For: allotherdays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                }
+            ],
+            "idf_max_extensible_fields": 11,
+            "idf_max_fields": 13,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Sch_Ocupacao": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: Weekdays"
+                },
+                {
+                    "field": "Until: 08:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "Until: 18:00"
+                },
+                {
+                    "field": 1
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                },
+                {
+                    "field": "For: allotherdays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 0
+                }
+            ],
+            "idf_max_extensible_fields": 11,
+            "idf_max_fields": 13,
+            "schedule_type_limits_name": "Qualquer"
+        },
+        "Temp_setpoint": {
+            "data": [
+                {
+                    "field": "Through: 12/31"
+                },
+                {
+                    "field": "For: AllDays"
+                },
+                {
+                    "field": "Until: 24:00"
+                },
+                {
+                    "field": 20
+                }
+            ],
+            "idf_max_extensible_fields": 4,
+            "idf_max_fields": 6,
+            "schedule_type_limits_name": "Temperature"
+        }
+    },
+    "ScheduleTypeLimits": {
+        "Qualquer": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 5,
+            "lower_limit_value": 0.0,
+            "numeric_type": "Continuous",
+            "unit_type": "Dimensionless",
+            "upper_limit_value": 100000.0
+        },
+        "Temperature": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 4,
+            "lower_limit_value": -60.0,
+            "numeric_type": "Continuous",
+            "upper_limit_value": 200.0
+        }
+    },
+    "SimulationControl": {
+        "SimulationControl 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 5,
+            "do_plant_sizing_calculation": "No",
+            "do_system_sizing_calculation": "No",
+            "do_zone_sizing_calculation": "No",
+            "run_simulation_for_sizing_periods": "No",
+            "run_simulation_for_weather_file_run_periods": "Yes"
+        }
+    },
+    "Site:GroundTemperature:BuildingSurface": {
+        "Site:GroundTemperature:BuildingSurface 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 12,
+            "april_ground_temperature": 20.2,
+            "august_ground_temperature": 17.82,
+            "december_ground_temperature": 21.05,
+            "february_ground_temperature": 21.32,
+            "january_ground_temperature": 21.45,
+            "july_ground_temperature": 17.72,
+            "june_ground_temperature": 18.12,
+            "march_ground_temperature": 20.79,
+            "may_ground_temperature": 18.93,
+            "november_ground_temperature": 20.28,
+            "october_ground_temperature": 19.29,
+            "september_ground_temperature": 18.41
+        }
+    },
+    "Timestep": {
+        "Timestep 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 1,
+            "number_of_timesteps_per_hour": 4
+        }
+    },
+    "Version": {
+        "Version 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 1,
+            "version_identifier": "8.9"
+        }
+    }
+}

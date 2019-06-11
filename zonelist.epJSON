@@ -1,0 +1,20 @@
+{
+    "ZoneList": {
+        "Mid Floor List": {
+            "idf_max_extensible_fields": 3,
+            "idf_max_fields": 4,
+            "idf_order": 1,
+            "zones": [
+                {
+                    "zone_name": "Mid West Zone"
+                },
+                {
+                    "zone_name": "Mid Center Zone"
+                },
+                {
+                    "zone_name": "Mid East Zone"
+                }
+            ]
+        }
+    }
+}

@@ -11,9 +11,10 @@ import pandas as pd
 FOLDER_STDRD = 'cluster'
 LEN_FOLDER_NAME = len(FOLDER_STDRD) +1
 NUMBER_OF_DIGITS = 4  # ex. 0, 00, 000, 0000...
-BASE_DIR = '/media/marcelo/OS/dissertacao/validatecp'
+BASE_DIR = '/media/marcelo/OS/dissertacao/crack'
 MONTH_MEANS = pd.read_csv('/media/marcelo/OS/LabEEE_1-2/idf-creator/month_means_8760.csv')
 MAX_THREADS = 10
+OUTPUT = '015means'  # means
 
 def process_folder(folder):
     
@@ -21,8 +22,8 @@ def process_folder(folder):
     folder_name = folder[len(folder)-LEN_FOLDER_NAME:]
     os.chdir(folder)  # BASE_DIR+'/'+
     
-    epjson_files = sorted(glob.glob('*.epJSON'))  
-    # epjson_files = sorted(glob.glob('sz*.epJSON'))  
+    # epjson_files = sorted(glob.glob('*.epJSON'))  
+    epjson_files = sorted(glob.glob('015*.epJSON'))  
     df_temp = {
         'folder': [],
         'file': [],
@@ -80,8 +81,7 @@ def process_folder(folder):
             df_temp['ehf'].append(df['E_hot'][df['SCH_OCUPACAO:Schedule Value [](Hourly)'] > 0].mean())
     
     df_output = pd.DataFrame(df_temp)
-    df_output.to_csv('means_{}.csv'.format(folder_name), index=False)
-    # df_output.to_csv('sz_means_{}.csv'.format(folder_name), index=False)
+    df_output.to_csv(OUTPUT+'_{}.csv'.format(folder_name), index=False)
     print('\tDone processing folder \'{}\''.format(folder_name))
 
 
