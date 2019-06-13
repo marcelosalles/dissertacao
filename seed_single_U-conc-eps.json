@@ -1,7 +1,7 @@
 {
     "AirflowNetwork:MultiZone:Surface:Crack": {
         "door_crack": {
-            "air_mass_flow_coefficient_at_reference_conditions": 0.5,
+            "air_mass_flow_coefficient_at_reference_conditions": 0.15,
             "air_mass_flow_exponent": 0.667,
             "idf_max_extensible_fields": 0,
             "idf_max_fields": 4

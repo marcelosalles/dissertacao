@@ -45,33 +45,34 @@ def simular(epjson_name, cluster,extension = 'epJSON',version_EnergyPlus = 'ener
 
 def main(list_epjson_names, num_clusters,extension = 'epJSON',remove_all_but = ['.epJSON', '.csv']):
 
-    list_execute = []
+    for _ in range(len(list_epjson_names[0])):
+        list_execute = []
 
-    for cluster in range(num_clusters):
-        
-        # print(len(list_epjson_names))
+        for cluster in range(num_clusters):
+            
+            # print(len(list_epjson_names))
 
-        if len(list_epjson_names[cluster]) > 0:
+            if len(list_epjson_names[cluster]) > 0:
 
-            epjson_name = list_epjson_names[cluster].pop(0)
-            processing = simular(epjson_name, cluster)
-            list_execute.append(processing)
+                epjson_name = list_epjson_names[cluster].pop(0)
+                processing = simular(epjson_name, cluster)
+                list_execute.append(processing)
 
-    for i, line in enumerate(list_execute):
-        list_execute[i][0].wait()
-        print('Folder: ' + list_execute[i][1] + ' | ' + extension + ': ' + list_execute[i][2])
+        for i, line in enumerate(list_execute):
+            list_execute[i][0].wait()
+            print('Folder: ' + list_execute[i][1] + ' | ' + extension + ': ' + list_execute[i][2])
 
-        internal_list = glob.glob(list_execute[i][1] + '/' + list_execute[i][2][:-(len(extension)+1)]+"*")
-        
-        for filename in internal_list:
-            try:
-                if filename.split(list_execute[i][2][:-(len(extension)+1)]+'out')[1] not in remove_all_but:
-                    os.remove(filename)
-            except:
-                pass
+            internal_list = glob.glob(list_execute[i][1] + '/' + list_execute[i][2][:-(len(extension)+1)]+"*")
+            
+            for filename in internal_list:
+                try:
+                    if filename.split(list_execute[i][2][:-(len(extension)+1)]+'out')[1] not in remove_all_but:
+                        os.remove(filename)
+                except:
+                    pass
 
-    if len(list_epjson_names[cluster]) > 0:
-        main(list_epjson_names, num_clusters)
+    # if len(list_epjson_names[cluster]) > 0:
+        # main(list_epjson_names, num_clusters)
 
 if __name__ == '__main__':
 
