@@ -51,7 +51,7 @@ if __name__ == "__main__":
         if i == 0:
             df_out = pd.read_csv('sobol/cluster0/means_cluster0.csv')
         else:
-            df_out = df.append(pd.read_csv('sobol/cluster'+str(i)+'/means_cluster'+str(i)+'.csv'))
+            df_out = df_out.append(pd.read_csv('sobol/cluster'+str(i)+'/means_cluster'+str(i)+'.csv'))
 
     df_out = df_out.sort_values(by=['file']) 
     # df_out = pd.read_csv(BASE_DIR+'/'+DATASET)
