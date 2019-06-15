@@ -10,8 +10,8 @@ BASE_DIR = '/home/marcelo/dissertacao'
 # DATASET = 'dataset_12-20.csv'
 N_CLUSTERS = 10
 
-COL_NAMES = ['area', 'ratio', 'zone_height', 'abs', 'shading', 'azimuth',  # 
-	'wall_u', 'wall_ct', 'wwr', 'open_fac', 'people',  'thermal_loads', 
+COL_NAMES = ['area', 'ratio', 'zone_height', 'abs', 'shading', 'azimuth',
+	'wall_u', 'wall_ct', 'wwr', 'open_fac', 'thermal_loads', 'people',
     'glass', 'floor_height', 'bldg_ratio', 'room_type', 'ground', 'roof']  # 18 items.
 
 BOUNDS = [-1, 1]
