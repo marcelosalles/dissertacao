@@ -14,10 +14,13 @@ SIMULATIONS = 99978 # 76000
 
 SAMPLE_NAME = 'sample_sobol_06-11'
 
-def n_calc(d, n_cases):
+def n_calc(d, n_cases, scnd_order = False):
     # N calculator
-
-    n_size = n_cases/(2*d + 2)
+    
+    if scnd_order:
+        n_size = n_cases/(2*d + 2)
+    else:
+        n_size = n_cases/(d + 2)
 
     print(n_size)
 
@@ -39,7 +42,7 @@ if __name__ == "__main__":
     n_size = n_calc(problem['num_vars'], cases)
 
     # Generate samples
-    param_values = saltelli.sample(problem, n_size)
+    param_values = saltelli.sample(problem, n_size, scnd_order = True)
 
     df = pd.DataFrame(param_values, columns=problem['names'])
 
