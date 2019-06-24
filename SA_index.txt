@@ -1,0 +1,525 @@
+EHF
+Parameter S1 S1_conf ST ST_conf
+area 0.024162 0.013629 0.056027 0.007159
+ratio -0.001695 0.003418 0.003982 0.000778
+zone_height 0.001237 0.003863 0.003890 0.000481
+abs 0.000875 0.005873 0.011501 0.003202
+shading -0.000071 0.000264 0.000023 0.000004
+azimuth 0.000355 0.006781 0.011322 0.001186
+wall_u 0.002819 0.005373 0.013342 0.002637
+wall_ct -0.001753 0.002865 0.003712 0.001488
+wwr 0.009226 0.008063 0.035967 0.004748
+open_fac 0.098738 0.025242 0.206643 0.021293
+thermal_loads 0.000000 0.000000 0.000000 0.000000
+people 0.441100 0.052799 0.655626 0.053491
+glass 0.002803 0.005368 0.007502 0.001405
+floor_height 0.000000 0.000000 0.000000 0.000000
+bldg_ratio 0.000027 0.000456 0.000075 0.000017
+room_type 0.028866 0.018017 0.113530 0.012777
+ground 0.083437 0.028204 0.234105 0.035092
+roof 0.001267 0.011399 0.041317 0.005619
+
+Parameter_1 Parameter_2 S2 S2_conf
+area ratio 0.006896 0.020232
+area zone_height 0.006500 0.020283
+area abs 0.005440 0.020421
+area shading 0.006745 0.020238
+area azimuth 0.005975 0.020259
+area wall_u 0.007185 0.020855
+area wall_ct 0.006559 0.020300
+area wwr 0.005894 0.020441
+area open_fac 0.006623 0.021181
+area thermal_loads 0.006738 0.020237
+area people 0.009984 0.023008
+area glass 0.007790 0.020480
+area floor_height 0.006738 0.020237
+area bldg_ratio 0.006780 0.020231
+area room_type 0.007716 0.019668
+area ground 0.008427 0.021206
+area roof 0.003529 0.020773
+ratio zone_height 0.002679 0.005088
+ratio abs 0.002962 0.005361
+ratio shading 0.002710 0.005056
+ratio azimuth 0.003167 0.004987
+ratio wall_u 0.002568 0.005028
+ratio wall_ct 0.003033 0.005126
+ratio wwr 0.002302 0.004944
+ratio open_fac 0.001796 0.005209
+ratio thermal_loads 0.002719 0.005059
+ratio people 0.000944 0.005793
+ratio glass 0.002985 0.005004
+ratio floor_height 0.002719 0.005059
+ratio bldg_ratio 0.002729 0.005064
+ratio room_type 0.005039 0.004847
+ratio ground 0.001710 0.005536
+ratio roof 0.003450 0.005106
+zone_height abs 0.001005 0.005124
+zone_height shading 0.001148 0.005087
+zone_height azimuth 0.001217 0.005129
+zone_height wall_u 0.001311 0.005166
+zone_height wall_ct 0.001211 0.005089
+zone_height wwr 0.000730 0.005005
+zone_height open_fac 0.002586 0.005638
+zone_height thermal_loads 0.001147 0.005088
+zone_height people 0.001643 0.006423
+zone_height glass 0.000912 0.005137
+zone_height floor_height 0.001147 0.005088
+zone_height bldg_ratio 0.001140 0.005096
+zone_height room_type 0.002222 0.005389
+zone_height ground 0.000909 0.005257
+zone_height roof 0.001167 0.005172
+abs shading -0.002202 0.009039
+abs azimuth -0.002041 0.008593
+abs wall_u -0.002308 0.009192
+abs wall_ct -0.002583 0.009282
+abs wwr -0.002090 0.009175
+abs open_fac -0.002273 0.010011
+abs thermal_loads -0.002200 0.009038
+abs people 0.002367 0.013553
+abs glass -0.001907 0.009135
+abs floor_height -0.002200 0.009038
+abs bldg_ratio -0.002159 0.009042
+abs room_type -0.001941 0.009266
+abs ground -0.001811 0.010061
+abs roof -0.003347 0.009067
+shading azimuth 0.000086 0.000416
+shading wall_u 0.000084 0.000411
+shading wall_ct 0.000097 0.000410
+shading wwr 0.000074 0.000413
+shading open_fac 0.000022 0.000447
+shading thermal_loads 0.000086 0.000412
+shading people 0.000194 0.000481
+shading glass 0.000090 0.000409
+shading floor_height 0.000086 0.000412
+shading bldg_ratio 0.000090 0.000412
+shading room_type 0.000154 0.000428
+shading ground 0.000100 0.000429
+shading roof 0.000112 0.000417
+azimuth wall_u -0.000017 0.011232
+azimuth wall_ct 0.000402 0.011256
+azimuth wwr 0.000973 0.010727
+azimuth open_fac 0.002977 0.010792
+azimuth thermal_loads 0.000082 0.011085
+azimuth people 0.002846 0.012548
+azimuth glass 0.000628 0.010966
+azimuth floor_height 0.000082 0.011085
+azimuth bldg_ratio 0.000075 0.011095
+azimuth room_type 0.003156 0.010959
+azimuth ground -0.000380 0.010652
+azimuth roof 0.000640 0.011050
+wall_u wall_ct 0.003031 0.008846
+wall_u wwr 0.002252 0.009057
+wall_u open_fac 0.003517 0.008063
+wall_u thermal_loads 0.002506 0.008838
+wall_u people 0.006135 0.012324
+wall_u glass 0.003001 0.008894
+wall_u floor_height 0.002506 0.008838
+wall_u bldg_ratio 0.002485 0.008831
+wall_u room_type 0.001677 0.007838
+wall_u ground -0.002275 0.008425
+wall_u roof 0.002179 0.008840
+wall_ct wwr 0.004038 0.004407
+wall_ct open_fac 0.004676 0.004902
+wall_ct thermal_loads 0.003734 0.004530
+wall_ct people 0.006897 0.006908
+wall_ct glass 0.003672 0.004533
+wall_ct floor_height 0.003734 0.004530
+wall_ct bldg_ratio 0.003757 0.004536
+wall_ct room_type 0.002892 0.004658
+wall_ct ground 0.002114 0.005575
+wall_ct roof 0.004065 0.004382
+wwr open_fac 0.004127 0.016273
+wwr thermal_loads -0.004933 0.013797
+wwr people 0.005345 0.013338
+wwr glass -0.004321 0.014123
+wwr floor_height -0.004933 0.013797
+wwr bldg_ratio -0.005034 0.013800
+wwr room_type -0.004183 0.014382
+wwr ground -0.001593 0.013952
+wwr roof -0.003257 0.014460
+open_fac thermal_loads -0.002335 0.032623
+open_fac people 0.031952 0.042862
+open_fac glass -0.001990 0.032887
+open_fac floor_height -0.002335 0.032623
+open_fac bldg_ratio -0.002162 0.032631
+open_fac room_type 0.031623 0.035737
+open_fac ground 0.011507 0.035764
+open_fac roof -0.003754 0.033551
+thermal_loads people 0.000000 0.000000
+thermal_loads glass 0.000000 0.000000
+thermal_loads floor_height 0.000000 0.000000
+thermal_loads bldg_ratio 0.000000 0.000000
+thermal_loads room_type 0.000000 0.000000
+thermal_loads ground 0.000000 0.000000
+thermal_loads roof -0.000000 0.000000
+people glass 0.014727 0.073776
+people floor_height 0.010236 0.072880
+people bldg_ratio 0.010587 0.072855
+people room_type 0.014154 0.074962
+people ground 0.080890 0.086217
+people roof 0.009063 0.070723
+glass floor_height -0.003207 0.009482
+glass bldg_ratio -0.003259 0.009472
+glass room_type -0.004491 0.008428
+glass ground -0.002054 0.009784
+glass roof -0.003377 0.009859
+floor_height bldg_ratio 0.000000 0.000000
+floor_height room_type 0.000000 0.000000
+floor_height ground 0.000000 0.000000
+floor_height roof -0.000000 0.000000
+bldg_ratio room_type -0.000229 0.000566
+bldg_ratio ground 0.000043 0.000652
+bldg_ratio roof -0.000034 0.000588
+room_type ground 0.016963 0.031241
+room_type roof 0.010233 0.029074
+ground roof 0.018526 0.042717
+TEMP
+Parameter S1 S1_conf ST ST_conf
+area 0.033620 0.013700 0.088363 0.018379
+ratio 0.005277 0.008369 0.034174 0.019989
+zone_height 0.001655 0.005211 0.010499 0.002930
+abs 0.002039 0.001999 0.002406 0.000431
+shading 0.000028 0.000129 0.000006 0.000001
+azimuth -0.000932 0.002696 0.002933 0.000475
+wall_u 0.021964 0.020541 0.077079 0.030311
+wall_ct 0.000719 0.001470 0.000881 0.000161
+wwr 0.025356 0.014363 0.106032 0.037962
+open_fac 0.113006 0.024211 0.182517 0.030012
+thermal_loads 0.000000 0.000000 0.000000 0.000000
+people 0.201982 0.039844 0.331611 0.055583
+glass 0.002086 0.003726 0.003034 0.000567
+floor_height 0.000000 0.000000 0.000000 0.000000
+bldg_ratio 0.000060 0.000175 0.000015 0.000006
+room_type 0.037984 0.019258 0.182812 0.049431
+ground 0.185183 0.043625 0.314274 0.067709
+roof 0.004963 0.014595 0.157325 0.063523
+
+Parameter_1 Parameter_2 S2 S2_conf
+area ratio 0.003330 0.030385
+area zone_height 0.002289 0.030186
+area abs 0.002753 0.030262
+area shading 0.002968 0.030349
+area azimuth 0.003301 0.030232
+area wall_u 0.001526 0.031008
+area wall_ct 0.002969 0.030307
+area wwr 0.015616 0.043417
+area open_fac 0.006046 0.035652
+area thermal_loads 0.002954 0.030343
+area people 0.015740 0.031912
+area glass 0.004222 0.030943
+area floor_height 0.002954 0.030343
+area bldg_ratio 0.002919 0.030334
+area room_type -0.002286 0.025609
+area ground 0.019634 0.034676
+area roof 0.002411 0.031152
+ratio zone_height -0.001890 0.016662
+ratio abs -0.000441 0.018478
+ratio shading -0.000508 0.018246
+ratio azimuth -0.000638 0.017939
+ratio wall_u -0.000287 0.018829
+ratio wall_ct -0.000590 0.018208
+ratio wwr 0.000666 0.019359
+ratio open_fac -0.000360 0.018344
+ratio thermal_loads -0.000495 0.018251
+ratio people -0.005328 0.013752
+ratio glass -0.000449 0.018421
+ratio floor_height -0.000495 0.018251
+ratio bldg_ratio -0.000478 0.018262
+ratio room_type 0.005621 0.023755
+ratio ground -0.006431 0.020114
+ratio roof -0.000753 0.018229
+zone_height abs 0.003390 0.008362
+zone_height shading 0.003258 0.008293
+zone_height azimuth 0.003124 0.008191
+zone_height wall_u 0.003585 0.008499
+zone_height wall_ct 0.003149 0.008280
+zone_height wwr 0.003478 0.008995
+zone_height open_fac 0.002174 0.008325
+zone_height thermal_loads 0.003259 0.008287
+zone_height people 0.004240 0.007331
+zone_height glass 0.003592 0.008288
+zone_height floor_height 0.003259 0.008287
+zone_height bldg_ratio 0.003261 0.008287
+zone_height room_type 0.004163 0.009471
+zone_height ground 0.004403 0.010910
+zone_height roof 0.003680 0.008597
+abs shading -0.000278 0.003263
+abs azimuth 0.000002 0.003301
+abs wall_u -0.001327 0.002560
+abs wall_ct -0.000246 0.003272
+abs wwr 0.001625 0.004218
+abs open_fac 0.000680 0.004168
+abs thermal_loads -0.000276 0.003266
+abs people 0.000095 0.003681
+abs glass -0.000158 0.003303
+abs floor_height -0.000276 0.003266
+abs bldg_ratio -0.000263 0.003274
+abs room_type -0.000189 0.002893
+abs ground -0.000932 0.003392
+abs roof -0.000503 0.002719
+shading azimuth -0.000078 0.000230
+shading wall_u -0.000086 0.000245
+shading wall_ct -0.000077 0.000232
+shading wwr -0.000045 0.000239
+shading open_fac -0.000103 0.000242
+shading thermal_loads -0.000077 0.000233
+shading people -0.000106 0.000198
+shading glass -0.000079 0.000234
+shading floor_height -0.000077 0.000233
+shading bldg_ratio -0.000076 0.000233
+shading room_type -0.000006 0.000223
+shading ground -0.000034 0.000280
+shading roof -0.000075 0.000236
+azimuth wall_u 0.002597 0.004321
+azimuth wall_ct 0.001448 0.004330
+azimuth wwr 0.001422 0.004536
+azimuth open_fac 0.002594 0.004790
+azimuth thermal_loads 0.001438 0.004338
+azimuth people 0.002176 0.003724
+azimuth glass 0.001507 0.004379
+azimuth floor_height 0.001438 0.004338
+azimuth bldg_ratio 0.001435 0.004339
+azimuth room_type 0.002773 0.004696
+azimuth ground 0.000119 0.005072
+azimuth roof 0.002371 0.004588
+wall_u wall_ct -0.015741 0.026614
+wall_u wwr -0.002403 0.034800
+wall_u open_fac 0.002713 0.032686
+wall_u thermal_loads -0.016050 0.026588
+wall_u people -0.017703 0.027534
+wall_u glass -0.016596 0.026785
+wall_u floor_height -0.016050 0.026588
+wall_u bldg_ratio -0.015943 0.026602
+wall_u room_type -0.013857 0.026610
+wall_u ground 0.003665 0.034211
+wall_u roof -0.016704 0.027050
+wall_ct wwr 0.000452 0.002319
+wall_ct open_fac 0.000187 0.002491
+wall_ct thermal_loads 0.000216 0.002239
+wall_ct people -0.000348 0.002316
+wall_ct glass 0.000224 0.002256
+wall_ct floor_height 0.000216 0.002239
+wall_ct bldg_ratio 0.000213 0.002242
+wall_ct room_type -0.000351 0.001978
+wall_ct ground 0.000895 0.002435
+wall_ct roof 0.000139 0.002095
+wwr open_fac -0.005119 0.030408
+wwr thermal_loads -0.007100 0.028834
+wwr people -0.003830 0.029826
+wwr glass -0.007168 0.029207
+wwr floor_height -0.007100 0.028834
+wwr bldg_ratio -0.007076 0.028849
+wwr room_type -0.006229 0.030122
+wwr ground 0.010380 0.041714
+wwr roof -0.001407 0.040015
+open_fac thermal_loads 0.007581 0.035584
+open_fac people 0.026315 0.038135
+open_fac glass 0.008075 0.035939
+open_fac floor_height 0.007581 0.035584
+open_fac bldg_ratio 0.007497 0.035569
+open_fac room_type 0.000535 0.034847
+open_fac ground 0.018405 0.041990
+open_fac roof -0.001514 0.035219
+thermal_loads people 0.000000 0.000000
+thermal_loads glass 0.000000 0.000000
+thermal_loads floor_height 0.000000 0.000000
+thermal_loads bldg_ratio 0.000000 0.000000
+thermal_loads room_type 0.000000 0.000000
+thermal_loads ground -0.000000 0.000000
+thermal_loads roof 0.000000 0.000000
+people glass 0.036452 0.048944
+people floor_height 0.036391 0.047950
+people bldg_ratio 0.036535 0.047947
+people room_type 0.050994 0.060255
+people ground 0.049672 0.056071
+people roof 0.038237 0.049899
+glass floor_height -0.003311 0.005193
+glass bldg_ratio -0.003315 0.005193
+glass room_type -0.000704 0.005038
+glass ground -0.004618 0.005609
+glass roof -0.002305 0.005219
+floor_height bldg_ratio 0.000000 0.000000
+floor_height room_type 0.000000 0.000000
+floor_height ground -0.000000 0.000000
+floor_height roof 0.000000 0.000000
+bldg_ratio room_type -0.000130 0.000271
+bldg_ratio ground -0.000148 0.000270
+bldg_ratio roof -0.000162 0.000286
+room_type ground 0.029552 0.044060
+room_type roof 0.013586 0.039149
+ground roof 0.020230 0.049875
+ACH
+Parameter S1 S1_conf ST ST_conf
+area 0.036132 0.020190 0.107735 0.020905
+ratio 0.001656 0.004245 0.004357 0.000708
+zone_height 0.000269 0.000711 0.000103 0.000017
+abs 0.000178 0.000295 0.000077 0.000070
+shading -0.000012 0.000021 0.000000 0.000000
+azimuth -0.000784 0.007559 0.013108 0.002830
+wall_u 0.000120 0.000244 0.000028 0.000007
+wall_ct 0.000150 0.000125 0.000012 0.000006
+wwr 0.068139 0.019145 0.208536 0.033883
+open_fac 0.319539 0.056794 0.664339 0.091677
+thermal_loads 0.000000 0.000000 0.000000 0.000000
+people 0.003250 0.003922 0.009193 0.002320
+glass -0.000252 0.000347 0.000111 0.000066
+floor_height 0.000000 0.000000 0.000000 0.000000
+bldg_ratio 0.000122 0.000455 0.000072 0.000020
+room_type 0.156811 0.034917 0.493117 0.079077
+ground 0.000105 0.001231 0.001277 0.000603
+roof -0.000063 0.000721 0.000489 0.000620
+
+Parameter_1 Parameter_2 S2 S2_conf
+area ratio 0.002164 0.039295
+area zone_height 0.001524 0.038901
+area abs 0.001706 0.038894
+area shading 0.001553 0.038908
+area azimuth 0.000520 0.038835
+area wall_u 0.001425 0.038889
+area wall_ct 0.001573 0.038917
+area wwr 0.002027 0.038725
+area open_fac 0.017396 0.063374
+area thermal_loads 0.001550 0.038908
+area people 0.001500 0.038620
+area glass 0.001525 0.038878
+area floor_height 0.001550 0.038908
+area bldg_ratio 0.001405 0.038786
+area room_type 0.021172 0.045829
+area ground 0.001850 0.038930
+area roof 0.001905 0.038840
+ratio zone_height -0.002655 0.007758
+ratio abs -0.002660 0.007822
+ratio shading -0.002666 0.007819
+ratio azimuth -0.002203 0.007239
+ratio wall_u -0.002668 0.007820
+ratio wall_ct -0.002663 0.007817
+ratio wwr -0.001681 0.007619
+ratio open_fac -0.003163 0.010153
+ratio thermal_loads -0.002667 0.007819
+ratio people -0.002535 0.007723
+ratio glass -0.002647 0.007823
+ratio floor_height -0.002667 0.007819
+ratio bldg_ratio -0.002663 0.007816
+ratio room_type -0.001973 0.007842
+ratio ground -0.002662 0.007816
+ratio roof -0.002666 0.007827
+zone_height abs 0.000136 0.001323
+zone_height shading 0.000134 0.001322
+zone_height azimuth 0.000072 0.001218
+zone_height wall_u 0.000133 0.001322
+zone_height wall_ct 0.000134 0.001322
+zone_height wwr 0.000165 0.001364
+zone_height open_fac 0.000158 0.001776
+zone_height thermal_loads 0.000134 0.001322
+zone_height people 0.000095 0.001322
+zone_height glass 0.000136 0.001324
+zone_height floor_height 0.000134 0.001322
+zone_height bldg_ratio 0.000134 0.001321
+zone_height room_type -0.000131 0.001556
+zone_height ground 0.000116 0.001321
+zone_height roof 0.000121 0.001324
+abs shading -0.000034 0.000411
+abs azimuth -0.000028 0.000414
+abs wall_u -0.000035 0.000411
+abs wall_ct -0.000035 0.000412
+abs wwr -0.000081 0.000424
+abs open_fac -0.000027 0.000434
+abs thermal_loads -0.000034 0.000411
+abs people -0.000021 0.000400
+abs glass -0.000037 0.000412
+abs floor_height -0.000034 0.000411
+abs bldg_ratio -0.000033 0.000411
+abs room_type -0.000241 0.000514
+abs ground -0.000033 0.000413
+abs roof -0.000036 0.000412
+shading azimuth 0.000032 0.000030
+shading wall_u 0.000033 0.000030
+shading wall_ct 0.000033 0.000030
+shading wwr 0.000036 0.000032
+shading open_fac 0.000057 0.000045
+shading thermal_loads 0.000033 0.000030
+shading people 0.000031 0.000030
+shading glass 0.000033 0.000030
+shading floor_height 0.000033 0.000030
+shading bldg_ratio 0.000033 0.000030
+shading room_type 0.000021 0.000033
+shading ground 0.000033 0.000030
+shading roof 0.000033 0.000030
+azimuth wall_u 0.003716 0.016048
+azimuth wall_ct 0.003691 0.016049
+azimuth wwr 0.002366 0.016857
+azimuth open_fac 0.012524 0.022618
+azimuth thermal_loads 0.003701 0.016051
+azimuth people 0.003505 0.015833
+azimuth glass 0.003724 0.016057
+azimuth floor_height 0.003701 0.016051
+azimuth bldg_ratio 0.003658 0.016045
+azimuth room_type 0.013088 0.016003
+azimuth ground 0.003610 0.016014
+azimuth roof 0.003666 0.016052
+wall_u wall_ct 0.000053 0.000405
+wall_u wwr 0.000245 0.000396
+wall_u open_fac 0.000295 0.000481
+wall_u thermal_loads 0.000053 0.000405
+wall_u people 0.000047 0.000401
+wall_u glass 0.000054 0.000406
+wall_u floor_height 0.000053 0.000405
+wall_u bldg_ratio 0.000055 0.000405
+wall_u room_type -0.000116 0.000371
+wall_u ground 0.000051 0.000407
+wall_u roof 0.000053 0.000406
+wall_ct wwr -0.000091 0.000204
+wall_ct open_fac -0.000160 0.000300
+wall_ct thermal_loads -0.000101 0.000218
+wall_ct people -0.000092 0.000199
+wall_ct glass -0.000101 0.000218
+wall_ct floor_height -0.000101 0.000218
+wall_ct bldg_ratio -0.000101 0.000218
+wall_ct room_type -0.000116 0.000168
+wall_ct ground -0.000101 0.000218
+wall_ct roof -0.000102 0.000218
+wwr open_fac 0.051572 0.056137
+wwr thermal_loads 0.000088 0.032334
+wwr people 0.002235 0.032961
+wwr glass 0.000095 0.032385
+wwr floor_height 0.000088 0.032334
+wwr bldg_ratio 0.000016 0.032359
+wwr room_type 0.024845 0.042285
+wwr ground -0.000420 0.032279
+wwr roof 0.000047 0.032347
+open_fac thermal_loads -0.020323 0.084029
+open_fac people -0.018256 0.083718
+open_fac glass -0.020313 0.083994
+open_fac floor_height -0.020323 0.084029
+open_fac bldg_ratio -0.020670 0.084106
+open_fac room_type 0.183008 0.119953
+open_fac ground -0.019578 0.083685
+open_fac roof -0.019574 0.084061
+thermal_loads people -0.000000 0.000000
+thermal_loads glass -0.000000 0.000000
+thermal_loads floor_height 0.000000 0.000000
+thermal_loads bldg_ratio -0.000000 0.000000
+thermal_loads room_type 0.000000 0.000000
+thermal_loads ground -0.000000 0.000000
+thermal_loads roof 0.000000 0.000000
+people glass -0.000568 0.006354
+people floor_height -0.000554 0.006365
+people bldg_ratio -0.000586 0.006379
+people room_type -0.001388 0.007340
+people ground -0.000512 0.006359
+people roof -0.000544 0.006346
+glass floor_height 0.000331 0.000535
+glass bldg_ratio 0.000331 0.000534
+glass room_type 0.000298 0.000569
+glass ground 0.000327 0.000542
+glass roof 0.000334 0.000537
+floor_height bldg_ratio -0.000000 0.000000
+floor_height room_type 0.000000 0.000000
+floor_height ground -0.000000 0.000000
+floor_height roof 0.000000 0.000000
+bldg_ratio room_type -0.000345 0.000724
+bldg_ratio ground -0.000070 0.000686
+bldg_ratio roof -0.000063 0.000689
+room_type ground 0.023131 0.056705
+room_type roof 0.022990 0.056949
+ground roof -0.000199 0.001768
