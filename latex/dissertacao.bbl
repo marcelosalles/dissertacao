@@ -3,17 +3,26 @@
 \begin{thebibliography}{}
 \providecommand{\abntrefinfo}[3]{}
 \providecommand{\abntbstabout}[1]{}
-\abntbstabout{v-1.9.7 }
+\abntbstabout{v-1.9.6 }
 
-\bibitem{2002boundary}
-\abntrefinfo{Oke}{OKE}{2002}
-{OKE, T.~R. \textbf{Boundary layer climates}. [S.l.]: Routledge, 2002.}
+\bibitem{Rackes2016}
+\abntrefinfo{Rackes et al.}{RACKES et al.}{2016}
+{RACKES, A.; MELO, A.~P.; LAMBERTS, R. {Naturally comfortable and sustainable:
+  Informed design guidance and performance labeling for passive commercial
+  buildings in hot climates}.
+\textbf{Applied Energy}, Elsevier, v.~174, p. 256--274, jul 2016.
+ISSN 0306-2619.
+Dispon{\'\i}vel em:
+  \url{https://www.sciencedirect.com/science/article/pii/S0306261916305426}.}
 
-\bibitem{Chen2013}
-\abntrefinfo{Chen e Chen}{CHEN; CHEN}{2013}
-{CHEN, D.; CHEN, H.~W. Using the k\"{o}ppen classification to quantify climate
-  variation and change: An example for 1901{\textendash}2010.
-\textbf{Environmental Development}, Elsevier {BV}, v.~6, p. 69--79, apr 2013.
-Dispon{\'\i}vel em: \url{https://doi.org/10.1016/j.envdev.2013.03.007}.}
+\bibitem{CarrilhodaGraca2016}
+\abntrefinfo{{Carrilho da Gra{\c{c}}a} e Linden}{{Carrilho da Gra{\c{c}}a};
+  LINDEN}{2016}
+{{Carrilho da Gra{\c{c}}a}, G.; LINDEN, P. {Ten questions about natural
+  ventilation of non-domestic buildings}.
+\textbf{Building and Environment}, Pergamon, v.~107, p. 263--273, oct 2016.
+ISSN 0360-1323.
+Dispon{\'\i}vel em:
+  \url{https://www.sciencedirect.com/science/article/pii/S036013231630302X}.}
 
 \end{thebibliography}
