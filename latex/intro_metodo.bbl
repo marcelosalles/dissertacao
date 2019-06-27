@@ -78,20 +78,67 @@ ISSN 0306-2619.
 Dispon{\'\i}vel em:
   \url{https://www.sciencedirect.com/science/article/pii/S0306261916305426}.}
 
-\bibitem{CarrilhodaGraca2016}
-\abntrefinfo{{Carrilho da Gra{\c{c}}a} e Linden}{{Carrilho da Gra{\c{c}}a};
-  LINDEN}{2016}
-{{Carrilho da Gra{\c{c}}a}, G.; LINDEN, P. {Ten questions about natural
-  ventilation of non-domestic buildings}.
-\textbf{Building and Environment}, Pergamon, v.~107, p. 263--273, oct 2016.
-ISSN 0360-1323.
-Dispon{\'\i}vel em:
-  \url{https://www.sciencedirect.com/science/article/pii/S036013231630302X}.}
+\bibitem{Pereira2018}
+\abntrefinfo{Pereira e Neves}{PEREIRA; NEVES}{2018}
+{PEREIRA, F.~A.; NEVES, L.~O. {DESENVOLVIMENTO DE UM BANCO DE DADOS CONTENDO
+  ESTRAT{\'{E}}GIAS DE PROJETO DE EDIF{\'{I}}CIOS DE ESCRIT{\'{O}}RIOS DE MODO
+  MISTO}. In:  \textbf{ENTAC}. [S.l.: s.n.], 2018.}
 
 \bibitem{ASHRAEStandard552017}
 \abntrefinfo{{ASHRAE Standard 55}}{{ASHRAE Standard 55}}{2017}
 {{ASHRAE Standard 55}. \textbf{{Thermal Environmental Conditions for Human
   Occupancy}}. Atlanta: American Society of Heating Refrigerating and Air
   -Conditioning Engineers, 2017.}
+
+\bibitem{INIC}
+\abntrefinfo{INI-C}{INI-C}{2017}
+{INI-C. \textbf{{Proposta de método para a avaliação da eficiência
+  energética com base em energia primária de edificações comerciais, de
+  serviços e públicas}}. Florianópolis: CB3E, 2017.
+Dispon{\'\i}vel em:
+  \url{http://cb3e.ufsc.br/etiquetagem/desenvolvimento/atividades-2012-2016/trabalho-1/pesquisas}.}
+
+\bibitem{EnergyPlus2018}
+\abntrefinfo{EnergyPlus}{ENERGYPLUS}{2018}
+{ENERGYPLUS. \textbf{{EnergyPlus 8.9}}. U.S. Department of Energy, 2018.
+Dispon{\'\i}vel em: \url{https://energyplus.net/}.}
+
+\bibitem{TPU2018}
+\abntrefinfo{TPU}{TPU}{2018}
+{TPU, T. P.~U. \textbf{{Wind Pressure Database}}. 2018.
+Dispon{\'\i}vel em:
+  \url{http://wind.arch.t-kougei.ac.jp/system/eng/contents/code/tpu}.}
+
+\bibitem{Atkins}
+\abntrefinfo{Atkins et al.}{ATKINS et al.}{1979}
+{ATKINS, R.~E.; PETERKA, J.~A.; CERMAK, J.~E. \textbf{{Averaged pressure
+  coefficients for rectangular buildings}}. [S.l.]: Proceedings of the Fifth
+  International Conference, 1979.
+ (Wind Engineering).}
+
+\bibitem{SwamiChandra}
+\abntrefinfo{Swami e Chandra}{SWAMI; CHANDRA}{1988}
+{SWAMI, M.~V.; CHANDRA, S. \textbf{{Correlations for pressure distribution on
+  buildings and calculation of natural-ventilation airflow}}. [S.l.]: ASHRAE
+  Transactions 94, 1988. 243--266~p.}
+
+\bibitem{Sobol1993}
+\abntrefinfo{Sobol'}{SOBOL'}{1993}
+{SOBOL', I.~M. {Sensitivity estimates for nonlinear mathematical models and
+  their Monte Carlo estimation}.
+\textbf{Math. Model. Comput. Exp.}, v.~1, n.~4, p. 407--417, 1993.}
+
+\bibitem{Herman2017}
+\abntrefinfo{Herman e Usher}{HERMAN; USHER}{2017}
+{HERMAN, J.; USHER, W. {SALib: An open-source Python library for Sensitivity
+  Analysis}.
+\textbf{The Journal of Open Source Software}, The Open Journal, v.~2, n.~9, jan
+  2017.
+Dispon{\'\i}vel em: \url{https://doi.org/10.21105/joss.00097}.}
+
+\bibitem{Python}
+\abntrefinfo{{Python}}{{Python}}{2018}
+{{Python}. Python Software Foundation, 2018.
+Dispon{\'\i}vel em: \url{https://www.python.org/}.}
 
 \end{thebibliography}

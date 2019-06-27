@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.6.26)  26 JUN 2019 20:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.6.26)  27 JUN 2019 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1989,193 +1989,205 @@ Package babel Info: Redefining portuges shorthand "|
 
 
 ]
-Underfull \hbox (badness 2229) in paragraph at lines 79--80
+Underfull \hbox (badness 2229) in paragraph at lines 78--79
 []\T1/bch/m/n/10.5 A avalia[]ão do po-ten-cial de res-fri-a-mento por VN em
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 82.
+(babel)             in language  on input line 81.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 82.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 86.
+(babel)             in language  on input line 85.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 86.
+(babel)             in language  on input line 85.
  [4]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 87.
-LaTeX Font Info:    Try loading font information for OMS+bch on input line 92.
+(babel)             in language  on input line 86.
+LaTeX Font Info:    Try loading font information for OMS+bch on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsbch.fd
 File: omsbch.fd 
 )
 LaTeX Font Info:    Font shape `OMS/bch/m/n' in size <10.5> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 96.
  [5]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 96.
  [6
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 100.
+(babel)             in language  on input line 99.
 
-Underfull \hbox (badness 1796) in paragraph at lines 104--105
+Underfull \hbox (badness 1796) in paragraph at lines 103--104
 \T1/bch/m/n/10.5 se: áreas, di-men-sões, for-mato e nú-mero de pa-vi-men-tos da
 s
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 110.
+(babel)             in language  on input line 109.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 125.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 125.
 [7]
+Underfull \hbox (badness 10000) in paragraph at lines 126--128
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--146
+
+ []
+
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 170.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 173.
+(babel)             in language  on input line 170.
+[8]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 173.
- [8]
-
-LaTeX Warning: Citation `Pereira2018' on page 9 undefined on input line 174.
+(babel)             in language  on input line 171.
 
 
-LaTeX Warning: Citation `Pereira2018' on page 9 undefined on input line 174.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+<img/croqui.png, id=176, 845.40843pt x 597.73312pt>
+File: img/croqui.png Graphic file (type png)
+<use img/croqui.png>
+Package pdftex.def Info: img/croqui.png  used on input line 226.
+(pdftex.def)             Requested size: 307.0pt x 217.0535pt.
 
-LaTeX Warning: Citation `EnergyPlus2018' on page 9 undefined on input line 218.
-
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 219.
+(babel)             in language  on input line 240.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 219.
+(babel)             in language  on input line 240.
 [9]
-<img/CROQUI.png, id=170, 867.24pt x 487.8225pt>
-File: img/CROQUI.png Graphic file (type png)
-<use img/CROQUI.png>
-Package pdftex.def Info: img/CROQUI.png  used on input line 223.
-(pdftex.def)             Requested size: 307.0pt x 172.69064pt.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 235.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 235.
- [10 <./img/CROQUI.png>]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 238.
 
-
-LaTeX Warning: Citation `EnergyPlus2018' on page 11 undefined on input line 240
-.
-
-
-LaTeX Warning: Citation `TPU2018' on page 11 undefined on input line 244.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 246.
+(babel)             in language  on input line 262.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 249.
+(babel)             in language  on input line 266.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 249.
-[11]
-Underfull \hbox (badness 1264) in paragraph at lines 256--257
+(babel)             in language  on input line 266.
+ [10]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 269.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 269.
+
+[11 <./img/croqui.png>]
+<img/tpu_windows.png, id=203, 1370.11874pt x 540.0175pt>
+File: img/tpu_windows.png Graphic file (type png)
+<use img/tpu_windows.png>
+Package pdftex.def Info: img/tpu_windows.png  used on input line 273.
+(pdftex.def)             Requested size: 307.0pt x 120.99605pt.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 281.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 291.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 291.
+ [12 <./img/tpu_windows.png>]
+Underfull \hbox (badness 1264) in paragraph at lines 291--292
 []\T1/bch/m/n/10.5 defini[]ão de um co-e-fi-ci-ente de infiltra[]ão re-la-ci-o-
 nado à
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 261.
+(babel)             in language  on input line 296.
+<img/tpu_points.png, id=217, 1370.11874pt x 519.9425pt>
+File: img/tpu_points.png Graphic file (type png)
+<use img/tpu_points.png>
+Package pdftex.def Info: img/tpu_points.png  used on input line 308.
+(pdftex.def)             Requested size: 307.0pt x 116.49806pt.
 
-Underfull \hbox (badness 1237) in paragraph at lines 267--268
-\T1/bch/m/n/10.5 com ge-o-me-trias es-pe-cí-fi-cas. Am-bas as fon-tes são li-mi
--ta-das a
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 270.
+(babel)             in language  on input line 319.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 270.
-[12]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 307.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 307.
- [13]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 307.
+(babel)             in language  on input line 319.
+[13]
 
-Underfull \hbox (badness 2443) in paragraph at lines 309--311
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 352.
+
+Underfull \hbox (badness 2443) in paragraph at lines 354--356
 \T1/bch/m/n/10.5 das pro-pri-e-da-des ter-mo-fí-si-cas da en-vol-tó-ria, consid
 erou-se a
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 326.
+(babel)             in language  on input line 356.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 331.
+(babel)             in language  on input line 356.
+[14 <./img/tpu_points.png>]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 331.
-[14]
+(babel)             in language  on input line 371.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 336.
+(babel)             in language  on input line 374.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 342.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 342.
+(babel)             in language  on input line 374.
  [15]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 354.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+(babel)             in language  on input line 381.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 357.
+(babel)             in language  on input line 386.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 357.
+(babel)             in language  on input line 386.
  [16]
-
-LaTeX Warning: Citation `Sobol1993' on page 17 undefined on input line 358.
-
-
-LaTeX Warning: Citation `Sobol1993' on page 17 undefined on input line 358.
-
-
-LaTeX Warning: Citation `Herman2017' on page 17 undefined on input line 358.
-
-
-LaTeX Warning: Citation `Python' on page 17 undefined on input line 358.
-
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 360.
-
-Underfull \hbox (badness 1325) in paragraph at lines 370--371
+(babel)             in language  on input line 399.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 399.
+ [17]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 399.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 405.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 415.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 415.
+ [18]
+Underfull \hbox (badness 1325) in paragraph at lines 415--416
 []\T1/bch/m/n/10.5 É im-por-tante res-sal-tar que cada mo-delo si-mu-lado pelo
  []
 
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 371.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 371.
-[17] (./intro_metodo.bbl
+(./intro_metodo.bbl
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
- [18]
+ [19]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 3.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 3.
+ [20
+
+]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
 
@@ -2184,59 +2196,55 @@ LaTeX Font Info:    OMX-m encoding encountered on input line 15.
 LaTeX Font Info:    OMX-m encoding encountered on input line 15.
 LaTeX Font Info:    OMX-m encoding encountered on input line 15.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 90.
+(babel)             in language  on input line 86.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 90.
-[19
-
-])
+(babel)             in language  on input line 86.
+[21])
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 383.
+(babel)             in language  on input line 428.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 383.
-[20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 383.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 383.
+(babel)             in language  on input line 428.
+[22]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 428.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 428.
  (./intro_metodo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 383.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 383.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 428.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 428.
 Package rerunfilecheck Info: File `intro_metodo.out' has not changed.
-(rerunfilecheck)             Checksum: 0BB54D59434EF70A24DE0E3900D2E35A;1267.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: FE559A6411A97C8F1E7FA3C02A3C5BA0;1300.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 34243 strings out of 492982
- 615391 string characters out of 6134896
- 789280 words of memory out of 5000000
- 37174 multiletter control sequences out of 15000+600000
- 562877 words of font info for 97 fonts, out of 8000000 for 9000
+ 34315 strings out of 492982
+ 616466 string characters out of 6134896
+ 792495 words of memory out of 5000000
+ 37220 multiletter control sequences out of 15000+600000
+ 565924 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,16n,92p,10383b,1011s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,15n,92p,10383b,1011s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on intro_metodo.pdf (20 pages, 163141 bytes).
+ts/type1/bitstrea/charter/bchri8a.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on intro_metodo.pdf (22 pages, 1232537 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
- 253 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
- 18110 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 374 PDF objects out of 1000 (max. 8388607)
+ 319 compressed objects within 4 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 18632 words of extra memory for PDF output out of 20736 (max. 10000000)
 
