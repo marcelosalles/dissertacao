@@ -89,7 +89,7 @@
 		\begin{itemize}
 			\item identificar o universo de possíveis características encontradas em edifícios de escritórios ventilados naturalmente no Brasil;
 			\item definir as variáveis mais influentes no desempenho térmico dos edifícios ventilados naturalmente, e as variáveis pouco influentes;
-			\item explorar formas de simplificar um modelo de edifícios para que possa ser representado com apenas uma zona térmica.
+			\item modelar uma sala de escritório com apenas uma zona térmica.
 		\end{itemize}
 	
 	\chapter{Metodologia}
@@ -120,11 +120,12 @@
 		
 		$FHD$ é igual a fração de horas de desconforto por calor na zona térmica;
 		
-		$\sum{timestep_{sup}}$ é igual ao somatório dos timesteps em que há ocupação da zona térmica e a temperatura operativa ultrapassa o limite superior determinado pelo método adaptativo;
+		$\sum{timestep_{sup}}$ é igual ao número de \textit{timesteps} em que há ocupação da zona térmica e a temperatura operativa ultrapassa o limite superior determinado pelo método adaptativo;
 		
-		$\sum{timestep_{ocup}}$ é igual ao somatório dos timesteps em que há ocupação da zona térmica.
+		$\sum{timestep_{ocup}}$ é igual ao numéro de \textit{timesteps} em que há ocupação da zona térmica.
+		\\
 		
-		Na aplicação do metamodelo, será possível considerar a velocidade do ar, que aumenta o limite superior da faixa de conforto. O propósito ao se considerar a velocidade do ar é avaliar o potencial de uso para ventiladores.		
+		Na aplicação do metamodelo, será possível considerar a velocidade do ar, que aumenta o limite superior da faixa de conforto. O propósito ao se considerar a velocidade do ar é avaliar o potencial do uso de ventiladores.		
 		
 		Como o modelo de ventilação natural do programa EnergyPlus não calcula a velocidade do ar dentro das zonas, a consideração será aplicada após as simulações, no momento da avaliação do conforto em cada timestep. A consideração da velocidade do ar será realizada de acordo com a Equação \ref{eq:Tsup}.
 		
@@ -137,9 +138,10 @@
 		
 		$T_{sup}$ é igual à temperatura limite superior na faixa de conforto, considerando-se a velocidade do ar;
 		
-		$T_{sup,0}$ é igual à temperatura limite superior na faixa de conforto definida pelo método adaptativo;
+		$T_{sup,0}$ é igual à temperatura limite superior na faixa de conforto definida pelo método adaptativo, sem considerar a velocidade do ar;
 		
 		$T_{v_{ar}}$ é igual à margem extra de temperatura permitida pela consideração da velocidade do ar.
+		\\
 		
 		Quando utilizado o método de conforto adaptativo da ASHRAE Standard 55 (2007), o aumento no limite superior de temperatura em relação à velocidade do ar é baseado na Tabela \ref{table:var}.		
 		
@@ -307,7 +309,7 @@
 			\item parede de concreto;
 			\item parede de alvenaria e reboco;
 			\item parede de gesso com lã de rocha.
-		\end{itemize}`
+		\end{itemize}
 		
 		Como a modelagem da parede de alvenaria possui uma camada de ar no meio da parede, considerou-se a possibilidade de a capacidade térmica a ser considerada na parede de concreto+eps ser melhor representada considerando-se apenas metade da parede.
 		
