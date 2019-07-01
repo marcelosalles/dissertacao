@@ -108,27 +108,27 @@
 		
 		\section{Conforto Térmico}
 		
-		A variável de saída do metamodelo a ser desenvolvido é a fração de horas de desconforto por calor. Neste trabalho, o indicador escolhido para o limite superior da temperatura será estabelecido pelo método de conforto adaptativo da \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}, para 80\% de satisfação entre os ocupantes.
+		A variável de saída do metamodelo a ser desenvolvido é a fração de horas de desconforto por calor (FHD). Neste trabalho, o indicador escolhido para o limite superior da temperatura será estabelecido pelo método de conforto adaptativo da \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}, para 80\% de satisfação entre os ocupantes.
 
-		Durante as simulações, para cada timestep em que haja ocupação na sala, será calculado se a temperatura operativa da zona térmica ultrapassa o limite superior determinado pelo método adaptativo da \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}. Ao fim de cada simulação, será obtido a fração de horas de desconforto para cada zona térmica modelada, de acordo com a Equação \ref{eq:FHD}:
+		Durante as simulações, para cada \textit{timestep} em que haja ocupação na sala, será calculado se a temperatura operativa da zona térmica ultrapassa o limite superior determinado pelo método adaptativo da \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}. Ao fim de cada simulação, será obtido a fração de horas de desconforto para cada zona térmica modelada, de acordo com a Equação \ref{eq:FHD}:
 		
 		\begin{equation}
 		\label{eq:FHD}
-		FHD = \frac{\sum{timestep_{sup}}}{\sum{timestep_{ocup}}}
+		FHD = \frac{timesteps_{sup}}{timesteps_{ocup}}
 		\end{equation}
 		
 		Onde:
 		
 		$FHD$ é igual a fração de horas de desconforto por calor na zona térmica;
 		
-		$\sum{timestep_{sup}}$ é igual ao número de \textit{timesteps} em que há ocupação na zona térmica e a temperatura operativa ultrapassa o limite superior determinado pelo método adaptativo;
+		$timesteps_{sup}$ é igual ao número de \textit{timesteps} em que há ocupação na zona térmica e a temperatura operativa ultrapassa o limite superior determinado pelo método adaptativo;
 		
-		$\sum{timestep_{ocup}}$ é igual ao número de \textit{timesteps} em que há ocupação na zona térmica.
+		$timesteps_{ocup}$ é igual ao número de \textit{timesteps} em que há ocupação na zona térmica.
 		\\
 		
 		Na aplicação do metamodelo, será possível considerar a velocidade do ar, que aumenta o limite superior da faixa de conforto. O propósito ao se considerar a velocidade do ar é avaliar o potencial de uso para ventiladores.		
 		
-		Como o modelo de ventilação natural do programa EnergyPlus não calcula a velocidade do ar dentro das zonas, a consideração será aplicada após as simulações, no momento da avaliação do conforto em cada timestep. A consideração da velocidade do ar será realizada de acordo com a Equação \ref{eq:Tsup}.
+		Como o modelo de ventilação natural do programa EnergyPlus não calcula a velocidade do ar dentro das zonas, a consideração será aplicada após as simulações, no momento da avaliação do conforto em cada \textit{timestep}. A consideração da velocidade do ar será realizada de acordo com a Equação \ref{eq:Tsup}.
 		
 		\begin{equation}
 		\label{eq:Tsup}
@@ -170,13 +170,9 @@
 		
 		\section{Modelo Preliminar}
 		
-		Sabendo-se que o metamodelo irá predizer o conforto térmico baseado no método adaptativo da \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}, o principal dado de saída a se obter nas simulações é a temperatura operativa da zona térmica, assim como a temperatura do ar externo. Portanto, todo o desenvolvimento dos modelos do trabalho será voltado para que se obtenha, com boa precisão, a temperatura operativa das zonas térmicas e, posteriormente, a sua relação com a temperatura do ar externo, chegando-se ao indicador de conforto térmico.
+		Sabendo-se que o metamodelo irá predizer o conforto térmico baseado no método adaptativo da \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}, o principal dado de saída a se obter nas simulações é a temperatura operativa da zona térmica, assim como a temperatura do ar externo. Portanto, todo o desenvolvimento dos modelos termoenergéticos do trabalho será voltado para que se obtenha, com boa precisão, a temperatura operativa das zonas térmicas e, posteriormente, a sua relação com a temperatura do ar externo, chegando-se ao indicador de conforto térmico.
 		
 		Inicialmente serão consideradas as características observadas no banco de dados de \citeauthoronline{Pereira2018} \cite{Pereira2018}. Porém, há certas informações que não estão disponibilizadas pelo banco de dados analisado, como as relacionadas às propriedades termofísicas dos materiais da envoltória, às cargas térmicas dos equipamentos, ou aos padrões de ocupação. Esses parâmetros serão considerados a partir do que é proposto pela \citeauthoronline{INIC} \cite{INIC}. A Tabela \ref{table:parametros} apresenta os parâmetros que serão considerados no desenvolvimento dos modelos, com suas faixas de valores admitidos.	
-		
-		%ARRUMAR A CITACAO DA INI-C!!!!!
-		
-		%PARAMETROS FIXOS!!!
 		
 		\begin{table}[h]
 			\centering
@@ -186,31 +182,31 @@
 				\hline
 				\textbf{Parâmetro} & \textbf{Valores admitidos} \\
 				\hline
-				Largura da edificação & 7,5 - 60 [m] \\
+				Área da zona & 12 - 100 [m$^2$] \\
 				\hline
-				Razão entre largura e profundidade & 0,25 - 4 [-] \\
+				Razão entre largura e profundidade & 0,5 - 2,0 [-] \\
 				\hline
-				Número de pavimentos & 1 - 20 [-] \\
+				Altura do pavimento & 0 - 30 [m] \\
 				\hline 
 				Azimute do eixo principal & 0 - 359 [$^{\circ}$] \\
 				\hline 
-				Pé-direito & 2,5 - 4 [m] \\
+				Pé-direito & 2,4 - 3,2 [m] \\
 				\hline 
-				Percentual de abertura da fachada & 0,1 - 09 [-] \\
+				Percentual de abertura da fachada & 0,1 - 0,6 [-] \\
 				\hline 
 				Fator de abertura da janela & 0,1 - 1 [-] \\
 				\hline 
-				Fator solar do vidro & 0,35 - 0,87 [-] \\
+				Fator solar do vidro & 0,30 - 0,87 [-] \\
 				\hline 
-				Transmitância da parede & 0,51 - 4,84 [W/m$^2$K] \\
+				Transmitância da parede & 0,5 - 4,7 [W/m$^2$K] \\
 				\hline 
-				Capacidade térmica da parede & 20 - 290 [kJ/m$^2$K] \\
+				Capacidade térmica da parede & 20 - 400 [kJ/m$^2$K] \\
 				\hline 
 				Absortância da parede & 0,2 - 0,9 [-] \\
 				\hline 
 				Sombreamento & 0 - 50 [$^{\circ}$] \\
 				\hline 
-				Densidade de ocupação & 0,01 - 1,00 [pessoas/m$^2$] \\
+				Densidade de ocupação & 0,05 - 0,50 [pessoas/m$^2$] \\
 				\hline 
 			\end{tabular}
 			\begin{flushleft}
@@ -218,7 +214,7 @@
 			\end{flushleft}				
 		\end{table}
 
-		As simulações termo-energéticas serão realizadas através do programa de simulação computacional EnergyPlus 8.9 \cite{EnergyPlus2018}. Os modelos simulados serão obtidos a partir da parametrização de uma tipologia base, que terá diversos parâmetros variados pelo método de amostragem do hipercubo latino. Inicialmente, cada modelo obtido representará um pavimento de uma edificação com seis salas de escritórios, onde cada sala representará uma zona térmica (Figura \ref{fig:croqui}). O corredor será modelado com duas janelas, uma em cada extremidade.
+		As simulações termoenergéticas serão realizadas através do programa de simulação computacional EnergyPlus 8.9 \cite{EnergyPlus2018}. Os modelos simulados serão obtidos a partir da parametrização de uma tipologia base, que terá diversos parâmetros variados pelo método de amostragem do hipercubo latino (HCL). Inicialmente, cada modelo obtido representará um pavimento de uma edificação com seis salas de escritórios, onde cada sala representará uma zona térmica (Figura \ref{fig:croqui}). A circulação entre os escritórios será modelada com duas janelas, uma em cada extremidade.
 		
 		\begin{figure}[h]
 			\centering
@@ -234,24 +230,39 @@
 		
 		A partir dessa tipologia, serão definidas diferentes proporções geométricas, levando-se em consideração a largura, profundidade, altura da edificação e o pé-direito. Também serão parametrizados a altura do pavimento e a orientação da edificação.
 		
-		As aberturas do modelo também serão variadas. Cada sala terá uma porta. Salas com apenas uma fachada, possuirão uma janela; salas com duas fachadas poderão possuir uma ou duas janelas. As janelas modeladas possuirão diferentes frações de abertura para representar diferentes modelos de janela tipicamente encontrados nas edificações de escritórios. As dimensões das janelas também serão variadas.
+		As aberturas do modelo também serão variadas. Cada sala terá uma porta. Salas com apenas uma fachada, possuirão uma janela; salas com duas fachadas poderão possuir uma ou duas janelas. As janelas modeladas possuirão diferentes frações de abertura para representar diferentes modelos de janela encontrados nas edificações de escritórios. As dimensões das janelas também serão variadas de acordo com o percentual de abertura da fachada (PAF).
 		%Além da área da abertura ter influência direta nas trocas de ar das zonas, a altura também pode ter influência devido à força de empuxo causada pelas diferenças de densidade do ar. Devido a isso, a altura da janela também será variada.
 		Para o vidro das janelas, diferentes materiais serão utilizados, variando-se o fator solar.
 		
-		A variação nas propriedades termofísicas da envoltória representará diferentes materiais construtivos, possibilitando a descrição de uma quantidade significativa do universo de casos aplicáveis às edificações de escritórios consideradas. Serão variadas a transmitância térmica, capacidade térmica e absortância. Os pisos e as lajes entre pavimentos serão considerados como lajes de concreto com piso cerâmico, com as propriedades térmicas apresentadas na Tabela \ref{table:lajecob}. As coberturas serão modeladas como laje de cimento e telhado de fibrocimento, separadas por uma câmara de ar. As propriedades térmicas da cobertura também estão apresentadas na Tabela \ref{table:lajecob}. Como apenas um pavimento é modelado, pisos e tetos de pavimentos intermediários são considerados adiabáticos.
+		A variação nas propriedades termofísicas da envoltória representará diferentes materiais construtivos, possibilitando a descrição de uma quantidade significativa do universo de casos aplicáveis às edificações de escritórios consideradas. Serão variadas a transmitância térmica, capacidade térmica e absortância. Os pisos e as lajes entre pavimentos serão considerados como lajes de concreto com piso cerâmico. As coberturas serão modeladas como laje de cimento e telhado de fibrocimento, separadas por uma câmara de ar. Apenas um pavimento é modelado, podendo representar um pavimento térreo, intermediário, ou cobertura. As superfícies superiores e inferiores de pavimentos intermediários são consideradas adiabáticos. 
+		
+		A Tabela \ref{table:lajecob} apresenta os valores adotados para os parâmetros do modelo que não foram diretamente variados.
 		
 		\begin{table}[h]
 			\centering
-			\caption{Propriedades térmicas da cobertura e piso.}
+			\caption{Parâmetros com valores não variados no modelo.}
 			\label{table:lajecob}
-			\begin{tabular}{|l |r |r |}
+			\begin{tabular}{|l |r |}
 				\hline
-				\textbf{Material} & \textbf{Transmitância} & \textbf{Capacidade}\\
-				\textbf{Construtivo} & \textbf{ } & \textbf{Térmica}\\
+				\textbf{Parâmetro} & \textbf{Valor adotado} \\
 				\hline
-				Cobertura & xxx & xxx \\
+				Capacidade térmica & [kJ/m$^2$K] \\
+				cobertura &  \\
 				\hline
-				Piso / Laje intermediária & xxx & xxx \\
+				Capacidade térmica & [kJ/m$^2$K] \\
+				piso / laje intermediária &  \\
+				\hline
+				Transmitância & [W/m$^2$K] \\
+				cobertura &  \\
+				\hline
+				Transmitância & [W/m$^2$K] \\
+				piso / laje intermediária &  \\
+				\hline
+				Transmitância do vidro & 5,7 W/m$^2$K \\
+				\hline
+				Carga térmica de equimantos & 100 W/pessoa \\
+				\hline
+				Carga térmica de iluminação & 12 W/m$^2$ \\
 				\hline
 			\end{tabular}
 			\begin{flushleft}
@@ -261,7 +272,7 @@
 		
 		\subsection{Ventilação natural no modelo preliminar}
 		
-		A ventilação natural será modelada a partir do modelo \textit{AirflowNetwork} (AFN) do EnergyPlus \cite{EnergyPlus2018}.
+		A ventilação natural será modelada a partir dos objetos do \textit{AirflowNetwork} (AFN) do EnergyPlus \cite{EnergyPlus2018}.
 		
 		O controle das janelas será estabelecido pela diferença de temperatura entre o ar externo e o ar da zona. As trocas de ar nas portas ocorrerão apenas por frestas, por considerar-se que portas de escritórios não ficam abertas normalmente.
 		
@@ -280,22 +291,50 @@
 		
 		\section{Modelo simplificado}
 		
-		O objetivo de gerar um modelo de RNA para se obter a FHD faz com que se busque parametrizar ao máximo os modelos desenvolvidos no Energyplus. Essa parametrização pode facilitar o desenvolvimento de amostras para a pesquisa, assim como garantir uma relação mais direta dos parâmetros de entrada com os dados de saída. Portanto, nesta etapa do método busca-se simplificar e parametrizar o modelo de escritório desenvolvido no Energyplus, atentando-se às limitações relacionadas à simplificação do modelo.
-		
+		O objetivo de gerar um modelo de RNA para se obter a FHD faz com que se busque parametrizar ao máximo os modelos desenvolvidos no EnergyPlus. Essa parametrização pode facilitar o desenvolvimento de amostras para a pesquisa, assim como garantir uma relação mais direta dos parâmetros de entrada com os dados de saída. Portanto, nesta etapa do método busca-se simplificar e parametrizar o modelo de escritório desenvolvido no EnergyPlus, atentando-se às limitações relacionadas à simplificação do modelo.
 		Dentre as simplificações consideradas, estão:
 		
 		\begin{itemize}
 		\item cálculo do Cp através do método analítico, em vez dos dados obtido por medições em túnel de vento pela UPT;
 		\item representação dos materiais da envoltória através de duas camadas: uma camada representando a capacidade térmica (concreto), e uma camada para regular a transmitância (objeto Material:NoMass);
-		\item modelagem da zona que representa um escritório isoladamente, sem modelar as demais zonas térmicas da edificação. Para isso, são definidas as condições de contorno relacionadas às faces da zona correspondentes a paredes adjacentes à edificação;
-		\item definição de um coeficiente de infiltração relacionado à infiltração de ar pela porta, e do valor de Cp relacionado à porta, que estará voltada para o corredor, e não para o ambiente externo.
+		\item modelagem da zona que representa apenas um escritório, sem modelar as demais zonas térmicas da edificação. Para isso, são definidas as condições de contorno relacionadas às faces da zona correspondentes a paredes adjacentes à edificação;
+		\item definição de um coeficiente de infiltração relacionado à infiltração de ar pela porta, e do valor de Cp relacionado e essa porta, que no modelo de uma zona estará voltada para o ambiente externo, e não para a circulação.
 		\end{itemize}
 		
 		O impacto nos resultados das simulações serão verificados para cada uma das simplificações mencionadas. Desta forma, será definida a forma mais adequada de simplificar o modelo, assim como a margem de erro que espera-se encontrar ao assumir tais simplificações.
 		
+		Nem todos os parâmetros foram variados em todas as etapas deste processo. Optou-se por variar apenas os parâmetros que pudessem influenciar os resultados relacionados a cada análise. Quando não variados, os parâmtros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
+		
+		\begin{table}[h]
+			\centering
+			\caption{Parâmetros fixados na validação do modelo analítico para o cálculo do Cp.}
+			\label{table:paramfix}
+			\begin{tabular}{|c |c |}
+				\hline
+				\textbf{Parâmetro} & \textbf{Valor adotado} \\
+				\hline
+				Altura do pavimento & 15 m \\
+				\hline
+				Fator solar do vidro & 0,87 \\
+				\hline
+				Fator de abertura da janela & 1,0 \\
+				\hline
+				Capacidade térmica da parede & xxx \\
+				\hline
+				Absortância da parede & 0,5 \\
+				\hline 
+				Ângulo de sombreamento & 0 graus \\
+				\hline 
+			\end{tabular}
+			\begin{flushleft}
+				Fonte: o autor.
+			\end{flushleft}				
+		\end{table}
+		
+		
 		\subsection{Túnel de vento x Método analítico}
 		
-		Para verificar o quanto os resultados das simulações são influenciados pela fonte utilizada na definição dos valores de Cp, comparou-se os resultados de ACH e FHD em simulações com valores de Cp obtidos pela base da UPT aos resultados obtidos para simulações com valores de Cp obtidos pelo método analítcio padrão do Energyplus.
+		Para verificar o quanto os resultados das simulações são influenciados pela fonte utilizada na definição dos valores de Cp, comparou-se os resultados de trocas de ar por hora (TAH) e FHD em simulações com valores de Cp obtidos pela base da UPT aos resultados obtidos para simulações com valores de Cp obtidos pelo método analítcio padrão do EnergyPlus.
 		No caso de edificações altas (\textit{highrise}), utiliza-se o modelo de \citeauthoronline{Atkins} \cite{Atkins}. No caso de edificações baixas (\textit{lowrise}), utiliza-se o modelo de \citeauthoronline{SwamiChandra} \cite{SwamiChandra}.
 		
 		Equanto valores de Cp através do método analítco podem ser obtidos pra quaisquer razões entre dimensões das fachadas da edificação, os valores da base da UPT são fornecido para edificações com geometrias específicas. Ambas as fontes são limitadas a edificações retangulares.
@@ -313,84 +352,111 @@
 		\end{figure}
 		
 		
-		Para verificar as diferenças nos valores de Cp, calculou-se valores de Cp correspondentes a cada geometria disponível pela UPT através do método analítico, e subtraiu-se o valor de Cp calculado para cada fachada pelos valores disponibilizados pela base da UPT para a fachada correspondente (Equação X).
+		Para verificar as diferenças nos valores de Cp, calculou-se valores de Cp correspondentes a cada geometria disponível pela UPT através do método analítico, e subtraiu-se o valor de Cp calculado para cada fachada pelos valores disponibilizados pela base da UPT para a fachada correspondente (Equação \ref{eq:Cpdiff}).
 		
-		% EQUAÇÃO AQUII!!!!
+		\begin{equation}
+		\label{eq:Cpdiff}
+		\delta_{Cp} = Cp_{UPT,i,j} - Cp_{ANALÍTICO, i}
+		\end{equation}
 		
-		A partir dessas diferenças entre os valores de Cp, escolheu-se a geometria com a maior média de diferença absoluta para se analisar a influência da diferença desses valores nos resultados das simulações no Energyplus.
+		Onde:
 		
-		O modelo base para verificar as diferenças dos resultados utilizando-se valores de Cp com origens diferentes foi o modelo de pavimento com 6 escritórios. Para evitar a influência do solo e da cobertura, considerou-se um pavimento intermediário. A base da UPT permite a obtenção de diferentes coeficientes de pressão para diferentes janelas, como mencionado na seção anterior. No modelo baseado no método analítico, utilizou-se um valor de Cp por fachada, devido à limitação do método. Uma amostra de 1000 casos foi gerada pelo método de amostragem do hipercubo latino. A amostra gerada teve parâmetros variados de acordo com a Tabela \ref{table:cpmethod}.
+		$\delta_{Cp}$ é igual à diferença entre o valore de Cp obtido pelos diferentes métodos;
 		
-		\begin{table}[h]
-			\centering
-			\caption{Variação dos parâmetros na validação do modelo analítico para o cálculo do Cp.}
-			\label{table:cpmethod}
-			\begin{tabular}{|c |c |c |c |}
-				\hline
-				\textbf{Parâmetro} & \textbf{Unidade} & \textbf{Mínimo} & \textbf{Máximo} \\
-				\hline
-				Área & m$^2$ & 20 & 100 \\
-				\hline
-				Pé-direito & m & 2,4 & 3,2 \\
-				\hline
-				Azimute & graus & 0 & 359,9 \\
-				\hline 
-				Transmitância & W/m$^2$ & 0,5 & 4,4 \\
-				\hline 
-				PAF & - & 0,1 & 0,6 \\
-				\hline 
-				Ocupação & pessoa/m$^2$ & 0,05 & 0,50 \\
-				\hline 
-				Pavimento & - & 1 & 8 \\
-				\hline 
-			\end{tabular}
-			\begin{flushleft}
-				Fonte: ASHRAE Standard 55 (2017)
-			\end{flushleft}				
-		\end{table}
+		$Cp_{UPT,i,j}$ é igual ao valor de Cp disponibilizado pela base de dados da UPT para o ponto $j$ da fachada $i$;
+		
+		$Cp_{ANALÍTICO, i}$ é igual ao valor de Cp calculado pelo método analítico para a fachada $i$.
+		\\
+		
+		A partir dessas diferenças entre os valores de Cp, escolheu-se a geometria com a maior diferença absoluta média para se analisar a influência da diferença desses valores nos resultados das simulações no EnergyPlus.
+		
+		O modelo base para verificar as diferenças dos resultados utilizando-se valores de Cp com origens diferentes foi o modelo preliminar do pavimento de escritórios. Para evitar a influência do solo e da cobertura, considerou-se o pavimento intermediário. A base da UPT permite a obtenção de diferentes coeficientes de pressão para diferentes janelas, como mencionado na seção anterior. No modelo baseado no método analítico, utilizou-se um valor de Cp por fachada, devido à limitação do método. Uma amostra de 1000 casos foi gerada pelo método de amostragem do HCL. A amostra gerada teve os seguintes parâmetros variados: área da zona, altura do pavimento, azimute do eixo principal, pé-direito, PAF, fator de abertura da janela, transmitância da parede, densidade de ocupação. A razão entre largura e profundidade das zonas foi alterade para se ajustar com a geometria da edificação descrita pela base de dados da UPT utilizada como referência para a análise. Os demais parâmtros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
 				
 		Para cada caso da amostra, foram simulados um modelo com Cp’s baseados no método analítico, e um modelo com Cp’s baseados na base da UPT (túnel de vento).
 		
-		\section{Representação da envoltória}
+		\subsection{Representação da envoltória}
 		
 		Para possibilitar a parametrização contínua e independente das propriedades termofísicas da envoltória, considerou-se a utilização de uma parede com propriedades equivalentes, modelada com uma camada de concreto, para representar a capacidade térmica, e uma camada modelada com o objeto Material:NoMass, para regular a transmitância.
-		A validação da modelagem simplificada da parede foi feita para 3 tipos de parede:
+		A validação da modelagem simplificada da parede foi feita para 3 tipos de paredes referência:
 		
 		\begin{itemize}
 			\item parede de concreto;
 			\item parede de alvenaria e reboco;
 			\item parede de gesso com lã de rocha.
-		\end{itemize}`
+		\end{itemize}
 		
-		Como a modelagem da parede de alvenaria possui uma camada de ar no meio da parede, considerou-se a possibilidade de considerar apenas metade da parede para definir a capacidade térmica da parede equivalente.
+		Como a modelagem da parede de alvenaria possui uma camada de ar no meio da parede, avaliou-se a possibilidade de considerar apenas a metade interna desta parede referência para definir a capacidade térmica da parede equivalente. Essa consideração parte do pressuposto de que a camada interna de ar faria com que a inércia térmica da metade exterior da parede não influenciasse consideravelmente a zona térmica analisada.
 		
-		Para validar essa simplificação, gerou-se uma amostra utilizando HCL, com 100 casos. O modelo preliminar sofreu variação dos seguintes parâmetros: área, razão entre largura e profundidade da zona, pé-direito, azimute, absortância, PAF, taxa de ocupação.
+		Para validar essa simplificação, gerou-se uma amostra utilizando HCL, com 100 casos. O modelo preliminar sofreu variação dos seguintes parâmetros: área, razão entre largura e profundidade da zona, pé-direito, azimute, absortância, PAF, taxa de ocupação. Os demais parâmtros foram fixados de acordo com a Tabela \ref{table:paramfix}.
 		
 		Cada caso da amostra foi simulado com os três tipos de paredes diferentes, e suas paredes equivalentes. No caso da parede de alvenaria, um modelo de parede equivalente foi desenvolvido considerando-se apenas metade da parede de alvenaria.
 		
-		A partir dos resultados, observou-se a diferença média entre as temperaturas operativas das zonas nos modelos com as paredes referências em relação aos modelos com as respectivas paredes equivalentes. O mesmo foi feito comparando-se o EHF.
+		A partir dos resultados, observou-se a diferença média entre as temperaturas operativas das zonas nos modelos com as paredes referências em relação aos modelos com as respectivas paredes equivalentes. O mesmo foi feito comparando-se a FHD.
 		
-		\section{Condição de contorno das paredes adjacentes}
+		\subsection{Condição de contorno das paredes adjacentes}
 		
-		Simular apenas uma zona, em vez de um edifício ou de um pavimento com diversas zonas, possibilita a simulação de muitos casos diversos em menos tempo.
+		Simular apenas uma zona, em vez de um edifício ou de um pavimento com diversas zonas, possibilita a simulação de casos diversos em menor tempo.
 		
-		Para modelar apenas uma zona, considerou-se as paredes correspondentes a superfícies voltadas para outros escritórios como adiabáticas. A superfície que representa a parede voltada para o corredor foi testada com duas condições de contorno: como adiabática, e como outdoors, sem incidência de vento ou sol.
+		Para modelar apenas uma zona, considerou-se as paredes correspondentes a superfícies voltadas para outros escritórios como adiabáticas. A superfície que representa a parede voltada para a circulação foi testada com duas condições de contorno: como adiabática, e como outdoors, sem incidência de vento ou sol.
 		
-		O modelo de referência é o modelo preliminar. Para cada caso referência, seis modelos de uma zona foram modelados, correspondendo a cada uma das zonas do modelo referência. A modelagem da ventilação natural sofre um impacto significativo quando o escritório é modelado como apenas uma zona. Esse impacto é devido à forma como a rede de fluxo de ar é montada. No caso do modelo referência, a porta é voltada para o corredor, enquanto que no caso de uma única zona, a porta da zona é voltada para a rua. Além disso, não é possível modelar uma porta em uma parede adiabática. Para não deixar a diferença na ventilação natural influenciar as análises comparativas entre os modelos, a ventilação natural não foi modelada para esta etapa. Em vez disso, os modelos foram desenvolvidos com uma taxa de infiltração de ar constante durante a ocupação. O valor escolhido para a taxa de renovação de ar foi igual ao valor médio obtido na etapa da comparação entre os métodos de obtenção dos valores de Cp, que é igual a 30 ach.
+		O modelo de referência é o modelo preliminar. Para cada caso referência, seis modelos de uma zona foram modelados, correspondendo a cada uma das zonas do modelo referência. A modelagem da ventilação natural sofre um impacto significativo quando o escritório é modelado como apenas uma zona. Esse impacto é devido à forma como a rede de fluxo de ar é montada. No caso do modelo referência, a porta é voltada para a circulação, enquanto que no caso de uma única zona, a porta desta zona é voltada para o ambiente externo. Além disso, não é possível modelar uma porta em uma parede adiabática. Para não deixar a diferença na ventilação natural influenciar as análises comparativas entre os modelos, a ventilação natural não foi modelada para esta etapa. Em vez disso, os modelos foram desenvolvidos com uma taxa de infiltração de ar constante durante a ocupação. O valor escolhido para a taxa de renovação de ar foi igual ao valor médio obtido na etapa da comparação entre os métodos de obtenção dos valores de Cp, que é igual a 30 TAH.
 		
-		Para validar o uso de diferentes condições de contorno, comparou-se os resultados de EHF e temperaturas operativas das zonas únicas com os modelos referência. A condição de contorno com menores diferenças médias absolutas, foi escolhida para gerar o modelo simplificado.
+		Para validar o uso de diferentes condições de contorno, comparou-se os resultados de FHD e temperaturas operativas dos modelos de uma zona com os modelos referência. A condição de contorno com menores diferenças médias absolutas, foi escolhida para gerar o modelo simplificado.
 		
-		\section{Modelagem da ventilação natural no modelo simplificado}
+		\subsection{Modelagem da ventilação natural no modelo simplificado}
 		
 		A modelagem da ventilação natural no modelo simplificado deve ser adaptada para se ter resultados correspondentes ao esperado em relação aos modelos referência.
 		
-		No AFN do EnergyPlus não é possível modelar aberturas ou infiltração de ar em superfícies adiabáticas. Para contornar esse problema, no caso de se modelar uma parede voltada para o corredor como adiabática, é possível associar a infiltração referente à porta a uma outra superfície da zona que esteja voltada para o ambiente externo. A solução para isso é modelar diretamente os objetos dos nós relacionados às aberturas dos modelos, ou seja, os coeficientes de pressão. Desta forma é possível definir valores de Cp para superfícies (seja janela ou parede) considerando-se qualquer orientação desejada, e não necessariamente a orientação definida para aquela superfície na geometria do modelo.
+		No AFN do EnergyPlus não é possível modelar aberturas ou infiltração de ar em superfícies adiabáticas. Para contornar esse problema, no caso de se modelar uma parede voltada para a circulação como adiabática, é possível associar a infiltração referente à porta a uma outra superfície da zona que esteja voltada para o ambiente externo. A solução para isso é modelar diretamente os objetos dos nós relacionados às aberturas dos modelos, ou seja, os coeficientes de pressão. Desta forma é possível definir valores de Cp para superfícies (seja janela ou parede) considerando-se qualquer orientação desejada, e não necessariamente a orientação definida para aquela superfície na geometria do modelo.
 		
-		A modelagem do fluxo de ar pelas portas dos escritórios nos modelos de zona única foi desenvolvida com o objeto AirflowNetwork:MultiZone:Surface:Crack. O motivo para se utilizar este objeto é porque este é um objeto que pode ser associado a qualquer superfície. Portanto, o objeto crack é associado à parede externa oposta à parede voltada para o corredor.
+		A modelagem do fluxo de ar pelas portas dos escritórios nos modelos de uma zona foi desenvolvida com o objeto AirflowNetwork:MultiZone:Surface:Crack. O motivo para se utilizar este objeto é porque este é um objeto que pode ser associado a qualquer superfície. Portanto, o objeto crack é associado à parede externa oposta à parede que seria voltada para a circulação.
 		
-		Esta forma de contornar o problema da infiltração na parede adiabática impede que os valores de Cp sejam calculados automaticamente pelo Energyplus, portanto valores de Cp específicos são calculados para cada abertura do modelo. A fórmula utilizada para calcular os valores de Cp é a mesma do algoritmo padrão do Energyplus, porém a orientação da abertura é alterada conforme desejado.
+		Esta forma de contornar o problema da infiltração na parede adiabática impede que os valores de Cp sejam calculados automaticamente pelo EnergyPlus, portanto valores de Cp específicos são calculados para cada abertura do modelo. A fórmula utilizada para calcular os valores de Cp é a mesma do algoritmo padrão do EnergyPlus, porém a orientação da abertura é alterada conforme desejado.
 		
-		Além da solução descrita para atribuir adequadamente os valores de Cp às aberturas, existe outra limitação: as diferenças de pressão entre as zonas dos escritórios e do corredor variam de acordo com a direção do vento, mas não de forma igual ao que se calcularia considerando-se o Cp da fachada. Dentro da rede de fluxo do AFN, a pressão do corredor depende das trocas de ar entre todas as zonas adjacentes e as trocas de ar pelas janelas do corredor. Em um modelo de zona única isso não poderia ser incluído. Para tentar contornar este problema, buscou-se uma forma de gerar um Cp equivalente para a porta no modelo de uma única zona. Esse cálculo foi feito considerando-se a equação X. A equação proposta leva em conta as resistências de todas as aberturas da edificação de referência, e calcula uma relação entre as pressões do ar externo e do corredor para cada direção de vento. Essas relações entre as pressões são adotadas então como valores de Cp.
+		Além da solução descrita para atribuir adequadamente os valores de Cp às aberturas, existe outra limitação: as diferenças de pressão do ar entre as zonas dos escritórios e da circulação variam de acordo com a direção do vento, mas não de forma igual ao que se calcularia considerando-se o Cp da fachada.
+		Dentro da rede de fluxo do AFN, a pressão de ar na circulação depende das trocas de ar entre todas as zonas adjacentes e das trocas de ar pelas janelas da circulação.
+		Em um modelo de uma zona isso não poderia ser incluído. Para tentar contornar este problema, buscou-se uma forma de gerar um Cp equivalente para a porta no modelo de uma zona. Esse cálculo foi feito considerando-se a Equação \ref{eq:Cpeq}. A equação proposta leva em conta as resistências de todas as aberturas da edificação de referência, e calcula uma relação entre as pressões do ar externo e da circulação para cada direção de vento. Essas relações entre as pressões são adotadas então como valores de Cp, para cada orientação de vento.
+		
+		\begin{equation}\label{eq:Cpeq}
+		C_{eq,\alpha} = \frac{P_{circ}}{P_{ext}}
+		\end{equation}
+		
+		Onde:
+		
+		 $C_{eq,\alpha}$ é igual ao Cp equivalente para o ângulo $\alpha$;
+		 
+		 $P_{circ}$ é igual à pressão de ar na circulação;
+		 
+		 $P_{ext}$ é igual à pressão de ar externa. $P_{ext}$ é definida pelo EnergyPlus, baseada na velocidade do vento.
+		 \\
+		 
+		 O valor de $P_{circ}$ é calculado baseando-se no balanço de pressões do AFN, portanto considera todo o fluxo de ar que entra e sai da zona da circulação, e a soma das diferenças de pressão é igual a zero.
+		 O fluxo de ar entre as conexões consideradas como portas são calculadas como fluxo de ar por frestas, enquanto o fluxo de ar pelas conexões consideradas como janelas é calculado como uma abertura grande.
+		 A pressão em cada zona, relacionada aos valores de Cp, foi calculada com um algorítmo para solucionar equações, de acordo com a Equação \ref{eq:P}:
+		 
+		 \begin{equation}\label{eq:P}
+		 %\resizebox{\linewidth}{!}{
+		 \begin{split}
+		 P_{zn} = \sum_{i=1}^{N_d}{C_{porta}\times(P_{zn} - P_{conexão,i})} + \\ %
+		 \sum_{j=1}^{N_w}{C_{janela}\times(P_{zn} - P_{out}\times C_{p,j})}
+		 \end{split}
+		 %}
+		 \end{equation}
+		
+		Onde:
+		
+		$N_d$ é igual ao número de portas que se conectam à zona;
+		
+		$N_w$ é igual ao número de janelas que se conectam à zona;
+		
+		$C_{porta}$ é igual ao coeficiente relacionado à descarga de fluxo de ar pelas portas;
+		
+		$C_{janela}$ é igual ao coeficiente relacionado à descarga de fluxo de ar pelas janelas;
+		
+		$P_{conexão,i}$ é igual à pressão na zona conectada pela porta $i$;
+		
+		$C_{p,j}$ é o Cp na superfície da janela $j$.
+		\\
 		
 		Devido a essas considerações, a validação foi conduzida para duas condições: considerando-se o Cp calculado diretamente pelo método analítico, e considerando-se o Cp equivalente, que leva em conta a relação entre as pressões nas zonas para cada direção de vento.
 		
@@ -400,7 +466,7 @@
 		
 		\section{Análise de sensibilidade}
 		
-		Com a definição de como serão gerados os modelos simplificados, uma análise de sensibilidade será aplicada. Através da análise de sensibilidade, a influência das diferentes variáveis nos modelos serão avaliadas. Características parametrizáveis nos modelos preliminares que não sejam relevantes nos resultados de temperatura operativa e, consequentemente, fração de horas de desconforto por calor, serão fixadas.
+		Com a definição de como serão gerados os modelos simplificados, uma análise de sensibilidade será aplicada. Através da análise de sensibilidade, a influência das diferentes variáveis nos modelos serão avaliadas. Parâmetros que não sejam relevantes nos resultados de temperatura operativa e, consequentemente, fração de horas de desconforto por calor, serão fixadas.
 		
 		O método de \citeauthoronline{Sobol1993} \cite{Sobol1993} será utilizado para a análise de sensibilidade, pois permite a identificação de parâmetros influentes, mesmo para casos onde a relação entre as entradas e saídas dos modelos são não-monotônicas  e apresentam efeitos colineares. A amostragem para essa análise é definida pelo próprio método. A aplicação será feita através da biblioteca SALib \cite{Herman2017}, escrita na linguagem Python \cite{Python}. A partir de uma amostra com 99.978 casos, obteve-se índices de sensibilidade para análise de 1ª ordem, 2ª ordem, e total.
 		
@@ -408,19 +474,11 @@
 		
 		A base de dados utilizada para o treinamento do metamodelo foi desenvolvida a partir de XXX.XXX resultados de simulações, amostrados pelo método de amostragem de Sobol. A etapa de validação foi executada com outra amostra de XX.XXX casos, amostrados pelo método do HCL. Na amostra da validação, os parâmetros não incluídos como dados de entrada para a RNA tiveram os valores fixados iguais aos da amostra utilizada para o treinamento. O motivo para se utilizar diferentes métodos de amostragem é para evitar qualquer enviesamento possivelmente relacionado ao método de amostragem.
 		
-		Após a etapa de validação, a amostra gerada para a AS foi utilizada para verificar o desempenho da RNA quando os valores dos parâmetros não considerados como dados de entrada da RNA variam. A escolha desta 
-		
-		Após definir quais variáveis do modelo preliminar exigem parametrização, e quais podem ser fixadas, a configuração do modelo base final será definida.
-		
-		A partir do modelo base final, será desenvolvida uma base de dados através do método de amostragem do Hipercubo Latino.
-		
-		É importante ressaltar que cada modelo simulado pelo EnergyPlus possuirá diversas zonas térmicas, e que cada zona será considerada como um caso específico para a base de dados utilizada no treinamento da rede neural artificial (RNA). Portanto, cada caso do banco de dados gerado para o treinamento da RNA será um vetor, contendo diversas informações sobre as características da sala, e dos resultados obtidos de fração de horas de calor para esta sala.
-		
-		O desenvolvimento do metamodelo será por meio do sistema computacional de redes neurais artificiais. Esse processo será executado através da linguagem de programação Python. A RNA será treinada com 80\% da base de dados gerada. A parte restante será utilizada para validação do metamodelo.
+		Após a etapa de validação, a amostra gerada para a AS foi utilizada para verificar o desempenho da RNA quando os valores dos parâmetros não considerados como dados de entrada da RNA variam. A escolha da amostra da etapa da AS é porque as simulações já estavam finalizadas, e os casos eram diferentes daqueles utilizados no desenvolvimento da RNA. 
 		
 		A forma como as variáveis descritas nos modelos simulados serão introduzidas no metamodelo a ser desenvolvido podem influenciar a precisão e a representação adequada dos fenômenos termofísicos. No processo de definição das variáveis de entrada do metamodelo, busca-se a melhor forma de descrever as diversas características das salas e do clima. Esse é um processo iterativo, no qual varia-se diferentes variáveis de entrada, utilizando-se às vezes transformações, normalizações e funções destas. É importante também observar os hiper-parâmetros (parâmetros relacionados ao processo de aprendizagem automática) escolhidos na criação da RNA. A precisão da rede pode depender do número de nós, número de camadas, assim como outros parâmetros definidos durante o processo de treinamento.
 		
-		Para validar a RNA, serão comparados os resultados obtidos através do metamodelo com os casos não vistos da base de dados de simulações do EnergyPlus. Como indicadores de precisão, serão utilizados a raiz quadrada da média dos erros ao quadrado (RMSE) e o coeficiente de determinação (R$^2$).
+		Para validar a RNA, serão comparados os resultados obtidos através do metamodelo com os casos não vistos da base de dados de simulações do EnergyPlus. Como indicadores de precisão, será utilizado o erro absoluto médio e o erro absoluto do $95^{\circ}$ percentil .
 		
 
 %\bibliographystyle{lib/abntex2-num}
