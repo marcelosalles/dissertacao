@@ -1,0 +1,257 @@
+Nº,Building,Location,Address,Telephone,Contacts,Year of construction,Lease  cost (R$/m².month),Azimuth angle of long axis of building,Solar orientation (long axis),Shape,Ratio between width and length,Total floor area (m²),Office unit area (m²),Number of floors,Exterior wall color,Exterior wall absorptance,Roof color,Glazing type,Exterior solar shading devices,Room depth (m),Ceiling height (m),Plenum height (m),Spandrel height (m),Exterior wall,WWR (%),Exterior solar shading devices dimension,Natural ventilation strategy (cross or single sided),Window frame type,Window opening effective area (%),Window geometry (length x height) (m) ,Start height of opening (m),Control system,System type,Location
+1,Pennsylvania,Paulista,"Av. Brigadeiro Luiz Antonio, 2503",Azzuri (11) 3661-7031,"FFX
+Tismo
+Lecom
+Telefonica
+Takara
+Slikland",2014,80,43,NW-SE,Rectangular,0.9,212,25.2,11,White,0.2,Gray,Laminated glass,Balcony (part),"Side - 3.78
+Front - 8.00",2.57 (Floor-Ceiling),,1.14,0.22,"Front - 46.32
+Side - 18.68
+TOTAL -  27.55","10.83
+(0.13 m)
+96.44
+(2.17 m)","single sided without Balcony
+cross with Balcony (adjacent facades)","Top hung
+Sliding (Balcony)","100 (3 frames)
+50 (1 frame)","0.80 x 1.20
+2.00 x 2.25",1.14,Manual,Split,Balcony
+2,Centro Executivo Jardim Paulista,Paulista,"Av. Nove de Julho, 3384","Construtora Atlantica (11) 3146-1212
+Luiz (11) 2359-6280
+(11) 3889-2400 - Vanessa
+vanessa@anauate.com.br","RAS Arquitetura 11 2305-1460
+topou",2011,60,134,NE-SW,Rectangular,0.7,151,30.3,11,Green/ Beige,0.7/ 0.4,Gray,Clear glass,No,Front - 5.2,2.75 (Floor-Ceiling),No,0.9,0.27,"Front - 0
+Side - 39.86
+TOTAL -  24.1","12.66
+(0.19 m)",single sided,Top hung,80 (4 frames),1.90 x 1.50,1.2,Manual,Split,"Facade shaft
+(grill)"
+3,Michelangelo Office,Paulista,"Rua José Maria Lisboa, 860","(11) 3885-0659/ 98055-1880 Marcelo (zelador)
+Administradora Ricardo Chaim
+prop Tatiana - 99946-6710","BSD Consult
+BKB Partners
+Shawin design
+Projeto integrado 11 3884-9344 daniela.lima@projetointegrado.com.br",2005,59,131,NE-SW,Rectangular,0.4,148,"37, 74, 148",14,Brown/ Beige,0.7/ 0.4,Gray,Clear glass,No,"Side - 4
+Front - 7.5",2.60 (Floor-Floor),0.5,1,0.24,"Front - 28.81
+Side - 7.68
+TOTAL -  15.03","17.27
+(0.19 m)",cross (adjacent facades),Top hung,100 (4 frames),1.10 x 1.10,1,Manual,Split,Facade
+4,Atlântico,Paulista,"R. Batatais, 460","(11) 3887-3368
+99435-4380",Brunete Fracaroli,2003,-,44,NW-SE,Rectangular,0.9,152,38,11,Gray/ Blue tiles,0.7,Gray,Laminated glass,No,"Side - 6.2
+Front - 6.15",2.88 (Floor-Floor),0.28,0.95,"10 cm pedra
+6 cm astilho
+11 cm parede","Front - 41.15
+Side - 31.38
+TOTAL -  36.60","8.13
+(0.1 m)",cross (adjacent facades),Top hung,100 (2 frames),0.83 x 1.23,0.95,Manual,Split,Facade (Technical balcony)
+5,Gardens Office,Paulista,"Rua Batatais, 391","(11) 3051-3363
+(11) 3171-2299 Vert
+96262-3684 Fernando (gerente predial) - zelador Franquismar",Fernanda Duarte (11) 3885-4727 (não ocupa mais o espaço),1998,81,46,NW-SE,Rectangular,0.5,116,38.5,14,White,0.2,Gray,Clear glass,Projeção de Balcony,"Side - 5.85
+Front - 4.70",2.50 (Floor-Ceiling),,1.07,"0.24
+0.05","Front - 26.26
+Side -  24.51
+TOTAL -  25.48","33.33
+(0.4 m)",cross (adjacent facades),Top hung,100 (4 frames),0.80 x 1.20,1.07,Manual,Split,Facade
+6,Fellici Amorizze Empresarial,Paulista,"Rua Cincinato Braga, 321",,,2003,79,130,NE-SW,Rectangular,0.2,180,90,12,Brown,0.7,Gray,Laminated glass,No,"Side - 4.20
+Front - 5.76
+Front - 6.55","2.45 (Floor-Ceiling)
+2.76 (Floor-Floor)",0.31,1.1,0.26,"Front - 15.625
+Front - 13.740
+Side - 67.347
+TOTAL - 28.035","14.286
+(0.15 m)",cross (Facades opostas),Top hung,100 (4 frames),1.05 x 1.05,1.1,Manual,Split,Facade
+7,Artes Médicas,Paulista,"R. Carlos Sampaio, 304","(11) 3283-3347
+Douglas (zelador) -
+Cleide (cleide.fortunatti@condovel.com.br) - 5033-9100",,1997,28,132,NE-SW,Rectangular,0.4,160,80,11,Yellow,0.3,Gray,Clear glass,Vertical fins,3 (Facade Unica),2.60 (Floor-Ceiling),0.15,1,0.3,Front - 41.026,"8.125
+(0.13 m)",single sided,Top hung,"73,125 (2 frames)",1.00 x 1.60,1.43,Manual,Split/ Self contained window unit,Facade
+8,Bristol,Paulista,"Al. Casa Branca, 851","(11) 3085-3724
+Valnes (zelador) 
+edificio.bristol@uol.com.br - Helena Novaes","Transitur viagens e turismo
+Arco W comunicação & design (11) 3062-0374 (diretora Regina / atend Roseli atendimento@arcow.com.br)
+Jayme Lago arq. - Marta vai passar meu contato ao Jayme e ele vai retornar ((11) 3062-2885)
+MMBB (11) 3064-3619 11 3237 2311 Mônica (m.arqui@terra.com.br)",1995,68,134,NE-SW,Rectangular,0.4,185,"32.5, 37",13,Red/ Blue/ exposed concrete,0.7,Gray,Clear glass,No,"Side - 4
+Front - 7.3",2.60 (Floor-Ceiling),0.15,0.6,0.3,"Front - 23.798
+Side - 26.080
+TOTAL - 25.272",Não,"cross (adjacent facades)
+single sided",Top hung,"73,333 (4,5 frames)",1.10 x 1.50,1,Manual,Self contained window unit,Facade
+9,L'ufficio,Jardim Paulista,"Al. Franca, 267","(11) 3283-5825
+(11) 3145-2711 BBZ administradora
+rl@bbz.com.br - Robson (gerente)
+Agnaldo zelador",Shisha Kessin arq (11) 3884-9862 11 32855237 skessin@terra.com.br,1999,60,131,NE-SW,Rectangular,0.3,240,60,9,Light Beige,0.3,Gray,Laminated glass,No,"Side - 2.9
+Front - 5.27",2.45 (Floor-Ceiling),0.2,0.4 / 0.96,0.24,"Front - 71.099
+Side - 94.750
+TOTAL - 79.494","6.415 / 13.492
+(0.17 m)",cross (adjacent facades),Top hung,"69.8 (3 frames)
+100 (1 frame)",1.70 x 1.80 / 1.16 x 1.26,1.2 / 0.96,Manual,Split,Restroom
+10,Yale,Bela Vista,"Al. Joaquim Eugênio de Lima, 187","(11) 3288-8239
+3062-4922 - Luis Carlos",,1998,47,139,NW-SE,Rectangular,0.3,124,31,12,Light beige / Dark blue tiles,0.3/ 0.7,Gray,Laminated glass,No,"Side - 3.4
+Front - 8.55",2.77 (Floor-Floor),0.37,1,"15 cm bloco
+17 cm shadow box","Front - 27.382
+Side - 32.667
+TOTAL - 31.163",Não,cross (adjacent facades),Top hung,100 (4 frames),0.84 x 1.33,1,Manual,Split,"Facade shaft
+(grill)"
+11,Pamplona Personal Office Build.,Paulista,"R. Pamplona, 1326",(11) 2639-2613,,1997,46,40,NW-SE,Rectangular,0.2,183,91.5,11,Light beige/Beige tiles,0.3,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+12,Bela Vista Medical,Paulista,"R. Barata Ribeiro, 176","Marcia (11) 3078-5797
+Dalila (51) 3311-6292
+Gerbin Júnior (61) 3383-7630",,2015,80,73,N-S,Rectangular,0.5,180,49.5,10,Gray,0.7,Gray,Clear glass,Balcony,,,,,,,,single sided without Balcony cross with Balcony (adjacent facades),Sliding/ Top hung,,,,,Split/ Self contained window unit,
+13,Maestro Offices,Paulista,"Rua Maestro Cardim, 1293","Sebastião gerente predial/ Patricia recepção (11) 3262-3514
+Daniel corretor Besp (11) 8221-3765
+Claudia Besp imoveis (11) 3627-3200
+Sergio corretor (11) 99710-1195",,2010,60,175,E-W,Rectangular,0.5,215,57,13,Beige,0.4,White,Laminated glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,?,
+14,Eliza Chahin,Paulista,"Al. Santos, 2480",,,2004,64,135,NE-SW,Rectangular,0.9,110,55,11,Gray,0.7,Gray,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+15,Chalet Office Center,Paulista,"Al. Santos, 2395",,,2001,60,133,NE-SW,Rectangular,0.3,92,46,12,Beige,0.4,Gray,Laminated glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,?,
+16,Clínica Galeno,Paulista,"Al. Jaú, 1767",,,2000,-,135,NE-SW,Rectangular,0.4,160,80,9,Beige,0.4,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+17,Biscayne Tower,Bela Vista,"Rua Maestro Cardim, 1251",,,1999,64,176,E-W,Rectangular,0.6,215,43,12,Beige,0.4,Gray,Laminated glass,HVAC housing unit,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+18,Arte e Ciência,Paulista,"R. Barata Ribeiro, 398",,,1996,-,75,N-S,Rectangular,0.2,84,42,10,Gray,0.7,White,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+19,Centro Empresarial Sumarezinho,Faria Lima/ Itaim Bibi,"R. Paulistânia, 242",,,2016,-,151,NE-SW,Rectangular,0.8,125,35.2,8,Blue tiles,0.7,Gray,Clear glass,Balcony,,,,,,,,cross with Balcony – Adjacent),Sliding,,,,,Split/ Self contained window unit,
+20,Boulevard Office,Cursino,"Avenida do Cursino, 2400",,,2016,43,176,E-W,Losango,0.6,430,42,3,White/Beige,0.2/ 0.4,Gray,Laminated glass,Balcony,,,,,,,,single sided,Top hung,,,,,?,
+21,Palm Offices,Alto de Pinheiros/ Perdizes,"Rua Cayowaá , 759",Livia (11) 3581-0000,,2016,58,34,NW-SE,Rectangular,0.4,195,97.5,10,Beige/Ceramic tiles,0.4/ 0.8,Gray,Clear glass,Balcony,,,,,,,,single sided without Balcony cross with Balcony (adjacent facades),Sliding/ Top hung,,,,,Split/ Self contained window unit,
+22,Ondas,Zona Leste,"Rua Apucarana , 428",,,2016,32,168,E-W,Rectangular,0.3,85,85,8,Gray/Ceramic,0.7,Gray,Laminated glass,Balcony,,,,,,,,,Top hung,,,,,?,
+23,AF 377,Moema/ Vila Mariana,"R. Afonso De Freitas, 377","Sergio (consultor) (11) 5054-9238
+Cristine Lulia (11) 5054-9234
+Carol (11) 3805-8003
+Eliane Alves de Oliveira (11) 96354-1594",,2015,76,66,NW-SE,Rectangular,0.5,210,38.9,9,Light beige,0.3,Gray,Laminated glass,Balcony,,,,,,,,,Sliding,,,,,Split/ Self contained window unit,
+24,Perdizes Prime Office,Alto de Pinheiros/ Perdizes,"Rua Cotoxó, 970",,,2013,61,33,NW-SE,Rectangular,0.3,132,27.5,5,Yellow/Brown,0.3/ 0.7,White/Beige,Clear glass,Balcony,,,,,,,,,Sliding,,,,,?,
+25,Oscar Freire Offices Boutique,Paulista," Rua Oscar Freire , 1431","Patricia  (11) 3191-2041
+Lilian (11) 3191-2014 / (11) 3191-2094
+Goldenbergue 11-99786-0091
+Seker (11) 2592-5895 / 259
+Maria Valentina (11) 3289-2738",,2013,80,150,NE-SW,Rectangular,0.4,385,64.2,6,Beige/Light Brown /Dark Brown,0.4/ 0.7,Gray,Laminated glass,Balcony,,,,,,,,,Top hung,,,,,?,
+26,Brooklin Office,Berrini,"Av.Santo Amaro, 3432","Hélio (11) 2609-8904
+Antônio Carlos Haddad (11) 5575-7666",,2013,52,133,NE-SW,Rectangular,0.9,212,30.8,10,Beige/ Ceramic,0.4/ 0.8,White,Laminated glass,Balcony,,,,,,,,,Sliding/ Top hung,,,,,?,
+27,Centro Empresarial Paulistânia,Faria Lima/ Itaim Bibi,"R. Paulistânia, 90","Dolores de Carvalho (11) 95299-0587
+Delio (11) 98312-9528",,2013,80,149,NE-SW,Rectangular,0.2,170,63.8,8,Beige/ Blue tiles,0.4/ 0.7,Gray,Clear glass,Balcony,,,,,,,,,Sliding/ Top hung,,,,,Split/ Self contained window unit,
+28,"Blue Tower, 199",Barra Funda,"Rua Joaquim Manuel de Macedo , 199",,,2013,27,12,E-W,Rectangular,0.6,144,48,10,Blue/ Dark beige,0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+29,Oscar Freire Offices Boutique,Paulista,"Rua Oscar Freire, 1431","Patricia   Representante AK Realty (11) 3191-2041
+Lilian Marques Consultora Imobiliária (11) 3191-2014 / (11) 3191-2094
+Goldenbergue corretor 11-99786-0091
+Seker (11) 2592-5895 / 259
+Maria Valentina (11) 3289-2738",,2013,80,151,NE-SW,Rectangular,0.5,385,64.2,6,Beige/ Ceramic,0.4/ 0.8,Gray,Clear glass,Balcony,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+30,Centro Empresarial Jardim Paulista,Moema/ Vila Mariana,"Rua Manuel da Nóbrega, 456",Gustavo Mujalli (11) 5505-8630,,2013,63,42,NW-SE,Rectangular,0.4,160,32,11,Yellow,0.3/ 0.4,Gray,Clear glass,Balcony,,,,,,,,,Sliding/ Top hung,,,,,?,
+31,Centro Empresarial Brigadeiro,Moema/ Vila Mariana,"Av. Brigadeiro Luís Antônio, 2909","Caroline corretor (11) 5054-7600
+Herielson (11) 3052-2400",,2012,51,41,NW-SE,Rectangular,0.3,170,34,12,White,0.2,Gray,Clear glass,Balcony,,,,,,,,,Sliding,,,,,Split/ Self contained window unit,
+32,Centro Executivo Cônego,Faria Lima/ Itaim Bibi,"R. Cônego Eugênio Leite, 933",,,2011,64,148,NE-SW,Rectangular,0.9,180,36,13,Beige,0.4,Gray,Clear glass,No,,,,,,,,,Sliding,,,,,Split/ Self contained window unit,
+33,Bacelar Work Center,Moema/ Vila Mariana,"R. Doutor Bacelar, 386",,,2010,59,4,E-W,Rectangular,0.3,174,43.5,14,Dark yellow,0.4,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+34,Lucas,Paulista,"Rua Maestro Cardim, 343",,,2005,56,14,N-S,Rectangular,0.8,150,75,8,Beige,0.4,Gray/ White,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+35,Itaim Office Building,Faria Lima/ Itaim Bibi,"R. Bandeira Paulista, 662",,,2003,71,165,E-W,Rectangular,0.8,210,35,12,Light beige,0.3,White,Laminated glass,Balcony,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+36,Lapa Trade Center,Barra Funda,"R. Clélia, 2145",,,2002,38,92,N-S,Rectangular,0.8,192,32,13,Dark gray,0.8,Gray,Clear glass,No,,,,,,,,,Pivoted,,,,,Split/ Self contained window unit,
+37,Diamond Office Tower,Faria Lima/ Itaim Bibi,"R. Joaquim Antunes, 727",,,2002,57,146,NE-SW,Rectangular,0.3,220,36.7,12,Gray/ Ceramic,0.8,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+38,Baker Square,Santo Amaro,"Rua Laplace, 74","Juliana (recepção) 5042-3011
+Carlos(Proprietário) 9983-9644",,2002,48,129,NE-SW,Rectangular,0.8,165,82.5,12,Beige,0.4,Gray,Clear glass,HVAC housing unit,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+39,Chicago,Berrini,"Av. Portugal, 1629",,,2001,52,127,NE-SW,Rectangular,0.5,168,45.8,12,Dark yellow,0.4,Gray,Clear glass,No,,,,,,,,,Pivoted,,,,,Split/ Self contained window unit,
+40,Grande Avenida - Pinheiros,Faria Lima/ Itaim Bibi,"Av. Nove de Julho, 5519",,,2001,-,149,NE-SW,Rectangular,0.4,137,68.5,11,Light beige,0.3,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+41,Office Tower Station ,Moema/ Vila Mariana,"Rua Tenente Gomes Ribeiro , 57",,,2001,50,179,E-W,Rectangular,0.6,216,36,11,alucobond Gray,0.2,,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+42,São Benedito Office Tower,Santo Amaro,"Rua São Benedito, 509","Jorge (zelador) 5546-5783
+Sandra 99367-4222
+Sandra  5507-2404",,2001,40,30,NW-SE,Rectangular,0.9,234,39,11,Dark gray,0.8,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,?,
+43,Pórtico Offices,Alto de Pinheiros/ Perdizes,"R. Min. de Godói, 478","Luiz (zelador) (11) 3801-0114
+Noé (11) 3862-2964",,2000,37,0,E-W,Rectangular,0.6,128,32,10,Dark yellow,0.4,Red escuro,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+44,Marchetti Place,Barra Funda,"R. Albion, 229",,,2000,35,174,E-W,Rectangular,0.8,240,40,13,Beige,0.4,Gray,Laminated glass,No,,,,,,,,,Pivoted,,,,,?,
+45,Castelhana Offices,Tatuapé," Rua Antônio de Barros , 2391",,,2000,36,169,E-W,Rectangular,0.6,210,45,11,"80 - White, 20 Blue",0.2/ 0.8,,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+46,Girassol 34,Faria Lima/ Itaim Bibi,"R. Girassol, 34",,,2000,39,147,NE-SW,Rectangular,0.3,184,46,10,Gray,0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+47,Aquarius - Bloco A,Moema/ Vila Mariana,"Al. dos Maracatins, 992",,,2000,44,40,NW-SE,Rectangular,0.6,200,50,12,Gray ,0.5/ 0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+48,Berkeley Office Center,Moema/ Vila Mariana,"R. Prof. Noé de Azevedo , 208",,,2000,60,2,N-S,Rectangular,0.5,240,40,13,"Red, white",0.7/ 0.2,White,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+49,The Hill Office,Morumbi/ Jardim São Luís,Av. Giovani Gronchi X Dep. J. S. Hirata,Cleide (Gerente Predial) (11) 3771-3406,,2000,27,74,NW-SE,Rectangular,1,187,46.8,6,Ceramic,0.8,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+50,VillaGreen,Morumbi/ Jardim São Luís,"Av. Morumbi, 6901",Juliana (zelador) (11) 3758-0060,,2000,60,100,N-S,Rectangular,0.9,189,68.7,8,Gray,0.7,Red escuro,Clear glass,No,,,,,,,,,Top hung,,,,,?,
+51,Esplanada Center,Centro,"R. Vergueiro, 396",,,1999,-,14,E-W,Rectangular,0.5,195,97.5,11,Gray,0.7,Gray,Clear glass,Balcony,,,,,,,,,Pivoted,,,,,Split/ Self contained window unit,
+52,Toronto,Chácara Santo Antônio,"R. Alexandre Dumas, 1268",Ademir (recepção) (11) 5182-0930,,1999,43,122,NE-SW,Rectangular,0.7,200,33.3,13,Gray ,0.5/ 0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+53,Alceu Center,Faria Lima/ Itaim Bibi,"R. Alceu de Campos Rodrigues, 275",,,1999,56,76,N-S,Rectangular,0.9,180,45,13,exposed concrete/ Blue,0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+54,Blue Towers,Paulista,"R. Cristiano Viana, 441",,,1999,46,146,NE-SW,Rectangular,0.5,186,31,13,Blue/ Beige,0.7/ 0.4,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+55,Blue Office Tower,Santo Amaro,"Rua Américo Brasiliense, 1765",,,1999,42,122,NE-SW,Rectangular,0.5,143,35.8,13,White/Blue,0.2/ 0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+56,Civic Center,Paulista,"Av. Brigadeiro Luís Antônio, 2533",,,1999,-,41,NW-SE,Rectangular,0.5,159,159,11,White/ Gray,0.2/ 0.8,Gray,Clear glass,Balcony,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+57,Heleno Tower,Alto de Pinheiros/ Perdizes,"R.Turiassu, 127",Tarcizio (portaria) (11) 3826-0240,,1998,33,124,NW-SE,Rectangular,0.4,184,46,14,Dark gray,0.8,Gray claro,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+58,Brickell Avenue,Moema/ Vila Mariana,"R. Pedro de Toledo, 130",,,1998,47,1,N-S,Rectangular,0.6,200,40,12,Beige/ Ceramic,0.4/ 0.8,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+59,Paulo Freire,Barra Funda,"R. Cerro Corá, 550",,,1998,41,12,E-W,Rectangular,1,360,40,2,Green,0.7,Gray,Clear glass,No,,,,,,,,,Sliding,,,,,Split/ Self contained window unit,
+60,Pine Offices,Faria Lima/ Itaim Bibi,"Rua Joaquim Antunes , 490",,,1998,58,147,NE-SW,Rectangular,0.4,150,30,11,"exposed concrete/ 
+Blue tiles",0.7,Gray/ White,Laminated glass,Balcony (part),,,,,,,,,Sliding/ Top hung,,,,,Split/ Self contained window unit,
+61,Itaim Tower - Santa Justina,Faria Lima/ Itaim Bibi,"R. Santa Justina, 352",,,1997,50,74,N-S,T,0.4,246,41,13,Gray/ Blue tiles,0.7,Gray,Clear glass,Balcony,,,,,,,,,Top hung,,,,,?,
+62,Campo Belo Trade Center,Tatuapé,"Rua Bernadino de Campos , 318",,,1997,37,131,NE-SW,Rectangular,0.7,180,45,11,Orange/ Gray/ White,0.7/ 0.2,White/Laranja/Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+63,Office Side Park,Zona Leste,"Rua Apucarana , 282",,,1997,-,167,NE-SW,Rectangular,0.1,90,45,8,White,0.2,Gray,Laminated glass,Balcony,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+64,Paulo Raposo,Faria Lima/ Itaim Bibi,"R. Cônego Eugênio Leite, 623",,,1996,-,146,NW-SE,Rectangular,0.3,110,55,4,"Red, white",0.7/ 0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+65,Cedro,Moema/ Vila Mariana,"Av. Moema, 94",,,1996,60,131,NE-SW,T,0.7,200,50,11,"Red, white",0.7/ 0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+66,Itaparica,Barra Funda,"R. Antonio Raposo, 186",,,1995,35,113,NE-SW,Rectangular,0.3,232,58,12,exposed concrete,0.7,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+67,Centro Odonto Médico Paulistano,Faria Lima/ Itaim Bibi,"R. Dr. Alceu de Campos Rodrigues, 247",,,1995,55,76,N-S,Rectangular,0.7,222,55.5,12,Light beige,0.3,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+68,Amira,Moema/ Vila Mariana,"R. Pedro de Toledo, 80",,,1995,53,88,N-S,Rectangular,0.6,240,60,12,Dark gray/ Light beige,0.8/ 0.3,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+69,Pedro Tonelotto,Moema/ Vila Mariana,"R. Cel Arthur de Paula Ferreira, 59",,,1995,43,94,N-S,Rectangular,0.3,188,47,11,Light beige,0.3,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+70,Doctor's Center,Bela Vista,"Rua Barata Ribeiro, 190",,,2001,44,74,NW-SE,Rectangular,0.4,204,34,13,Gray/ Red,0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+71,Plaza Work Center,Jardim Paulista,"Al. Casa Branca, 652",,,1996,-,46,NW-SE,Rectangular,0.6,99,33,9, Green / Blue/ White,0.7/ 0.2,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+72,Center Bureau Pacaembu,Santa Cecília,"Rua Tupi, 397",,,2000,50,26,NW-SE,Rectangular,0.3,200,40,13,Gray,0.7,White/Beige,Clear glass,Balcony,,,,,,,,,Sliding,,,,,Split/ Self contained window unit,
+73,Center Ville,Moema,"Rua João Lourenço, 683",,,2000,54,118,NE-SW,Rectangular,0.2,98,49,12,Beige/Green/ Blue,0.4/ 0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+74,Centro Empresarial do Belém,Belém,"Rua Alvaro Ramos, 235",,,1997,37,171,E-W,Rectangular,0.3,160,40,10,Blue/ White,0.7/ 0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+75,Century Offices,Consolação,"Rua Dona Antonia de Queiros, 209",,,2016,-,153,NE-SW,Rectangular,0.1,334,38,11,"Red, White",0.7/ 0.2,Gray,Laminated glass,Balcony,,,,,,,,,Sliding,,,,,Split/ Self contained window unit,
+76,Classic Office Itaim,Itaim Bibi,"Rua Pedroso Alvarenga, 584",,,2000,62,73,NW-SE,Rectangular,0.6,128,32,20,Beige,0.4,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+77,Columbia Trade Center,Santana,"Rua Dr. Zurquim, 449",,,1997,-,1,E-W,Rectangular,0.6,140,35,11,Blue/ White,0.7/ 0.2,Dark gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+78,Condominio Edificio Diogo de Faria,Vila Mariana,"Rua Dr. Diogo de Faria, 55",,,1999,46,90,N-S,Rectangular,0.5,208,52,14,White,0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+79,Condomínio Edifício Santa Paula Office Building,Itaim Bibi,"Rua Alvorada, 64",,,1997,55,27,NW-SE,Rectangular,0.7,160,40,13,White,0.2,Dark gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+80,Condomínio Edifício Spazio Blu,Vila Sônia,"R. José de Jesus, 16",,,2005,40,56,NW-SE,¼ de Circunferência,0.5,382,64,3,Blue tiles/ Pastilha branca,0.7/ 0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+81,Dallas Office Center,Saúde,"Av. Fagundes Filho, 191",,,2002,53,85,N-S,Rectangular,0.6,240,30,15,Red/ White,0.7/ 0.2,Gray/ White,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+82,Dallas Office Tower,Tatuapé,"Rua Viléla, 990",,,2015,57,168,E-W,Rectangular,0.4,200,33,10,White/ Blue,0.2/ 0.7,White,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+83,Débora Comercial Building,Pinheiros,"Rua Teodoro Sampaio, 1765",,,1996,36,57,NW-SE,T,0.3,180,45,14,White,0.2,White/Beige,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+84,Diederichsen,Jabaquara,"Avenida Diederichsen, 1100",,,2015,32,94,N-S,Rectangular,0.6,234,39,7,White/Beige,0.2/ 0.4,Gray/ White,Clear glass,Balcony,,,,,,,,cross (adjacent facades),Sliding/ Top hung,,,,,?,
+85,Dorgan Work Center,Vila Mariana,"Rua Loefgren, 1291",,,1999,47,1,E-W,Rectangular,0.4,172,43,13,Beige,0.4,White,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+86,Doutor Mário Yahn,Cambuci,"Avenida Lins de Vasconcelos, 1609",,,2001,21,169,NW-SE,Rectangular,0.2,84,42,10,White,0.2,White,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+87,Ed. Comendador Joaquim Monteiro,Santana,"Rua Voluntários da Pátria, 2525",,,2007,-,168,NW-SE,Rectangular,0.3,210,42,17,Beige,0.4,White,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+88,Edifício Tucci,Itaim Bibi,"Avenida Morumbi, 8509",,,2013,30,54,NE-SW,Rectangular,0.8,240,60,6,White,0.2,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+89,Edifício Tupi Business Center,Santa Cecília,"Rua Tupi, 267",,,1995,34,26,NW-SE,Rectangular,0.7,136,34,11,Orange ,0.7,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+90,Emilio Huespe,Vila Mariana,"Rua Tenente Gomes Ribeiro, 78",,,1997,45,0,E-W,Rectangular,0.8,164,41,12,White/ Blue,0.2/ 0.7,Gray,Clear glass,No,,,,,,,,single sided,Top hung,,,,,?,
+91,Empresarial Lapa,Lapa,"Rua Afonso Sardinha, 95",,,2006,41,85,N-S,Rectangular,0.4,128,32,14,White/ Red,0.2/ 0.7,Gray,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+92,Espaço Nobre,Moema,"Av. Moema, 265",,,1996,52,48,NE-SW,Rectangular,0.7,208,52,15,White/ Blue,0.2/ 0.7,Gray,Laminated glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+93,Fernandes Viêira - 318,Belém,"Rua Fernandes Vieira, 318",,,1998,60,19,NE-SW,Rectangular,0.2,360,30,5,White/ Green,0.2/ 0.7,Gray/ Green,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+94,First Class Building,Moema,"Rua Afonso Bráz, 473",,,2000,92,83,N-S,Rectangular,0.5,228,38,17,White,0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+95,First Soho,Santana,"Rua Henrique Bernardelli, 136",,,1998,25,8,E-W,Rectangular,0.6,160,40,8,Beige,0.4,Gray/ White,Laminated glass,No,,,,,,,,,Sliding/ Top hung,,,,,Split/ Self contained window unit,
+96,G9 Offices,Vila Mariana,"Rua Dr. Diogo de Faria, 775",,,2012,47,84,N-S,Rectangular,0.3,234,59,12,Beige,0.4,Gray,Laminated glass,Balcony,,,,,,,,single sided without balcony cross with balcony (adjacent facades),Sliding/ Top hung,,,,,Split/ Self contained window unit,
+97,G9 Offices III,Vila Mariana,"Rua Borges Lagoa, 1083",,,2015,60,88,N-S,Rectangular,0.4,192,49,13,Beige,0.4,White,Clear glass,Balcony,,,,,,,,single sided without balcony cross with balcony (adjacent facades),Sliding/ Top hung,,,,,?,
+98,Gattás E. Erminda Cury,Vila Mariana,"Rua Leôncio de Carvalho, 234",,,1998,-,141,NW-SE,T,0.4,240,60,13,Brown,0.7,Beige,Laminated glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,?,
+99,George Corbisier,Jabaquara,"Av. Pedro Severino Junior, 366",,,2001,40,36,NE-SW,Rectangular,0.6,225,32,17,White/ Blue,0.2/ 0.7,Gray/ White,Clear glass,Balcony (part),,,,,,,,single sided,Sliding/ Top hung,,,,,Split/ Self contained window unit,
+100,Guaicurus 375,Lapa,"Rua Guaicurus, 375",,,2003,-,88,N-S,Rectangular,0.5,175,35,4,White,0.2,White/ Brown,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+101,Houston Office Center,Saúde,"Av. Fagundes Filho, 191",,,2002,57,85,N-S,Rectangular,0.6,240,30,15,Red/ White,0.7/ 0.2,Gray/ White,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+102,i9 Tolle,Santana,"Rua Augusto Tolle, 771",,,2015,50,85,N-S,L,0.8,540,36,3,White,0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+103,Ibirapuera Office Center,Moema,"Av. Iraí, 143",,,1998,32,48,NE-SW,Rectangular,0.8,184,46,12,Red/ White,0.7/ 0.2,Gray,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+104,In Offices Santana,Santana,"Avenida General Ataliba Leonel, 1223",,,2015,43,111,NW-SE,Rectangular,0.3,235,47,12,White/ Beige,0.2/ 0.4,Gray,Laminated glass,Balcony,,,,,,,,,Sliding/ Top hung,,,,,?,
+105,Itaim Tower - Santa Justina,Itaim Bibi,"Rua Santa Justina, 352",,,1997,38,75,NW-SE,T,0.4,246,41,13,Gray/ Blue tiles,0.7,Gray,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+106,James Watt,Itaim Bibi,"Rua James Watt, 84",,,2001,41,17,E-W,Rectangular,0.9,170,50,13,White/ Chumbo,0.2/ 0.8,Gray/ White,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+107,Jurupis Office Building,Moema,"Al. dos Jurupis, 657",,,1999,56,132,NE-SW,Rectangular,0.5,160,40,10,White,0.2,Gray/ Laranja,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+108,Leonidas Garcia Rosa,República,"Praça da República, 282",,,1995,-,47,NW-SE,Rectangular,0.4,255,42,7,Beige,0.4,Gray,Laminated glass,No,,,,,,,,,Sliding,,,,,Split/ Self contained window unit,
+109,Les Ateliers,Vila Mariana,"Rua Manoel da Nóbrega, 595",,,1997,54,39,NW-SE,Rectangular,0.7,148,37,12,Beige,0.4,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,?,
+110,Loefgreen Business Station,Vila Mariana,"Rua Loefgreen, 1304",,,2012,44,90,N-S,Rectangular,0.7,184,46,12,exposed concrete,0.7,Gray/ White,Laminated glass,No,,,,,,,,single sided,Top hung,,,,,split,
+111,Los Angeles,Santo Amaro,"Rua Américo Brasiliense, 1479",,,2004,25,59,NE-SW,T,0.5,160,40,12,Beige/ Brown,0.4/ 0.7,Gray,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+112,Lyon,Consolação,"Rua Bela Cintra, 756",,,2000,69,43,NW-SE,Rectangular,0.1,160,80,12,White,0.2,Green,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+113,L´ufficio Firenzo,Santa Cecília,"Al. Barros, 275",,,2001,46,76,NE-SW,Rectangular,0.7,105,35,12,White,0.2,Beige,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+114,M. S. Paes de Barros,Mooca,"Avenida Paes de Barros, 960",,,2000,-,142,NE-SW,Rectangular,0.3,240,30,3,Gray/ White,0.7/ 0.2,Beige,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+115,Mantovani Tower,Santa Cecília,"Rua Albuquerque Lins, 635",,,2000,38,162,NW-SE,Rectangular,0.4,208,52,12,Beige/ Gray,0.4/ 0.7,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+116,Marcella,Santana,"Rua Augusto Tole, 787",,,1997,-,88,N-S,Rectangular,0.7,396,50,4,Beige,0.4,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+117,Marquês De Itu Offices,Consolação,"Rua Marquês de Itu, 408",,,1999,24,91,N-S,Rectangular,0.6,222,36,10,Gray,0.7,Blue,Laminated glass,No,,,,,,,,single sided,Top hung,,,,,Split/ Self contained window unit,
+118,Memorial Center,Barra Funda,"Rua Joaquim M. de Macedo, 101",,,2006,34,13,E-W,Rectangular,0.4,132,33,9,Beige/ Brown,0.4/ 0.7,Gray,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,?,
+119,Memphis Office,Itaim Bibi,"Rua Gomes de Carvalho, 1266",,,1999,63,27,NW-SE,Rectangular,0.4,240,30,12,Red/ Preto,0.7/ 1,Brown,Laminated glass,No,,,,,,,,single sided,Top hung,,,,,Split/ Self contained window unit,
+120,Metrópole,Tatuapé,"Rua Cel. Luís Americano, 352",,,1998,44,103,NW-SE,Rectangular,0.4,128,32,9,Gray,0.7,Gray,Laminated glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,?,
+121,Metropolitan Offices Ipiranga - Torre Norte,Ipiranga,"Rua Bom Pastor, 2732",,,2013,34,27,NE-SW,Rectangular,0.3,310,44,8,White,0.2,White,Laminated glass,Balcony,,,,,,,,single sided,Top hung,,,,,?,
+122,Metropolitan Offices Ipiranga - Torre Sul,Ipiranga,"Rua Bom Pastor, 2732",,,2013,46,27,NE-SW,Rectangular,0.3,310,44,8,White,0.2,White,Laminated glass,Balcony,,,,,,,,single sided,Top hung,,,,,?,
+123,Milano Offices,Perdizes,"Rua Apiacás, 756",,,2015,67,142,NW-SE,Rectangular,0.3,150,30,10,White,0.2,White,Laminated glass,Balcony,,,,,,,,cross (adjacent facades),Sliding/ Top hung,,,,,Split/ Self contained window unit,
+124,Mobile 323 - Bloco A,Alto de Pinheiros,"Rua Pereira Leite, 323",,,2013,77,30,NW-SE,Rectangular,0.2,226,86,3,White/ Laranja/ Chumbo,0.2/ 0.7,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+125,Mobile 323 - Bloco B,Alto de Pinheiros,"Rua Pereira Leite, 323",,,2013,35,30,NW-SE,Rectangular,0.4,317,94,3,White/ Laranja/ Chumbo,0.2/ 0.7,White,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+126,Morumbi - Guilherme D Villares,Vila Sônia,"Av. Dr. Guilherme D. Villares, 839",,,1999,-,138,NE-SW,Rectangular,0.5,110,55,6,exposed concrete,0.7,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+127,New Century Office,Itaim Bibi,"Rua Pequetita, 179",,,1999,-,73,NW-SE,Rectangular,0.4,210,35,12,White,0.2,Brown,Laminated glass,No,,,,,,,,single sided,Top hung,,,,,?,
+128,Office Design Santana,Santana,"Al. Afonso Schmidt, 119",,,2015,27,23,NE-SW,L,0.8,240,34,17,White/ Brown,0.2/ 0.7,White,Clear glass,Balcony,,,,,,,,single sided,Sliding,,,,,Split/ Self contained window unit,
+129,Platinum Building Berrini,Itaim Bibi,"Rua Arizona, 1422",,,2012,60,62,NW-SE,Rectangular,0.9,216,36,18,White,0.2,Gray,Laminated glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+130,Plaza Baronesa De Itu,Santa Cecília,"Rua Baronesa de Itu, 610",,,1998,-,105,NE-SW,Rectangular,0.3,120,40,12,Beige,0.4,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,?,
+131,Plaza Pinheiros,Pinheiros,"Rua Artur de Azevedo, 1857",,,1996,44,33,NE-SW,Rectangular,0.6,170,34,12,White,0.2,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+132,River Point Office,Barra Funda,"Rua Quirino dos Santos, 271",,,2000,50,99,N-S,Rectangular,0.6,180,30,10,Beige,0.4,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+133,Sabel Trade Center,Santana,"Rua Ezequiel Freire, 35",,,1997,29,178,E-W,Rectangular,0.2,212,53,12,White/ Red,0.2/ 0.7,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,?,
+134,Saint Louis Business Center,Barra Funda,"Rua Traipu, 114",,,2000,67,26,NW-SE,T,0.7,160,40,11,Light beige,0.3,Beige,Laminated glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,Split/ Self contained window unit,
+135,Salute,Vila Sônia,"Av. Dr. Guilherme D. Villares, 1050",,,1998,22/ 36,146,NE-SW,-,-,450,50,3,Brown,0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+136,San Remo Tower,Lapa,"Rua Clélia, 1251",,,2001,-,90,N-S,Rectangular,0.2,136,34,12,White,0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+137,São Luiz,Itaim Bibi,"Rua Dr. Alceu de Campos Rodrigues, 301",,,1995,48,75,NW-SE,Rectangular,0.3,66,33,9,White/ Blue,0.2/ 0.7,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+138,Seattle Office Center,Jabaquara,"Av. Dr. Hugo Beolchi, 445",,,2011,-,80,NW-SE,Rectangular,0.4,246,73,13,White/ Red,0.2/ 0.7,Gray,Laminated glass,No,,,,,,,,single sided,Top hung,,,,,?,
+139,Spazio Doro,Itaim Bibi,"Rua Manoel Guedes X Rua Tabapuã, 888",,,2002,83,75,NW-SE,Rectangular,0.4,232,29,15,White,0.2,Gray,Laminated glass,No,,,,,,,,single sided,Top hung,,,,,?,
+140,Suraya,Vila Mariana,"Rua Doutor Eduardo Amaro, 152",,,1998,54,3,E-W,T,0.7,176,44,13,White/ Blue,0.2/ 0.7,Gray,Clear glass,No,,,,,,,,single sided,Top hung,,,,,?,
+141,Teno Office Tower,Mooca,"Rua Paes de Barros, 373",,,2010,51,15,NE-SW,Rectangular,0.5,214,36,7,Laranja/ Red,0.7,Gray,Clear glass,Balcony,,,,,,,,cross (adjacent facades),Sliding/ Top hung,,,,,Split/ Self contained window unit,
+142,The Landmark,Itaim Bibi,"Rua Com. Miguel Calfat, 59",,,1999,80,72,NW-SE,Rectangular,0.5,150,50,11,White,0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+143,The Metropolitan,Santa Cecília,"Rua Emilio de Menezes, 76",,,2001,70,111,NE-SW,Rectangular,0.5,176,44,13,Light beige,0.3,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,?,
+144,Toronto - Angélica,Consolação,"Av. Angélica, 2118",,,1997,65,26,NW-SE,T,0.7,200,50,12,White,0.2,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+145,Trade Center Ipiranga,Ipiranga,"Leais Paulistanos, 394",,,1996,30,85,N-S,Rectangular,0.6,240,40,6,Brown/ White,0.7/ 0.2,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+146,Trade Tower,Itaim Bibi,"Rua Tabapuã, 111",,,1997,50,105,NW-SE,Rectangular,0.7,134,67,13,White/ Red,0.2/ 0.7,Beige,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,?,
+147,Tuiuti Trade Center,Tatuapé,"Rua Tuiuti, 2009",,,1997,35,100,N-S,Rectangular,0.9,128,32,12,Beige,0.4,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+148,Ufficio 2000,Itaim Bibi,"Rua do Rócio, 288",,,2000,70,105,NW-SE,T,0.5,240,40,12,Ceramic,0.8,Gray,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,?,
+149,Via Roma,Mooca,"Rua Celso de Azevedo Marques, 395",,,2006,43,108,NE-SW,L,0.5,192,32,11,Dark yellow,0.4,Gray,Clear glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+150,Vip Trade Center,Vila Prudente,"Rua Orfanato, 760",,,1996,24,64,NW-SE,Rectangular,1,248,62,15,White/ Green,0.2/ 0.7,Gray/ Green,Clear glass,No,,,,,,,,single sided,Top hung,,,,,?,
+151,W.305,Pinheiros,"Rua Wisard, 305",,,2011,3,33,NE-SW,L,0.7,528,88,4,White,0.2,Beige,Clear glass,Balcony,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+152,West Center,Barra Funda,"Av. Francisco Matarazzo, 175",,,1995,-,62,NE-SW,Rectangular,0.3,80,80,12,White/ Blue,0.2/ 0.7,Gray,Laminated glass,No,,,,,,,,,Top hung,,,,,Split/ Self contained window unit,
+153,West Tower,Barra Funda,"Rua Dr. Candido Espinheira, 350",,,1995,55,113,NE-SW,Rectangular,0.2,110,55,13,Gray,0.7,Gray,Clear glass,No,,,,,,,,cross (adjacent facades),Top hung,,,,,?,

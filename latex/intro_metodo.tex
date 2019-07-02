@@ -246,16 +246,16 @@
 				\hline
 				\textbf{Parâmetro} & \textbf{Valor adotado} \\
 				\hline
-				Capacidade térmica & 233 [kJ/m$^2$K] \\
+				Capacidade térmica & 233 kJ/m$^2$K \\
 				cobertura &  \\
 				\hline
-				Capacidade térmica & 258 [kJ/m$^2$K] \\
+				Capacidade térmica & 258 kJ/m$^2$K \\
 				piso / laje intermediária &  \\
 				\hline
-				Transmitância & 2,1 [W/m$^2$K] \\
+				Transmitância & 2,1 W/m$^2$K \\
 				cobertura &  \\
 				\hline
-				Transmitância & 3,6 [W/m$^2$K] \\
+				Transmitância & 3,6 W/m$^2$K \\
 				piso / laje intermediária &  \\
 				\hline
 				Transmitância do vidro & 5,7 W/m$^2$K \\
@@ -319,7 +319,7 @@
 				\hline
 				Fator de abertura da janela & 1,0 \\
 				\hline
-				Capacidade térmica da parede & 155 [kJ/m$^2$K] \\
+				Capacidade térmica da parede & 155 kJ/m$^2$K \\
 				\hline
 				Absortância da parede & 0,5 \\
 				\hline 
@@ -334,10 +334,10 @@
 		
 		\subsection{Túnel de vento x Método analítico}
 		
-		Para verificar o quanto os resultados das simulações são influenciados pela fonte utilizada na definição dos valores de Cp, comparou-se os resultados de trocas de ar por hora (TAH) e FHD em simulações com valores de Cp obtidos pela base da UPT aos resultados obtidos para simulações com valores de Cp obtidos pelo método analítcio padrão do EnergyPlus.
+		Para verificar o quanto os resultados das simulações são influenciados pela fonte utilizada na definição dos valores de Cp, comparou-se os resultados de trocas de ar por hora (TAH) e FHD em simulações com valores de Cp obtidos pela base da UPT aos resultados obtidos para simulações com valores de Cp obtidos pelo método analítico padrão do EnergyPlus.
 		No caso de edificações altas (\textit{highrise}), utiliza-se o modelo de \citeauthoronline{Atkins} \cite{Atkins}. No caso de edificações baixas (\textit{lowrise}), utiliza-se o modelo de \citeauthoronline{SwamiChandra} \cite{SwamiChandra}.
 		
-		Equanto valores de Cp através do método analítco podem ser obtidos pra quaisquer razões entre dimensões das fachadas da edificação, os valores da base da UPT são fornecido para edificações com geometrias específicas. Ambas as fontes são limitadas a edificações retangulares.
+		Equanto valores de Cp através do método analítico podem ser obtidos pra quaisquer razões entre dimensões das fachadas da edificação, os valores da base da UPT são fornecido para edificações com geometrias específicas. Ambas as fontes são limitadas a edificações retangulares.
 		
 		Para o tipo de edificação simulados neste estudo, a UPT disponibiliza valores de Cp para 25 geometrias diferentes, das quais 13 são para edificações altas (\textit{highrise}), e 12 são para edificações baixas (\textit{lowrise}). Para cada uma dessas geometrias disponíveis, valores de Cp são disponibilizados para diversos pontos na fachada da edificação, de acordo com a Figura \ref{fig:tpupoints}.
 		
@@ -356,7 +356,7 @@
 		
 		\begin{equation}
 		\label{eq:Cpdiff}
-		\delta_{Cp} = Cp_{UPT,i,j} - Cp_{ANALÍTICO, i}
+		\delta_{Cp} = Cp_{UPT,i,j} - Cp_{ANALITICO, i}
 		\end{equation}
 		
 		Onde:
@@ -365,7 +365,7 @@
 		
 		$Cp_{UPT,i,j}$ é igual ao valor de Cp disponibilizado pela base de dados da UPT para o ponto $j$ da fachada $i$;
 		
-		$Cp_{ANALÍTICO, i}$ é igual ao valor de Cp calculado pelo método analítico para a fachada $i$.
+		$Cp_{ANALITICO, i}$ é igual ao valor de Cp calculado pelo método analítico para a fachada $i$.
 		\\
 		
 		A partir dessas diferenças entre os valores de Cp, escolheu-se a geometria com a maior diferença absoluta média para se analisar a influência da diferença desses valores nos resultados das simulações no EnergyPlus.
