@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.6.24)  2 JUL 2019 12:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.6.24)  3 JUL 2019 18:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1543,161 +1543,122 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-]
-Underfull \hbox (badness 1540) in paragraph at lines 64--65
-[]\T1/bch/m/n/10.5 A de-manda de ener-gia para o res-fri-a-mento de ar em
- []
-
-[3
+] [3
 
 
-]
-Underfull \hbox (badness 2229) in paragraph at lines 78--79
-[]\T1/bch/m/n/10.5 A avalia[]ão do po-ten-cial de res-fri-a-mento por VN em
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4]
-LaTeX Font Info:    Try loading font information for OMS+bch on input line 91.
+] [4]
+LaTeX Font Info:    Try loading font information for OMS+bch on input line 90.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsbch.fd
 File: omsbch.fd 
 )
 LaTeX Font Info:    Font shape `OMS/bch/m/n' in size <10.5> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 90.
  [5] [6
 
-]
-Underfull \hbox (badness 1796) in paragraph at lines 103--104
-\T1/bch/m/n/10.5 se: áreas, di-men-sões, for-mato e nú-mero de pa-vi-men-tos da
-s
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 126--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 
  []
 
 [8]
+Underfull \hbox (badness 10000) in paragraph at lines 163--165
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+ []
 
-<img/croqui.png, id=176, 845.40843pt x 597.73312pt>
+[9] [10]
+<img/croqui.png, id=205, 845.40843pt x 597.73312pt>
 File: img/croqui.png Graphic file (type png)
 <use img/croqui.png>
-Package pdftex.def Info: img/croqui.png  used on input line 222.
+Package pdftex.def Info: img/croqui.png  used on input line 241.
 (pdftex.def)             Requested size: 307.0pt x 217.0535pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[9]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10]
-<img/tpu_windows.png, id=197, 1370.11874pt x 540.0175pt>
+ [11 <./img/croqui.png>] [12]
+<img/tpu_windows.png, id=222, 1370.11874pt x 540.0175pt>
 File: img/tpu_windows.png Graphic file (type png)
 <use img/tpu_windows.png>
-Package pdftex.def Info: img/tpu_windows.png  used on input line 284.
+Package pdftex.def Info: img/tpu_windows.png  used on input line 303.
 (pdftex.def)             Requested size: 307.0pt x 120.99605pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <./img/croqui.png>] [12 <./img/tpu_windows.png>]
-Underfull \hbox (badness 1264) in paragraph at lines 301--302
+ [13 <./img/tpu_windows.png>]
+Underfull \hbox (badness 1264) in paragraph at lines 320--321
 []\T1/bch/m/n/10.5 defini[]ão de um co-e-fi-ci-ente de infiltra[]ão re-la-ci-o-
 nado à
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13]
-<img/tpu_points.png, id=224, 1370.11874pt x 519.9425pt>
+[14]
+<img/tpu_points.png, id=243, 1370.11874pt x 519.9425pt>
 File: img/tpu_points.png Graphic file (type png)
 <use img/tpu_points.png>
-Package pdftex.def Info: img/tpu_points.png  used on input line 347.
+Package pdftex.def Info: img/tpu_points.png  used on input line 366.
 (pdftex.def)             Requested size: 307.0pt x 116.49806pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 368--370
+ [15 <./img/tpu_points.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 387--389
 
  []
 
-[14]
-Underfull \hbox (badness 2443) in paragraph at lines 379--381
+
+Underfull \hbox (badness 2443) in paragraph at lines 398--400
 \T1/bch/m/n/10.5 das pro-pri-e-da-des ter-mo-fí-si-cas da en-vol-tó-ria, consid
 erou-se a
  []
 
-[15 <./img/tpu_points.png>] [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 430--432
+
+Underfull \vbox (badness 2717) has occurred while \output is active []
+
+ [16]
+[17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 449--451
 
  []
 
-[18]
 
-LaTeX Warning: Command \~ invalid in math mode on input line 442.
-
-Missing character: There is no ã in font cmr7!
-
-LaTeX Warning: Command \~ invalid in math mode on input line 442.
+LaTeX Warning: Command \~ invalid in math mode on input line 461.
 
 Missing character: There is no ã in font cmr7!
 
-LaTeX Warning: Command \~ invalid in math mode on input line 456.
+LaTeX Warning: Command \~ invalid in math mode on input line 461.
 
 Missing character: There is no ã in font cmr7!
 
-Underfull \hbox (badness 10000) in paragraph at lines 458--460
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19]
+
+LaTeX Warning: Command \~ invalid in math mode on input line 475.
+
+Missing character: There is no ã in font cmr7!
+
+Underfull \hbox (badness 10000) in paragraph at lines 477--479
 
  []
 
-[19] [20] (./intro_metodo.bbl [21] [22
+[20] (./intro_metodo.bbl [21] [22
 
 ]
 bibitemlist
 LaTeX Font Info:    OMX-m encoding encountered on input line 15.
 LaTeX Font Info:    OMX-m encoding encountered on input line 15.
 LaTeX Font Info:    OMX-m encoding encountered on input line 15.
-[23])
+[23] [24])
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-[24]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 488.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 488.
+[25]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 507.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 507.
  (./intro_metodo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 488.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 488.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 507.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 507.
 Package rerunfilecheck Info: File `intro_metodo.out' has not changed.
-(rerunfilecheck)             Checksum: C8EFD396CB616A91B1CF7CDE8F393C06;1321.
+(rerunfilecheck)             Checksum: 856B78C9A5BE7CADED908138B3A9F6D8;1413.
  ) 
 Here is how much of TeX's memory you used:
- 35276 strings out of 492615
- 629248 string characters out of 6131390
- 810108 words of memory out of 5000000
- 38527 multiletter control sequences out of 15000+600000
- 567990 words of font info for 101 fonts, out of 8000000 for 9000
+ 35294 strings out of 492615
+ 629539 string characters out of 6131390
+ 808562 words of memory out of 5000000
+ 38540 multiletter control sequences out of 15000+600000
+ 567730 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,92p,2003b,998s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -1711,10 +1672,10 @@ m/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on intro_metodo.pdf (24 pages, 1244347 bytes).
+Output written on intro_metodo.pdf (25 pages, 1248304 bytes).
 PDF statistics:
- 391 PDF objects out of 1000 (max. 8388607)
- 334 compressed objects within 4 object streams
- 92 named destinations out of 1000 (max. 500000)
- 18632 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 420 PDF objects out of 1000 (max. 8388607)
+ 362 compressed objects within 4 object streams
+ 100 named destinations out of 1000 (max. 500000)
+ 18640 words of extra memory for PDF output out of 20736 (max. 10000000)
 

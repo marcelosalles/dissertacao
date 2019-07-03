@@ -47,14 +47,14 @@ df150 <- within(df150,
 ggplot(df150,aes(df150$formato)) +
   geom_bar() +
   ylab('Contagem') +
-  xlab('Formato')
+  xlab('Formato do edifício')
 
 # ratio edificio
 
 ggplot(df150,aes(df150$Ratio.between.width.and.length)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
-  xlab('Razão entre dimensões')
+  xlab('Razão entre dimensões do edifício')
 
 # area edificio
 
@@ -93,14 +93,14 @@ df150 <- within(df150,
 ggplot(df150,aes(df150$cobcolor)) +
   geom_bar() +
   ylab('Contagem') +
-  xlab('Formato')
+  xlab('Cor da cobertura')
 
 # tipo de vidro
 
 ggplot(df150,aes(df150$Glazing.type)) +
   geom_bar() +
   ylab('Contagem') +
-  xlab('Formato')
+  xlab('Tipo de vidro')
 
 # sombreamento
 unique(df150$Exterior.solar.shading.devices)
@@ -115,7 +115,7 @@ df150 <- within(df150,
 ggplot(df150,aes(df150$Exterior.solar.shading.devices)) +
   geom_bar() +
   ylab('Contagem') +
-  xlab('Formato')
+  xlab('Sombreamento')
 
 # tipo de esquadria
 df150 <- within(df150,
@@ -126,7 +126,7 @@ df150 <- within(df150,
 ggplot(df150,aes(df150$Window.frame.type)) +
   geom_bar() +
   ylab('Contagem') +
-  xlab('Formato')
+  xlab('Tipo de esquadria')
 
 # areas zonas
 df_area = data.frame('area' = office_areas)
@@ -134,7 +134,7 @@ df_area = data.frame('area' = office_areas)
 ggplot(df_area,aes(df_area$area)) +
   geom_histogram(binwidth = 5) +
   ylab('Contagem') +
-  xlab('Espessura da parede (m)')
+  xlab('Áreas do escritórios (m²)')
 
 # SOH OS 50!!!
 
@@ -157,7 +157,7 @@ df_vn <- within(df_vn,
 ggplot(df_vn,aes(df_vn$vn)) +
   geom_bar() +
   ylab('Contagem') +
-  xlab('Formato')
+  xlab('Tipo de ventilação natural')
 
 # formato da sala
 
@@ -187,7 +187,7 @@ ggplot(df50,aes(df50$ratio)) +
 ggplot(df50,aes(df50$Pé.direito..piso.forro...m.)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
-  xlab('Razão entre as dimensões da sala')
+  xlab('Pé-direito (m)')
 
 # PAF
 

@@ -3,7 +3,7 @@
 \begin{thebibliography}{}
 \providecommand{\abntrefinfo}[3]{}
 \providecommand{\abntbstabout}[1]{}
-\abntbstabout{v-1.9.6 }
+\abntbstabout{v-1.9.7 }
 
 \bibitem{IEA2018}
 \abntrefinfo{IEA}{IEA}{2018}
@@ -50,6 +50,15 @@ ISSN 0360-1323.
 Dispon{\'\i}vel em:
   \url{https://www.sciencedirect.com/science/article/pii/S0360132314001954}.}
 
+\bibitem{Roetzel2014}
+\abntrefinfo{Roetzel et al.}{ROETZEL et al.}{2014}
+{ROETZEL, A.; TSANGRASSOULIS, A.; DIETRICH, U. {Impact of building design and
+  occupancy on office comfort and energy performance in different climates}.
+\textbf{Building and Environment}, Pergamon, v.~71, p. 165--175, jan 2014.
+ISSN 0360-1323.
+Dispon{\'\i}vel em:
+  \url{https://www.sciencedirect.com/science/article/pii/S0360132313002862}.}
+
 \bibitem{Corgnati2013}
 \abntrefinfo{Corgnati et al.}{CORGNATI et al.}{2013}
 {CORGNATI, S.~P. et al. {Reference buildings for cost optimal analysis: Method
@@ -67,6 +76,23 @@ Dispon{\'\i}vel em:
 ISSN 0306-2619.
 Dispon{\'\i}vel em:
   \url{https://www.sciencedirect.com/science/article/pii/S0306261917315489}.}
+
+\bibitem{Versage2015}
+\abntrefinfo{Versage}{VERSAGE}{2015}
+{VERSAGE, R.
+\textbf{{Metamodelo para estimar a carga t{\'{e}}rmicade
+  edifica{\c{c}}{\~{o}}es condicionadasartificialmente}}.
+Tese (Doutorado) --- Universidade Federal de Santa Catarina, 2015.}
+
+\bibitem{Melo2016}
+\abntrefinfo{Melo et al.}{MELO et al.}{2016}
+{MELO, A. et al. {Development and analysis of a metamodel to represent the
+  thermal behavior of naturally ventilated and artificially air-conditioned
+  residential buildings}.
+\textbf{Energy and Buildings}, Elsevier, v.~112, p. 209--221, jan 2016.
+ISSN 0378-7788.
+Dispon{\'\i}vel em:
+  \url{https://www.sciencedirect.com/science/article/pii/S0378778815304588?via{\\%}3Di}.}
 
 \bibitem{Rackes2016}
 \abntrefinfo{Rackes et al.}{RACKES et al.}{2016}

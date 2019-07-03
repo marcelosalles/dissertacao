@@ -2,3 +2,5 @@ __pycache__/
 marcelo/
 sqlite.err
 *.pyc
+*.Rhistory
+*.oxt
