@@ -121,11 +121,11 @@
 			\item tipo de estratégia de VN (unilateral ou cruzada).
 		\end{itemize} 
 		
-		As faixas de valores desses parâmetros foram observadas, assim como as suas distribuições de ocorrências. Assim, os modelos para as simulações termoenergéticas foram gerados de acordo com o que se encontra em edifícios reais. Como as edificações do banco de dados localizam-se na cidade de São Paulo, esse foi o clima para qual o metamodelo foi desenvolvido.
+		Os valores desses parâmetros foram observadas através de suas distribuições de ocorrência. Desta forma definiu-se os limites mínimos e máximos para o desenvolvimento das simulações termoenergéticas, com parâmetros variando de acordo com o que comumente se encontra em edifícios reais. Como as edificações do banco de dados localizam-se na cidade de São Paulo, esse foi o clima para qual o metamodelo foi desenvolvido.
 		
-		Certas informações não estão disponibilizadas pelo banco de dados analisado, como as relacionadas às propriedades termofísicas dos materiais da envoltória, às densidades de potência de iluminação e equipamentos, e aos padrões e taxas de ocupação. Estes valores foram definidos a partir da \citeauthoronline{INIC} \cite{INIC}. %, através da Tabela 4.1, da Tabela A.1 do anexo A e da Tabela B.I.1 do anexo B.  % Hora início e fim: 8 - 18,  INI-C
+		Certas informações não estão disponibilizadas pelo banco de dados analisado, como as relacionadas às propriedades termofísicas dos materiais da envoltória, às densidades de potência de iluminação e equipamentos, e aos padrões e taxas de ocupação. Esses valores foram definidos a partir da \citeauthoronline{INIC} \cite{INIC}. %, através da Tabela 4.1, da Tabela A.1 do anexo A e da Tabela B.I.1 do anexo B.  % Hora início e fim: 8 - 18,  INI-C
 		
-		Os parâmetros apresentados na Tabela \ref{table:paramconst} mantiveram-se com valores constantes no desenvolvimento do trabalho. Esses valores foram escolhidos a partir do que é apresentado na \citeauthoronline{INIC} \cite{INIC} para a modelagem das edificações nas condições de referência. A cobertura tem suas propriedades termofísicas baseadas na consideração de laje de concreto de 10cm e telha de fibrocimento, separadas por uma câmara de ar. O padrão de ocupação foi definido de acordo com o que é estabelecido para a análise de conforto térmico em edificações de escritórios pelo método simplificado, considerando-se apenas dias de semana. As propriedades termofísicas do piso em contato com solo e da laje entre pavimentos não são mencionadas na INI-C, portanto será considerado, para ambos os casos, uma laje de concreto de 12cm com uma camada de piso cerâmico.
+		Os parâmetros apresentados na Tabela \ref{table:paramconst} mantiveram-se com valores constantes no desenvolvimento do trabalho. Esses valores foram escolhidos a partir do que é apresentado na \citeauthoronline{INIC} \cite{INIC} para a modelagem das edificações nas condições de referência. A cobertura tem suas propriedades termofísicas baseadas na consideração de uma laje de concreto de 10cm e telha de fibrocimento, separadas por uma câmara de ar. O padrão de ocupação foi definido de acordo com o que é estabelecido para a análise de conforto térmico em edificações de escritórios pelo método simplificado, considerando-se apenas dias de semana. As propriedades termofísicas do piso em contato com solo e da laje entre pavimentos não são mencionadas na INI-C, portanto foi considerado, para ambos os casos, uma laje de concreto de 12cm com uma camada de piso cerâmico.
 		
 		\begin{table}[h]
 			\centering
@@ -159,7 +159,8 @@
 %			\end{flushleft}				
 		\end{table}
 		
-		A Tabela \ref{table:paraminic} apresenta os parâmetros que tiveram seus limites mínimos e máximos baseados nos limites apresentados na citeauthoronline{INIC} \cite{INIC} para a aplicação do método simplificado, tanto para edificações condicionadas artificialmente, quanto para edificações naturalmente ventiladas ou híbridas.
+		A Tabela \ref{table:paraminic} apresenta os parâmetros que tiveram seus limites mínimos e máximos baseados nos limites apresentados na \citeauthoronline{INIC} \cite{INIC} para a aplicação do método simplificado, tanto para edificações condicionadas artificialmente, quanto para edificações naturalmente ventiladas ou híbridas.
+		A única excessão é a taxa de ocupação, que é sempre considerada com o valor fixo de 0,10 pessoas/m$^2$ na \citeauthoronline{INIC}. No entanto, sabendo-se da influência que a carga térmica proveniente dos ocupantes e equipamentos elétricos pode ter nas temperaturas das zonas térmicas, optou-se por variar a taxa de ocupação entre a metade e o dobro do que é definido pela instrução normativa. A densidade de potência dos equipamentos varia de acordo com a taxa de ocupação, como apresentado previamente na Tabela \ref{table:paramconst}.
 		
 		\begin{table}[h]
 			\centering
@@ -185,8 +186,6 @@
 %			\end{flushleft}				
 		\end{table}
 	
-	Na citeauthoronline{INIC} \cite{INIC}, a taxa de ocupação é sempre considerada com o valor fixo de 0,10 pessoas/m$^2$. No entanto, sabendo-se da influência que a carga térmica proveniente dos ocupantes e equipamentos elétricos pode ter nas temperaturas das zonas térmicas, optou-se por variar a taxa de ocupação entre a metade e o dobro do que é definido pela instrução normativa. A densidade de potência dos equipamentos equipamentos varia de acordo com a taxa de ocupação.
-		
 		\subsection{Parâmetro de saída}
 		
 		A variável de saída do metamodelo desenvolvido é a fração de horas de desconforto por calor (EHF). Neste trabalho, o indicador escolhido para o limite superior da temperatura é estabelecido pelo método de conforto adaptativo da \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}, para 80\% de satisfação entre os ocupantes. O desconforto por frio não foi considerado.
@@ -207,8 +206,30 @@
 		$timesteps_{ocup}$ é igual ao número de \textit{timesteps} em que há ocupação na zona térmica.
 		\\
 		
-		Na aplicação do metamodelo, considerou-se a velocidade do ar, que aumenta o limite superior da faixa de conforto. O propósito ao se considerar a velocidade do ar é avaliar o potencial de uso para ventiladores.		
+		Para avaliar o potencial do uso de ventiladores, o movimento do ar foi considerada para o desenvolvimento metamodelo.
+		A \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017} considera um aumento no limite superior da faixa de conforto térmico de acordo com a velocidade do ar.
+		O aumento de aceitabilidade da temperatura operativa foi considerado para os três valores de velocidade do ar apresentados na Tabela \ref{table:var}, além da possibilidade se assumir o valor de velocidade do ar igual a zero, caso o uso de ventilador não tenha sido considerado.
 		
+		\begin{table}[h]
+			\centering
+			\caption{Aumento no limite superior da faixa de conforto em relação à velocidade do ar.}
+			\label{table:var}
+			\begin{tabular}{|c |c |}
+				\hline
+				\textbf{Velocidade média do ar} & \textbf{Temperatura} \\
+				\hline
+				0,6 m/s & 1,2 K \\
+				\hline
+				0,9 m/s & 1,8 K \\
+				\hline
+				1,2 m/s & 2,2 K \\
+				\hline 
+			\end{tabular}
+			\begin{flushleft}
+				Fonte:  \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}.
+			\end{flushleft}				
+		\end{table}
+	
 		Como o modelo de ventilação natural do programa EnergyPlus não calcula a velocidade do ar dentro das zonas, a consideração foi aplicada após as simulações, no momento da avaliação do conforto em cada \textit{timestep}. A consideração da velocidade do ar foi realizada de acordo com a Equação \ref{eq:Tsup}.
 		
 		\begin{equation}
@@ -224,30 +245,6 @@
 		
 		$T_{v_{ar}}$ é igual à margem extra de temperatura permitida pela consideração da velocidade do ar.
 		\\
-		
-		Quando utilizado o método de conforto adaptativo da \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}, o aumento no limite superior de temperatura em relação à velocidade do ar é baseado na Tabela \ref{table:var}.
-		
-		\begin{table}[h]
-			\centering
-			\caption{Aumento nos limites de aceitabilidade de temperatura operativa em ambientes naturalmente condicionados controlados pelo usuário.}
-			\label{table:var}
-			\begin{tabular}{|c |c |}
-				\hline
-				\textbf{Velocidade média do ar} & \textbf{Temperatura} \\
-				\hline
-				0,6 m/s & 1,2 K \\
-				\hline
-				0,9 m/s & 1,8 K \\
-				\hline
-				1,2 m/s & 2,2 K \\
-				\hline 
-			\end{tabular}
-			\begin{flushleft}
-			Fonte:  \citeauthoronline{ASHRAEStandard552017} \cite{ASHRAEStandard552017}.
-			\end{flushleft}				
-		\end{table}
-	
-		Baseando-se nos valores da Tabela \ref{table:var}, essas três possibilidades foram consideradas, além do valor igual a zero, caso o uso de ventilador não tenha sido considerado.
 		
 		\section{Simulação termoenergética}
 		
@@ -297,37 +294,37 @@
 %			\end{flushleft}				
 %		\end{table}
 
-		As simulações foram realizadas através do programa de simulação computacional EnergyPlus 8.9 \cite{EnergyPlus2018}. Os modelos simulados foram obtidos a partir da parametrização de uma tipologia base, que permite a variação de diferentes parâmetros.  % variados pelo método de amostragem do hipercubo latino (HCL).
-		Inicialmente, cada simulação representou um pavimento de uma edificação com seis salas de escritórios, onde cada sala representava uma zona térmica (Figura \ref{fig:croqui}). A circulação entre os escritórios foi modelada com duas janelas, uma em cada extremidade.
+		As simulações foram realizadas através do programa de simulação computacional EnergyPlus 8.9 \cite{EnergyPlus2018} e os modelos simulados foram obtidos a partir da parametrização de uma tipologia base, que permite a variação de diferentes parâmetros.  % variados pelo método de amostragem do hipercubo latino (HCL).
+		Inicialmente, cada simulação representou um pavimento de uma edificação com seis salas de escritórios, onde cada sala representava uma zona térmica (Figura \ref{fig:croqui}).
+		Devido a limitações na obtenção dos coeficientes de pressão (Cp) para as faces externas da edificação, as edificações foram modeladas com pavimentos de forma retangular.
 		O solo foi modelado pelos objetos do \textit{Ground Domain}, nos casos onde o contato com solo foi considerado. As superfícies superiores e inferiores consideradas ajacentes a outros pavimentos do edifício foram modeladas como adiabáticas.
-		Devido a limitações na obtenção dos coeficientes de pressão (Cp) para as faces externas da edificação, as edificações foram sempre consideradas com base retangular.
 		
 		\begin{figure}[h]
 			\centering
 			\caption{Croqui da tipologia base}
 			\includegraphics[width=1\linewidth]{img/croqui.png}
 			\label{fig:croqui}
-			\begin{flushleft}
-				Fonte: o autor.
-			\end{flushleft}
+%			\begin{flushleft}
+%				Fonte: o autor.
+%			\end{flushleft}
 		\end{figure}
 		
 		
-		A partir dessa tipologia, definiu-se diferentes proporções geométricas, levando-se em consideração a largura, profundidade, altura da edificação e o pé-direito. Também foram parametrizados a altura do pavimento e a orientação solar da edificação.
+		A partir da tipologia base, foi possível definir diferentes proporções geométricas, levando-se em consideração a largura, profundidade, altura da edificação e o pé-direito. Também foram parametrizadas a altura do pavimento e a orientação solar da edificação.
 		
-		As aberturas do modelo também forma variadas. Cada sala foi modelada com uma porta. Salas com apenas uma fachada, foram modeladas uma janela; salas com duas fachadas foram modeladas com uma ou duas janelas. Desta forma, foi possível explorar casos com VN unilateral e cruzada. As janelas foram modeladas com diferentes frações de abertura para representar diferentes modelos de janela encontrados nas edificações de escritórios. As dimensões das janelas também foram parametrizadas de acordo com o percentual de abertura da fachada (PAF).
+		A parametrização nas propriedades termofísicas das paredes e vidros permitiu a consideração de diferentes materiais construtivos, possibilitando a descrição de uma quantidade significativa do universo de casos aplicáveis às edificações de escritórios consideradas. %Foram parametrizadas a transmitância térmica, capacidade térmica e absortância.
+		
+		Para considerar o uso de ventilação natural (VN), é fundamental a modelagem das trocas de ar nos escritórios. A modelagem da VN nas simulações foi realizada com os objetos do \textit{AirflowNetwork} (AFN) do EnergyPlus \cite{EnergyPlus2018}.
+		Para possibilitar trocas de ar, elementos de ligação do AFN foram modelados em todas as zonas térmicas. 
+		Cada sala foi modelada com uma porta, voltada para a circulação.
+		Na circulação, além das portas das salas, duas janelas foram modeladas, uma em cada extremidade. 
+		Salas com apenas uma fachada foram modeladas com uma janela; salas com duas fachadas foram modeladas com uma ou duas janelas. Isso possibilitou explorar casos com diferentes configurações de exposição das superfícies, considerando-se VN unilateral e cruzada.		
+		As dimensões das janelas das salas foram parametrizadas de acordo com o percentual de abertura da fachada (PAF), permitindo diferentes frações de abertura para representar diferentes modelos de janela encontrados nas edificações de escritórios existentes no banco de dados.
 		%Além da área da abertura ter influência direta nas trocas de ar das zonas, a altura também pode ter influência devido à força de empuxo causada pelas diferenças de densidade do ar. Devido a isso, a altura da janela também foi parametrizada.
 %		Para o vidro das janelas considerou-se diferentes valores para o fator solar.
-		
-		A parametrização nas propriedades termofísicas da envoltória considerou diferentes materiais construtivos, possibilitando a descrição de uma quantidade significativa do universo de casos aplicáveis às edificações de escritórios consideradas. %Foram parametrizadas a transmitância térmica, capacidade térmica e absortância.
-		
 %		\subsection{Ventilação natural no modelo preliminar}
-		
-		A ventilação natural foi modelada a partir dos objetos do \textit{AirflowNetwork} (AFN) do EnergyPlus \cite{EnergyPlus2018}.
-		
 		O controle das janelas foi estabelecido pela diferença de temperatura entre o ar externo e o ar da zona. As trocas de ar nas portas foi modelada apenas por frestas, por considerar-se que portas de escritórios não ficam abertas normalmente.
-		
-		Os coeficientes de pressão nos nós externos à edificação foram definidos através da base de dados da Universidade Politécnica de Tóquio (UPT) \cite{TPU2018}, e para cada janela foi utilizado o valor médio dos pontos disponíveis para sua área na fachada, de acordo com a Figura \ref{fig:tpuwindows}.
+		Os coeficientes de pressão nos nós externos à edificação foram definidos através da base de dados da Universidade Politécnica de Tóquio (TPU) \cite{TPU2018}, e para cada janela foi utilizado o valor médio dos pontos disponíveis para sua área na fachada, de acordo com o exemplo da Figura \ref{fig:tpuwindows}. A altura dos pontos a serem utilizadas foi escolhida de acordo com a altura do definida para o pavimento simulado em relação às proporções do edifício.
 		
 		\begin{figure}[h]
 			\centering
@@ -342,88 +339,88 @@
 		
 		\subsection{Simulações simplificadas}
 		
-		O objetivo de gerar um modelo de RNA para se obter a EHF faz com que se busque parametrizar ao máximo os modelos desenvolvidos no EnergyPlus. Essa parametrização pode facilitar o desenvolvimento de amostras para a pesquisa, assim como garantir uma relação mais direta dos parâmetros de entrada com os dados de saída. Portanto, nesta etapa do método busca-se simplificar e parametrizar o modelo de escritório desenvolvido no EnergyPlus, atentando-se às limitações relacionadas à simplificação do modelo.
+		O objetivo de gerar um modelo de RNA para se obter a EHF faz com que se busque parametrizar ao máximo os modelos desenvolvidos no EnergyPlus. Essa parametrização pode facilitar o desenvolvimento de amostras para a pesquisa, assim como garantir uma relação mais direta dos parâmetros de entrada com os dados de saída. Portanto, nesta etapa do método buscou-se simplificar e parametrizar o modelo de escritório desenvolvido no EnergyPlus, atentando-se às limitações relacionadas à simplificação do modelo.
 		Dentre as simplificações consideradas, estão:
 		
 		\begin{itemize}
-		\item cálculo do Cp através do método analítico, em vez dos dados obtido por medições em túnel de vento pela UPT;
-		\item representação dos materiais da envoltória através de duas camadas: uma camada representando a capacidade térmica (concreto), e uma camada para regular a transmitância (objeto Material:NoMass);
+		\item cálculo do Cp através do método analítico, em vez dos dados obtido por medições em túnel de vento pela TPU;
+		\item representação dos materiais da envoltória através de duas camadas: uma camada representando a capacidade térmica, e uma camada para regular a transmitância;  %(concreto)  (objeto Material:NoMass)
 		\item modelagem da zona que representa apenas um escritório, sem modelar as demais zonas térmicas da edificação. Para isso, são definidas as condições de contorno relacionadas às faces da zona correspondentes a paredes adjacentes à edificação;
 		\item definição de um coeficiente de infiltração relacionado à infiltração de ar pela porta, e do valor de Cp relacionado e essa porta, que no modelo de uma zona estará voltada para o ambiente externo, e não para a circulação.
 		\end{itemize}
 		
-		O impacto nos resultados das simulações serão verificados para cada uma das simplificações mencionadas. Desta forma, será definida a forma mais adequada de simplificar o modelo, assim como a margem de erro que espera-se encontrar ao assumir tais simplificações.
+		O impacto nos resultados das simulações foram verificados para cada uma das simplificações mencionadas. Desta forma foi definida a forma mais adequada de se simplificar o modelo, assim como a margem de erro que espera-se encontrar ao assumir tais simplificações.
 		
-		Nem todos os parâmetros foram variados em todas as etapas deste processo. Optou-se por variar apenas os parâmetros que pudessem influenciar os resultados relacionados a cada análise. Quando não variados, os parâmtros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
+%		Nem todos os parâmetros foram variados em todas as etapas deste processo. Optou-se por variar apenas os parâmetros que pudessem influenciar os resultados relacionados a cada análise. Quando não variados, os parâmtros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
+%		
+%		\begin{table}[h]
+%			\centering
+%			\caption{Parâmetros fixados na validação do modelo analítico para o cálculo do Cp.}
+%			\label{table:paramfix}
+%			\begin{tabular}{|c |c |}
+%				\hline
+%				\textbf{Parâmetro} & \textbf{Valor adotado} \\
+%				\hline
+%				Altura do pavimento & 15 m \\
+%				\hline
+%				Fator solar do vidro & 0,87 \\
+%				\hline
+%				Fator de abertura da janela & 1,0 \\
+%				\hline
+%				Capacidade térmica da parede & 155 kJ/m$^2$K \\
+%				\hline
+%				Absortância da parede & 0,5 \\
+%				\hline 
+%				Ângulo de sombreamento & 0 graus \\
+%				\hline 
+%			\end{tabular}
+%			\begin{flushleft}
+%				Fonte: o autor.
+%			\end{flushleft}				
+%		\end{table}
+%		
+%		
+%		\subsection{Túnel de vento x Método analítico}
 		
-		\begin{table}[h]
-			\centering
-			\caption{Parâmetros fixados na validação do modelo analítico para o cálculo do Cp.}
-			\label{table:paramfix}
-			\begin{tabular}{|c |c |}
-				\hline
-				\textbf{Parâmetro} & \textbf{Valor adotado} \\
-				\hline
-				Altura do pavimento & 15 m \\
-				\hline
-				Fator solar do vidro & 0,87 \\
-				\hline
-				Fator de abertura da janela & 1,0 \\
-				\hline
-				Capacidade térmica da parede & 155 kJ/m$^2$K \\
-				\hline
-				Absortância da parede & 0,5 \\
-				\hline 
-				Ângulo de sombreamento & 0 graus \\
-				\hline 
-			\end{tabular}
-			\begin{flushleft}
-				Fonte: o autor.
-			\end{flushleft}				
-		\end{table}
-		
-		
-		\subsection{Túnel de vento x Método analítico}
-		
-		Para verificar o quanto os resultados das simulações são influenciados pela fonte utilizada na definição dos valores de Cp, comparou-se os resultados de trocas de ar por hora (ACH) e EHF em simulações com valores de Cp obtidos pela base da UPT aos resultados obtidos para simulações com valores de Cp obtidos pelo método analítico padrão do EnergyPlus.
+		Para verificar o quanto os resultados das simulações são influenciados pela fonte utilizada na definição dos valores de Cp, comparou-se os resultados de trocas de ar por hora (ACH) e EHF em simulações com valores de Cp obtidos pela base da TPU aos resultados obtidos para simulações com valores de Cp obtidos pelo método analítico padrão do EnergyPlus.
 		No caso de edificações altas (\textit{highrise}), utiliza-se o modelo de \citeauthoronline{Atkins} \cite{Atkins}. No caso de edificações baixas (\textit{lowrise}), utiliza-se o modelo de \citeauthoronline{SwamiChandra} \cite{SwamiChandra}.
 		
-		Equanto valores de Cp através do método analítico podem ser obtidos pra quaisquer razões entre dimensões das fachadas da edificação, os valores da base da UPT são fornecido para edificações com geometrias específicas. Ambas as fontes são limitadas a edificações retangulares.
+		Enquanto valores de Cp através do método analítico podem ser obtidos pra quaisquer razões entre dimensões das fachadas da edificação, os valores da base da TPU são fornecido para edificações com geometrias específicas. Ambas as fontes têm aplicação limitada a edificações retangulares.
 		
-		Para o tipo de edificação simulados neste estudo, a UPT disponibiliza valores de Cp para 25 geometrias diferentes, das quais 13 são para edificações altas (\textit{highrise}), e 12 são para edificações baixas (\textit{lowrise}). Para cada uma dessas geometrias disponíveis, valores de Cp são disponibilizados para diversos pontos na fachada da edificação, de acordo com a Figura \ref{fig:tpupoints}.
+		Para o tipo de edificação simulados neste estudo, a TPU disponibiliza valores de Cp para 25 geometrias diferentes, das quais 13 são para edificações altas (\textit{highrise}), e 12 são para edificações baixas (\textit{lowrise}).
+%		Para cada uma dessas geometrias disponíveis, valores de Cp são disponibilizados para diversos pontos na fachada da edificação, de acordo com a Figura \ref{fig:tpupoints}.
+%		
+%		\begin{figure}[h]
+%			\centering
+%			\caption{Exemplo do posicionamento dos pontos com valores de Cp na fachada}
+%			\includegraphics[width=1\linewidth]{img/tpu_points.png}
+%			\label{fig:tpupoints}
+%			\begin{flushleft}
+%				Fonte: \citeauthoronline{TPU2018} \cite{TPU2018}, adaptado pelo autor.
+%			\end{flushleft}
+%		\end{figure}
 		
-		\begin{figure}[h]
-			\centering
-			\caption{Exemplo do posicionamento dos pontos com valores de Cp na fachada}
-			\includegraphics[width=1\linewidth]{img/tpu_points.png}
-			\label{fig:tpupoints}
-			\begin{flushleft}
-				Fonte: \citeauthoronline{TPU2018} \cite{TPU2018}, adaptado pelo autor.
-			\end{flushleft}
-		\end{figure}
-		
-		
-		Para verificar as diferenças nos valores de Cp, calculou-se valores de Cp correspondentes a cada geometria disponível pela UPT através do método analítico, e subtraiu-se o valor de Cp calculado para cada fachada pelos valores disponibilizados pela base da UPT para a fachada correspondente (Equação \ref{eq:Cpdiff}).
+		Para verificar as diferenças nos valores de Cp, calculou-se valores de Cp correspondentes a cada geometria disponível pela TPU através do método analítico e subtraiu-se o valor de Cp calculado para cada fachada pelos valores disponibilizados pela base da TPU para a fachada correspondente (Equação \ref{eq:Cpdiff}).
 		
 		\begin{equation}
 		\label{eq:Cpdiff}
-		\delta_{Cp} = Cp_{UPT,i,j} - Cp_{ANALITICO, i}
+		\delta_{Cp} = Cp_{TPU,i,j} - Cp_{ANALITICO, i}
 		\end{equation}
 		
 		Onde:
 		
 		$\delta_{Cp}$ é igual à diferença entre o valore de Cp obtido pelos diferentes métodos;
 		
-		$Cp_{UPT,i,j}$ é igual ao valor de Cp disponibilizado pela base de dados da UPT para o ponto $j$ da fachada $i$;
+		$Cp_{TPU,i,j}$ é igual ao valor de Cp disponibilizado pela base de dados da TPU para o ponto $j$ da fachada $i$;
 		
 		$Cp_{ANALITICO, i}$ é igual ao valor de Cp calculado pelo método analítico para a fachada $i$.
 		\\
 		
 		A partir dessas diferenças entre os valores de Cp, escolheu-se a geometria com a maior diferença absoluta média para se analisar a influência da diferença desses valores nos resultados das simulações no EnergyPlus.
 		
-		O modelo base para verificar as diferenças dos resultados utilizando-se valores de Cp com origens diferentes foi o modelo preliminar do pavimento de escritórios. Para evitar a influência do solo e da cobertura, considerou-se o pavimento intermediário. A base da UPT permite a obtenção de diferentes coeficientes de pressão para diferentes janelas, como mencionado na seção anterior. No modelo baseado no método analítico, utilizou-se um valor de Cp por fachada, devido à limitação do método. Uma amostra de 1000 casos foi gerada pelo método de amostragem do HCL. A amostra gerada teve os seguintes parâmetros variados: área da zona, altura do pavimento, azimute do eixo principal, pé-direito, PAF, fator de abertura da janela, transmitância da parede, densidade de ocupação. A razão entre largura e profundidade das zonas foi alterade para se ajustar com a geometria da edificação descrita pela base de dados da UPT utilizada como referência para a análise. Os demais parâmtros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
+		O modelo base para verificar as diferenças dos resultados utilizando-se valores de Cp com origens diferentes foi o modelo preliminar do pavimento de escritórios. Para evitar a influência do solo e da cobertura, considerou-se o pavimento intermediário. A base da TPU permite a obtenção de diferentes coeficientes de pressão para diferentes janelas, como mencionado na seção anterior. No modelo baseado no método analítico, utilizou-se um valor de Cp por fachada, devido à limitação do método. Uma amostra de 1000 casos foi gerada pelo método de amostragem do HCL. A amostra gerada teve os seguintes parâmetros variados: área da zona, altura do pavimento, azimute do eixo principal, pé-direito, PAF, fator de abertura da janela, transmitância da parede, densidade de ocupação. A razão entre largura e profundidade das zonas foi alterade para se ajustar com a geometria da edificação descrita pela base de dados da TPU utilizada como referência para a análise. Os demais parâmtros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
 				
-		Para cada caso da amostra, foram simulados um modelo com Cp’s baseados no método analítico, e um modelo com Cp’s baseados na base da UPT (túnel de vento).
+		Para cada caso da amostra, foram simulados um modelo com Cp’s baseados no método analítico, e um modelo com Cp’s baseados na base da TPU (túnel de vento).
 		
 		\subsection{Representação da envoltória}
 		
