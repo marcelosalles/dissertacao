@@ -4,3 +4,9 @@ sqlite.err
 *.pyc
 *.Rhistory
 *.oxt
+*.aux
+*.ist
+*.log
+*.out
+*.synctex.gz
+
