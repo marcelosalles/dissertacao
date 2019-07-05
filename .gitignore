@@ -4,9 +4,17 @@ sqlite.err
 *.pyc
 *.Rhistory
 *.oxt
+
+*.acn
 *.aux
+*.bbl
+*.blg
 *.ist
+*.lof
 *.log
+*.lot
 *.out
+*.slo
 *.synctex.gz
+*.toc
 
