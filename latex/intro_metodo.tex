@@ -296,7 +296,6 @@
 
 		As simulações foram realizadas através do programa de simulação computacional EnergyPlus 8.9 \cite{EnergyPlus2018} e os modelos simulados foram obtidos a partir da parametrização de uma tipologia base, que permite a variação de diferentes parâmetros.  % variados pelo método de amostragem do hipercubo latino (HCL).
 		Inicialmente, cada simulação representou um pavimento de uma edificação com seis salas de escritórios, onde cada sala representava uma zona térmica (Figura \ref{fig:croqui}).
-		Devido a limitações na obtenção dos coeficientes de pressão (Cp) para as faces externas da edificação, as edificações foram modeladas com pavimentos de forma retangular.
 		O solo foi modelado pelos objetos do \textit{Ground Domain}, nos casos onde o contato com solo foi considerado. As superfícies superiores e inferiores consideradas ajacentes a outros pavimentos do edifício foram modeladas como adiabáticas.
 		
 		\begin{figure}[h]
@@ -311,6 +310,7 @@
 		
 		
 		A partir da tipologia base, foi possível definir diferentes proporções geométricas, levando-se em consideração a largura, profundidade, altura da edificação e o pé-direito. Também foram parametrizadas a altura do pavimento e a orientação solar da edificação.
+		Devido a limitações na obtenção dos coeficientes de pressão (Cp) para as faces externas da edificação, as edificações foram modeladas com pavimentos de forma retangular.
 		
 		A parametrização nas propriedades termofísicas das paredes e vidros permitiu a consideração de diferentes materiais construtivos, possibilitando a descrição de uma quantidade significativa do universo de casos aplicáveis às edificações de escritórios consideradas. %Foram parametrizadas a transmitância térmica, capacidade térmica e absortância.
 		
@@ -323,7 +323,8 @@
 		%Além da área da abertura ter influência direta nas trocas de ar das zonas, a altura também pode ter influência devido à força de empuxo causada pelas diferenças de densidade do ar. Devido a isso, a altura da janela também foi parametrizada.
 %		Para o vidro das janelas considerou-se diferentes valores para o fator solar.
 %		\subsection{Ventilação natural no modelo preliminar}
-		O controle das janelas foi estabelecido pela diferença de temperatura entre o ar externo e o ar da zona. As trocas de ar nas portas foi modelada apenas por frestas, por considerar-se que portas de escritórios não ficam abertas normalmente.
+		O controle das janelas foi estabelecido pela diferença de temperatura entre o ar externo e o ar da zona.
+		As trocas de ar nas portas foram modeladas apenas por frestas, por considerar-se que portas de escritórios não ficam abertas normalmente.  % MELHORAR!!!
 		Os coeficientes de pressão nos nós externos à edificação foram definidos através da base de dados da Universidade Politécnica de Tóquio (TPU) \cite{TPU2018}, e para cada janela foi utilizado o valor médio dos pontos disponíveis para sua área na fachada, de acordo com o exemplo da Figura \ref{fig:tpuwindows}. A altura dos pontos a serem utilizadas foi escolhida de acordo com a altura do definida para o pavimento simulado em relação às proporções do edifício.
 		
 		\begin{figure}[h]
@@ -339,17 +340,20 @@
 		
 		\subsection{Simulações simplificadas}
 		
-		O objetivo de gerar um modelo de RNA para se obter a EHF faz com que se busque parametrizar ao máximo os modelos desenvolvidos no EnergyPlus. Essa parametrização pode facilitar o desenvolvimento de amostras para a pesquisa, assim como garantir uma relação mais direta dos parâmetros de entrada com os dados de saída. Portanto, nesta etapa do método buscou-se simplificar e parametrizar o modelo de escritório desenvolvido no EnergyPlus, atentando-se às limitações relacionadas à simplificação do modelo.
+		Nesta etapa do método, buscou-se simplificar o modelo de escritório desenvolvido no EnergyPlus, atentando-se às limitações relacionadas à simplificação do modelo.
+		O objetivo de gerar um metamodelo por meio de redes neurais artificiais (RNA) para se obter a EHF faz com que se busque parametrizar ao máximo as simulações no EnergyPlus.
+		Essa parametrização pode facilitar o desenvolvimento de amostras para a pesquisa, assim como garantir uma relação mais direta dos parâmetros de entrada com os dados de saída. 
 		Dentre as simplificações consideradas, estão:
 		
 		\begin{itemize}
-		\item cálculo do Cp através do método analítico, em vez dos dados obtido por medições em túnel de vento pela TPU;
+		\item cálculo do Cp através do método analítico, em vez dos valores obtidos por medições em túnel de vento pela TPU;
 		\item representação dos materiais da envoltória através de duas camadas: uma camada representando a capacidade térmica, e uma camada para regular a transmitância;  %(concreto)  (objeto Material:NoMass)
 		\item modelagem da zona que representa apenas um escritório, sem modelar as demais zonas térmicas da edificação. Para isso, são definidas as condições de contorno relacionadas às faces da zona correspondentes a paredes adjacentes à edificação;
-		\item definição de um coeficiente de infiltração relacionado à infiltração de ar pela porta, e do valor de Cp relacionado e essa porta, que no modelo de uma zona estará voltada para o ambiente externo, e não para a circulação.
+		\item definição de um coeficiente de infiltração relacionado à infiltração de ar pela porta, e do valor do Cp relacionado a essa porta, que no modelo de uma zona está voltada para o ambiente externo, e não para a circulação.
 		\end{itemize}
 		
 		O impacto nos resultados das simulações foram verificados para cada uma das simplificações mencionadas. Desta forma foi definida a forma mais adequada de se simplificar o modelo, assim como a margem de erro que espera-se encontrar ao assumir tais simplificações.
+		A seguir, cada uma dessas etapas é descrita.
 		
 %		Nem todos os parâmetros foram variados em todas as etapas deste processo. Optou-se por variar apenas os parâmetros que pudessem influenciar os resultados relacionados a cada análise. Quando não variados, os parâmtros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
 %		
@@ -380,14 +384,35 @@
 %		\end{table}
 %		
 %		
-%		\subsection{Túnel de vento x Método analítico}
+		\subsubsection{Cálculo do Cp pelo método analítico}
 		
-		Para verificar o quanto os resultados das simulações são influenciados pela fonte utilizada na definição dos valores de Cp, comparou-se os resultados de trocas de ar por hora (ACH) e EHF em simulações com valores de Cp obtidos pela base da TPU aos resultados obtidos para simulações com valores de Cp obtidos pelo método analítico padrão do EnergyPlus.
-		No caso de edificações altas (\textit{highrise}), utiliza-se o modelo de \citeauthoronline{Atkins} \cite{Atkins}. No caso de edificações baixas (\textit{lowrise}), utiliza-se o modelo de \citeauthoronline{SwamiChandra} \cite{SwamiChandra}.
+		O EnergyPlus, através do AFN, possui uma opção para calcular automaticamente os Cp's para as simulações.
+		Quando essa opção é escolhida, o programa gera apenas um Cp por fachada da edificação, que podem ser obtidos por dois algorítimos diferentes: no caso de edificações altas (\textit{highrise}), utiliza-se o modelo de \citeauthoronline{Atkins} \cite{Atkins}; no caso de edificações baixas (\textit{lowrise}), utiliza-se o modelo de \citeauthoronline{SwamiChandra} \cite{SwamiChandra}.
+		Enquanto que pelo método analítico os Cp's podem ser obtidos para quaisquer razões entre as dimensões das fachadas da edificação, os valores medidos em túnel de vento pela TPU são fornecidos para edificações com geometrias específicas.  % Ambas as fontes têm aplicação limitada a edificações retangulares.
+		Os valores de Cp para o tipo de edificação abordada neste estudo são disponibilizados pela TPU para 25 geometrias diferentes, das quais 13 são para edificações \textit{highrise}, e 12 são para edificações \textit{lowrise}.
 		
-		Enquanto valores de Cp através do método analítico podem ser obtidos pra quaisquer razões entre dimensões das fachadas da edificação, os valores da base da TPU são fornecido para edificações com geometrias específicas. Ambas as fontes têm aplicação limitada a edificações retangulares.
+		Para verificar o quanto a fonte escolhida na definição dos Cp's influencia nos resultados das simulações, inicialmente verificou-se as diferenças entre os valores dos Cp's das medições em túnel de vento (fornecidos pela TPU), e os valores dos Cp's obtidos pelo método analítico (algorítimos do EnergyPlus), de acordo com a Equação \ref{eq:Cpdiff}.
 		
-		Para o tipo de edificação simulados neste estudo, a TPU disponibiliza valores de Cp para 25 geometrias diferentes, das quais 13 são para edificações altas (\textit{highrise}), e 12 são para edificações baixas (\textit{lowrise}).
+		\begin{equation}
+		\label{eq:Cpdiff}
+		\Delta_{Cp,i,j,\alpha} = Cp_{TPU,i,j,\alpha} - Cp_{ANALITICO,i,\alpha}
+		\end{equation}
+		
+		Onde:
+		
+		$\Delta_{Cp,i,j,\alpha}$ é igual à diferença entre o valor dos Cp's em um ponto $i$, de uma fachada $j$, para o ângulo do vento igual a $\alpha$;
+		
+		$Cp_{TPU,i,j,\alpha}$ é igual ao Cp disponibilizado pela base de dados da TPU para o ponto $i$ de uma fachada $j$, para o ângulo do vento igual a $\alpha$;
+		
+		$Cp_{ANALITICO,j,\alpha}$ é igual ao Cp calculado pelo método analítico para uma fachada de proporções iguais às da fachada $j$, para o ângulo do vento igual a $\alpha$.
+		\\
+		
+%		Cada Cp médio ($Cp_{TPU,i,j}$), medido pela TPU em um ponto $j$ de uma fachada $i$, teve um Cp correspondente calculado pelo método analítico ($Cp_{ANALITICO, i}$), para a mesma fachada $i$. Essa subtração foi efetuada para os diferentes ângulos ($\alpha$) disponíveis na base da TPU.
+%		As diferenças entre os valores dos Cp's foram calculadas obtendo-se o Cp pelo método analítico para cada fachada, de cada geometria disponível pela TPU, e subtraindo-se o valor do Cp calculado pelos valores disponibilizados pela base da TPU para a sua fachada correspondente (Equação \ref{eq:Cpdiff}).
+
+		A partir dessas diferenças entre os valores de Cp ($\delta_{Cp}$), escolheu-se a geometria com a maior diferença absoluta média para se analisar a influência da diferença desses valores nos resultados das simulações no EnergyPlus.
+		Para verificar o quanto a fonte utilizada na definição dos Cp's influencia nos resultados das simulações, as trocas de ar por hora (ACH) e a EHF foram comparadas entre simulações com Cp's medidos em túnel de vento pela TPU, e simulações com Cp's obtidos pelos métodos analíticos padrão do EnergyPlus.
+				
 %		Para cada uma dessas geometrias disponíveis, valores de Cp são disponibilizados para diversos pontos na fachada da edificação, de acordo com a Figura \ref{fig:tpupoints}.
 %		
 %		\begin{figure}[h]
@@ -400,25 +425,8 @@
 %			\end{flushleft}
 %		\end{figure}
 		
-		Para verificar as diferenças nos valores de Cp, calculou-se valores de Cp correspondentes a cada geometria disponível pela TPU através do método analítico e subtraiu-se o valor de Cp calculado para cada fachada pelos valores disponibilizados pela base da TPU para a fachada correspondente (Equação \ref{eq:Cpdiff}).
 		
-		\begin{equation}
-		\label{eq:Cpdiff}
-		\delta_{Cp} = Cp_{TPU,i,j} - Cp_{ANALITICO, i}
-		\end{equation}
-		
-		Onde:
-		
-		$\delta_{Cp}$ é igual à diferença entre o valore de Cp obtido pelos diferentes métodos;
-		
-		$Cp_{TPU,i,j}$ é igual ao valor de Cp disponibilizado pela base de dados da TPU para o ponto $j$ da fachada $i$;
-		
-		$Cp_{ANALITICO, i}$ é igual ao valor de Cp calculado pelo método analítico para a fachada $i$.
-		\\
-		
-		A partir dessas diferenças entre os valores de Cp, escolheu-se a geometria com a maior diferença absoluta média para se analisar a influência da diferença desses valores nos resultados das simulações no EnergyPlus.
-		
-		O modelo base para verificar as diferenças dos resultados utilizando-se valores de Cp com origens diferentes foi o modelo preliminar do pavimento de escritórios. Para evitar a influência do solo e da cobertura, considerou-se o pavimento intermediário. A base da TPU permite a obtenção de diferentes coeficientes de pressão para diferentes janelas, como mencionado na seção anterior. No modelo baseado no método analítico, utilizou-se um valor de Cp por fachada, devido à limitação do método. Uma amostra de 1000 casos foi gerada pelo método de amostragem do HCL. A amostra gerada teve os seguintes parâmetros variados: área da zona, altura do pavimento, azimute do eixo principal, pé-direito, PAF, fator de abertura da janela, transmitância da parede, densidade de ocupação. A razão entre largura e profundidade das zonas foi alterade para se ajustar com a geometria da edificação descrita pela base de dados da TPU utilizada como referência para a análise. Os demais parâmtros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
+		O modelo base para verificar as diferenças dos resultados utilizando-se valores de Cp com origens diferentes foi o modelo preliminar do pavimento de escritórios. Para evitar a influência do solo e da cobertura, considerou-se o pavimento intermediário. A base da TPU permite a obtenção de diferentes coeficientes de pressão para diferentes janelas, como mencionado na seção anterior. No modelo baseado no método analítico, utilizou-se um valor de Cp por fachada, devido à limitação do método. Uma amostra de 1000 casos foi gerada pelo método de amostragem do HCL. A amostra gerada teve os seguintes parâmetros variados: área da zona, altura do pavimento, azimute do eixo principal, pé-direito, PAF, fator de abertura da janela, transmitância da parede, densidade de ocupação. A razão entre largura e profundidade das zonas foi alterade para se ajustar com a geometria da edificação descrita pela base de dados da TPU utilizada como referência para a análise. Os demais parâmetros tiveram seus valores fixados de acordo com a Tabela \ref{table:paramfix}.
 				
 		Para cada caso da amostra, foram simulados um modelo com Cp’s baseados no método analítico, e um modelo com Cp’s baseados na base da TPU (túnel de vento).
 		
