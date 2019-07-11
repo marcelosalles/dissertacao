@@ -302,7 +302,7 @@
 		\begin{figure}[h]
 			\centering
 			\caption{Croqui da tipologia base}
-			\includegraphics[width=1\linewidth]{img/croqui.png}
+			\includegraphics[width=1\linewidth]{img/croqui_07-11.png}
 			\label{fig:croqui}
 %			\begin{flushleft}
 %				Fonte: o autor.
@@ -327,17 +327,17 @@
 %		\subsection{Ventilação natural no modelo preliminar}
 		O controle das janelas foi estabelecido pela diferença de temperatura entre o ar externo e o ar da zona.
 		As trocas de ar nas portas foram modeladas apenas por frestas, por considerar-se que portas de escritórios não ficam abertas normalmente.  % MELHORAR!!!
-		Os coeficientes de pressão nos nós externos à edificação foram definidos através da base de dados da Universidade Politécnica de Tóquio (TPU) \cite{TPU2018}, e para cada janela foi utilizado o valor médio dos pontos disponíveis para sua área na fachada. No o exemplo da Figura \ref{fig:tpuwindows}, considerando-se uma edificação com proporções LxWxH, o Cp da janela A seria igual a média dos valores obtidos entre os pontos 1 e 3, o Cp da janela B seria igual a média dos valores obtidos entre os pontos 4 e 8, e assim por diante.
+		Os coeficientes de pressão nos nós externos à edificação foram definidos através da base de dados da Universidade Politécnica de Tóquio (TPU) \cite{TPU2018}, e para cada janela foi utilizado o valor médio dos pontos disponíveis para sua área na fachada. No o exemplo da Figura \ref{fig:tpuwindows}, considerando-se uma edificação com proporções B:L:H, e um pavimento na altura h, o Cp da janela A seria igual a média dos valores disponíveis os pontos vermelhos, o Cp da janela B seria igual a média dos valores dos pontos verdes, e assim por diante.
 %		A altura dos pontos a serem utilizadas foi escolhida de acordo com a altura definida para o pavimento simulado e  a altura do pédireito em relação às proporções do edifício.
 		
 		\begin{figure}[h]
 			\centering
 			\caption{Exemplo de como os Cp’s foram considerados}
-			\includegraphics[width=1\linewidth]{img/tpu_windows.png}
+			\includegraphics[width=1\linewidth]{img/ex_TPU_h.png}
 			\label{fig:tpuwindows}
-			\begin{flushleft}
-				Fonte: \citeauthoronline{TPU2018} \cite{TPU2018}, adaptado pelo autor.
-			\end{flushleft}
+%			\begin{flushleft}
+%				Fonte: \citeauthoronline{TPU2018} \cite{TPU2018}, adaptado pelo autor.
+%			\end{flushleft}
 		\end{figure}
 		
 		
@@ -443,7 +443,15 @@
 		
 		\subsubsection{Representação da envoltória com duas camadas}
 		
-		Para possibilitar a parametrização contínua e independente das propriedades termofísicas da envoltória, considerou-se a utilização de uma parede com propriedades equivalentes, modelada com uma camada de concreto, para representar a capacidade térmica, e uma camada modelada com o objeto \textit{Material:NoMass}, para regular a transmitância (Figura X).
+		Para possibilitar a parametrização contínua e independente das propriedades termofísicas da envoltória, considerou-se a utilização de uma parede com propriedades equivalentes, modelada com uma camada de concreto, para representar a capacidade térmica, e uma camada modelada com o objeto \textit{Material:NoMass}, para regular a transmitância (Figura \ref{fig:parede_eq}).
+		
+		\begin{figure}[h]
+			\centering
+			\caption{Parede equivalente}
+			\includegraphics[width=1\linewidth]{img/parede_eq.png}
+			\label{fig:parede_eq}
+		\end{figure}
+	
 		A validação da modelagem simplificada da parede foi feita para 3 tipos de paredes referência:
 		
 		\begin{itemize}
@@ -463,7 +471,15 @@
 		\subsubsection{Condição de contorno das paredes adjacentes à edificação}
 		
 		Simular apenas uma zona, em vez de um edifício inteiro, ou um pavimento com diversas zonas, possibilita a simulação de casos diversos em menor tempo.		
-		Para modelar apenas uma zona, considerou-se as paredes correspondentes a superfícies voltadas para outros escritórios como adiabáticas. A superfície que representa a parede voltada para a circulação foi testada com duas condições de contorno: 1) como adiabática, e 2) como \textit{outdoors}, sem incidência de vento ou sol (Figura X).
+		Para modelar apenas uma zona, considerou-se as paredes correspondentes a superfícies voltadas para outros escritórios como adiabáticas. A superfície que representa a parede voltada para a circulação foi testada com duas condições de contorno: 1) como adiabática, e 2) como \textit{outdoors}, sem incidência de vento ou sol (Figura \ref{fig:adiabatic_outdoors}).	
+		
+		\begin{figure}[h]
+			\centering
+			\caption{Modelagem com parede adiabática e \textit{outdoors}}
+			\includegraphics[width=1\linewidth]{img/adiabatic_outdoors.png}
+			\label{fig:adiabatic_outdoors}
+		\end{figure}
+	
 		A consideração do uso da condição \textit{outdoors} foi pela hipótese de que, sem a radiação solar direta e sem o aumento de convecção causada pelo vento, a temperatura do ar da zona da circulação (por não ter cargas internas consideráveis) poderia se manter mais próxima à do ar externo, do que a da própria sala.
 		
 		A modelagem da ventilação natural sofre um impacto significativo quando o escritório é modelado como apenas uma zona.
@@ -479,7 +495,21 @@
 		
 		\subsubsection{Modelagem da ventilação natural na simulação simplificada}
 		
-		A modelagem da ventilação natural na simulação simplificada deve ser adaptada para se ter resultados correspondentes ao esperado em relação à simulação referência, pois enquanto a rede de fluxo de ar na simulação referência é modelada de acordo com a Figura X, na simulação simplificada essa rede é modelada de acordo com a Figura Y.
+		A modelagem da ventilação natural na simulação simplificada deve ser adaptada para se ter resultados correspondentes ao esperado em relação à simulação referência, pois enquanto a rede de fluxo de ar na simulação referência é modelada de acordo com a Figura \ref{fig:AFN_ref}, na simulação simplificada essa rede é modelada de acordo com a Figura \ref{fig:AFN_sz}.	
+		
+		\begin{figure}[h]
+			\centering
+			\caption{Rede de fluxo de ar na simulação referência}
+				\includegraphics[width=1\linewidth]{img/AFN_ref.png}
+				\label{fig:AFN_ref}
+		\end{figure}	
+		
+		\begin{figure}[h]
+		\centering
+		\caption{Rede de fluxo de ar na simulação simplificada}
+			\includegraphics[width=1\linewidth]{img/AFN_sz.png}
+			\label{fig:AFN_sz}
+		\end{figure}
 %		As limitações desta adaptação e as formas de contorná-las serão explicadas neste item.
 		
 		A proposta para contornar esse problema foi desenvolvida a partir da hipótese de que, na simulação simplificada, seria possível criar um Cp associado à porta ($Cp_{eq}$), capaz de descrever as diferenças de pressão de ar entre a circulação e a sala.  % , para cada ângulo de vento.
@@ -577,7 +607,14 @@
 		Outra limitação relacionada à VN na simulação simplificada é o fato de que o AFN do EnergyPlus não permite modelar aberturas ou qualquer tipo de infiltração de ar em superfícies adiabáticas. Para contornar esse problema, no caso de se modelar uma parede voltada para a circulação como adiabática, é possível associar a infiltração referente à porta a uma outra superfície da zona.  %  que esteja voltada para o ambiente externo 
 		Isso se faz possível no momento em que se calcula diretamente os coeficientes de pressão (Cp's) dos nós relacionados às aberturas da zona.
 		Desta forma define-se o Cp para uma superfície (seja janela ou parede), considerando-se qualquer orientação desejada, e não necessariamente a orientação definida para esta superfície pela geometria do modelo.		
-		A modelagem do fluxo de ar pelas portas dos escritórios nas simulações simplificadas foi desenvolvida com o objeto \textit{AirflowNetwork:MultiZone:Surface:Crack}. O motivo para se utilizar este objeto é porque este é um objeto que pode ser associado a qualquer superfície. Portanto, o objeto do \textit{crack} foi associado sempre à parede externa oposta à parede que estaria voltada para a circulação, como apresentado na Figura Z.
+		A modelagem do fluxo de ar pelas portas dos escritórios nas simulações simplificadas foi desenvolvida com o objeto \textit{AirflowNetwork:MultiZone:Surface:Crack}. O motivo para se utilizar este objeto é porque este é um objeto que pode ser associado a qualquer superfície. Portanto, o objeto do \textit{crack} foi associado sempre à parede externa oposta à parede que estaria voltada para a circulação, como apresentado na Figura \ref{fig:AFN_crack}.
+		
+		\begin{figure}[h]
+			\centering
+			\caption{Solução para infiltração de ar entre a zona e a circulação}
+			\includegraphics[width=1\linewidth]{img/AFN_crack.png}
+			\label{fig:AFN_crack}
+		\end{figure}	
 					
 		Devido a essas considerações, a validação nesta etapa foi conduzida para duas condições: utilizando-se o Cp calculado diretamente pelo método analítico, e utilizando-se o $Cp_{eq}$.		
 		Estas análises foram conduzidas considerando-se diferentes valores de coeficiente de infiltração para o \textit{crack}, para ajustar o valor mais adequado à taxa de infiltração que se obtém no modelo referência. Os valores considerados foram: 0,1; 0,15; 0,2; 0,3; e 0,5 kg/s em 1 Pa.
@@ -590,7 +627,7 @@
 		
 		O método de \citeauthoronline{Sobol1993} \cite{Sobol1993} foi utilizado para a análise de sensibilidade, pois permite a identificação de parâmetros influentes, mesmo para casos onde a relação entre as entradas e saídas dos modelos são não-monotônicas e apresentam efeitos colineares. A amostragem para essa análise é definida pelo próprio método. A aplicação foi feita através da biblioteca \textit{SALib} \cite{Herman2017}, escrita na linguagem \textit{Python} \cite{Python}. A partir de uma amostra com 99.978 casos, obteve-se índices de sensibilidade para análise de 1ª ordem, 2ª ordem, e total.
 		
-		\section{Desenvolvimento da rede neural artificial}
+		\section{Desenvolvimento do metamodelo}
 		
 		A base de dados utilizada para o treinamento do metamodelo foi desenvolvida a partir de XXX.XXX resultados de simulações, amostrados pelo método de amostragem de Sobol. A etapa de validação foi executada com outra amostra de XX.XXX casos, amostrados pelo método do LHS. Na amostra da validação, os parâmetros não incluídos como dados de entrada para a RNA tiveram os valores fixados iguais aos da amostra utilizada para o treinamento. O motivo para se utilizar diferentes métodos de amostragem é para evitar qualquer enviesamento possivelmente relacionado ao método de amostragem.
 		
