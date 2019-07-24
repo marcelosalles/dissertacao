@@ -3,20 +3,21 @@ import glob
 import json
 import os
 
-def main():
+def main(folder='cp_eq', num_clusters=10):
     FOLDER_STDRD = 'cluster'
     REST = {
-        '015': .15  # ,
-        # '020': .2,
-        # '030': .3,
-        # '040': .4,
-        # '050': .5
+        # '10': .1,
+        '15': .15  # ,
+        '20': .2,
+        '30': .3,
+        # '40': .4,
+        '50': .5
     }
-    os.chdir('crack')
-    for i in range(10):
+    os.chdir(folder)
+    for i in range(num_clusters):
         os.chdir(FOLDER_STDRD+str(i))
         
-        epjson_files = sorted(glob.glob('010*.epJSON')) 
+        epjson_files = sorted(glob.glob('single*.epJSON')) 
         print(len(epjson_files))
         
         for f in epjson_files:
@@ -33,8 +34,8 @@ def main():
                         "idf_max_fields": 4
                     }
                 }
-                
-                with open(crack+f[3:], 'w') as file:
+                file_name = f.replace('_10_','_'+crack+'_')
+                with open(file_name, 'w') as file:
                     file.write(json.dumps(model))
             
         os.chdir('..')

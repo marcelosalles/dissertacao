@@ -1,5 +1,6 @@
 __pycache__/
 marcelo/
+test/
 sqlite.err
 *.pyc
 *.Rhistory

@@ -6,7 +6,7 @@
             "idf_max_fields": 12,
             "schedule_name": "Sch_Ocupacao",
             "zone_or_zonelist_name": "office",
-            "air_changes_per_hour": 30
+            "air_changes_per_hour": 10
         }
     },
     "AirflowNetwork:MultiZone:Component:DetailedOpening": {
@@ -128,7 +128,6 @@
         "InfraRed": {
             "idf_max_extensible_fields": 0,
             "idf_max_fields": 2,
-            "idf_order": 113,
             "outside_layer": "IR"
         },
         "glass_construction_office": {
@@ -175,6 +174,13 @@
             "key_value": "*",
             "reporting_frequency": "Hourly",
             "variable_name": "Schedule Value"
+        },
+        "Output:Variable 4": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "key_value": "*",
+            "reporting_frequency": "Hourly",
+            "variable_name": "AFN Zone Infiltration Air Change Rate"
         }
     },
     "Output:VariableDictionary": {
@@ -415,24 +421,6 @@
             "do_zone_sizing_calculation": "No",
             "run_simulation_for_sizing_periods": "No",
             "run_simulation_for_weather_file_run_periods": "Yes"
-        }
-    },
-    "Site:GroundTemperature:BuildingSurface": {
-        "Site:GroundTemperature:BuildingSurface 1": {
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 12,
-            "april_ground_temperature": 20.2,
-            "august_ground_temperature": 17.82,
-            "december_ground_temperature": 21.05,
-            "february_ground_temperature": 21.32,
-            "january_ground_temperature": 21.45,
-            "july_ground_temperature": 17.72,
-            "june_ground_temperature": 18.12,
-            "march_ground_temperature": 20.79,
-            "may_ground_temperature": 18.93,
-            "november_ground_temperature": 20.28,
-            "october_ground_temperature": 19.29,
-            "september_ground_temperature": 18.41
         }
     },
     "Timestep": {

@@ -17,11 +17,11 @@ def update(d, u):
     return d
 
 def set_cases():
-    SAMPLE_SIZE = 200
+    SAMPLE_SIZE = 10  # 200
     SAMPLE_NAME = 'sample_crack.csv'
     N_CLUSTERS = 10
 
-    FOLDER = 'crack'
+    FOLDER = ''
     NAME_STDRD = 'whole'
     NAME_STDRD_2 = '010crack'
 

@@ -1,17 +1,12 @@
 
-import collections
+import dict_update
 import copy
 import json
+import numpy as np
 import pandas as pd
 
-def update(d, u):
-    for k, v in u.items():
-        if isinstance(v, collections.Mapping):
-            d[k] = update(d.get(k, {}), v)
-        else:
-            d[k] = v
-    return d
-    
+update = dict_update.update
+
 def afn_surface(surface_name, open_fac=1, schedule_name="Sch_Ocupacao",
     control_mode="Temperature",component="Janela", temperature_setpoint="Temp_setpoint",
     enthalpy_difference=300000, temperature_difference=100):
@@ -31,10 +26,28 @@ def afn_surface(surface_name, open_fac=1, schedule_name="Sch_Ocupacao",
     
     return(afn_dict)
 
-def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = .5, shading = 1, azimuth = 0,
-    corr_width = 2, wall_u = 2.5, wall_ct=151, corr_vent = 1, stairs = 0, zone_feat = None, concrete_eps=False,
-    zones_x_floor = 6, n_floors = 1, corner_window=True, ground=False, roof=False, floor_height = 0,
-    input_file = "modelo.epJSON",output = 'output.epJSON'):
+def zone_list(model_values):
+    
+    zone_feat = {
+        'people': [],
+        'wwr': [],
+        'open_fac': [],
+        'glass': []
+    }
+    for i in range(6):
+        zone_feat['people'].append(model_values['people'])
+        zone_feat['wwr'].append(model_values['wwr'])
+        zone_feat['open_fac'].append(model_values['open_fac'])
+        zone_feat['glass'].append(model_values['glass'])
+    
+    return(zone_feat)
+
+def main(zone_area=10, zone_ratio=1.5, zone_height=3, absorptance=.5, 
+    shading=1, azimuth=0, corr_width=2, wall_u=2.5, u_film=True, 
+    wall_ct=151, corr_vent=1, stairs=0, zone_feat=None,
+    zones_x_floor=6, n_floors=1, corner_window=True, ground=False,
+    roof=False, floor_height=0, concrete_eps=False, afn=True,
+    input_file="modelo.epJSON", output='output.epJSON'):
     
     print(output)
 
@@ -54,7 +67,8 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
 
     # editing subdf thermal load
 
-    lights = 10.5 
+    lights = 14  # 10.5 W/m2
+    equipment_load = 97  # W/person
 
     # Defining U
     
@@ -68,8 +82,11 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
         
         e_concrete = (wall_ct*1000)/(1000*2200)  # specific heat and density
         R_concrete = e_concrete/c_concrete
-        # R_eps = (1-(.17+R_concrete)*wall_u)/wall_u
-        R_eps = (1-R_concrete*wall_u)/wall_u
+        
+        if u_film:
+            R_eps = (1-(.17+R_concrete)*wall_u)/wall_u
+        else:
+            R_eps = (1-R_concrete*wall_u)/wall_u
         eps = True
         if R_eps < 0.001:
             eps = False
@@ -384,7 +401,8 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
         if ground:  # i < zones_x_floor:
             floor_bound = {
                 "construction_name": "Exterior Floor",
-                "outside_boundary_condition": "Ground",
+                "outside_boundary_condition": "OtherSideConditionsModel",
+                "outside_boundary_condition_object": "GroundCoupledOSCM",
                 "sun_exposure": "NoSun",
                 "wind_exposure": "NoWind"
             }
@@ -659,10 +677,15 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
         if ground:  # if i == 0:
             floor_bound = {
                 "construction_name": "Exterior Floor",
-                "outside_boundary_condition": "Ground",
+                "outside_boundary_condition": "OtherSideConditionsModel",
+                "outside_boundary_condition_object": "GroundCoupledOSCM",
                 "sun_exposure": "NoSun",
                 "wind_exposure": "NoWind"
             }
+            with open('modelo_preliminar/solo.epJSON', 'r') as file:
+                soil = json.loads(file.read())
+            model.update(soil)
+            
         else:
             floor_bound = {
                 "construction_name": "Interior Floor",
@@ -683,7 +706,9 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
     # FenestrationSurdace:Detailed --------------------
     open_fac_i = 0
     surface_n = 1
-    model["AirflowNetwork:MultiZone:Surface"] = {}
+    
+    if afn:
+        model["AirflowNetwork:MultiZone:Surface"] = {}
     model["FenestrationSurface:Detailed"] = {}
         
     for i in range(n_zones):
@@ -736,11 +761,13 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                         "vertex_4_y_coordinate": zone_length,
                         "vertex_4_z_coordinate": window_z2
                     }
-                })                
-                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_0_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+                })
+                if afn:
+                    model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_0_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
                 surface_n +=1
                 
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_3_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_3_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
             open_fac_i += 1
             surface_n +=1
             
@@ -789,10 +816,12 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                         "vertex_4_z_coordinate": window_z2
                     }
                 })
-                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_2_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+                if afn:
+                    model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_2_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
                 surface_n +=1
                 
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_1_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_1_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
             open_fac_i += 1
             surface_n += 1
             
@@ -841,10 +870,12 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                         "vertex_4_z_coordinate": window_z2
                     }
                 })
-                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_0_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+                if afn:
+                    model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_0_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
                 surface_n +=1
                 
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_1_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_1_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
             open_fac_i += 1
             surface_n += 1
             
@@ -893,10 +924,12 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                         "vertex_4_z_coordinate": window_z2
                     }
                 })
-                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n+1)] = afn_surface("window_2_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+                if afn:
+                    model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n+1)] = afn_surface("window_2_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
                 surface_n +=1
                 
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_3_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_3_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
             open_fac_i += 1
             surface_n += 1
             
@@ -925,7 +958,8 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                 }
             })
             
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_3_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_3_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
             open_fac_i += 1
             surface_n += 1
             
@@ -953,7 +987,8 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                     "vertex_4_z_coordinate": window_z2
                 }
             })
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_1_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_1_"+'{:02.0f}'.format(i), float(zone_feat['open_fac'][open_fac_i]))
             open_fac_i += 1
             surface_n += 1            
         
@@ -981,7 +1016,8 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                     "vertex_4_z_coordinate": door_height
                 }
             })
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("door_"+'{:02.0f}'.format(i), component="Porta")
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("door_"+'{:02.0f}'.format(i), component="Porta")
             surface_n += 1
         else:
             model["FenestrationSurface:Detailed"].update({            
@@ -1005,7 +1041,8 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                     "vertex_4_z_coordinate": door_height
                 }
             })
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("door_"+'{:02.0f}'.format(i), component="Porta")
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("door_"+'{:02.0f}'.format(i), component="Porta")
             surface_n += 1
         
     for i in range(n_floors):
@@ -1095,8 +1132,9 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                     "vertex_4_z_coordinate": door_height
                 }
             })
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_0_corr_"+'{:02.0f}'.format(i))
-            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n+1)] = afn_surface("window_2_corr_"+'{:02.0f}'.format(i))
+            if afn:
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("window_0_corr_"+'{:02.0f}'.format(i))
+                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n+1)] = afn_surface("window_2_corr_"+'{:02.0f}'.format(i))
             surface_n += 2  
 
         # Stairs
@@ -1149,7 +1187,8 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                         "vertex_4_z_coordinate": zone_height
                     }
                 })
-                model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("stair_sup_"+'{:02.0f}'.format(i), component="HorizontalOpening",
+                if afn:
+                    model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface "+str(surface_n)] = afn_surface("stair_sup_"+'{:02.0f}'.format(i), component="HorizontalOpening",
                 schedule_name="Always On", control_mode="Constant")
             surface_n += 1
     
@@ -1160,8 +1199,11 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
         })
 
     # Shading ----------------------------------------------------
- 
-    if shading > 0.01:
+    
+    if shading > 1:
+		
+        shading_length = np.tan((np.pi*shading)/180) * (wwr*zone_height)
+        z_shading = floor_height+window_z2
  
         # Shading:Building:Detailed
  
@@ -1178,23 +1220,23 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                     "vertices": [
                         {
                         "vertex_x_coordinate": 0,
-                        "vertex_y_coordinate": zone_length*zones_in_sequence+shading,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_y_coordinate": zone_length*zones_in_sequence+shading_length,
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 0,
                         "vertex_y_coordinate": zone_length*zones_in_sequence,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 2*zone_width+corr_width,
                         "vertex_y_coordinate": zone_length*zones_in_sequence,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 2*zone_width+corr_width,
-                        "vertex_y_coordinate": zone_length*zones_in_sequence+shading,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_y_coordinate": zone_length*zones_in_sequence+shading_length,
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         }
                     ]
                 },
@@ -1205,24 +1247,24 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                     'number_of_vertices': 4,
                     "vertices": [
                         {
-                        "vertex_x_coordinate": 2*zone_width+corr_width+shading,
+                        "vertex_x_coordinate": 2*zone_width+corr_width+shading_length,
                         "vertex_y_coordinate": zone_length*zones_in_sequence,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 2*zone_width+corr_width,
                         "vertex_y_coordinate": zone_length*zones_in_sequence,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 2*zone_width+corr_width,
                         "vertex_y_coordinate": 0,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
-                        "vertex_x_coordinate": 2*zone_width+corr_width+shading,
+                        "vertex_x_coordinate": 2*zone_width+corr_width+shading_length,
                         "vertex_y_coordinate": 0,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         }
                     ]
                 },
@@ -1234,23 +1276,23 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                     "vertices": [
                         {
                         "vertex_x_coordinate": 2*zone_width+corr_width,
-                        "vertex_y_coordinate": -shading,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_y_coordinate": -shading_length,
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 2*zone_width+corr_width,
                         "vertex_y_coordinate": 0,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 0,
                         "vertex_y_coordinate": 0,
-                        "vertex_z_coordinate": zone_height*(i+1),
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 0,
-                        "vertex_y_coordinate": -shading,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_y_coordinate": -shading_length,
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         }
                     ]
                 },
@@ -1261,24 +1303,24 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
                     'number_of_vertices': 4,
                     "vertices": [
                         {
-                        "vertex_x_coordinate": -shading,
+                        "vertex_x_coordinate": -shading_length,
                         "vertex_y_coordinate": 0,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 0,
                         "vertex_y_coordinate": 0,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
                         "vertex_x_coordinate": 0,
                         "vertex_y_coordinate": zone_length*zones_in_sequence,
-                        "vertex_z_coordinate": zone_height*(i+1),
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         },
                         {
-                        "vertex_x_coordinate": -shading,
+                        "vertex_x_coordinate": -shading_length,
                         "vertex_y_coordinate": zone_length*zones_in_sequence,
-                        "vertex_z_coordinate": zone_height*(i+1)
+                        "vertex_z_coordinate": z_shading  # zone_height*(i+1)
                         }
                     ]
                 }
@@ -1296,7 +1338,7 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
             "fraction_lost": 0.0,
             "fraction_radiant": 0.5,
             "schedule_name": "Sch_Equip_Computador",
-            "watts_per_person": 150,
+            "watts_per_person": equipment_load,
             "zone_or_zonelist_name": "Offices"
         }
     }
@@ -1377,60 +1419,61 @@ def main_whole(zone_area = 10, zone_ratio = 1.5, zone_height = 3, absorptance = 
             "zones": corridors
         }
     }
-
-    model['AirflowNetwork:MultiZone:Zone'] = {}
-    zone_n = 1
-    for i in range(len(zones_list)):
-        
-        model['AirflowNetwork:MultiZone:Zone'].update({
-            "AirflowNetwork:MultiZone:Zone "+str(zone_n): {
-                "idf_max_extensible_fields": 0,
-                "idf_max_fields": 8,
-                "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
-                "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
-                "zone_name": model["ZoneList"]["All"]['zones'][i]['zone_name']
-            }
-        })
-        zone_n += 1
-       
-    if stairs > 0:
-        
-        model["AirflowNetwork:MultiZone:Component:HorizontalOpening"] = {
-            "HorizontalOpening": {
-                "air_mass_flow_coefficient_when_opening_is_closed": 0.001,
-                "air_mass_flow_exponent_when_opening_is_closed": 0.65,
-                "discharge_coefficient": 0.6,
-                "idf_max_extensible_fields": 0,
-                "idf_max_fields": 5,
-                "sloping_plane_angle": 25.0
-            }
-        }
     
-    # AFN Simulation Control
-    bldg_ratio = (2*zone_width+corr_width)/(zones_in_sequence*zone_length)
-    if bldg_ratio <= 1:
-        wind_azimuth = azimuth%180
-    else:
-        bldg_ratio = 1/bldg_ratio
-        wind_azimuth = (azimuth+90)%180
-        
-    model["AirflowNetwork:SimulationControl"] = {
-        "Ventilacao": {
-            "absolute_airflow_convergence_tolerance": 0.0001,
-            "airflownetwork_control": "MultizoneWithoutDistribution",
-            "azimuth_angle_of_long_axis_of_building": wind_azimuth,
-            "building_type": "HighRise",
-            "convergence_acceleration_limit": -0.5,
-            "height_selection_for_local_wind_pressure_calculation": "OpeningHeight",
-            "initialization_type": "ZeroNodePressures",
-            "maximum_number_of_iterations": 500,
-            "ratio_of_building_width_along_short_axis_to_width_along_long_axis": bldg_ratio,
-            "relative_airflow_convergence_tolerance": 0.01,
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 12,
-            "wind_pressure_coefficient_type": "SurfaceAverageCalculation"
+    if afn:
+        # AFN Simulation Control
+        bldg_ratio = (2*zone_width+corr_width)/(zones_in_sequence*zone_length)
+        if bldg_ratio <= 1:
+            wind_azimuth = azimuth%180
+        else:
+            bldg_ratio = 1/bldg_ratio
+            wind_azimuth = (azimuth+90)%180
+            
+        model["AirflowNetwork:SimulationControl"] = {
+            "Ventilacao": {
+                "absolute_airflow_convergence_tolerance": 0.0001,
+                "airflownetwork_control": "MultizoneWithoutDistribution",
+                "azimuth_angle_of_long_axis_of_building": wind_azimuth,
+                "building_type": "HighRise",
+                "convergence_acceleration_limit": -0.5,
+                "height_selection_for_local_wind_pressure_calculation": "OpeningHeight",
+                "initialization_type": "ZeroNodePressures",
+                "maximum_number_of_iterations": 500,
+                "ratio_of_building_width_along_short_axis_to_width_along_long_axis": bldg_ratio,
+                "relative_airflow_convergence_tolerance": 0.01,
+                "idf_max_extensible_fields": 0,
+                "idf_max_fields": 12,
+                "wind_pressure_coefficient_type": "SurfaceAverageCalculation"
+            }
         }
-    }
+
+        model['AirflowNetwork:MultiZone:Zone'] = {}
+        zone_n = 1
+        for i in range(len(zones_list)):
+            
+            model['AirflowNetwork:MultiZone:Zone'].update({
+                "AirflowNetwork:MultiZone:Zone "+str(zone_n): {
+                    "idf_max_extensible_fields": 0,
+                    "idf_max_fields": 8,
+                    "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
+                    "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
+                    "zone_name": model["ZoneList"]["All"]['zones'][i]['zone_name']
+                }
+            })
+            zone_n += 1
+           
+        if stairs > 0:
+        
+            model["AirflowNetwork:MultiZone:Component:HorizontalOpening"] = {
+                "HorizontalOpening": {
+                    "air_mass_flow_coefficient_when_opening_is_closed": 0.001,
+                    "air_mass_flow_exponent_when_opening_is_closed": 0.65,
+                    "discharge_coefficient": 0.6,
+                    "idf_max_extensible_fields": 0,
+                    "idf_max_fields": 5,
+                    "sloping_plane_angle": 25.0
+                }
+            }
 
         #### MATERIALS
 

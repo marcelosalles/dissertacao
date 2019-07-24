@@ -65,7 +65,8 @@ ggplot(df_ref,aes(df_ref$ach)) +
   ylab('Número de casos') +
   annotate("text", x = 100, y = 60, label = paste("Média =",round(mean(df_ref$ach),2),'ach'))
 # CONCRETE + EPS 2 ----
-samp = read.csv('/media/marcelo/OS/dissertacao/sample_diss.csv')
+# samp = read.csv('/media/marcelo/OS/dissertacao/sample_diss.csv')
+samp = read.csv('/media/marcelo/OS/dissertacao/sample_eq_wall.csv')
 
 par1_wall_u = 17.5
 par1_wall_ct = 220
@@ -89,31 +90,45 @@ samp$absorptance = .3 + .6*samp$absorptance
 
 samp = samp[rep(seq_len(nrow(samp)), each=6),]
 
-df = rbind(
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster0/means_cluster0.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster1/means_cluster1.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster2/means_cluster2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster3/means_cluster3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster4/means_cluster4.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster5/means_cluster5.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster6/means_cluster6.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster7/means_cluster7.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster8/means_cluster8.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/wall/cluster9/means_cluster9.csv')
-)
+# df = rbind(
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster0/means_cluster0.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster1/means_cluster1.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster2/means_cluster2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster3/means_cluster3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster4/means_cluster4.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster5/means_cluster5.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster6/means_cluster6.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster7/means_cluster7.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster8/means_cluster8.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/wall/cluster9/means_cluster9.csv')
+# )
+# 
+# df = rbind(
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster0/means_parede_eq_cluster0.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster1/means_parede_eq_cluster1.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster2/means_parede_eq_cluster2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster3/means_parede_eq_cluster3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster4/means_parede_eq_cluster4.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster5/means_parede_eq_cluster5.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster6/means_parede_eq_cluster6.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster7/means_parede_eq_cluster7.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster8/means_parede_eq_cluster8.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/parede_eq/cluster9/means_parede_eq_cluster9.csv')
+# )
 
+df = read.csv('/media/marcelo/OS/dissertacao/parede_eq/means_parede_eq.csv')
 
-df_eps_par1 = subset(df, substr(df$file,1,12) == 'epsconc_par1')  # epsconc_par1
-df_ref_par1 = subset(df, substr(df$file,1,12) == 'refwall_par1')  # refwall_par1
+df_eps_par1 = subset(df, grepl(pattern = 'eq_par1',df$file))  # epsconc_par1
+df_ref_par1 = subset(df, grepl(pattern = 'ref_par1',df$file))   # refwall_par1
 
-df_eps_par2a = subset(df, substr(df$file,1,13) == 'epsconc_par2a')  # epsconc_par2a
-df_ref_par2a = subset(df, substr(df$file,1,13) == 'refwall_par2a')  # refwall_par2a
+df_eps_par2a = subset(df, grepl(pattern = 'eq_par2a',df$file))   # epsconc_par2a
+df_ref_par2a = subset(df, grepl(pattern = 'ref_par2b',df$file))   # refwall_par2a
 
-df_eps_par2b = subset(df, substr(df$file,1,13) == 'epsconc_par2b')  # epsconc_par2b
-df_ref_par2b = subset(df, substr(df$file,1,13) == 'refwall_par2b')  # refwall_par2b
+df_eps_par2b = subset(df, grepl(pattern = 'eq_par2b',df$file))   # epsconc_par2b
+df_ref_par2b = subset(df, grepl(pattern = 'ref_par2b',df$file))   # refwall_par2b
 
-df_eps_par3 = subset(df, substr(df$file,1,12) == 'epsconc_par3')  # epsconc_par3
-df_ref_par3 = subset(df, substr(df$file,1,12) == 'refwall_par3')  # refwall_par3
+df_eps_par3 = subset(df, grepl(pattern = 'eq_par3',df$file))   # epsconc_par3
+df_ref_par3 = subset(df, grepl(pattern = 'ref_par3',df$file))   # refwall_par3
 
 # bind to sample 
 df_eps_par1 = cbind(df_eps_par1, samp)
@@ -223,7 +238,7 @@ ggplot(df_dif,aes(df_dif$ehf)) +
   geom_histogram(binwidth = .001)+
   ggtitle('Diferenças no EHF') +
   xlab('EHF Referência - EHF EPS + Concreto') +
-  ylab('Número de casos') +
+  ylab('Número de casos') #+
   annotate("text", x = -.02, y = 1000, label = paste("Média =",round(ehf_mean,5))) +
   annotate("text", x = -.02, y = 1000*.95, label = paste("AE95 =",round(quantile(abs(df_dif$ehf),.95),4))) 
 
@@ -231,7 +246,7 @@ ggplot(df_dif,aes(df_dif$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH') +
   xlab('ACH analítico - ACH tpu') +
-  ylab('Número de casos') +
+  ylab('Número de casos') #+
   annotate("text", x = -35, y = 700, label = paste("Média =",round(ach_mean,3),'ach'))
 
 df_ref = subset(df, substr(df$file,1,1) == 'r' &  df$temp_max < tempmax)  # refwall_par1
@@ -253,18 +268,20 @@ ggplot(df_ref,aes(df_ref$ach)) +
 
 # OUTDOORS x ADIABATIC ----
 
-df = rbind(
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster0/means_cluster0.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster1/means_cluster1.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster2/means_cluster2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster3/means_cluster3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster4/means_cluster4.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster5/means_cluster5.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster6/means_cluster6.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster7/means_cluster7.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster8/means_cluster8.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/noafn/cluster9/means_cluster9.csv')
-)
+# df = rbind(
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster0/means_cluster0.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster1/means_cluster1.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster2/means_cluster2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster3/means_cluster3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster4/means_cluster4.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster5/means_cluster5.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster6/means_cluster6.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster7/means_cluster7.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster8/means_cluster8.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/noafn/cluster9/means_cluster9.csv')
+# )
+
+df = read.csv('/media/marcelo/OS/dissertacao/single_zone/means_single_zone.csv')
 
 df_out = subset(df, substr(df$file,1,1) == 'o')
 df_adi = subset(df, substr(df$file,1,1) == 'a')

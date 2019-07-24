@@ -17,8 +17,9 @@ def update(d, u):
 def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
     shading=1, azimuth=0, bldg_ratio=1, wall_u=2.5, wall_ct=100,
     zn=0, floor_height=0, corner_window=True, ground=0, roof=0, 
-    people=.1, glass_fs=.87, wwr=.6, door=True, cp_eq = True,
-    open_fac=.5, input_file='seed.json' , output='output.epJSON'):
+    people=.1, glass_fs=.87, wwr=.6, open_fac=.5, door=True, cp_eq=True,
+    outdoors=False,
+    afn=True, input_file='seed.json', output='output.epJSON'):
     
     print(output)
 
@@ -63,12 +64,17 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
         else:
             room_type = '3_wall'
         
+    if outdoors:
+        corrwall = "Outdoors"
+    else:
+        corrwall = "Adiabatic"        
         
     # editing thermal load
 
     # electric = float(thermal_loads)
     people = float(people)
-    lights = 10.50  # DPI nivel A RTQ-R - Escritorio Planta livre
+    lights = 14  # W/m2 10.50  # DPI nivel A RTQ-R - Escritorio Planta livre
+    equipment_load = 97  # W/person
 
     # Defining U
 
@@ -247,7 +253,7 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
         "wall-2_office": {
             "surface_type": "Wall",
             "construction_name": "Interior Wall",
-            "outside_boundary_condition": "Adiabatic",
+            "outside_boundary_condition": corrwall,
             "outside_boundary_condition_object": "",
             "sun_exposure": "NoSun",
             "wind_exposure": "NoWind",
@@ -336,10 +342,15 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
     else:
         ground_bound = {
             "construction_name": "Exterior Floor",
-            "outside_boundary_condition": "Ground",
+            "outside_boundary_condition": "OtherSideConditionsModel",
+            "outside_boundary_condition_object": "GroundCoupledOSCM",
             "sun_exposure": "NoSun",
             "wind_exposure": "NoWind"
         }
+            
+        with open('modelo_preliminar/solo.epJSON', 'r') as file:
+            soil = json.loads(file.read())
+        model.update(soil)
 
     model["BuildingSurface:Detailed"]["floor_office"].update(ground_bound)
 
@@ -588,7 +599,7 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
             "fraction_lost": 0.0,
             "fraction_radiant": 0.5,
             "schedule_name": "Sch_Equip_Computador",
-            "watts_per_person": 150,
+            "watts_per_person": equipment_load,
             "zone_or_zonelist_name": "office"
         }
     }
@@ -773,136 +784,137 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
             "u_factor": 5.7
         }
     }
-
-    #### AFN OBJECTS
-
-    # AFN Simulation Control
-    if bldg_ratio <= 1:  # x/y
-        wind_azimuth = azimuth%180
-    else:
-        bldg_ratio = 1/bldg_ratio
-        wind_azimuth = (azimuth+90)%180
-        
-    model["AirflowNetwork:SimulationControl"] = {
-        "Ventilacao": {
-            "absolute_airflow_convergence_tolerance": 0.0001,
-            "airflownetwork_control": "MultizoneWithoutDistribution",
-            "azimuth_angle_of_long_axis_of_building": wind_azimuth,
-            "building_type": "HighRise",
-            "convergence_acceleration_limit": -0.5,
-            "height_selection_for_local_wind_pressure_calculation": "ExternalNode",
-            "initialization_type": "ZeroNodePressures",
-            "maximum_number_of_iterations": 500,
-            "ratio_of_building_width_along_short_axis_to_width_along_long_axis": bldg_ratio,
-            "relative_airflow_convergence_tolerance": 0.01,
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 12,
-            "wind_pressure_coefficient_type": "Input"
-        }
-    }
-
-    # AFN Zone
-    model["AirflowNetwork:MultiZone:Zone"] = {
-        "AirflowNetwork:MultiZone:Zone 1": {
-            "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
-            "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 8,
-            "zone_name": "office"
-        }
-    }
-
-    # AFN Surface
-    model["AirflowNetwork:MultiZone:Surface"] = {
-        "AirflowNetwork:MultiZone:Surface 1": {
-            "external_node_name": "window_0_office_Node",
-            "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
-            "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
-            "leakage_component_name": "Janela",
-            "surface_name": "window_0_office",
-            "ventilation_control_mode": "Temperature",
-            "ventilation_control_zone_temperature_setpoint_schedule_name": "Temp_setpoint",
-            "venting_availability_schedule_name": "Sch_Ocupacao",
-            "window_door_opening_factor_or_crack_factor": open_fac
-        },
-        "AirflowNetwork:MultiZone:Surface 2": {
-            "external_node_name": "door_office_Node",
-            "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
-            "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
-            "leakage_component_name": "door_crack",
-            "surface_name": "wall-0_office"
-        }
-    }
-
-    if room_type == '3_window' or room_type == '1_window':
-
-        model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface 3"] = {
-            "external_node_name": "window_side_office_Node",
-            "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
-            "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
-            "leakage_component_name": "Janela",
-            "surface_name": "window_side_office",
-            "ventilation_control_mode": "Temperature",
-            "ventilation_control_zone_temperature_setpoint_schedule_name": "Temp_setpoint",
-            "venting_availability_schedule_name": "Sch_Ocupacao",
-            "window_door_opening_factor_or_crack_factor": open_fac
-        }
     
-    for obj in model["AirflowNetwork:MultiZone:Surface"]:
-        
-        model["AirflowNetwork:MultiZone:Surface"][obj].update({
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 12
-        })
-        
-    model["AirflowNetwork:MultiZone:ExternalNode"] = {
-        "window_0_office_Node": {
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 5,
-            "external_node_height": floor_height+.5*zone_height,
-            "symmetric_wind_pressure_coefficient_curve": "No",
-            "wind_angle_type": "Absolute",
-            "wind_pressure_coefficient_curve_name": "window_0_office_coef"
-        },
-        "door_office_Node": {
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 5,
-            "external_node_height": floor_height+.5*zone_height,
-            "symmetric_wind_pressure_coefficient_curve": "No",
-            "wind_angle_type": "Absolute",
-            "wind_pressure_coefficient_curve_name": "door_office_coef"
+    if afn:
+        #### AFN OBJECTS
+
+        # AFN Simulation Control
+        if bldg_ratio <= 1:  # x/y
+            wind_azimuth = azimuth%180
+        else:
+            bldg_ratio = 1/bldg_ratio
+            wind_azimuth = (azimuth+90)%180
+            
+        model["AirflowNetwork:SimulationControl"] = {
+            "Ventilacao": {
+                "absolute_airflow_convergence_tolerance": 0.0001,
+                "airflownetwork_control": "MultizoneWithoutDistribution",
+                "azimuth_angle_of_long_axis_of_building": wind_azimuth,
+                "building_type": "HighRise",
+                "convergence_acceleration_limit": -0.5,
+                "height_selection_for_local_wind_pressure_calculation": "ExternalNode",
+                "initialization_type": "ZeroNodePressures",
+                "maximum_number_of_iterations": 500,
+                "ratio_of_building_width_along_short_axis_to_width_along_long_axis": bldg_ratio,
+                "relative_airflow_convergence_tolerance": 0.01,
+                "idf_max_extensible_fields": 0,
+                "idf_max_fields": 12,
+                "wind_pressure_coefficient_type": "Input"
+            }
         }
-    }
-    if room_type == '3_window' or room_type == '1_window':
-        model["AirflowNetwork:MultiZone:ExternalNode"]["window_side_office_Node"] = {
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 5,
-            "external_node_height": floor_height+.5*zone_height,
-            "symmetric_wind_pressure_coefficient_curve": "No",
-            "wind_angle_type": "Absolute",
-            "wind_pressure_coefficient_curve_name": "window_side_office_coef"
+
+        # AFN Zone
+        model["AirflowNetwork:MultiZone:Zone"] = {
+            "AirflowNetwork:MultiZone:Zone 1": {
+                "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
+                "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
+                "idf_max_extensible_fields": 0,
+                "idf_max_fields": 8,
+                "zone_name": "office"
+            }
         }
-        
-    model["AirflowNetwork:MultiZone:WindPressureCoefficientArray"] = {
-        "ventos": {
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 13,
-            "wind_direction_1": 0.0,
-            "wind_direction_2": 30.0,
-            "wind_direction_3": 60.0,
-            "wind_direction_4": 90.0,
-            "wind_direction_5": 120.0,
-            "wind_direction_6": 150.0,
-            "wind_direction_7": 180.0,
-            "wind_direction_8": 210.0,
-            "wind_direction_9": 240.0,
-            "wind_direction_10": 270.0,
-            "wind_direction_11": 300.0,
-            "wind_direction_12": 330.0
+
+        # AFN Surface
+        model["AirflowNetwork:MultiZone:Surface"] = {
+            "AirflowNetwork:MultiZone:Surface 1": {
+                "external_node_name": "window_0_office_Node",
+                "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
+                "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
+                "leakage_component_name": "Janela",
+                "surface_name": "window_0_office",
+                "ventilation_control_mode": "Temperature",
+                "ventilation_control_zone_temperature_setpoint_schedule_name": "Temp_setpoint",
+                "venting_availability_schedule_name": "Sch_Ocupacao",
+                "window_door_opening_factor_or_crack_factor": open_fac
+            },
+            "AirflowNetwork:MultiZone:Surface 2": {
+                "external_node_name": "door_office_Node",
+                "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
+                "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
+                "leakage_component_name": "door_crack",
+                "surface_name": "wall-0_office"
+            }
         }
-    }
+
+        if room_type == '3_window' or room_type == '1_window':
+
+            model["AirflowNetwork:MultiZone:Surface"]["AirflowNetwork:MultiZone:Surface 3"] = {
+                "external_node_name": "window_side_office_Node",
+                "indoor_and_outdoor_enthalpy_difference_upper_limit_for_minimum_venting_open_factor": 300000.0,
+                "indoor_and_outdoor_temperature_difference_upper_limit_for_minimum_venting_open_factor": 100.0,
+                "leakage_component_name": "Janela",
+                "surface_name": "window_side_office",
+                "ventilation_control_mode": "Temperature",
+                "ventilation_control_zone_temperature_setpoint_schedule_name": "Temp_setpoint",
+                "venting_availability_schedule_name": "Sch_Ocupacao",
+                "window_door_opening_factor_or_crack_factor": open_fac
+            }
         
-    model["AirflowNetwork:MultiZone:WindPressureCoefficientValues"] = cp_calc(bldg_ratio, azimuth=azimuth, room_type=room_type, cp_eq=cp_eq, zone_x=zone_x, zone_y=zone_y, wwr=wwr, zn=zn,corner_window=corner_window)
+        for obj in model["AirflowNetwork:MultiZone:Surface"]:
+            
+            model["AirflowNetwork:MultiZone:Surface"][obj].update({
+                "idf_max_extensible_fields": 0,
+                "idf_max_fields": 12
+            })
+            
+        model["AirflowNetwork:MultiZone:ExternalNode"] = {
+            "window_0_office_Node": {
+                "idf_max_extensible_fields": 0,
+                "idf_max_fields": 5,
+                "external_node_height": floor_height+.5*zone_height,
+                "symmetric_wind_pressure_coefficient_curve": "No",
+                "wind_angle_type": "Absolute",
+                "wind_pressure_coefficient_curve_name": "window_0_office_coef"
+            },
+            "door_office_Node": {
+                "idf_max_extensible_fields": 0,
+                "idf_max_fields": 5,
+                "external_node_height": floor_height+.5*zone_height,
+                "symmetric_wind_pressure_coefficient_curve": "No",
+                "wind_angle_type": "Absolute",
+                "wind_pressure_coefficient_curve_name": "door_office_coef"
+            }
+        }
+        if room_type == '3_window' or room_type == '1_window':
+            model["AirflowNetwork:MultiZone:ExternalNode"]["window_side_office_Node"] = {
+                "idf_max_extensible_fields": 0,
+                "idf_max_fields": 5,
+                "external_node_height": floor_height+.5*zone_height,
+                "symmetric_wind_pressure_coefficient_curve": "No",
+                "wind_angle_type": "Absolute",
+                "wind_pressure_coefficient_curve_name": "window_side_office_coef"
+            }
+            
+        model["AirflowNetwork:MultiZone:WindPressureCoefficientArray"] = {
+            "ventos": {
+                "idf_max_extensible_fields": 0,
+                "idf_max_fields": 13,
+                "wind_direction_1": 0.0,
+                "wind_direction_2": 30.0,
+                "wind_direction_3": 60.0,
+                "wind_direction_4": 90.0,
+                "wind_direction_5": 120.0,
+                "wind_direction_6": 150.0,
+                "wind_direction_7": 180.0,
+                "wind_direction_8": 210.0,
+                "wind_direction_9": 240.0,
+                "wind_direction_10": 270.0,
+                "wind_direction_11": 300.0,
+                "wind_direction_12": 330.0
+            }
+        }
+            
+        model["AirflowNetwork:MultiZone:WindPressureCoefficientValues"] = cp_calc(bldg_ratio, azimuth=azimuth, room_type=room_type, cp_eq=cp_eq, zone_x=zone_x, zone_y=zone_y, wwr=wwr, zn=zn,corner_window=corner_window)
         
     with open(input_file, 'r') as file:
         seed = json.loads(file.read())

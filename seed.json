@@ -59,6 +59,14 @@
             "thermal_resistance": 0.18
         }
     },
+    "WindowMaterial:SimpleGlazingSystem": {
+        "glass_material_office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 3,
+            "solar_heat_gain_coefficient": 0.87,
+            "u_factor": 5.7
+        }
+    },
     "Construction": {
         "Interior Floor": {
             "layer_2": "LajeMacicaConcreto(100mm)",
@@ -118,8 +126,12 @@
         "InfraRed": {
             "idf_max_extensible_fields": 0,
             "idf_max_fields": 2,
-            "idf_order": 113,
             "outside_layer": "IR"
+        },
+        "glass_construction_office": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "outside_layer": "glass_material_office"
         }
     },
     "Material:InfraredTransparent": {
@@ -407,24 +419,6 @@
             "do_zone_sizing_calculation": "No",
             "run_simulation_for_sizing_periods": "No",
             "run_simulation_for_weather_file_run_periods": "Yes"
-        }
-    },
-    "Site:GroundTemperature:BuildingSurface": {
-        "Site:GroundTemperature:BuildingSurface 1": {
-            "idf_max_extensible_fields": 0,
-            "idf_max_fields": 12,
-            "april_ground_temperature": 20.2,
-            "august_ground_temperature": 17.82,
-            "december_ground_temperature": 21.05,
-            "february_ground_temperature": 21.32,
-            "january_ground_temperature": 21.45,
-            "july_ground_temperature": 17.72,
-            "june_ground_temperature": 18.12,
-            "march_ground_temperature": 20.79,
-            "may_ground_temperature": 18.93,
-            "november_ground_temperature": 20.28,
-            "october_ground_temperature": 19.29,
-            "september_ground_temperature": 18.41
         }
     },
     "Timestep": {
