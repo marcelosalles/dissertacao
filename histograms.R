@@ -1,6 +1,12 @@
 library(ggplot2)
 library(corrplot)
 #
+save_img = function(name,fact=1){
+  width = 145* fact
+  height = 90 * fact
+  file_name = paste('~/dissertacao/latex/img/',name,'.png', sep='')
+  ggsave(file_name, width = width, height = height,units = 'mm')
+}
 # CONCRETE + EPS ----
 samp = read.csv('/media/marcelo/OS/dissertacao/experiment/')
 df = rbind(
@@ -218,6 +224,7 @@ df_dif_par3 = subset(df_dif_par3, df_ref_par3$temp_max < tempmax)
 
 ach_mean_par1 = mean(df_dif_par1$ach)
 ehf_mean_par1 = mean(df_dif_par1$ehf)
+temp_mean_par1 = mean(df_dif_par1$temp)
 
 ach_mean_par2a = mean(df_dif_par2a$ach)
 ehf_mean_par2a = mean(df_dif_par2a$ehf)
@@ -229,25 +236,146 @@ temp_mean_par2b = mean(df_dif_par2b$temp)
 
 ach_mean_par3 = mean(df_dif_par3$ach)
 ehf_mean_par3 = mean(df_dif_par3$ehf)
+temp_mean_par3 = mean(df_dif_par3$temp)
 
 df_dif = rbind(df_dif_par1, df_dif_par2b,df_dif_par3)
 ach_mean = mean(df_dif$ach)
 ehf_mean = mean(df_dif$ehf)
 
 ggplot(df_dif,aes(df_dif$ehf)) +
-  geom_histogram(binwidth = .001)+
+  geom_histogram(binwidth = .01)+
   ggtitle('Diferenças no EHF') +
-  xlab('EHF Referência - EHF EPS + Concreto') +
-  ylab('Número de casos') #+
-  annotate("text", x = -.02, y = 1000, label = paste("Média =",round(ehf_mean,5))) +
-  annotate("text", x = -.02, y = 1000*.95, label = paste("AE95 =",round(quantile(abs(df_dif$ehf),.95),4))) 
+  xlab('EHF Referência - EHF Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = .05, y = 1000, label = paste("Média =",round(ehf_mean,5))) +
+  annotate("text", x = .05, y = 1000*.9, label = paste("AE95 =",round(quantile(abs(df_dif$ehf),.95),4))) 
+save_img('paredeeq_EHF')
+
+ggplot(df_dif,aes(df_dif$temp)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças na Temperatura Operativa') +
+  xlab('Temp. Referência - Temp. Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = -1, y = 1300, label = paste("Média =",round(temp_mean,3),'°C'))+
+  annotate("text", x = -1, y = 1300*.9, label = paste("AE95 =",round(quantile(abs(df_dif$temp),.95),4),'°C'))
+save_img('paredeeq_temp')
 
 ggplot(df_dif,aes(df_dif$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH') +
-  xlab('ACH analítico - ACH tpu') +
+  xlab('ACH Referência - ACH Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = 1, y = 1700, label = paste("Média =",round(ach_mean,3),'ach'))
+save_img('paredeeq_ACH')
+
+# Par 1
+ggplot(df_dif_par2a,aes(df_dif_par1$ehf)) +
+  geom_histogram(binwidth = .01)+
+  ggtitle('Diferenças no EHF Parede Concreto') +
+  xlab('EHF Referência - EHF Parede equivalente') +
   ylab('Número de casos') #+
-  annotate("text", x = -35, y = 700, label = paste("Média =",round(ach_mean,3),'ach'))
+  annotate("text", x = .01, y = 550, label = paste("Média =",round(ehf_mean_par1,5))) +
+  annotate("text", x = .01, y = 550*.9, label = paste("AE95 =",round(quantile(abs(df_dif_par1$ehf),.95),4))) 
+save_img('paredeeq_EHF_par1')
+
+ggplot(df_dif_par1,aes(df_dif_par1$temp)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças na Temperatura Operativa Parede Concreto') +
+  xlab('Temp. Referência - Temp. Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = -1, y = 300, label = paste("Média =",round(temp_mean_par1,3),'°C'))+
+  annotate("text", x = -1, y = 300*.9, label = paste("AE95 =",round(quantile(abs(df_dif_par1$temp),.95),4),'°C'))
+save_img('paredeeq_temp_par1')
+
+ggplot(df_dif_par1,aes(df_dif_par1$ach)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças no ACH Parede Concreto') +
+  xlab('ACH Referência - ACH Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = 1, y = 500, label = paste("Média =",round(ach_mean_par1,3),'ach'))
+save_img('paredeeq_ACH_par1')
+
+# Par 2a
+ggplot(df_dif_par2a,aes(df_dif_par2a$ehf)) +
+  geom_histogram(binwidth = .01)+
+  ggtitle('Diferenças no EHF Parede Alvenaria CT Total') +
+  xlab('EHF Referência - EHF Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = .05, y = 150, label = paste("Média =",round(ehf_mean_par2a,5))) +
+  annotate("text", x = .05, y = 150*.9, label = paste("AE95 =",round(quantile(abs(df_dif_par2a$ehf),.95),4))) 
+save_img('paredeeq_EHF_par2a')
+
+ggplot(df_dif_par2a,aes(df_dif_par2a$temp)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças na Temperatura Operativa Parede Alvenaria CT Total') +
+  xlab('Temp. Referência - Temp. Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = -1, y = 300, label = paste("Média =",round(temp_mean_par2a,3),'°C'))+
+  annotate("text", x = -1, y = 300*.9, label = paste("AE95 =",round(quantile(abs(df_dif_par2a$temp),.95),4),'°C'))
+save_img('paredeeq_temp_par2a')
+
+ggplot(df_dif_par2a,aes(df_dif_par2a$ach)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças no ACH Parede Alvenaria CT Total') +
+  xlab('ACH Referência - ACH Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = 1, y = 500, label = paste("Média =",round(ach_mean_par2a,3),'ach'))
+save_img('paredeeq_ACH_par2a')
+
+# Par 2b
+ggplot(df_dif_par2b,aes(df_dif_par2b$ehf)) +
+  geom_histogram(binwidth = .01)+
+  ggtitle('Diferenças no EHF Parede Alvenaria CT Metade') +
+  xlab('EHF Referência - EHF Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = .05, y = 150, label = paste("Média =",round(ehf_mean_par2b,5))) +
+  annotate("text", x = .05, y = 150*.9, label = paste("AE95 =",round(quantile(abs(df_dif_par2b$ehf),.95),4))) 
+save_img('paredeeq_EHF_par2b')
+
+ggplot(df_dif_par2b,aes(df_dif_par2b$temp)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças na Temperatura Operativa Parede Alvenaria CT Metade') +
+  xlab('Temp. Referência - Temp. Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = -1, y = 300, label = paste("Média =",round(temp_mean_par2b,3),'°C'))+
+  annotate("text", x = -1, y = 300*.9, label = paste("AE95 =",round(quantile(abs(df_dif_par2b$temp),.95),4),'°C'))
+save_img('paredeeq_temp_par2b')
+
+ggplot(df_dif_par2b,aes(df_dif_par2b$ach)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças no ACH Parede Alvenaria CT Metade') +
+  xlab('ACH Referência - ACH Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = 1, y = 500, label = paste("Média =",round(ach_mean_par2b,3),'ach'))
+save_img('paredeeq_ACH_par2b')
+
+# Par 3
+ggplot(df_dif_par3,aes(df_dif_par3$ehf)) +
+  geom_histogram(binwidth = .01)+
+  ggtitle('Diferenças no EHF Parede Gesso + Isolamento') +
+  xlab('EHF Referência - EHF Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = .05, y = 250, label = paste("Média =",round(ehf_mean_par3,5))) +
+  annotate("text", x = .05, y = 250*.9, label = paste("AE95 =",round(quantile(abs(df_dif_par3$ehf),.95),4))) 
+save_img('paredeeq_EHF_par3')
+
+ggplot(df_dif_par3,aes(df_dif_par3$temp)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças na Temperatura Operativa Parede Gesso + Isolamento') +
+  xlab('Temp. Referência - Temp. Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = .5, y = 400, label = paste("Média =",round(temp_mean_par3,3),'°C'))+
+  annotate("text", x = .5, y = 400*.9, label = paste("AE95 =",round(quantile(abs(df_dif_par3$temp),.95),4),'°C'))
+save_img('paredeeq_temp_par3')
+
+ggplot(df_dif_par3,aes(df_dif_par3$ach)) +
+  geom_histogram(binwidth = .5) +
+  ggtitle('Diferenças no ACH Parede Gesso + Isolamento') +
+  xlab('ACH Referência - ACH Parede equivalente') +
+  ylab('Número de casos') +
+  annotate("text", x = 1, y = 500, label = paste("Média =",round(ach_mean_par3,3),'ach'))
+save_img('paredeeq_ACH_par3')
+
 
 df_ref = subset(df, substr(df$file,1,1) == 'r' &  df$temp_max < tempmax)  # refwall_par1
 
@@ -256,8 +384,8 @@ ggplot(df_ref,aes(df_ref$ehf)) +
   ggtitle('EHF Referência') +
   xlab('EHF') +
   ylab('Número de casos') +
-  annotate("text", x = 0.8, y = 300, label = paste("Média =",round(mean(df_ref$ehf),5))) +
-  annotate("text", x = 0.8, y = 300*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf),.95),4))) 
+  annotate("text", x = 0.8, y = 30, label = paste("Média =",round(mean(df_ref$ehf),5))) +
+  annotate("text", x = 0.8, y = 30*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf),.95),4))) 
 
 ggplot(df_ref,aes(df_ref$ach)) +
   geom_histogram(binwidth = .5) +
@@ -303,8 +431,9 @@ df_dif_adi = data.frame(
   'ehf' = df_ref$ehf - df_adi$ehf
 )
 
+temp_mean_out = mean(df_dif_out$temp)
+temp_mean_adi = mean(df_dif_adi$temp)
 ehf_mean_out = mean(df_dif_out$ehf)
-
 ehf_mean_adi = mean(df_dif_adi$ehf)
 
 dif_out_adi = df_dif_out$ehf - df_dif_adi$ehf
@@ -312,20 +441,40 @@ max(dif_out_adi)
 min(dif_out_adi)  # erros sempre maiores no outdoors!
 
 ggplot(df_dif_out,aes(df_dif_out$ehf)) +
-  geom_histogram(binwidth = .001)+
+  geom_histogram(binwidth = .01)+
   ggtitle('Diferenças no EHF Outdoors') +
-  xlab('EHF Referência - EHF EPS + Concreto') +
+  xlab('EHF Referência - EHF Singlezone') +
   ylab('Número de casos') +
-  annotate("text", x = 0.25, y = 95, label = paste("Média =",round(ehf_mean_out,5))) +
-  annotate("text", x = 0.25, y = 95*.95, label = paste("AE95 =",round(quantile(abs(df_dif_out$ehf),.95),4))) 
+  annotate("text", x = 0.2, y = 600, label = paste("Média =",round(ehf_mean_out,5))) +
+  annotate("text", x = 0.2, y = 600*.9, label = paste("AE95 =",round(quantile(abs(df_dif_out$ehf),.95),4))) 
+save_img('szout_EHF')
 
 ggplot(df_dif_adi,aes(df_dif_adi$ehf)) +
-  geom_histogram(binwidth = .001)+
+  geom_histogram(binwidth = .01)+
   ggtitle('Diferenças no EHF Adiabático') +
   xlab('EHF Whole - EHF Singlezone') +
   ylab('Número de casos') +
-  annotate("text", x = -.07, y = 120, label = paste("Média =",round(ehf_mean_adi,5))) +
-  annotate("text", x = -.07, y = 120*.95, label = paste("AE95 =",round(quantile(abs(df_dif_adi$ehf),.95),4))) 
+  annotate("text", x = -.1, y = 1000, label = paste("Média =",round(ehf_mean_adi,5))) +
+  annotate("text", x = -.1, y = 1000*.9, label = paste("AE95 =",round(quantile(abs(df_dif_adi$ehf),.95),4))) 
+save_img('szadi_EHF')
+
+ggplot(df_dif_out,aes(df_dif_out$temp)) +
+  geom_histogram(binwidth = .05)+
+  ggtitle('Diferenças de Temp. Operativa Outdoors') +
+  xlab('Temp Referência - Temp Singlezone (°C)') +
+  ylab('Número de casos') +
+  annotate("text", x = -.25, y = 500, label = paste("Média =",round(temp_mean_out,5),'°C')) +
+  annotate("text", x = -.25, y = 500*.9, label = paste("AE95 =",round(quantile(abs(df_dif_out$temp),.95),4),'°C')) 
+save_img('szout_temp')
+
+ggplot(df_dif_adi,aes(df_dif_adi$temp)) +
+  geom_histogram(binwidth = .05)+
+  ggtitle('Diferenças de Temp. Operativa Adiabático') +
+  xlab('Temp Referência - Temp Singlezone (°C)') +
+  ylab('Número de casos') +
+  annotate("text", x = -1.1, y = 500, label = paste("Média =",round(temp_mean_adi,5),'°C')) +
+  annotate("text", x = -1.1, y = 500*.9, label = paste("AE95 =",round(quantile(abs(df_dif_adi$temp),.95),4),'°C')) 
+save_img('szadi_temp')
 
 
 ggplot(df_ref,aes(df_ref$ehf)) +
@@ -364,22 +513,24 @@ df = rbind(
 #   read.csv('/media/marcelo/OS/dissertacao/cpeq/cluster9/sz_means_cluster9.csv')
 # )
 
-# samp = read.csv('/media/marcelo/OS/dissertacao/sample_cpeq.csv')
+samp = read.csv('/media/marcelo/OS/dissertacao/sample_cpeq.csv')
 
-for(i in 0:3){
-df_cpeq = subset(df, substr(df$file,1,2) == 'cp')
-df_noeq = subset(df, substr(df$file,1,2) == 'no')
-df_ref = subset(df, substr(df$file,1,1) == 'w')
+df = read.csv('/media/marcelo/OS/dissertacao/cp_eq/means_cp_eq.csv')
+
+# for(i in 0:3){
+df_cpeq = subset(df, grepl(pattern = 'cp',df$file))  # substr(df$file,1,2) == 'cp')
+df_noeq = subset(df, grepl(pattern = 'no',df$file))  # substr(df$file,1,2) == 'no')
+df_ref = subset(df, grepl(pattern = 'whole',df$file))  # substr(df$file,1,1) == 'w')
 
 df_noeq <- df_noeq[order(df_noeq$file),]
 df_cpeq <- df_cpeq[order(df_cpeq$file),]
 df_ref <- df_ref[order(df_ref$file),]
 
-ehfmin= .6+(i*.1)
-ehfmax = .7+(i*.1)
-df_ref2 = subset(df_ref, df_ref$ehf > ehfmin & df_ref$ehf < ehfmax)
-df_cpeq = subset(df_cpeq, df_ref$ehf > ehfmin & df_ref$ehf < ehfmax)
-df_noeq = subset(df_noeq, df_ref$ehf > ehfmin & df_ref$ehf < ehfmax)
+# ehfmin= .6+(i*.1)
+# ehfmax = .7+(i*.1)
+# df_ref2 = subset(df_ref, df_ref$ehf > ehfmin & df_ref$ehf < ehfmax)
+# df_cpeq = subset(df_cpeq, df_ref$ehf > ehfmin & df_ref$ehf < ehfmax)
+# df_noeq = subset(df_noeq, df_ref$ehf > ehfmin & df_ref$ehf < ehfmax)
 
 # tempmax = 40
 # df_ref2 = subset(df_ref, df_ref$temp_max < tempmax) #.95)
@@ -427,7 +578,7 @@ min(df_dif_noeq$ach)
 
 print(ehf_mean_cpeq)
 print(ehf_mean_noeq)
-}
+# }
 
 ggplot(df_dif_cpeq,aes(df_dif_cpeq$ehf)) +
   geom_histogram(binwidth = .005)+
@@ -514,74 +665,77 @@ mean(df_single_0413_3$OFFICE.Zone.Operative.Temperature..C..Hourly.[df_single_04
 
 #
 # CRACK faltou crack nos modelos de duas janelas!!!!! ----
+# 
+# df = rbind(
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster0/means_cluster0.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster1/means_cluster1.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster2/means_cluster2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster3/means_cluster3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster4/means_cluster4.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster5/means_cluster5.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster6/means_cluster6.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster7/means_cluster7.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster8/means_cluster8.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster9/means_cluster9.csv')
+# )
+# 
+# df_2 = rbind(
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster0/means_cluster0_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster1/means_cluster1_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster2/means_cluster2_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster3/means_cluster3_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster4/means_cluster4_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster5/means_cluster5_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster6/means_cluster6_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster7/means_cluster7_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster8/means_cluster8_2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster9/means_cluster9_2.csv')
+# )
+# 
+# df_3 = rbind(
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster0/means_cluster0_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster1/means_cluster1_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster2/means_cluster2_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster3/means_cluster3_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster4/means_cluster4_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster5/means_cluster5_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster6/means_cluster6_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster7/means_cluster7_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster8/means_cluster8_3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster9/means_cluster9_3.csv')
+# )
+# 
+# df_015 = rbind(
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster0/015means_cluster0.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster1/015means_cluster1.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster2/015means_cluster2.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster3/015means_cluster3.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster4/015means_cluster4.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster5/015means_cluster5.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster6/015means_cluster6.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster7/015means_cluster7.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster8/015means_cluster8.csv'),
+#   read.csv('/media/marcelo/OS/dissertacao/crack/cluster9/015means_cluster9.csv')
+# )
 
-df = rbind(
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster0/means_cluster0.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster1/means_cluster1.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster2/means_cluster2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster3/means_cluster3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster4/means_cluster4.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster5/means_cluster5.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster6/means_cluster6.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster7/means_cluster7.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster8/means_cluster8.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster9/means_cluster9.csv')
-)
+samp = read.csv('/media/marcelo/OS/dissertacao/sample_cpeq.csv')
+df = read.csv('/media/marcelo/OS/dissertacao/cp_eq/means_cp_eq.csv')
 
-df_2 = rbind(
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster0/means_cluster0_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster1/means_cluster1_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster2/means_cluster2_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster3/means_cluster3_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster4/means_cluster4_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster5/means_cluster5_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster6/means_cluster6_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster7/means_cluster7_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster8/means_cluster8_2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster9/means_cluster9_2.csv')
-)
-
-df_3 = rbind(
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster0/means_cluster0_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster1/means_cluster1_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster2/means_cluster2_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster3/means_cluster3_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster4/means_cluster4_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster5/means_cluster5_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster6/means_cluster6_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster7/means_cluster7_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster8/means_cluster8_3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster9/means_cluster9_3.csv')
-)
-
-df_015 = rbind(
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster0/015means_cluster0.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster1/015means_cluster1.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster2/015means_cluster2.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster3/015means_cluster3.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster4/015means_cluster4.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster5/015means_cluster5.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster6/015means_cluster6.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster7/015means_cluster7.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster8/015means_cluster8.csv'),
-  read.csv('/media/marcelo/OS/dissertacao/crack/cluster9/015means_cluster9.csv')
-)
-
-df_ref = subset(df, substr(df$file,1,1) == 'w')  # & df$ehf < .9)
+df_ref = subset(df, grepl(pattern = 'whole',df$file))  # substr(df$file,1,1) == 'w')  # & df$ehf < .9)
 df_ref = cbind(df_ref, samp)
 # df_001 = subset(df, substr(df$file,1,3) == '001')  # & df_ref$ehf < .9)
-df_cp_010 = subset(df, substr(df$file,1,10) == '010crack_c')  # & df_ref$ehf < .9)  # 
-df_cp_020 = subset(df, substr(df$file,1,10) == '020crack_c')  # & df_ref$ehf < .9)
-df_cp_030 = subset(df, substr(df$file,1,10) == '030crack_c')  # & df_ref$ehf < .9)
-df_cp_040 = subset(df, substr(df$file,1,10) == '040crack_c')  # & df_ref$ehf < .9)
-df_cp_050 = subset(df, substr(df$file,1,10) == '050crack_c')  # & df_ref$ehf < .9)
-df_no_010 = subset(df, substr(df$file,1,10) == '010crack_n')  # & df_ref$ehf < .9)
-df_no_020 = subset(df, substr(df$file,1,10) == '020crack_n')  # & df_ref$ehf < .9)
-df_no_030 = subset(df, substr(df$file,1,10) == '030crack_n')  # & df_ref$ehf < .9)
-df_no_040 = subset(df, substr(df$file,1,10) == '040crack_n')  # & df_ref$ehf < .9)
-df_no_050 = subset(df, substr(df$file,1,10) == '050crack_n')  # & df_ref$ehf < .9)
-df_cp_015 = subset(df_015, substr(df_015$file,1,10) == '015crack_c')  # & df_ref$ehf < .9)  # 
-df_no_015 = subset(df_015, substr(df_015$file,1,10) == '015crack_n')  # & df_ref$ehf < .9)  # 
+df_cp_010 = subset(df, grepl(pattern = '_cpeq_10_',df$file))  # substr(df$file,1,10) == '010crack_c')  # & df_ref$ehf < .9)  # 
+df_cp_015 = subset(df, grepl(pattern = '_cpeq_15_',df$file))  # substr(df_015$file,1,10) == '015crack_c')  # & df_ref$ehf < .9)  # 
+df_cp_020 = subset(df, grepl(pattern = '_cpeq_20_',df$file))  # substr(df$file,1,10) == '020crack_c')  # & df_ref$ehf < .9)
+df_cp_030 = subset(df, grepl(pattern = '_cpeq_30_',df$file))  # substr(df$file,1,10) == '030crack_c')  # & df_ref$ehf < .9)
+# df_cp_040 = subset(df, grepl(pattern = '_cpeq_40_',df$file))  # substr(df$file,1,10) == '040crack_c')  # & df_ref$ehf < .9)
+df_cp_050 = subset(df, grepl(pattern = '_cpeq_50_',df$file))  # substr(df$file,1,10) == '050crack_c')  # & df_ref$ehf < .9)
+df_no_010 = subset(df, grepl(pattern = '_noeq_10_',df$file))  # substr(df$file,1,10) == '010crack_c')  # & df_ref$ehf < .9)  # 
+df_no_015 = subset(df, grepl(pattern = '_noeq_15_',df$file))  # substr(df_015$file,1,10) == '015crack_c')  # & df_ref$ehf < .9)  # 
+df_no_020 = subset(df, grepl(pattern = '_noeq_20_',df$file))  # substr(df$file,1,10) == '020crack_c')  # & df_ref$ehf < .9)
+df_no_030 = subset(df, grepl(pattern = '_noeq_30_',df$file))  # substr(df$file,1,10) == '030crack_c')  # & df_ref$ehf < .9)
+# df_no_040 = subset(df, grepl(pattern = '_noeq_40_',df$file))  # substr(df$file,1,10) == '040crack_c')  # & df_ref$ehf < .9)
+df_no_050 = subset(df, grepl(pattern = '_noeq_50_',df$file))  # substr(df$file,1,10) == '050crack_c')  # & df_ref$ehf < .9)
 # df_100 = subset(df, substr(df$file,1,3) == '100')  # & df_ref$ehf < .9)
 
 df_020 = subset(df_2, substr(df_2$file,1,3) == '020')  # & df_ref$ehf < .9)
@@ -660,7 +814,9 @@ df_cp_015 <- df_cp_015[order(df_cp_015$file),]
 df_no_015 <- df_no_015[order(df_no_015$file),]
 df_ref <- df_ref[order(df_ref$file),]
 
-ggplot((df_ref-df_cp_010),aes(df_ref$ach-df_cp_010$ach)) +
+# ACH Cpeq
+
+ggplot((df_ref),aes(df_ref$ach-df_cp_010$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 010') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -668,7 +824,7 @@ ggplot((df_ref-df_cp_010),aes(df_ref$ach-df_cp_010$ach)) +
   # ylim(c(0,1100)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_cp_010$ach),3),'ach'))
 
-ggplot((df_ref-df_cp_015),aes(df_ref$ach-df_cp_015$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_cp_015$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 015') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -677,7 +833,7 @@ ggplot((df_ref-df_cp_015),aes(df_ref$ach-df_cp_015$ach)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_cp_015$ach),3),'ach'))
 
 
-ggplot((df_ref-df_cp_020),aes(df_ref$ach-df_cp_020$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_cp_020$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 020') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -686,7 +842,7 @@ ggplot((df_ref-df_cp_020),aes(df_ref$ach-df_cp_020$ach)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_cp_020$ach),3),'ach'))
 
 
-ggplot((df_ref-df_cp_030),aes(df_ref$ach-df_cp_030$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_cp_030$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 030') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -695,7 +851,7 @@ ggplot((df_ref-df_cp_030),aes(df_ref$ach-df_cp_030$ach)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_cp_030$ach),3),'ach'))
 
 
-ggplot((df_ref-df_cp_040),aes(df_ref$ach-df_cp_040$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_cp_040$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 040') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -704,7 +860,7 @@ ggplot((df_ref-df_cp_040),aes(df_ref$ach-df_cp_040$ach)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_cp_040$ach),3),'ach'))
 
 
-ggplot((df_ref-df_cp_050),aes(df_ref$ach-df_cp_050$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_cp_050$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 050') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -712,8 +868,9 @@ ggplot((df_ref-df_cp_050),aes(df_ref$ach-df_cp_050$ach)) +
   # ylim(c(0,1100)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_cp_050$ach),3),'ach'))
 
+# ACH NOeq
 
-ggplot((df_ref-df_no_010),aes(df_ref$ach-df_no_010$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_no_010$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 010') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -722,7 +879,7 @@ ggplot((df_ref-df_no_010),aes(df_ref$ach-df_no_010$ach)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_no_010$ach),3),'ach'))
 
 
-ggplot((df_ref-df_no_020),aes(df_ref$ach-df_no_020$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_no_020$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 020') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -731,7 +888,7 @@ ggplot((df_ref-df_no_020),aes(df_ref$ach-df_no_020$ach)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_no_020$ach),3),'ach'))
 
 
-ggplot((df_ref-df_no_030),aes(df_ref$ach-df_no_030$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_no_030$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 030') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -740,7 +897,7 @@ ggplot((df_ref-df_no_030),aes(df_ref$ach-df_no_030$ach)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_no_030$ach),3),'ach'))
 
 
-ggplot((df_ref-df_no_040),aes(df_ref$ach-df_no_040$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_no_040$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 040') +
   xlab('ACH Referência - ACH Cp_eq') +
@@ -749,56 +906,108 @@ ggplot((df_ref-df_no_040),aes(df_ref$ach-df_no_040$ach)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_no_040$ach),3),'ach'))
 
 
-ggplot((df_ref-df_no_050),aes(df_ref$ach-df_no_050$ach)) +
+ggplot((df_ref),aes(df_ref$ach-df_no_050$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH 050') +
-  xlab('ACH Referência - ACH Cp_eq') +
+  xlab('ACH Referência - ACH no_eq') +
   ylab('Número de casos') +
   # ylim(c(0,1100)) +
   annotate("text", x = 2, y = 200, label = paste("Média =",round(mean(df_ref$ach-df_no_050$ach),3),'ach'))
 
-ggplot((df_ref-df_cp_010),aes(df_ref$ehf-df_cp_010$ehf)) +
+# EHF Cpeq
+
+ggplot((df_ref),aes(df_ref$ehf-df_cp_010$ehf)) +
   geom_histogram(binwidth = .005)+
   ggtitle('EHF Referência') +
   xlab('EHF') +
   ylab('Número de casos') +
   # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_cp_010$ehf),5))) +
   # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_010$ehf),.95),4)))
-  annotate("text", x = -0.15, y = 400, label = paste("Média =",round(mean(df_ref$ehf-df_cp_010$ehf),5))) +
-  annotate("text", x = -0.15, y = 350*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_010$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_cp_010$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_010$ehf),.95),4)))
 
 
-ggplot((df_ref-df_cp_015),aes(df_ref$ehf-df_cp_015$ehf)) +
+ggplot((df_ref),aes(df_ref$ehf-df_cp_015$ehf)) +
   geom_histogram(binwidth = .005)+
   ggtitle('EHF Referência 015') +
   xlab('EHF') +
   ylab('Número de casos') +
   # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_cp_010$ehf),5))) +
   # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_010$ehf),.95),4)))
-  annotate("text", x = -0.15, y = 400, label = paste("Média =",round(mean(df_ref$ehf-df_cp_015$ehf),5))) +
-  annotate("text", x = -0.15, y = 350*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_015$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_cp_015$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_015$ehf),.95),4)))
 
-
-ggplot((df_ref-df_cp_020),aes(df_ref$ehf-df_cp_020$ehf)) +
+ggplot((df_ref),aes(df_ref$ehf-df_cp_020$ehf)) +
   geom_histogram(binwidth = .005)+
   ggtitle('EHF Referência') +
   xlab('EHF') +
   ylab('Número de casos') +
   # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_cp_020$ehf),5))) +
   # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_020$ehf),.95),4)))
-  annotate("text", x = -0.15, y = 400, label = paste("Média =",round(mean(df_ref$ehf-df_cp_020$ehf),5))) +
-  annotate("text", x = -0.15, y = 350*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_020$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_cp_020$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_020$ehf),.95),4)))
 
+ggplot((df_ref),aes(df_ref$ehf-df_cp_030$ehf)) +
+  geom_histogram(binwidth = .005)+
+  ggtitle('EHF Referência 0.30') +
+  xlab('EHF') +
+  ylab('Número de casos') +
+  # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_cp_030$ehf),5))) +
+  # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_030$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_cp_030$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_030$ehf),.95),4)))
 
-ggplot((df_ref-df_no_010),aes(df_ref$ehf-df_no_010$ehf)) +
+ggplot((df_ref),aes(df_ref$ehf-df_cp_050$ehf)) +
+  geom_histogram(binwidth = .005)+
+  ggtitle('EHF Referência 0.50') +
+  xlab('EHF') +
+  ylab('Número de casos') +
+  # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_cp_050$ehf),5))) +
+  # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_050$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_cp_050$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_cp_050$ehf),.95),4)))
+
+# EHF NOeq
+
+ggplot((df_ref),aes(df_ref$ehf-df_no_010$ehf)) +
   geom_histogram(binwidth = .005)+
   ggtitle('EHF Referência') +
   xlab('EHF') +
   ylab('Número de casos') +
   # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_no_010$ehf),5))) +
   # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_010$ehf),.95),4)))
-  annotate("text", x = -0.15, y = 400, label = paste("Média =",round(mean(df_ref$ehf-df_no_010$ehf),5))) +
-  annotate("text", x = -0.15, y = 350*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_010$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_no_010$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_010$ehf),.95),4)))
+
+ggplot((df_ref),aes(df_ref$ehf-df_no_020$ehf)) +
+  geom_histogram(binwidth = .005)+
+  ggtitle('EHF Referência') +
+  xlab('EHF') +
+  ylab('Número de casos') +
+  # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_no_020$ehf),5))) +
+  # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_020$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_no_020$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_020$ehf),.95),4)))
+
+ggplot((df_ref),aes(df_ref$ehf-df_no_030$ehf)) +
+  geom_histogram(binwidth = .005)+
+  ggtitle('EHF Referência 0.30') +
+  xlab('EHF') +
+  ylab('Número de casos') +
+  # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_no_030$ehf),5))) +
+  # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_030$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_no_030$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_030$ehf),.95),4)))
+
+ggplot((df_ref),aes(df_ref$ehf-df_no_050$ehf)) +
+  geom_histogram(binwidth = .005)+
+  ggtitle('EHF Referência 0.50') +
+  xlab('EHF') +
+  ylab('Número de casos') +
+  # annotate("text", x = -0.15, y = 5, label = paste("Média =",round(mean(df_ref$ehf-df_no_050$ehf),5))) +
+  # annotate("text", x = -0.15, y = 4.5*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_050$ehf),.95),4)))
+  annotate("text", x = -0.15, y = 70, label = paste("Média =",round(mean(df_ref$ehf-df_no_050$ehf),5))) +
+  annotate("text", x = -0.15, y = 70*.93, label = paste("AE95 =",round(quantile(abs(df_ref$ehf-df_no_050$ehf),.95),4)))
 
 
 df_dif_001 = data.frame(

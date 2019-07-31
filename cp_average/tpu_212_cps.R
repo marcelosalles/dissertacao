@@ -1,6 +1,8 @@
 library(R.matlab)
 setwd('/media/marcelo/OS/Cps/')
 
+# Baixar dados ----
+
 cp00 <- readMat('T212_4_000_1.mat')
 cp30 <- readMat('T212_4_030_1.mat')
 cp60 <- readMat('T212_4_060_1.mat')
@@ -213,6 +215,13 @@ write.csv(df, 'TPU_212_cp.csv', row.names = FALSE)
 #####
 library(ggplot2)
 
+save_img = function(name,fact=1){
+  width = 145* fact
+  height = 90 * fact
+  file_name = paste('~/dissertacao/latex/img/',name,'.png', sep='')
+  ggsave(file_name, width = width, height = height,units = 'mm')
+}
+
 # df = rbind(
 #   read.csv('/media/marcelo/OS/Cps/TPU/cluster0/means_cluster0.csv'),
 #   read.csv('/media/marcelo/OS/Cps/TPU/cluster1/means_cluster1.csv'),
@@ -260,23 +269,26 @@ ggplot(df_dif,aes(df_dif$ehf)) +
   ggtitle('Diferenças no EHF') +
   xlab('EHF analítico - EHF tpu') +
   ylab('Número de casos') +
-  annotate("text", x = -.03, y = 300, label = paste("Média =",round(ehf_mean,4))) +
-  annotate("text", x = -.03, y = 300*.95, label = paste("AE95 =",round(quantile(abs(df_dif$ehf),.95),4))) 
+  annotate("text", x = -.03, y = 200, label = paste("Média =",round(ehf_mean,4))) +
+  annotate("text", x = -.03, y = 200*.9, label = paste("AE95 =",round(quantile(abs(df_dif$ehf),.95),4)))
+save_img('cpaverage_EHF')
 
 ggplot(df_dif,aes(df_dif$ach)) +
   geom_histogram(binwidth = .5) +
   ggtitle('Diferenças no ACH') +
-  xlab('ACH analítico - ACH tpu') +
+  xlab('ACH analítico - ACH tpu (ACH)') +
   ylab('Número de casos') +
-  annotate("text", x = -15, y = 700, label = paste("Média =",round(ach_mean,3),'ach'))
+  annotate("text", x = -12, y = 700, label = paste("Média =",round(ach_mean,3),'ach'))
+save_img('cpaverage_ACH')
 
 ggplot(df_dif,aes(df_dif$temp)) +
   geom_histogram(binwidth = .1)+
   ggtitle('Diferenças na Temperatura Operativa') +
-  xlab('Temperatura analítico - Temperatura tpu') +
+  xlab('Temperatura analítico - Temperatura tpu (°C)') +
   ylab('Número de casos') +
-  annotate("text", x = -.5, y = 800, label = paste("Média =",round(temp_mean,4))) +
-  annotate("text", x = -.5, y = 800*.95, label = paste("AE95 =",round(quantile(abs(df_dif$temp),.95),4))) 
+  annotate("text", x = -.45, y = 800, label = paste("Média =",round(temp_mean,4))) +
+  annotate("text", x = -.45, y = 800*.9, label = paste("AE95 =",round(quantile(abs(df_dif$temp),.95),4))) 
+save_img('cpaverage_temp')
 
 ggplot(df_tpu,aes(df_tpu$ehf)) +
   geom_histogram(binwidth = .05)

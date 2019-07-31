@@ -112,6 +112,8 @@ def main(df_base, month_means, output_name, ach=True):
             for i in range(len(df_temp[key])):
                 df_final[key].append(df_temp[key][i])
     
+    # df_final = pd.DataFrame(df_final)
+    # df_final = pd.concat([df_base, df_final], axis=1, ignore_index=True)
     df_output = pd.DataFrame(df_final)
     df_output.to_csv(output_name+'.csv', index=False)
     print('\tDone processing!')

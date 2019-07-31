@@ -27,12 +27,19 @@ df150$Ratio.between.width.and.length = as.numeric(as.character(df150$Ratio.betwe
 office_areas = c(as.numeric(as.character(df150$Office.unit.area..m..)), 37, 74, 148, 32.5, 37)
 absorptances = as.numeric(substr(df150$Exterior.wall.absorptance,1,3))
 
-# azimute 
+save_hist = function(name,fact=1){
+  width = 97* fact
+  height = 60 * fact
+  file_name = paste('~/dissertacao/latex/img/hist_',name,'.png', sep='')
+  ggsave(file_name, width = width, height = height,units = 'mm')
+}
 
+# azimute 
 ggplot(df150,aes(df150$Azimuth.angle.of.long.axis.of.building)) +
   geom_histogram(binwidth = 30) +
   ylab('Contagem') +
   xlab('Azimute (°)')
+save_hist('azimute')
 
 # formato 
 df150$formato = as.character(df150$Shape)
@@ -48,6 +55,7 @@ ggplot(df150,aes(df150$formato)) +
   geom_bar() +
   ylab('Contagem') +
   xlab('Formato do edifício')
+save_hist('formato')
 
 # ratio edificio
 
@@ -55,6 +63,7 @@ ggplot(df150,aes(df150$Ratio.between.width.and.length)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
   xlab('Razão entre dimensões do edifício')
+save_hist('ratio_edificio')
 
 # area edificio
 
@@ -62,6 +71,7 @@ ggplot(df150,aes(df150$Total.floor.area..m..)) +
   geom_histogram(binwidth = 10) +
   ylab('Contagem') +
   xlab('Área do pavimento')
+save_hist('area_edificio')
 
 # numero de pavimentos
 
@@ -69,6 +79,7 @@ ggplot(df150,aes(df150$Number.of.floors)) +
   geom_histogram(binwidth = 1) +
   ylab('Contagem') +
   xlab('Número de pavimentos')
+save_hist('numero_pavimentos')
 
 # absortancia
 df_abs = data.frame('abs' = absorptances)
@@ -77,6 +88,7 @@ ggplot(df_abs,aes(df_abs$abs)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
   xlab('Absortância da parede externa')
+save_hist('absortancia')
 
 # cor cobertura
 df150$cobcolor = as.character(df150$Roof.color)
@@ -94,6 +106,7 @@ ggplot(df150,aes(df150$cobcolor)) +
   geom_bar() +
   ylab('Contagem') +
   xlab('Cor da cobertura')
+save_hist('cor_cobertura')
 
 # tipo de vidro
 
@@ -101,6 +114,7 @@ ggplot(df150,aes(df150$Glazing.type)) +
   geom_bar() +
   ylab('Contagem') +
   xlab('Tipo de vidro')
+save_hist('tipo_vidro')
 
 # sombreamento
 unique(df150$Exterior.solar.shading.devices)
@@ -116,6 +130,7 @@ ggplot(df150,aes(df150$Exterior.solar.shading.devices)) +
   geom_bar() +
   ylab('Contagem') +
   xlab('Sombreamento')
+save_hist('sombreamento')
 
 # tipo de esquadria
 df150 <- within(df150,
@@ -127,6 +142,7 @@ ggplot(df150,aes(df150$Window.frame.type)) +
   geom_bar() +
   ylab('Contagem') +
   xlab('Tipo de esquadria')
+save_hist('esquadria')
 
 # areas zonas
 df_area = data.frame('area' = office_areas)
@@ -135,6 +151,7 @@ ggplot(df_area,aes(df_area$area)) +
   geom_histogram(binwidth = 5) +
   ylab('Contagem') +
   xlab('Áreas do escritórios (m²)')
+save_hist('area_zonas')
 
 # SOH OS 50!!!
 
@@ -144,6 +161,7 @@ ggplot(df50,aes(df50$Espessura.da.parede..m.)) +
   geom_histogram(binwidth = .05) +
   ylab('Contagem') +
   xlab('Espessura da parede (m)')
+save_hist('espessura_parede')
 
 # tipo de VN
 
@@ -158,6 +176,7 @@ ggplot(df_vn,aes(df_vn$vn)) +
   geom_bar() +
   ylab('Contagem') +
   xlab('Tipo de ventilação natural')
+save_hist('tipo_vn')
 
 # formato da sala
 
@@ -172,6 +191,7 @@ ggplot(df_formasala,aes(df_formasala$forma)) +
   geom_bar() +
   ylab('Contagem') +
   xlab('Formato da sala')
+save_hist('formato_sala')
 
 # ratio da sala
 
@@ -181,6 +201,7 @@ ggplot(df50,aes(df50$ratio)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
   xlab('Razão entre as dimensões da sala')
+save_hist('ratio_sala')
 
 # pe direito
 
@@ -188,6 +209,7 @@ ggplot(df50,aes(df50$Pé.direito..piso.forro...m.)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
   xlab('Pé-direito (m)')
+save_hist('pe_direito')
 
 # PAF
 
@@ -195,6 +217,7 @@ ggplot(df50,aes(df50$PAF.total.da.sala..../100)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
   xlab('PAF')
+save_hist('PAF')
 
 # altura da janela
 
@@ -204,6 +227,7 @@ ggplot(df50,aes(df50$hjan)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
   xlab('Altura da esquadria (m)')
+save_hist('hjan')
 
 # fator de abertura
 
@@ -211,6 +235,7 @@ ggplot(df50,aes(df50$Percentual.de.caixilho.operável....)) +
   geom_histogram(binwidth = .1) +
   ylab('Contagem') +
   xlab('Fator de abertura da janela')
+save_hist('openfac')
 
 #
 # rest ----

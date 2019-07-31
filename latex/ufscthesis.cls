@@ -211,9 +211,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{amstext}
 \AtEndOfClass{%
-\RequirePackage[abnt-emphasize=bf,abnt-etal-cite=2]{abntex2cite}%
+\RequirePackage[alf, abnt-emphasize=bf,abnt-etal-cite=2]{abntex2cite}%
 \RequirePackage{breakcites}
-\citebrackets[]
+\citebrackets()%[]
 }
 
 \AtBeginDocument{
