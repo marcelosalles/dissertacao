@@ -10,7 +10,7 @@ def n_calc(d, n_cases, scnd_order = False):
     else:
         n_size = n_cases/(d + 2)
 
-    print(n_size)
+    print('N = ',n_size)
 
     return int(n_size)
 
@@ -27,7 +27,7 @@ def main(size, col_names, output_name, sobol=False, scnd_order=True):
         }
         
         n_size = n_calc(problem['num_vars'], size, scnd_order=scnd_order)        
-        sample_matrix = saltelli.sample(problem, n_size, scnd_order=scnd_order)
+        sample_matrix = saltelli.sample(problem, n_size, calc_second_order=scnd_order)
     
     else:
 

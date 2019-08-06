@@ -18,7 +18,7 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
     shading=1, azimuth=0, bldg_ratio=1, wall_u=2.5, wall_ct=100,
     zn=0, floor_height=0, corner_window=True, ground=0, roof=0, 
     people=.1, glass_fs=.87, wwr=.6, open_fac=.5, door=True, cp_eq=True,
-    outdoors=False,
+    outdoors=False, ground_domain=True,
     afn=True, input_file='seed.json', output='output.epJSON'):
     
     print(output)
@@ -339,7 +339,7 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
             "wind_exposure": "NoWind"
         }
 
-    else:
+    elif ground_domain:
         ground_bound = {
             "construction_name": "Exterior Floor",
             "outside_boundary_condition": "OtherSideConditionsModel",
@@ -351,6 +351,19 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
         with open('modelo_preliminar/solo.epJSON', 'r') as file:
             soil = json.loads(file.read())
         model.update(soil)
+    
+    else:
+        ground_bound = {
+            "construction_name": "Exterior Floor",
+            "outside_boundary_condition": "Ground",
+            "sun_exposure": "NoSun",
+            "wind_exposure": "NoWind"
+        }
+            
+        with open('modelo_preliminar/solo_simple.epJSON', 'r') as file:
+            soil = json.loads(file.read())
+        model.update(soil)
+        
 
     model["BuildingSurface:Detailed"]["floor_office"].update(ground_bound)
 
@@ -937,8 +950,8 @@ def main(zone_area=10, zone_ratio=1, zone_height=3, absorptance=.5,
             }
         })
         
-    update(model, seed)
-    
+    model = update(seed,model)
+        
     with open(output, 'w') as file:
         file.write(json.dumps(model))
       

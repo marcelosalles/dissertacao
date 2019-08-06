@@ -1,0 +1,20 @@
+{
+    "Site:GroundTemperature:BuildingSurface": {
+        "Site:GroundTemperature:BuildingSurface 1": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 12,
+            "april_ground_temperature": 20.2,
+            "august_ground_temperature": 17.82,
+            "december_ground_temperature": 21.05,
+            "february_ground_temperature": 21.32,
+            "january_ground_temperature": 21.45,
+            "july_ground_temperature": 17.72,
+            "june_ground_temperature": 18.12,
+            "march_ground_temperature": 20.79,
+            "may_ground_temperature": 18.93,
+            "november_ground_temperature": 20.28,
+            "october_ground_temperature": 19.29,
+            "september_ground_temperature": 18.41
+        }
+    }
+}

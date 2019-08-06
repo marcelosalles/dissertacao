@@ -15,7 +15,7 @@ import other_crack_fac
 update = dict_update.update
 
 # Globals
-FOLDER = 'cp_eq_extra2'
+FOLDER = 'cp_eq_extra_noeq'
 SIZE = 200
 OUTPUT_NAME = 'sample_cpeq'
 NUM_CLUSTERS = int(os.cpu_count()/2)
@@ -60,13 +60,12 @@ col_names = list(PARAMETERS)
 samples_x_cluster = SIZE/NUM_CLUSTERS
 name_length = '{:0'+str(len(str(SIZE)))+'.0f}'
 
-def add_crack(file_name, crack_fac=.55):
+def add_crack(file_name, crack_fac=.1):
     
     with open(file_name, 'r') as file:            
         model = json.loads(file.read())
     model["AirflowNetwork:MultiZone:Surface:Crack"] = {
         "door_crack": {
-            # "air_mass_flow_coefficient_at_reference_conditions": .1,
             "air_mass_flow_coefficient_at_reference_conditions": crack_fac,
             "air_mass_flow_exponent": 0.667,
             "idf_max_extensible_fields": 0,
@@ -166,8 +165,8 @@ for i in range(len(sample)):
         else:
             azi = azimuth_right
     
-        output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD_2+'_noeq_55'+'_{}_'.format(case)+str(i)+'.epJSON')
-        df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD_2+'_noeq_55'+'_{}_'.format(case)+str(i)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
+        output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD_2+'_noeq_50'+'_{}_'.format(case)+str(i)+'.epJSON')
+        df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD_2+'_noeq_50'+'_{}_'.format(case)+str(i)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
         singlezone_diss.main(
             zone_area = model_values['area'], 
             zone_ratio = model_values['ratio'],
@@ -191,44 +190,44 @@ for i in range(len(sample)):
             open_fac=model_values['open_fac'],
             input_file=INPUT ,
             output=output,
-            outdoors=True
-        )
-        
-        add_crack(output)
-        
-        output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD_2+'_cpeq_55'+'_{}_'.format(case)+str(i)+'.epJSON')
-        df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD_2+'_cpeq_55'+'_{}_'.format(case)+str(i)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
-        singlezone_diss.main(
-            zone_area = model_values['area'], 
-            zone_ratio = model_values['ratio'],
-            zone_height = model_values['zone_height'],
-            absorptance = model_values['absorptance'],
-            shading = model_values['shading'],
-            azimuth = azi,
-            bldg_ratio = model_values['bldg_ratio'],
-            wall_u = model_values['wall_u'], 
-            wall_ct = model_values['wall_ct'], 
-            zn=i,
-            floor_height=model_values['floor_height'],
-            corner_window=corner_window,
-            ground=ground,
-            roof=roof, 
-            people=model_values['people'],
-            glass_fs=model_values['glass'],
-            wwr=model_values['wwr'],
-            door=False,
-            cp_eq = True,
-            open_fac=model_values['open_fac'],
-            input_file=INPUT,
-            output=output,
             outdoors=False
         )
         
-        add_crack(output)
+        add_crack(output, .5)
+        
+        # output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD_2+'_cpeq_90'+'_{}_'.format(case)+str(i)+'.epJSON')
+        # df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD_2+'_cpeq_90'+'_{}_'.format(case)+str(i)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
+        # singlezone_diss.main(
+            # zone_area = model_values['area'], 
+            # zone_ratio = model_values['ratio'],
+            # zone_height = model_values['zone_height'],
+            # absorptance = model_values['absorptance'],
+            # shading = model_values['shading'],
+            # azimuth = azi,
+            # bldg_ratio = model_values['bldg_ratio'],
+            # wall_u = model_values['wall_u'], 
+            # wall_ct = model_values['wall_ct'], 
+            # zn=i,
+            # floor_height=model_values['floor_height'],
+            # corner_window=corner_window,
+            # ground=ground,
+            # roof=roof, 
+            # people=model_values['people'],
+            # glass_fs=model_values['glass'],
+            # wwr=model_values['wwr'],
+            # door=False,
+            # cp_eq = True,
+            # open_fac=model_values['open_fac'],
+            # input_file=INPUT,
+            # output=output,
+            # outdoors=False
+        # )
+        
+        # add_crack(output, .7)
     
     line += 1
 
-df = other_crack_fac.main(df,folder=FOLDER)
+df = other_crack_fac.main(df,folder=FOLDER, pattern='_50_')
 
 os.chdir(FOLDER)
 print('\nRUNNING SIMULATIONS\n')
