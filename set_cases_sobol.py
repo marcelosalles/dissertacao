@@ -15,10 +15,10 @@ import other_crack_fac
 update = dict_update.update
 
 # Globals
-FOLDER = 'sobol'
-SIZE =  77824  # 155648
-OUTPUT_NAME = 'sample_sobol'
-NUM_CLUSTERS = 16  # int(os.cpu_count()/2)
+FOLDER = 'sobol2'
+SIZE = 155648   #  77824
+OUTPUT_NAME = 'sample_sobol2'
+NUM_CLUSTERS = int(os.cpu_count()/2)
 # NAME_STDRD = 'whole'
 NAME_STDRD_2 = 'single'
 INPUT = "seed.json"  # INPUT_WHOLE 
@@ -92,8 +92,8 @@ for i in range(NUM_CLUSTERS):
 # Generate sample
 print('\nGENERATING SAMPLE\n')
 
-# sample = sample_gen.main(SIZE, col_names, OUTPUT_NAME, sobol=SOBOL)
-sample = pd.read_csv(OUTPUT_NAME+'.csv')
+sample = sample_gen.main(SIZE, col_names, OUTPUT_NAME, sobol=SOBOL)
+# sample = pd.read_csv(OUTPUT_NAME+'.csv')
 if SOBOL:
     sample = (sample+1)/2
 
@@ -106,82 +106,82 @@ for i in range(len(sample)):
     
     sample_line = list(sample.iloc[i])
     
-    # model_values = dict((param,parameter_value(param, sample.loc[i, param])) for param in col_names)
+    model_values = dict((param,parameter_value(param, sample.loc[i, param])) for param in col_names)
     
-    # if model_values['roof'] > .5:
-        # roof = True
-    # else:
-        # roof = False
+    if model_values['roof'] > .5:
+        roof = True
+    else:
+        roof = False
         
-    # if model_values['ground'] > .5:
-        # ground = True
-    # else:
-        # ground = False
+    if model_values['ground'] > .5:
+        ground = True
+    else:
+        ground = False
         
-    # if model_values['room_type'] < .2:
-        ##room_type = '1_window'
-        # zn = 1
-        # corner_window = True
-    # elif model_values['room_type'] < .4:
-        ##room_type = '3_window'
-        # zn = 0
-        # corner_window = True
-    # elif model_values['room_type'] < .6:
-        ##room_type = '1_wall'
-        # zn = 1
-        # corner_window = False
-    # elif model_values['room_type'] < .8:
-        ##room_type = '3_wall'
-        # zn = 0
-        # corner_window = False
-    # else:
-        ##room_type = '0_window'
-        # zn = 2
-        # corner_window = False
+    if model_values['room_type'] < .2:
+        # ##room_type = '1_window'
+        zn = 1
+        corner_window = True
+    elif model_values['room_type'] < .4:
+        # ##room_type = '3_window'
+        zn = 0
+        corner_window = True
+    elif model_values['room_type'] < .6:
+        # ##room_type = '1_wall'
+        zn = 1
+        corner_window = False
+    elif model_values['room_type'] < .8:
+        # ##room_type = '3_wall'
+        zn = 0
+        corner_window = False
+    else:
+        # ##room_type = '0_window'
+        zn = 2
+        corner_window = False
 
-    # zone_feat = whole_gen.zone_list(model_values)
+    zone_feat = whole_gen.zone_list(model_values)
     
     cluster_n = int(line//samples_x_cluster)
     
     case = name_length.format(line)
-    print(case)
+    # print(case)
     
     output = (FOLDER+'/cluster'+name_length_cluster.format(cluster_n)+'/'+NAME_STDRD_2+'_{}'.format(case)+'.epJSON')
     df = df.append(pd.DataFrame([sample_line+['cluster'+name_length_cluster.format(cluster_n),NAME_STDRD_2+'_{}'.format(case)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
-    # singlezone_diss.main(
-        # zone_area = model_values['area'], 
-        # zone_ratio = model_values['ratio'],
-        # zone_height = model_values['zone_height'],
-        # absorptance = model_values['absorptance'],
-        # shading = model_values['shading'],
-        # azimuth = model_values['azimuth'],
-        # bldg_ratio = model_values['bldg_ratio'],
-        # wall_u = model_values['wall_u'], 
-        # wall_ct = model_values['wall_ct'], 
-        # zn=zn,
-        # floor_height = model_values['floor_height'],
-        # corner_window = corner_window,
-        # ground=ground,
-        # roof=roof, 
-        # people=model_values['people'],
-        # glass_fs=model_values['glass'],
-        # wwr=model_values['wwr'],
-        # door=False,
-        # cp_eq = True,
-        # open_fac=model_values['open_fac'],
-        # input_file=INPUT ,
-        # output=output,
-        # outdoors=False
-    # )
+    singlezone_diss.main(
+        zone_area = model_values['area'], 
+        zone_ratio = model_values['ratio'],
+        zone_height = model_values['zone_height'],
+        absorptance = model_values['absorptance'],
+        shading = model_values['shading'],
+        azimuth = model_values['azimuth'],
+        bldg_ratio = model_values['bldg_ratio'],
+        wall_u = model_values['wall_u'], 
+        wall_ct = model_values['wall_ct'], 
+        zn=zn,
+        floor_height = model_values['floor_height'],
+        corner_window = corner_window,
+        ground=ground,
+        roof=roof, 
+        people=model_values['people'],
+        glass_fs=model_values['glass'],
+        wwr=model_values['wwr'],
+        door=False,
+        cp_eq = True,
+        open_fac=model_values['open_fac'],
+        input_file=INPUT ,
+        output=output,
+        outdoors=False
+    )
         
-    # add_crack(output, .6)
+    add_crack(output, CRACK)
         
     line += 1
 
 os.chdir(FOLDER)
-# print('\nRUNNING SIMULATIONS\n')
-# list_epjson_names = runep_subprocess.gen_list_epjson_names(NUM_CLUSTERS, EXTENSION)
-# runep_subprocess.main(list_epjson_names, NUM_CLUSTERS, EXTENSION, REMOVE_ALL_BUT, epw_name=EPW_NAME)
+print('\nRUNNING SIMULATIONS\n')
+list_epjson_names = runep_subprocess.gen_list_epjson_names(NUM_CLUSTERS, EXTENSION)
+runep_subprocess.main(list_epjson_names, NUM_CLUSTERS, EXTENSION, REMOVE_ALL_BUT, epw_name=EPW_NAME)
 
 print('\nPROCESSING OUTPUT\n')
 output_processing.main(df, MONTH_MEANS, OUTPUT_PROCESSED)

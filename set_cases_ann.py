@@ -15,10 +15,10 @@ import other_crack_fac
 update = dict_update.update
 
 # Globals
-FOLDER = 'ann_test'  # 'ann'  # 'ann_validation'
-SIZE =  2000  # 155648
-OUTPUT_NAME = 'sample_ann_test'  # 'sample_ann'  # 'sample_ann_validation'
-NUM_CLUSTERS = 1  # int(os.cpu_count()/2)
+FOLDER = 'ann_validation'  # 'ann'  # 'ann_test'
+SIZE =  10000  # 155648
+OUTPUT_NAME = 'sample_ann_validation'  # 'sample_ann'  # 'sample_ann_test'
+NUM_CLUSTERS = int(os.cpu_count()/2)
 # NAME_STDRD = 'whole'
 NAME_STDRD_2 = 'single'
 INPUT = "seed.json"  # INPUT_WHOLE 
@@ -34,22 +34,22 @@ CRACK = .6
 
 PARAMETERS = {
     'area':[20,100],
-    'ratio':[.4,2.5],
-    'zone_height':[2.3,3.2],
+    # 'ratio':[.4,2.5],
+    # 'zone_height':[2.3,3.2],
     'azimuth':[0,359.9],
     'floor_height':[0,50],
     'absorptance':[.2,.8],
     'wall_u':[.5,4.4],
-    'wall_ct':[.22,450],
+    # 'wall_ct':[.22,450],
     'wwr':[.1,.6],
-    'glass':[.2,.87],
+    # 'glass':[.2,.87],
     'shading':[0,80],
     'people':[.05,.2],
     # 'corner_window':[0,1],
     'open_fac':[0.2,1],
     'roof':[0,1],
     'ground':[0,1],
-    'bldg_ratio': [.2,1],
+    # 'bldg_ratio': [.2,1],
     # 'n_floor':[1,9],
     'v_ar':[0,1],
     'room_type':[0,1]
@@ -148,21 +148,21 @@ for i in range(len(sample)):
     df = df.append(pd.DataFrame([sample_line+['cluster'+name_length_cluster.format(cluster_n),NAME_STDRD_2+'_{}'.format(case)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
     singlezone_diss.main(
         zone_area = model_values['area'], 
-        zone_ratio = model_values['ratio'],  #  1,  # 
-        zone_height = model_values['zone_height'],  #  2.5,  # 
+        zone_ratio = 1,  # model_values['ratio'],  #  
+        zone_height = 2.5,  # model_values['zone_height'],  #  
         absorptance = model_values['absorptance'],
         shading = model_values['shading'],
         azimuth = model_values['azimuth'],
-        bldg_ratio = model_values['bldg_ratio'],  #  1,  #
+        bldg_ratio = 1,  #model_values['bldg_ratio'],  #  
         wall_u = model_values['wall_u'], 
-        wall_ct = model_values['wall_ct'], #  161,  #
+        wall_ct = 161,  #model_values['wall_ct'], #  
         zn=zn,
         floor_height = model_values['floor_height'],
         corner_window = corner_window,
         ground=ground,
         roof=roof, 
         people=model_values['people'],
-        glass_fs= model_values['glass'],  #  .87,  # 
+        glass_fs= .87,  # model_values['glass'],  #  
         wwr=model_values['wwr'],
         door=False,
         cp_eq = True,

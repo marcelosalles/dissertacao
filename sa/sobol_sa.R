@@ -11,12 +11,12 @@ save_img = function(name,fact=1){
 sample = read.csv('/media/marcelo/OS/dissertacao/sample_ann.csv')
 outputs = read.csv('/media/marcelo/OS/dissertacao/ann/means_ann.csv')
 data = cbind(sample,outputs)
-write.csv(data, '/home/marcelo/dissertacao/dataset_08-05.csv', row.names = FALSE)
+write.csv(data, '/home/marcelo/dissertacao/dataset_08-06.csv', row.names = FALSE)
 
 sample_validation = read.csv('/media/marcelo/OS/dissertacao/sample_ann_validation.csv')
-outputs_validation = read.csv('/media/marcelo/OS/dissertacao/ann_validation/means_ann_validation.csv')
+outputs_validation = read.csv('/media/marcelo/OS/dissertacao/means_ann_validation_08-06.csv')  # ann_validation/means_ann_validation.csv')
 data_validation = cbind(sample_validation,outputs_validation)
-write.csv(data_validation, '/home/marcelo/dissertacao/dataset_validation_08-05.csv', row.names = FALSE)
+write.csv(data_validation, '/home/marcelo/dissertacao/dataset_validation_08-06.csv', row.names = FALSE)
 
 sample_test = read.csv('/media/marcelo/OS/dissertacao/sample_ann_test.csv')
 outputs_test = read.csv('/media/marcelo/OS/dissertacao/ann_test/means_ann_test.csv')
