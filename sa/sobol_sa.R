@@ -8,8 +8,11 @@ save_img = function(name,fact=1){
 }
 # ANN----
 #
-sample = read.csv('/media/marcelo/OS/dissertacao/sample_ann.csv')
-outputs = read.csv('/media/marcelo/OS/dissertacao/ann/means_ann.csv')
+basedir = '/media/marcelo/OS/dissertacao/'
+# basedir = '/home/marcelo/dissertacao/'
+
+sample = read.csv(paste(basedir,'sample_ann.csv',sep=''))
+outputs = read.csv(paste(basedir,'means_ann.csv',sep=''))
 data = cbind(sample,outputs)
 write.csv(data, '/home/marcelo/dissertacao/dataset_08-06.csv', row.names = FALSE)
 
@@ -23,64 +26,87 @@ outputs_test = read.csv('/media/marcelo/OS/dissertacao/ann_test/means_ann_test.c
 data_test = cbind(sample_test,outputs_test)
 write.csv(data_test, '/home/marcelo/dissertacao/dataset_test_08-05.csv', row.names = FALSE)
 
+df_ann = read.csv('/home/marcelo/dissertacao/dataset_08-06.csv')
+
+#
 # SOBOL----
 sample = read.csv('/media/marcelo/OS/dissertacao/sample_sobol.csv')
 outputs = read.csv('/media/marcelo/OS/dissertacao/sobol/means_sobol.csv')
+
+data_set_sobol = cbind(sample,outputs)
+write.csv(data_set_sobol,'dataset_sobol.csv', row.names = FALSE)
+
 # EHF ---
+
+parametros = c('Área','Razão L:C sala','Pé-direito','Azimute', 'Altura do pavimento',
+               'Absortância','Transmitância', 'Capacidade térmica','PAF',
+               'FS do vidro','Sombreamento', 'Ocupação','Fator de abertura','Cobertura exposta',
+               'Contato com solo','Razão L:C edifício', 'Velocidade do ar', 'Exposição paredes e janelas')
 
 ehf_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol/s1_ehf.csv')
 ehf_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol/s2_ehf.csv')
 
-ehf_s1 = ehf_s1[order(ehf_s1$S1,decreasing = TRUE),]
+ehf_s1$Parameter
+# area         ratio        zone_height  azimuth      floor_height
+# absorptance  wall_u       wall_ct      wwr          glass       
+# shading      people       open_fac     roof         ground      
+# bldg_ratio   v_ar         room_type  
+ehf_s1$Parameter = parametros
+
+ehf_s1$Parameter <- factor(ehf_s1$Parameter, levels = ehf_s1$Parameter[order(ehf_s1$ST, decreasing = TRUE)])
+# ehf_s1 = ehf_s1[order(ehf_s1$S1,decreasing = TRUE),]
 # ehf_s2 = ehf_s2[order(ehf_s2$S2,decreasing = TRUE),]
 
 # TEMP ---
 
 temp_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol/s1_temp.csv')
 temp_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol/s2_temp.csv')
+temp_s1$Parameter = parametros
+temp_s1$Parameter <- factor(temp_s1$Parameter, levels = temp_s1$Parameter[order(temp_s1$ST, decreasing = TRUE)])
 
-temp_s1 = temp_s1[order(temp_s1$S1,decreasing = TRUE),]
+# temp_s1 = temp_s1[order(temp_s1$S1,decreasing = TRUE),]
 
 # ach ---
 
 ach_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol/s1_ach.csv')
 ach_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol/s2_ach.csv')
+ach_s1$Parameter = parametros
+ach_s1$Parameter <- factor(ach_s1$Parameter, levels = ach_s1$Parameter[order(ach_s1$ST, decreasing = TRUE)])
 
-ach_s1 = ach_s1[order(ach_s1$S1,decreasing = TRUE),]
+# ach_s1 = ach_s1[order(ach_s1$S1,decreasing = TRUE),]
 
 # PLOTS ----
-
-ehf_s1$Parameter <- factor(ehf_s1$Parameter, levels = ehf_s1$Parameter[order(ehf_s1$ST, decreasing = TRUE)])
+cols = c('Efeitos totais' = 'darkblue','1ª ordem' = 'lightblue')
+legend_limits = c(0.8, 0.6)
 
 ggplot(ehf_s1,aes(ehf_s1$Parameter,ehf_s1$ST)) +
-  geom_col(fill='darkblue') +
-  geom_col(aes(ehf_s1$Parameter,ehf_s1$S1), fill='lightblue') +
-  theme(axis.text.x = element_text(angle = 90)) +
-  ggtitle('Análise de Sensibilidade - EHF') +
+  geom_col(aes(fill='Efeitos totais'))+#'darkblue') +
+  geom_col(aes(ehf_s1$Parameter,ehf_s1$S1, fill='1ª ordem'))+#'lightblue') +
+  theme(axis.text.x = element_text(angle = 90),legend.position = legend_limits) +
+  scale_fill_manual(name=NULL, values=cols)+
+  # ggtitle('Análise de Sensibilidade - EHF') +
   xlab('Parâmetro') +
   ylab('Índice de sensibilidade') +
   ylim(c(0,.6))
 save_img('as_ehf')
 
-temp_s1$Parameter <- factor(temp_s1$Parameter, levels = temp_s1$Parameter[order(temp_s1$ST, decreasing = TRUE)])
-
 ggplot(temp_s1,aes(temp_s1$Parameter,temp_s1$ST)) +
-  geom_col(fill='darkblue') +
-  geom_col(aes(temp_s1$Parameter,temp_s1$S1), fill='lightblue') +
-  theme(axis.text.x = element_text(angle = 90)) +
-  ggtitle('Análise de Sensibilidade - Temp. Op.') +
+  geom_col(aes(fill='Efeitos totais'))+#'darkblue') +
+  geom_col(aes(temp_s1$Parameter,temp_s1$S1, fill='1ª ordem'))+#'lightblue') +
+  theme(axis.text.x = element_text(angle = 90),legend.position = legend_limits) +
+  scale_fill_manual(name=NULL, values=cols)+
+  # ggtitle('Análise de Sensibilidade - Temp. Op.') +
   xlab('Parâmetro') +
   ylab('Índice de sensibilidade') +
   ylim(c(0,.6))
 save_img('as_temp')
 
-ach_s1$Parameter <- factor(ach_s1$Parameter, levels = ach_s1$Parameter[order(ach_s1$ST, decreasing = TRUE)])
-
 ggplot(ach_s1,aes(ach_s1$Parameter,ach_s1$ST)) +
-  geom_col(fill='darkblue') +
-  geom_col(aes(ach_s1$Parameter,ach_s1$S1), fill='lightblue') +
-  theme(axis.text.x = element_text(angle = 90)) +
-  ggtitle('Análise de Sensibilidade - ACH') +
+  geom_col(aes(fill='Efeitos totais'))+#'darkblue') +
+  geom_col(aes(ach_s1$Parameter,ach_s1$S1, fill='1ª ordem'))+#'lightblue') +
+  theme(axis.text.x = element_text(angle = 90),legend.position = legend_limits) +
+  scale_fill_manual(name=NULL, values=cols)+
+  # ggtitle('Análise de Sensibilidade - ACH') +
   xlab('Parâmetro') +
   ylab('Índice de sensibilidade') +
   ylim(c(0,.6))
@@ -134,9 +160,10 @@ corrplot.mixed(cor_matrix_1, lower = "number", upper = "ellipse",
                tl.pos = "lt", number.cex = 0.6, bg = "black",
                tl.col = "black", tl.srt = 90, tl.cex = 0.8)
 
-# ANN
+# PLOTS ANN ----
 
-sim_pred <- read.csv('/home/marcelo/Downloads/validation_results_08-05.csv')
+# sim_pred <- read.csv('/home/marcelo/Downloads/validation_results_08-05.csv')
+sim_pred <- read.csv('/home/marcelo/Downloads/plot_validation_08-09.csv')
 ggplot(sim_pred,aes(sim_pred$pred,sim_pred$simulado)) +
   geom_point(alpha=.1, col='blue4') +
   geom_abline(col='black') +
@@ -148,7 +175,9 @@ ggplot(sim_pred,aes(sim_pred$pred,sim_pred$simulado)) +
   annotate("text", x = .2, y = .83, label = paste("AE95 =",round(quantile((sim_pred$pred-sim_pred$simulado),.95),4)))
 save_img('ann_validation')
 
-sim_pred_test <- read.csv('/home/marcelo/Downloads/test_results_08-05.csv')
+# sim_pred_test <- read.csv('/home/marcelo/Downloads/test_results_08-05.csv')
+# sim_pred_test <- read.csv('/home/marcelo/Downloads/plot_test_08-06.csv')
+sim_pred <- read.csv('/home/marcelo/Downloads/plot_test_08-09.csv')
 ggplot(sim_pred_test,aes(sim_pred_test$pred,sim_pred_test$simulado)) +
   geom_point(alpha=.15, col='blue4') +
   geom_abline(col='black') +

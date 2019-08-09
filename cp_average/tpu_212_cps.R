@@ -295,34 +295,36 @@ save_img('cpaverage_temp')
 ggplot(df_tpu,aes(df_tpu$ehf,df_ave$ehf)) +
   geom_point(alpha=.25)+
   geom_abline() +
-  ggtitle('Comparação do EHF') +
-  xlab('TPU') +
-  ylab('Analítico') +
-  annotate("text", x = .25, y = .9, label = paste("Média =",round(ehf_mean,4))) +
-  annotate("text", x = .25, y = .8, label = paste("AE95 =",round(quantile(abs(df_dif$ehf),.95),4)))
+  # ggtitle('Comparação do EHF') +
+  xlab('EHF TPU') +
+  ylab('EHF MA') +
+  xlim(c(0,1)) + ylim(c(0,1))
+  # annotate("text", x = .25, y = .9, label = paste("Média =",round(ehf_mean,4))) +
+  # annotate("text", x = .25, y = .8, label = paste("AE95 =",round(quantile(abs(df_dif$ehf),.95),4)))
 save_img('cpaverage_EHF_scatter')
 
 ggplot(df_tpu,aes(df_tpu$ach,df_ave$ach)) +
   geom_point(alpha=.25)+
   geom_abline() +
-  ggtitle('Comparação do ACH') +
-  xlab('TPU') +
-  ylab('Analítico') +
-  annotate("text", x = 10, y = 90, label = paste("Média =",round(ach_mean,4))) +
-  annotate("text", x = 10, y = 80, label = paste("AE95 =",round(quantile(abs(df_dif$ach),.95),2)))
+  # ggtitle('Comparação do ACH') +
+  xlab('ACH média TPU') +
+  ylab('ACH média MA') 
+  # annotate("text", x = 10, y = 90, label = paste("Média =",round(ach_mean,4))) +
+  # annotate("text", x = 10, y = 80, label = paste("AE95 =",round(quantile(abs(df_dif$ach),.95),2)))
 save_img('cpaverage_ACH_scatter')
 
 ggplot(df_tpu,aes(df_tpu$temp,df_ave$temp)) +
   geom_point(alpha=.25)+
   geom_abline() +
-  ggtitle('Comparação da Temp. Operativa') +
-  xlab('TPU') +
-  ylab('Analítico') +
-  annotate("text", x = 24, y = 33, label = paste("Média =",round(temp_mean,2))) +
-  annotate("text", x = 24, y = 32, label = paste("AE95 =",round(quantile(abs(df_dif$temp),.95),2)))
+  # ggtitle('Comparação da Temp. Operativa') +
+  xlab('Temperatura operativa média (°C) TPU') +
+  ylab('Temperatura operativa média (°C) MA') +
+  # annotate("text", x = 24, y = 33, label = paste("Média =",round(temp_mean,2))) +
+  # annotate("text", x = 24, y = 32, label = paste("AE95 =",round(quantile(abs(df_dif$temp),.95),2)))
 save_img('cpaverage_temp_scatter')
 
 ggplot(df_tpu,aes(df_tpu$ehf)) +
   geom_histogram(binwidth = .05)
 
 sample = read.csv('/media/marcelo/OS/dissertacao/sample_cp_average.csv')
+

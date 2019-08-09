@@ -243,46 +243,56 @@ df_dif = rbind(df_dif_par1, df_dif_par2b,df_dif_par3)
 ach_mean = mean(df_dif$ach)
 ehf_mean = mean(df_dif$ehf)
 
-# ACH Cpeq SCATTERPLOT
+# EHFSCATTERPLOT
 ggplot(df_ref_par1,aes(df_ref_par1$ehf, df_eps_par1$ehf)) +
   geom_point(alpha=.1) +
   geom_abline() +
   xlim(c(0,1)) + ylim(c(0,1))
+
 ggplot(df_ref_par2a,aes(df_ref_par2a$ehf, df_eps_par2a$ehf)) +
   geom_point(alpha=.25) +
   geom_abline() +
   xlim(c(0,1)) + ylim(c(0,1)) +
-  ggtitle('Comparação EHF Alvenaria inteira') +
-  xlab('Parede Referência') +
-  ylab('Parede Equivalente') +
-  annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref_par2a$ehf)-abs(df_eps_par2a$ehf)),4))) +
-  annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref_par2a$ehf)-abs(df_eps_par2a$ehf)),.95),5))) 
+  # ggtitle('Comparação EHF Alvenaria inteira') +
+  xlab('EHF Parede Referência') +
+  ylab('EHF Parede Equivalente') +
+  # annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref_par2a$ehf)-abs(df_eps_par2a$ehf)),4))) +
+  # annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref_par2a$ehf)-abs(df_eps_par2a$ehf)),.95),5))) 
 save_img('paredeeq_EHF_par2a_scatter')
+mean(df_ref_par2a$ehf-df_eps_par2a$ehf)
+mean(abs(df_ref_par2a$ehf-df_eps_par2a$ehf))
+quantile((abs(df_ref_par2a$ehf-df_eps_par2a$ehf)),.95)
 
 ggplot(df_ref_par2b,aes(df_ref_par2b$ehf, df_eps_par2b$ehf)) +
   geom_point(alpha=.25) +
   geom_abline() +
   xlim(c(0,1)) + ylim(c(0,1)) +
-  ggtitle('Comparação EHF Alvenaria Metade') +
-  xlab('Parede Referência') +
-  ylab('Parede Equivalente') +
-  annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref_par2b$ehf)-abs(df_eps_par2b$ehf)),4))) +
-  annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref_par2b$ehf)-abs(df_eps_par2b$ehf)),.95),5))) 
+  # ggtitle('Comparação EHF Alvenaria Metade') +
+  xlab('EHF Parede Referência') +
+  ylab('EHF Parede Equivalente') +
+  # annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref_par2b$ehf)-abs(df_eps_par2b$ehf)),4))) +
+  # annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile(abs(df_ref_par2b$ehf-df_eps_par2b$ehf),.95),5))) 
 save_img('paredeeq_EHF_par2b_scatter')
+mean(df_ref_par2b$ehf-df_eps_par2b$ehf)
+mean(abs(df_ref_par2b$ehf-df_eps_par2b$ehf))
+quantile((abs(df_ref_par2b$ehf-df_eps_par2b$ehf)),.95)
 
 ggplot(df_ref_par3,aes(df_ref_par3$ehf, df_eps_par3$ehf)) +
   geom_point(alpha=.25) +
   geom_abline() +
   xlim(c(0,1)) + ylim(c(0,1)) +
-  ggtitle('Comparação EHF Gesso + Isolamento') +
-  xlab('Parede Referência') +
-  ylab('Parede Equivalente') +
-  annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref_par3$ehf)-abs(df_eps_par3$ehf)),4))) +
-  annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref_par3$ehf)-abs(df_eps_par3$ehf)),.95),4))) 
+  # ggtitle('Comparação EHF Gesso + Isolamento') +
+  xlab('EHF Parede Referência') +
+  ylab('EHF Parede Equivalente') +
+  # annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref_par3$ehf)-abs(df_eps_par3$ehf)),4))) +
+  # annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref_par3$ehf)-abs(df_eps_par3$ehf)),.95),4))) 
 save_img('paredeeq_EHF_par3_scatter')
 
-df_ref = rbind(df_ref_par1,df_ref_par2b,df_ref_par3)
-df_eps = rbind(df_eps_par1,df_eps_par2b,df_eps_par3)
+mean(df_ref_par3$ehf-df_eps_par3$ehf)
+mean(abs(df_ref_par3$ehf-df_eps_par3$ehf))
+
+df_ref = rbind(df_ref_par2b,df_ref_par3)
+df_eps = rbind(df_eps_par2b,df_eps_par3)
 ggplot(df_ref,aes(df_ref$ehf, df_eps$ehf)) +
   geom_point(alpha=.2) +
   geom_abline() +
@@ -293,6 +303,45 @@ ggplot(df_ref,aes(df_ref$ehf, df_eps$ehf)) +
   annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref$ehf)-abs(df_eps$ehf)),4))) +
   annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref$ehf)-abs(df_eps$ehf)),.95),4))) 
 save_img('paredeeq_EHF_scatter')
+
+mean(df_ref$ehf-df_eps$ehf)
+mean(abs(df_ref$ehf-df_eps$ehf))
+# LUPA!!!
+df_maxdif = df_ref
+df_maxdif$dif = df_ref$ehf-df_eps$ehf
+df_maxdif$file[df_maxdif$dif == max(df_maxdif$dif)]
+df_maxdif$zone[df_maxdif$dif == max(df_maxdif$dif)]
+df_ref$ehf[df_ref$file == 'whole_ref_par2b_014']
+df_eps$ehf[df_eps$file == 'whole_eq_par2b_014']
+
+df_maxdif = subset(df_ref, df_ref$file == 'whole_ref_par2b_014')
+df_maxdif = subset(df_maxdif, abs(df_maxdif$dif) > quantile((abs(df_ref$ehf)-abs(df_eps$ehf)),.95))
+library(Hmisc)
+hist.data.frame(df_maxdif)
+
+lhs_values = c(
+0.3743797,
+0.5575577,
+0.1659301,
+0.4676304,
+0.4468507,
+0.7144547,
+0.4426933,
+0.5107219,
+0.1674508,
+0.427916,
+0.4971307,
+0.04757653,
+0.7653883,
+0.7422462,
+0.3100196,
+0.1650274)
+
+lhs_names = colnames(df_maxdif)[8:23]
+
+df_eqwallcomp = data.frame('parameter'=lhs_names,'value'=lhs_values)
+ggplot(df_eqwallcomp,aes(df_eqwallcomp$parameter,df_eqwallcomp$value)) +
+  geom_col() + ylim(c(0,1))
 
 # HISTOGRAMAS
 ggplot(df_dif,aes(df_dif$ehf)) +
@@ -503,23 +552,30 @@ ggplot(df_ref,aes(df_ref$ehf, df_adi$ehf)) +
   geom_point(alpha=.15) +
   geom_abline() +
   xlim(c(0,1)) + ylim(c(0,1)) +
-  ggtitle('Comparação EHF Adiabático') +
-  xlab('Parede Referência') +
-  ylab('Parede Equivalente') +
-  annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref$ehf)-abs(df_adi$ehf)),4))) +
-  annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref$ehf)-abs(df_adi$ehf)),.95),5))) 
+  # ggtitle('Comparação EHF Adiabático') +
+  xlab('EHF Simulação Referência') +
+  ylab('EHF Simulação uma zona Adiabático') +
+  # annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref$ehf)-abs(df_adi$ehf)),4))) +
+  # annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref$ehf)-abs(df_adi$ehf)),.95),5))) 
 save_img('szadi_EHF_scatter')
+mean(df_ref$ehf-df_adi$ehf)
+mean(abs(df_ref$ehf-df_adi$ehf))
+quantile(abs(df_ref$ehf-df_adi$ehf),.95)
+
 
 ggplot(df_ref,aes(df_ref$ehf, df_out$ehf)) +
   geom_point(alpha=.15) +
   geom_abline() +
   xlim(c(0,1)) + ylim(c(0,1)) +
-  ggtitle('Comparação EHF Outdoors') +
-  xlab('Parede Referência') +
-  ylab('Parede Equivalente') +
-  annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref$ehf)-abs(df_out$ehf)),4))) +
-  annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref$ehf)-abs(df_out$ehf)),.95),5))) 
+  # ggtitle('Comparação EHF Outdoors') +
+  xlab('EHF Simulação Referência') +
+  ylab('EHF Simulação uma zona Outdoors') +
+  # annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(df_ref$ehf)-abs(df_out$ehf)),4))) +
+  # annotate("text", x = .2, y = .8, label = paste("AE95 =",round(quantile((abs(df_ref$ehf)-abs(df_out$ehf)),.95),5))) 
 save_img('szout_EHF_scatter')
+mean(df_ref$ehf-df_out$ehf)
+mean(abs(df_ref$ehf-df_out$ehf))
+quantile(abs(df_ref$ehf-df_out$ehf),.95)
 
 ggplot(df_dif_out,aes(df_dif_out$ehf)) +
   geom_histogram(binwidth = .01)+
@@ -850,18 +906,68 @@ df_no_070 = subset(df_noeq, grepl(pattern = '_noeq_70_',df_noeq$file))  # substr
 df_no_090 = subset(df_noeq, grepl(pattern = '_noeq_90_',df_noeq$file))  # substr(df_noeq$file,1,10) == '090crack_c')  # & df_ref$ehf < .9)
 df_no_099 = subset(df_noeq, grepl(pattern = '_noeq_99_',df_noeq$file))  # substr(df_noeq$file,1,10) == '099crack_c')  # & df_ref$ehf < .9)
 
+df_cpeq = rbind(df_cp_010,df_cp_020,df_cp_030,df_cp_040,df_cp_045,df_cp_050,df_cp_055,df_cp_060,
+                df_cp_070,df_cp_080,df_cp_090,df_cp_095,df_cp_099)
+df_noeq = rbind(df_no_010,df_no_020,df_no_030,df_no_040,df_no_045,df_no_050,df_no_055,df_no_060,
+                df_no_070,df_no_080,df_no_090,df_no_099)
+
+Cqs = c('10','30','40','45','50','55','60','70','80','99')
+cq_compare = data.frame('Method'=rep(NA,2*length(Cqs)),'Cq'=rep(NA,2*length(Cqs)),
+                        'RMSE'=rep(NA,2*length(Cqs)),'mean'=rep(NA,2*length(Cqs)),'abs_mean'=rep(NA,2*length(Cqs)),'AE95'=rep(NA,2*length(Cqs)),
+                        'RMSE_ehf'=rep(NA,2*length(Cqs)),'mean_ehf'=rep(NA,2*length(Cqs)),'abs_mean_ehf'=rep(NA,2*length(Cqs)),'AE95_ehf'=rep(NA,2*length(Cqs)))
+line=1
+for(Cq in Cqs){
+  sub_cpeq = subset(df_cpeq,grepl(pattern = paste('_cpeq_',Cq,sep=''),df_cpeq$file))
+  sub_noeq = subset(df_noeq,grepl(pattern = paste('_noeq_',Cq,sep=''),df_noeq$file))
+  
+  cq_compare$Method[line] = 'Cp eq'
+  cq_compare$Cq[line] = Cq
+  cq_compare$RMSE[line] = (sum((sub_cpeq$ach-df_ref$ach)**2)/nrow(df_ref))**(1/2)
+  cq_compare$mean[line] = mean(sub_cpeq$ach-df_ref$ach)
+  cq_compare$abs_mean[line] = mean(abs(sub_cpeq$ach-df_ref$ach))
+  cq_compare$AE95[line] = quantile(abs(sub_cpeq$ach-df_ref$ach),.95)
+  cq_compare$RMSE_ehf[line] = (sum((sub_cpeq$ehf-df_ref$ehf)**2)/nrow(df_ref))**(1/2)
+  cq_compare$mean_ehf[line] = mean(sub_cpeq$ehf-df_ref$ehf)
+  cq_compare$abs_mean_ehf[line] = mean(abs(sub_cpeq$ehf-df_ref$ehf))
+  cq_compare$AE95_ehf[line] = quantile(abs(sub_cpeq$ehf-df_ref$ehf),.95)
+  
+  cq_compare$Method[line+1] = 'Cp MA'
+  cq_compare$Cq[line+1] = Cq
+  cq_compare$RMSE[line+1] = (sum((sub_noeq$ach-df_ref$ach)**2)/nrow(df_ref))**(1/2)
+  cq_compare$mean[line+1] = mean(sub_noeq$ach-df_ref$ach)
+  cq_compare$abs_mean[line+1] = mean(abs(sub_noeq$ach-df_ref$ach))
+  cq_compare$AE95[line+1] = quantile(abs(sub_noeq$ach-df_ref$ach),.95)
+  cq_compare$RMSE_ehf[line+1] = (sum((sub_noeq$ehf-df_ref$ehf)**2)/nrow(df_ref))**(1/2)
+  cq_compare$mean_ehf[line+1] = mean(sub_noeq$ehf-df_ref$ehf)
+  cq_compare$abs_mean_ehf[line+1] = mean(abs(sub_noeq$ehf-df_ref$ehf))
+  cq_compare$AE95_ehf[line+1] = quantile(abs(sub_noeq$ehf-df_ref$ehf),.95)
+  
+  # print (paste('Cp EQ',Cq))
+  # print(((sum((sub_cpeq$ach-df_ref$ach)**2))**(1/2))/nrow(df_ref))
+  # print (paste('Cp NO',Cq))
+  # print(((sum((sub_noeq$ach-df_ref$ach)**2))**(1/2))/nrow(df_ref))
+  line = line + 2
+}
+
+cq_compare$Cq_num = as.numeric(cq_compare$Cq)/100
+cq_compare$Cq_num[cq_compare$Cq_num == .99] = 1
+
+names(cq_compare)[names(cq_compare)=="Method"]  <- "Método"
+names(cq_compare)[names(cq_compare)=="Cq_num"]  <- "Coeficiente\nde fluxo"
+ggplot(cq_compare,aes(cq_compare$RMSE,cq_compare$RMSE_ehf,shape=`Método`)) +
+  geom_point(size = 3, aes(col=`Coeficiente\nde fluxo`)) +
+  xlab('RMSE ACH') + ylab('RMSE EHF')
+save_img('cpeq_pareto',fact = 1)
+
 # threshold = .8
 # 
 # df_ref = subset(df_ref, df_ref$ehf < threshold)
-
-threshold = .7
-df_cp_010 = subset(df, substr(df$file,1,10) == '010crack_c' & df_ref$ehf < threshold)  # )
-
-tempmax = 40
-df_cp_010 = subset(df, substr(df$file,1,10) == '010crack_c' & df_ref$temp_max < tempmax)  # )
-
-peop = .8
-df_cp_010 = subset(df, substr(df$file,1,10) == '010crack_c' & df_ref$people < peop)  # )
+# threshold = .7
+# df_cp_010 = subset(df, substr(df$file,1,10) == '010crack_c' & df_ref$ehf < threshold)  # )
+# tempmax = 40
+# df_cp_010 = subset(df, substr(df$file,1,10) == '010crack_c' & df_ref$temp_max < tempmax)  # )
+# peop = .8
+# df_cp_010 = subset(df, substr(df$file,1,10) == '010crack_c' & df_ref$people < peop)  # )
 
 df_ref_cor = df_ref
 cor_matrix_1 = cor(df_ref_cor[,c("temp","ach","ehf","area",
@@ -872,8 +978,6 @@ corrplot.mixed(cor_matrix_1, lower = "number", upper = "ellipse",
                tl.pos = "lt", number.cex = 0.6, bg = "black",
                tl.col = "black", tl.srt = 90, tl.cex = 0.8)
 # PLOTS
-df_cpeq = rbind(df_cp_010,df_cp_020,df_cp_030,df_cp_040,df_cp_045,df_cp_050,df_cp_055,df_cp_060,
-                df_cp_070,df_cp_080,df_cp_090,df_cp_095,df_cp_099)
 infiltrations = unique(substr(df_noeq$file,13,14))
 for (inf in infiltrations){
   dfplot = subset(df_noeq, substr(df_noeq$file,13,14) == inf)

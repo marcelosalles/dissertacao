@@ -352,7 +352,7 @@
 		\item cálculo do Cp através do método analítico, em vez dos valores obtidos por medições em túnel de vento pela TPU;
 		\item representação dos materiais da envoltória através de duas camadas: uma camada representando a capacidade térmica, e uma camada para regular a transmitância;  %(concreto)  (objeto Material:NoMass)
 		\item modelagem da zona que representa apenas um escritório, sem modelar as demais zonas térmicas da edificação. Para isso, são definidas as condições de contorno relacionadas às faces da zona correspondentes a paredes adjacentes à edificação;
-		\item definição de um coeficiente de infiltração relacionado à infiltração de ar pela porta, e do valor do Cp relacionado a essa porta, que no modelo de uma zona está voltada para o ambiente externo, e não para a circulação.
+		\item definição de um coeficiente de fluxo mássico de ar relacionado à infiltração de ar pela porta, e do valor do Cp relacionado a essa porta, que no modelo de uma zona está voltada para o ambiente externo, e não para a circulação.
 		\end{itemize}
 		
 		O impacto nos resultados das simulações foram verificados para cada uma das simplificações mencionadas, a partir da análise de diversos casos amostrados pelo método de amostragem do hipercubo latino (LHS). O tamanho das amostras foi definido em relação ao tempo disponível para executar as simulações.
@@ -388,7 +388,7 @@
 %		\end{table}
 %		
 %		
-		\subsubsection{Cálculo do Cp pelo método analítico}
+		\subsubsection{Cálculo do coeficiente de pressão pelo método analítico}
 		
 		O EnergyPlus, através do AFN, possui uma opção para calcular automaticamente os Cp's para as simulações.
 		Quando essa opção é escolhida o programa gera apenas um Cp por fachada da edificação, e os valores podem ser obtidos por dois algorítimos diferentes: no caso de edificações altas (\textit{highrise}), utiliza-se o modelo de \citeauthoronline{Atkins} \cite{Atkins}; no caso de edificações baixas (\textit{lowrise}), utiliza-se o modelo de \citeauthoronline{SwamiChandra} \cite{SwamiChandra}.
@@ -452,12 +452,12 @@
 			\label{fig:parede_eq}
 		\end{figure}
 	
-		A validação da modelagem simplificada da parede foi feita para 3 tipos de paredes referência:
+		A validação da modelagem simplificada da parede foi feita para dois tipos de paredes referência:
 		
 		\begin{itemize}
-			\item parede de concreto;
-			\item parede de alvenaria e reboco;
-			\item parede de gesso com lã de rocha.
+%			\item parede de concreto;
+			\item parede de gesso com lã de rocha;
+			\item parede de alvenaria e reboco.
 		\end{itemize}
 		
 		Como a modelagem da parede de alvenaria possui uma camada de ar no meio da parede, avaliou-se a possibilidade de considerar apenas a metade interna desta parede referência para definir a capacidade térmica de sua parede equivalente. Essa consideração parte do pressuposto de que a camada interna de ar faria com que a inércia térmica da metade exterior da parede não influenciasse consideravelmente a zona térmica analisada.
@@ -465,7 +465,7 @@
 		Para validar essa simplificação, gerou-se uma amostra utilizando LHS, com 100 casos.
 		Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}, com exceção da transmitância e capacidade térmica da parede.  % os parâmetros relacionados com a propriedades termofísicas da parede.	% e a absortância????
 %		O modelo preliminar sofreu variação dos seguintes parâmetros: área, razão entre largura e profundidade da zona, pé-direito, azimute, absortância, PAF, taxa de ocupação. Os demais parâmtros foram fixados de acordo com a Tabela \ref{table:paramfix}.
-		Cada caso da amostra foi simulado com os três tipos de paredes diferentes, e suas paredes equivalentes. No caso da parede de alvenaria, dois modelos de parede equivalente foram desenvolvidos: considerando a capacidade térmica total da parede, e considerado apenas metade da capacidade térmica.
+		Cada caso da amostra foi simulado com os dois tipos de paredes diferentes, e suas paredes equivalentes. No caso da parede de alvenaria, dois modelos de parede equivalente foram desenvolvidos: considerando a capacidade térmica total da parede, e considerado apenas metade da capacidade térmica.
 		A partir dos resultados, observou-se a diferença média entre as temperaturas operativas das zonas simuladas com as paredes referências em relação às simulações com as respectivas paredes equivalentes. O mesmo foi feito comparando-se a EHF.
 		
 		\subsubsection{Condição de contorno das paredes adjacentes à edificação}
@@ -555,7 +555,7 @@
 		
 		$\dot{n}_{i,j}$ é o fluxo de ar entre os pontos $i$ e $j$, quando a porta/janela está fechada;
 		
-		$C_q$ é o coeficiente de fluxo de massa de ar da abertura;
+		$C_q$ é o coeficiente de fluxo mássico de ar da abertura;
 		
 		$exp$ é o expoente de fluxo de massa de ar.
 		\\
@@ -626,10 +626,10 @@
 		\end{figure}	
 					
 		Devido a essas considerações, a validação nesta etapa foi conduzida para duas condições: utilizando-se o Cp calculado diretamente pelo método analítico, e utilizando-se o $Cp_{eq}$.		
-		Estas análises foram conduzidas considerando-se diferentes valores de coeficiente de infiltração para o \textit{crack}, para ajustar o valor mais adequado à taxa de infiltração que se obtém no modelo referência. Os valores considerados foram: 0,1; 0,15; 0,2; 0,3; e 0,5 kg/s em 1 Pa.
+		Estas análises foram conduzidas considerando-se diferentes valores de coeficiente de fluxo mássico de ar para o \textit{crack}, para ajustar o valor mais adequado à taxa de infiltração que se obtém no modelo referência. Os valores considerados foram: 0,10; 0,30; 0,40; 0,45; 0,50; 0,55; 0,6; 0,7; 0,80; e 0,90 kg/s em 1 Pa.
 		Uma amostra de 200 casos foi gerada por LHS.
 		Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}.
-		Para cada caso, gerou-se uma simulação referência, mais dez simulações simplificadas. Essas dez simulações devem-se a consideração dos dois métodos para se obter os Cp's, mais os 5 valores de coeficiente de infiltração analisados. As comparações foram efetuadas observando-se os resultados de ACH e EHF. 
+		Para cada caso, gerou-se uma simulação referência, mais dez simulações simplificadas. Essas dez simulações devem-se a consideração dos dois métodos para se obter os Cp's, mais os dez valores de coeficiente de fluxo mássico de ar analisados. As comparações foram efetuadas observando-se os resultados de ACH e EHF. 
 		%Como as taxas de infiltração são influenciadas pela temperatura do ar, as comparações com os modelos referências foram feitas considerando-se diferentes faixas de temperatura.
 		
 		\section{Análise de sensibilidade}
@@ -664,7 +664,6 @@
 		A RNA com os melhores indicadores de precisão na etapa de treinamento foi escolhida para ter seu desempenho analisado com uma amostra de teste. 
 		A amostra de teste foi utilizada para verificar o desempenho da RNA quando os valores dos parâmetros determinados como fixos na etapa da AS variam. Para isso, utilizou-se a mesma amostra gerada para etapa da AS, pois as simulações já estavam finalizadas, e os casos eram diferentes daqueles utilizados no desenvolvimento da RNA.
 		Ao analisar os indicadores de precisão da RNA em relação às amostras de validação e de teste, o metamodelo final foi definido.
-		`
 
 %\bibliographystyle{lib/abntex2-num}
 %\bibliographystyle{lib/abntex2-alf}
