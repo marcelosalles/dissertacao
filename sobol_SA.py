@@ -7,9 +7,9 @@ from SALib.sample import saltelli
 # Global variables
 
 # BASE_DIR = '/home/marcelo/dissertacao'
-BASE_DIR = '/media/marcelo/OS/dissertacao'
-DATASET = 'sobol/means_sobol.csv'
-N_CLUSTERS = 16  # 10
+BASE_DIR = '/media/marcelo/OS/dissertacao/sobol2'
+DATASET = 'means_sobol2.csv'
+N_CLUSTERS = 10
 
 COL_NAMES = [
     'area',  # 20,100],
@@ -36,11 +36,11 @@ COL_NAMES = [
 
 BOUNDS = [-1, 1]
 
-SIMULATIONS = 77824  # 99978
+SIMULATIONS = 155648  # 77824  # 99978
 
 def print_indices(S, problem, calc_second_order, y):
     
-    t = open('sobol/s1_'+y+'.csv','a')
+    t = open(BASE_DIR+'/s1_'+y+'.csv','a')
     # Output to console
     if not problem.get('groups'):
         title = 'Parameter'
@@ -59,7 +59,7 @@ def print_indices(S, problem, calc_second_order, y):
     t.close()
 
     if calc_second_order:
-        t = open('sobol/s2_'+y+'.csv','a')
+        t = open(BASE_DIR+'/s2_'+y+'.csv','a')
         print('%s_1, %s_2, S2, S2_conf' % (title, title), file = t)
 
         for j in range(D):

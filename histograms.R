@@ -1819,3 +1819,66 @@ samp = read.csv('/media/marcelo/OS/dissertacao/sample_cpeq.csv')
 
 case_413 = read.csv('/media/marcelo/OS/dissertacao/cpeq/cluster4/single_0412_3out.csv')
 whole_413 = read.csv('/media/marcelo/OS/dissertacao/cpeq/cluster4/whole_0412out.csv')
+
+# ----
+
+months = c('Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro',
+           'Outubro','Novembro','Dezembro')
+
+means = c(21.16,22.35,21.67,20.76,17.45,16.77,17.34,18.28,17.68,
+          20.51,20.15,20.87)
+# month_means = read.csv('~/dissertacao/ehf/month_means_8760.csv')
+# unique(month_means$mean_temp)
+
+sp_means = data.frame('Meses'=months,'Temperatura.media'=means)
+sp_means$T_sup = 17.8+3.5 + .31* sp_means$Temperatura.media
+
+epw = read.csv('/media/marcelo/OS/LabEEE_1-2/idf-creator/epw_sp.epw',skip=8,header = FALSE)
+mean(epw$V7[epw$V2 == 1])
+epw$mean.temp[epw$V2 == 1] = mean(epw$V7[epw$V2 == 1])
+epw$mean.temp[epw$V2 == 2] = mean(epw$V7[epw$V2 == 2])
+epw$mean.temp[epw$V2 == 3] = mean(epw$V7[epw$V2 == 3])
+epw$mean.temp[epw$V2 == 4] = mean(epw$V7[epw$V2 == 4])
+epw$mean.temp[epw$V2 == 5] = mean(epw$V7[epw$V2 == 5])
+epw$mean.temp[epw$V2 == 6] = mean(epw$V7[epw$V2 == 6])
+epw$mean.temp[epw$V2 == 7] = mean(epw$V7[epw$V2 == 7])
+epw$mean.temp[epw$V2 == 8] = mean(epw$V7[epw$V2 == 8])
+epw$mean.temp[epw$V2 == 9] = mean(epw$V7[epw$V2 == 9])
+epw$mean.temp[epw$V2 == 10] = mean(epw$V7[epw$V2 == 10])
+epw$mean.temp[epw$V2 == 11] = mean(epw$V7[epw$V2 == 11])
+epw$mean.temp[epw$V2 == 12] = mean(epw$V7[epw$V2 == 12])
+unique(epw$mean.temp)
+
+epw$t.sup = 17.8+3.5 + .31* epw$mean.temp
+unique(epw$t.sup)
+
+epw$data = paste(epw$V2,epw$V3,epw$V4)
+epw$data <- as.POSIXct(strptime(epw$data,"%m %d %H"),format = "%m/%d/%H")
+
+library(scales)
+
+cols = c('Temperatura\nbulbo seco\nexterna' = 'gray','Média mensal\ntemperatura\nexterna' = 'blue','Limite superior\ntemperatura\noperativa' = 'red')
+
+ggplot(epw,aes(epw$data,epw$V7))+
+  geom_line(aes(col='Temperatura\nbulbo seco\nexterna'))+
+  geom_line(aes(epw$data,epw$mean.temp,col='Média mensal\ntemperatura\nexterna'))+
+  geom_line(aes(epw$data,epw$t.sup,col='Limite superior\ntemperatura\noperativa')) +
+  scale_x_datetime(labels = date_format("%B")) +
+  scale_colour_manual(name=NULL, values=cols) +
+  ylab('Temperatura (°C)') +
+  xlab(NULL) +
+  theme(legend.position="bottom")
+save_img('temp_means', fact=.8)
+  
+# January & 21,16 & 28.66 \\
+# February & 22,35 & 29.03 \\\hline
+# March & 21,67 & 28.82 \\\hline
+# April & 20,76 & 28.54 \\\hline
+# May & 17,45 & 27.51 \\\hline
+# June & 16,77 & 27.30 \\hline
+# July & 17,34 & 27.48 \\hline
+# August & 18,28 & 27.77\hline
+# September & 17,68 & 27.58 \\\hline
+# October & 20,51 & 28.46 \\\hline
+# November & 20,15 & 28.35 \\\hline
+# December & 20,87 & 28.57 \\

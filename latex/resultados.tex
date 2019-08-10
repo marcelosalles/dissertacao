@@ -13,6 +13,7 @@
 \usepackage{siunitx}
 \usepackage{nameref}
 \usepackage{float}
+\usepackage{subfig}
 
 \newcommand{\source}[1]{\small \caption*{Fonte: {#1}} } % Criar fonte embaixo da figura
 
@@ -87,7 +88,7 @@
 		\centering
 		\begin{minipage}{.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{img/hist_area_edificio.png}
+			\includegraphics[width=\linewidth]{img/hist_pe_direito.png}
 		\end{minipage}%
 		\begin{minipage}{.5\textwidth}
 			\centering
@@ -104,8 +105,8 @@
 		\end{minipage}
 	\end{figure}
 	\begin{figure}
-		\captionof{figure}{Continuação}
-		\label{fig:db_hist}
+		\ContinuedFloat
+		\caption[]{\textit{Continuação}} % {figure}
 		\centering	
 		\begin{minipage}{.5\textwidth}
 			\centering
@@ -144,19 +145,18 @@
 		\end{minipage}
 	\end{figure}
 	
-	Tanto os edifícios, quanto as salas existentes no banco de dados apresentam predominantemente formato retangular, a partir do qual considera-se que definir as simulações baseadas em modelos de edificações retangulares, como salas retangulares, representa adequadamente as tipologias de edifícios encontradas na cidade de São Paulo.
-	
+	Tanto os edifícios, quanto as salas existentes no banco de dados apresentam predominantemente formato retangular, a partir do qual considera-se que definir as simulações baseando-se em modelos de edificações retangulares, com salas retangulares, representa adequadamente as tipologias de edifícios encontradas na cidade de São Paulo.
 	A absortância da cobertura foi definida com o valor fixo de 0,7, valor aproximado para uma cobertura de cor cinza.
 	
-	Observou-se que esquadrias do tipo maxim-ar são predominante. Os objetos do \textit{Airflow Network} não modelam especificamente este tipo de esquadria. Porém, optou-se por considerar as janelas como não pivotantes. Considerar uma janela como horizontalmente pivotante implicaria na consideração de que a abertura acontece simultaneamente em cima e embaixo da janela. No caso da janela maxim-ar, por mais que a abertura aconteça em um eixo horizontal, ela abre apenas por baixo.
+	Observou-se que esquadrias do tipo maxim-ar são predominantes. Os objetos do \textit{Airflow Network} não modelam especificamente este tipo de esquadria. Porém, optou-se por considerar as janelas como não pivotantes. Considerar uma janela como horizontalmente pivotante implicaria na consideração de que a abertura acontece simultaneamente em cima e embaixo da janela. No caso da janela maxim-ar, por mais que a abertura aconteça em um eixo horizontal, apenas a parte inferior da janela abre.
 	
-	O uso de elementos de sombreamento é pouco explorado nas edificações existentes. De qualquer maneira, considerou-se a modelagem de sombreamento horizontal sobre as aberturas da edificação, por considerar o potencial do sombreamento para bloquear a entrada de radiação nas zonas térmicas simuladas. Esse parâmetro foi variado a partir do ângulo de sombreamento formado entre a base da abertura e a proteção solar, localizada no topo da abertura.
-	
-	As informações relacionadas ao tipo de vidro não permitem definir valores relacionados ao fator solar. Observa-se apenas a ocorrência de vidros laminados e vidro comum incolor. Optou-se por variar o fator solar dos vidros nas simulações para avaliar o impacto deste parâmetro nos resultados de conforto térmico.
-	
+	O uso de elementos de sombreamento é pouco explorado nas edificações existentes. De qualquer maneira, considerou-se a modelagem de sombreamento horizontal sobre as aberturas da edificação, por considerar o potencial do sombreamento para bloquear a entrada de radiação nas zonas térmicas simuladas. Esse parâmetro foi variado a partir do ângulo de sombreamento formado entre a base da abertura e a proteção solar, localizada no topo da abertura.	
 	A maioria das salas observadas possuem ventilação cruzada, mas a ventilação unilateral é uma estratégia com ocorrência considerável.
 	
-	Os demais parâmetros observados variaram continuamente de acordo com as distribuições obtidas. Como modelou-se apenas um pavimento nas simulações de referência, o parâmetro relacionado ao número de pavimento das edificações foi transformado no parâmetro "altura do pavimento".
+	As informações relacionadas ao tipo de vidro não permitem definir valores relacionados ao fator solar (FS). Observa-se apenas a ocorrência de vidros laminados e vidro comum incolor. Optou-se por variar o fator solar dos vidros nas simulações para avaliar o impacto deste parâmetro nos resultados de conforto térmico.
+	
+%	Os demais parâmetros observados tiveram suas distribuições variando continuamente de acordo com as distribuições obtidas. 
+	Como as simulações de referência foram modeladas como pavimentos da edificação, o parâmetro relacionado ao número de pavimento das edificações foi transformado no parâmetro "altura do pavimento".
 	
 	A Tabela \ref{table:param_def} apresenta os limites mínimos e máximos atribuídos aos diferentes parâmetros contínuos variados nas simulações, assim como os parâmetros variados pela lógica "sim/não". A velocidade do ar foi variada com valores discretos, de acordo com a Tabela \ref{table:var} do Capítulo \ref{chapter:metodologia}.
 	
@@ -214,7 +214,7 @@
 		
 		\subsection{Cálculo do coeficiente de pressão pelo método analítico}
 		
-		Ao comparar os valores dos coeficientes de pressão (Cp’s) das medições em túnel de vento da Universidade Politécnica de Tóquio (TPU) e os valores dos Cp’s obtidos pelo método analítico (MA), obteve-se o gráficos de pontos. 
+		Ao comparar os valores dos coeficientes de pressão (Cp’s) das medições em túnel de vento da Universidade Politécnica de Tóquio (TPU) e os valores dos Cp’s obtidos pelo método analítico (MA), obteve-se um gráficos de pontos. 
 		A Figura \ref{fig:cp_diff_scatter_all} apresenta a comparação para as 25 geometrias diferentes, para cada fachada, e para cada ponto disponibilizado pela TPU.
 		Como os valores calculados pelo MA são únicos para cada fachada, e a TPU oferece valores diferentes para diversos pontos ao longo das fachadas, os pontos no gráfico da Figura \ref{fig:cp_diff_scatter_all} distribuem-se horizontalmente. 
 %		A Figura \ref{fig:cp_diff_scatter_facade} apresenta a comparação considerando-se os valores médios do Cp para cada fachada. 
@@ -230,7 +230,7 @@
 			%			\end{flushleft}
 		\end{figure}
 		
-		Dentre as geometrias analisadas, a proporção com a maior diferença absoluta média entre os valores dos	Cp’s obtidos pela base da TPU e obtidos pelo MA foi igual a 0,344, para a geometria da edificação \textit{highrise} com proporções de largura, profundidade e altura igual a 2:1:2 (Figura \ref{fig:cp_diff_scatter}).
+		Dentre as geometrias analisadas, a proporção com a maior diferença absoluta média entre os valores dos Cp’s foi igual a 0,344, para a geometria da edificação \textit{highrise} com proporções de largura, profundidade e altura igual a 2:1:2 (Figura \ref{fig:cp_diff_scatter}).
 	
 		\begin{figure}[H]
 			\centering
@@ -244,12 +244,13 @@
 	
 		A partir da comparação conduzida, decidiu-se comparar as diferenças nos resultados de simulações termoenergéticas utilizando como base uma tipologia com proporções de largura, profundidade e altura igual a 2:1:2.
 		
-		Os resultados das 1000 simulações foram comparados por gráficos de pontos. A comparação entre as médias das trocas de ar, apresentada na Figura \ref{fig:cpaverage_ACH_scatter}, mostra que o MA faz com que as simulações subestimem as trocas de ar nas simulações, possivelmente devido aos menores valores dos Cp's obtidos pelo método.
-		A diferença média das trocas de ar foi igual a -0,67 trocas de ar por hora (ACH), com o erro absoluto do 95º percentil (AE95) é igual a 5,23 ACH.
+		Os resultados das 1000 simulações foram comparados por gráficos de pontos.
+		A comparação entre as médias anuais de trocas de ar por hora (ACH), apresentada na Figura \ref{fig:cpaverage_ACH_scatter}, mostra que o MA faz com que as simulações subestimem as trocas de ar nas simulações, possivelmente devido aos menores valores dos Cp's obtidos pelo método.
+		A diferença média foi igual a -0,67 para o ACH, com o erro absoluto do 95º percentil (AE95) é igual a 5,23 ACH.
 		
 		\begin{figure}[H]
 			\centering
-			\caption{Comparação entre as médias das ACH}
+			\caption{Comparação entre as médias anuais do ACH}
 			\includegraphics[width=1\linewidth]{img/cpaverage_ACH_scatter.png}
 			\label{fig:cpaverage_ACH_scatter}
 			%			\begin{flushleft}
@@ -258,7 +259,7 @@
 		\end{figure}
 		
 		Apesar dessas diferenças nas trocas de ar, a comparação entre as temperaturas operativas médias, apresentada na Figura \ref{fig:cpaverage_temp_scatter}, mostra que a diferença média da temperatura operativa é 0,04 $^{\circ}$C, sendo que o AE95 é igual a 0,31 $^{\circ}$C.
-		Essas diferenças são confirmadas como pouco significativas ao se analisar o a Figura \ref{fig:cpaverage_EHF_scatter}, com a comparação da fração de horas em desconforto (EHF). A média de diferença do EHF nos casos analisados foi igual a 0,0037, com o AE95 igual a 0,0277.
+		Essas diferenças são confirmadas como pouco significativas ao se analisar a Figura \ref{fig:cpaverage_EHF_scatter}, com a comparação da fração de horas em desconforto (EHF). A média de diferença do EHF nos casos analisados foi igual a 0,0037, com o AE95 igual a 0,0277.
 		Por tanto, considerou-se que a utilização do MA para calcular os valores dos Cp's é uma alternativa adequada para a simplificação das simulações termoenergéticas.
 		
 		\begin{figure}[H]
@@ -284,7 +285,7 @@
 	\subsection{Representação da envoltória com duas camadas}
 		
 		Os resultados das simulações com as paredes equivalentes subestimaram o EHF em 0,0107 na média, quando comparados aos resultados das simulações com as paredes de referência. 
-		Os resultados das simulações para a parede de gesso com isolamento mostram que o EHF é subestimado em um valor médio de 0,0099. Os resultados de EHF obtiveram um erro absolto médio igual a 0,0100, e um AE95 igual a 0,0604 (Figura \ref{fig:par3_scatter}).
+		Os resultados das simulações para a parede de gesso com isolamento resultaram em um erro absolto médio igual a 0,0100, e um AE95 igual a 0,0604 para o EHF (Figura \ref{fig:par3_scatter}).
 		
 		\begin{figure}[H]
 			\centering
@@ -322,7 +323,7 @@
 		
 		\subsection{Condição de contorno das paredes adjacentes à edificação}
 		
-		A simplificação das simulações adotando-se uma zona térmica foi avaliada para duas condições de contorno. Os resultados mostram que a maneira mais adequada de representar as paredes adjacentes à circulação da edificação é considerando-as como adiabáticas. Considerar as paredes adjacentes à circulação como \textit{Outdoors}, faz com que os resultados do EHF seja subestimados em 0,0868 em média, como AE95 igual a 0,1865 (Figura \ref{fig:szout_EHF}).
+		A simplificação das simulações adotando-se apenas uma zona térmica foi avaliada para duas condições de contorno. Os resultados mostram que a maneira mais adequada de representar as paredes adjacentes à circulação da edificação é considerando-as como adiabáticas. Considerar as paredes adjacentes à circulação como \textit{Outdoors}, faz com que os resultados do EHF sejam subestimados em 0,0868 em média, como AE95 igual a 0,1865 (Figura \ref{fig:szout_EHF}).
 		
 		\begin{figure}[H]
 			\centering
@@ -346,7 +347,7 @@
 			%			\end{flushleft}
 		\end{figure}
 		
-		A partir dos resultados obtidos, definiu-se as paredes voltadas para a circulação como adiabáticas, no desenvolvimento das simulações simplificadas.
+		A partir dos resultados obtidos, definiu-se as paredes voltadas para a circulação como adiabáticas no desenvolvimento das simulações simplificadas.
 		
 	\subsection{Modelagem da ventilação natural na simulação simplificada}
 	
@@ -355,13 +356,13 @@
 	
 	Para analisar simultaneamente o desempenho do $Cp_{eq}$ e dos coeficientes de fluxo mássico de ar, o gráfico da Figura \ref{fig:pareto} foi gerado, observando-se as raízes dos erros médios quadráticos (RMSE).
 	É possível observar que as simulações desenvolvidas utilizando-se o $Cp_{eq}$ obtiveram resultados com RMSE menores do que as simulações desenvolvidas utilizando-se o Cp obtido diretamente pelo MA.
-	Para a definir o coeficiente de fluxo mássico de ar, levou-se em conta inicialmente os erros relacionados às médias dos ACH.
-	No entanto, foi identificada uma fronteira de Pareto entre os erros analisados, que mostra como a busca por menores erros de ACH aumento os erros relacionados ao EHF.
-	O resultado dessa análise levanta duas hipóteses. A primeira é de que as diferenças maiores nas trocas de ar anulem erros relacionados à definição das paredes adjacentes à edificação como adiabáticas. A segunda hipótese, é de que os maiores erros relacionados ao ACH sejam em casos onde as diferenças nas trocas de ar não sejam relevantes para alterar a temperatura operativa das zonas térmicas e, consequentemente, o EHF.
+	Para a definir o coeficiente de fluxo mássico de ar, levou-se em conta inicialmente os erros relacionados ao ACH.
+	No entanto, foi identificada uma fronteira de Pareto entre os erros analisados, que mostra como a busca por menores erros de ACH aumenta os erros relacionados ao EHF.
+	O resultado dessa análise levanta duas suspeitas. A primeira é de que as diferenças maiores nas trocas de ar anulem erros relacionados à definição das paredes adjacentes à edificação como adiabáticas. A segunda hipótese, é de que os maiores erros relacionados ao MACH sejam em casos onde as diferenças nas trocas de ar não sejam relevantes para alterar a temperatura operativa nas zonas térmicas e, consequentemente, o EHF.
 	
 	\begin{figure}[H]
 		\centering
-		\caption{Eficiência de Pareto entre EHF e ACH}
+		\caption{Eficiência de Pareto entre EHF e ACH médio}
 		\includegraphics[width=1\linewidth]{img/cpeq_pareto.png}
 		\label{fig:pareto}
 		%			\begin{flushleft}
@@ -373,7 +374,7 @@
 	
 	\subsection{Análise de sensibilidade}
 	
-	As Figuras \ref{fig:as_ach}, \ref{fig:as_temp} e \ref{fig:as_ehf} apresentam os resultados das análises de sensibilidade (AS) para efeitos de primeira ordem e efeitos totais, relacionados às médias anuais de ACH, temperaturas operativas das zonas, e EHF. Os índices apresentados são proporcionais às influências entre os dados de entrada e saída.
+	As Figuras \ref{fig:as_ach}, \ref{fig:as_temp} e \ref{fig:as_ehf} apresentam os resultados das análises de sensibilidade (AS) para efeitos de primeira ordem e efeitos totais, relacionados ao ACH, às temperaturas operativas das zonas, e ao EHF. Os índices apresentados são proporcionais às influências entre os dados de entrada e saída.
 	
 	\begin{figure}[H]
 		\centering
@@ -405,21 +406,27 @@
 		%			\end{flushleft}
 	\end{figure}
 
-	Os parâmetros mais influentes nas médias anuais de ACH, como esperado, são aqueles relacionados às aberturas da zona. 
+	Os parâmetros mais influentes nas ACH, como esperado, são aqueles relacionados às aberturas da zona. 
 	O primeiro parâmetro de maior influência é o fator de abertura das janelas, seguido do parâmetro relacionado à exposição das paredes e à presença de VN cruzada ou unilateral. A área tem influência significativa, pois o cálculo das trocas de ar leva em conta o volume de ar na zona, que é diretamente relacionado à sua área. 
 	A altura do pavimento é determinante nos resultados do ACH, pois a velocidade do vento no EnergyPlus é calculada em função da altura da zona.
-	A orientação da zona (azimute) não tem uma influência significativa de primeira ordem. No entanto, percebe-se uma influência mais significativa considerando-se os efeitos totais. O azimute é determinante para determinar os coeficientes de pressão sobre as fachadas da edificação. Por isso, a influência deste parâmetro depende de outros parâmetros, relacionados às áreas e ao posicionamento das aberturas na zona.
-	A velocidade do ar não influencia os resultados, pois é considerada apenas após o término das simulações, ao se calcular o EHF.
+	A orientação da zona (azimute) não tem uma influência significativa de primeira ordem. No entanto, percebe-se uma influência mais significativa considerando-se os efeitos totais. 
+	O azimute é determinante para a definição dos coeficientes de pressão sobre as fachadas da edificação. Por isso, a influência deste parâmetro nos resultados das simulações depende de outros parâmetros, relacionados ao posicionamento e às áreas das aberturas na zona.
+	A velocidade do ar não influencia os resultados relacionados ao ACH, pois é considerada apenas após o término das simulações, ao se calcular o EHF.
+	A AS apresentou interações de segunda ordem significativas entre o fator de abertura das janelas e a presença de VN cruzada ou unilateral, com um índice de sensibilidade igual a 0,121.
+	Contudo, o parâmetro com maiores interações de segunda ordem relacionados ao ACH foi o PAF, com a soma dos índices de segunda ordem igual a 0,300.
 	
-	As análises relacionadas à temperatura operativa e ao EHF indicam a relevância dos parâmetros relacionados à ventilação natural. Para ambas as análises, o parâmetro mais influente foi o fator de abertura da janela, enquanto o parâmetro relacionado à exposição das paredes e à presença de VN cruzada ou unilateral foi o terceiro mais influente. 
-	O contato com o solo apresentou-se como o segundo parâmetro mais influente nas médias anuais de temperatura operativa, considerando-se os esfeitos totais. No entanto, a influência deste parâmetro não é tão significativa no EHF. Isso indica que a influência do contato com o solo nas temperaturas operativas das zonas é mais significativa em faixas de temperatura que não interferem no cálculo do EHF, ou seja, consideravelmente a cima ou abaixo dos limites superiores.
-	Observa-se que os efeitos totais entre o segundo (contato com o solo) e o quarto (exposição da cobertura) parâmetro definidos como mais influentes na média anual de temperatura operativa são determinantes. Se fossem considerados apenas efeitos de primeira ordem, os índices de sensibilidade seriam muito semelhantes entre o segundo e o nono parâmetro mais influente.
-	A transmitância das paredes, o azimute, e a razão entre a largura e o comprimento da sala apresentam baixos índices de sensibilidade para primeira ordem, porém têm efeitos totais relevantes. Isso indica que há colinearidade significativa entre esses parâmetros e os demais.
+	As análises relacionadas à temperatura operativa e ao EHF indicam relevância dos parâmetros relacionados à VN. Para ambas as análises, o parâmetro mais influente foi o fator de abertura da janela, enquanto o parâmetro relacionado à exposição das paredes e à presença de VN cruzada ou unilateral foi o terceiro mais influente. 
+	O contato com o solo apresentou-se como o segundo parâmetro mais influente nas médias anuais de temperatura operativa, considerando-se os esfeitos totais. No entanto, a influência deste parâmetro não é tão significativa no EHF. Isso indica que a influência do contato com o solo nas temperaturas operativas das zonas é mais significativa em faixas de temperatura que não interferem no cálculo do EHF, ou seja, consideravelmente a cima ou abaixo dos limites superiores de aceitabilidade estabelecidos pelo método de conforto adaptativo.
+	Observa-se que os efeitos totais entre o segundo (contato com o solo) e o quarto (exposição da cobertura) índice de sensibilidade com valores mais altos na AS relacionada à média anual da temperatura operativa são expressivos.
+	A transmitância das paredes, o azimute, e a razão entre a largura e o comprimento da sala também apresentam efeitos totais relevantes, apesar dos baixos índices de sensibilidade para primeira ordem. Isso indica que há interações significativas entre esses parâmetros e os demais.
 		
 	O movimento do ar apresenta-se como o segundo parâmetro mais influente nos resultados de EHF, o que indica um grande potencial de uso de ventiladores na busca por conforto térmico nos ambientes. 
 	A área da zona e a densidade de ocupação apresentaram-se mais influentes nos resultados de EHF, comparando-se aos resultados relacionados às médias anuais de temperatura operativa.
+	O azimute, apesar de seu índice de sensibilidade baixo para a análise de primeira ordem, apresentou índices de segunda ordem expressivos. As interações de segunda ordem ocorrem relacionadas a parâmetros referentes à VN e a parâmetros referentes à radiação solar. A soma dos índices de segunda ordem do azimute em relação ao EHF foi igual a 0,177.  %, como sombreamento e absortância
 	
-	Baseando-se nos resultados das AS, alguns dos parâmetros não foram considerados para o desenvolvimento do metamodelo. A Tabela \ref{table:param_fixed} apresentam os parâmetros que tiveram seus valores fixos. Os valores fixos foram determinados a considerando-se os valores encontrados com mais frequência, com exceção dos parâmetros relacionados às proporções entre largura e profundidade das salas e edifícios, que foram determinados com valor igual a 1. 
+	A complexidade dos fenômenos representados junto às interações entre as diferentes variáveis exige um grande número de casos para reduzir incertezas, pois o método de AS utiliza uma base amostral. Por isso, existe uma incerteza associada aos índices de sensibilidade obtidos nas AS conduzidas, e a soma dos valores dos índices ultrapassa o valor 1. Entretanto, a aplicação da análise de sensibilidade global ofereceu resultados relevantes para o trabalho, com índices de sensibilidade condizentes aos comportamentos físicos representados pelas simulações. 
+	
+	Baseando-se nos resultados das AS, alguns dos parâmetros não foram considerados para o desenvolvimento do metamodelo. A Tabela \ref{table:param_fixed} apresentam os parâmetros que tiveram seus valores fixos. O valor do pé-direito foi determinado considerando-se o valor encontrado com mais frequência na base de dados analisada. A capacidade térmica da parede foi estabelecida de acordo com o valor de uma parede de bloco cerâmico de dimensões 14x19x29 cm, e argamassa de 2,5 cm. Os parâmetros relacionados às proporções entre largura e profundidade das salas e edifícios foram determinados com valor igual a 1. 
 	
 	\begin{table}[H]		
 		\centering
@@ -437,8 +444,8 @@
 			\hline
 			Capacidade térmica (kJ/m$^2$K) & 161 \\
 			\hline
-			Fator solar do vidro (-) & 0,87 \\
-			\hline
+%			Fator solar do vidro (-) & 0,87 \\
+%			\hline
 		\end{tabular}
 	\end{table}
 	
@@ -483,9 +490,8 @@
 
 	\subsection{Desenvolvimento do metamodelo}
 	
-	A partir das 100.000 simulações geradas para o treinamento da rede neural artificial (RNA), obteve-se resultados de EHF variando entre 0,00 e 1,00.
-	
-	O metamodelo final foi definido com 13 parâmetros:
+	A partir das 20.000 simulações geradas para o treinamento da rede neural artificial (RNA). %, obteve-se resultados de EHF variando entre 0,00 e 1,00.
+	O metamodelo final foi definido com 14 parâmetros:
 	\begin{itemize}
 		\item Fator de abertura das janelas;
 		\item Velocidade do ar;
@@ -498,11 +504,12 @@
 		\item Contato com o solo;
 		\item Transmitância das paredes;
 		\item Absortância das paredes;
+		\item Fator solar do vidro;
 		\item Azimute da sala;
 		\item PAF.
 	\end{itemize}
 	
-	Os parâmetros variaram na mesma faixa de valores estabelecida na primeira etapa deste estudo. O ângulo do azimute da sala é determinado considerando-se o eixo entre a porta e a janela em frente à porta.
+	Os parâmetros variaram na mesma faixa de valores estabelecida na primeira etapa deste estudo. O ângulo do azimute da sala é determinado considerando-se o eixo entre a parede voltada para a circulação e a parede oposta.
 	
 	O contato com o solo e a exposição da cobertura foram definidas como variáveis binárias, com o valor zero correspondendo à superfície adiabática, e 1 correspondendo à exposição.
 	O parâmetro que representa a condição de exposição das paredes e janelas não foi representado com valores numéricos, e sim como uma variável de fatores, com cinco opções de exposição. Além das três opções apresentadas na Figura \ref{fig:exp_sz}, considerou-se as exposições espelhadas. 	

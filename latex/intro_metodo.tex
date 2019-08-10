@@ -426,7 +426,7 @@
 		A altura do pavimento em relação ao solo também foi limitada pelas proporções da geometria escolhida para o modelo base.
 		Vale destacar que a base da TPU permite a obtenção de diferentes Cp's para diferentes janelas de uma mesma fachada, enquanto que nas simulações baseadas no MA, utiliza-se apenas um valor de Cp por fachada, devido à limitação do método. 
 		Para cada caso da amostra gerada, foram simulados um modelo com Cp’s baseados no MA, e um modelo com Cp’s baseados na base da TPU (túnel de vento).
-		Assim, as trocas de ar por hora (ACH) e a EHF foram comparadas entre as simulações.
+		Assim, as médias anuais das trocas de ar por hora (ACH) e a EHF foram comparadas entre as simulações.
 		%		com Cp's medidos em túnel de vento pela TPU, e simulações com Cp's obtidos pelos métodos analíticos padrão do EnergyPlus.
 				
 %		Para cada uma dessas geometrias disponíveis, valores de Cp são disponibilizados para diversos pontos na fachada da edificação, de acordo com a Figura \ref{fig:tpupoints}.
@@ -494,7 +494,7 @@
 		A modelagem da ventilação natural sofre um impacto significativo quando o escritório é modelado como apenas uma zona térmica.
 		Esse impacto é devido à forma como a rede de fluxo de ar é montada. No caso do modelo referência, a porta é voltada para a circulação, enquanto que no caso de uma única zona térmica, a porta desta zona é voltada para o ambiente externo. 
 		Além disso, não é possível modelar uma porta em uma parede adiabática. Para não deixar a diferença na ventilação natural influenciar as análises comparativas entre as simulações, a ventilação natural não foi modelada para esta etapa.
-		Em vez disso, as simulações foram desenvolvidas com uma taxa de infiltração de ar constante durante a ocupação. O valor escolhido para a taxa de renovação de ar foi igual ao valor médio das ACH obtido na etapa da comparação entre os Cp's, que é igual a 30 ACH.
+		Em vez disso, as simulações foram desenvolvidas com uma taxa de infiltração de ar constante durante a ocupação. O valor escolhido para a taxa de renovação de ar foi igual ao valor médio do ACH obtido na etapa da comparação entre os Cp's, que é igual a 30 ACH.
 		
 		A amostra gerada pelo LHS nesta etapa foi de 100 casos.
 		Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}.
@@ -629,7 +629,7 @@
 		Estas análises foram conduzidas considerando-se diferentes valores de coeficiente de fluxo mássico de ar para o \textit{crack}, para ajustar o valor mais adequado à taxa de infiltração que se obtém no modelo referência. Os valores considerados foram: 0,10; 0,30; 0,40; 0,45; 0,50; 0,55; 0,6; 0,7; 0,80; e 0,90 kg/s em 1 Pa.
 		Uma amostra de 200 casos foi gerada por LHS.
 		Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}.
-		Para cada caso, gerou-se uma simulação referência, mais dez simulações simplificadas. Essas dez simulações devem-se a consideração dos dois métodos para se obter os Cp's, mais os dez valores de coeficiente de fluxo mássico de ar analisados. As comparações foram efetuadas observando-se os resultados de ACH e EHF. 
+		Para cada caso, gerou-se uma simulação referência, mais dez simulações simplificadas. Essas dez simulações devem-se a consideração dos dois métodos para se obter os Cp's, mais os dez valores de coeficiente de fluxo mássico de ar analisados. As comparações foram efetuadas observando-se os resultados de ACH médios e EHF. 
 		%Como as taxas de infiltração são influenciadas pela temperatura do ar, as comparações com os modelos referências foram feitas considerando-se diferentes faixas de temperatura.
 		
 		\section{Análise de sensibilidade}
@@ -639,10 +639,10 @@
 		O método de \citeauthoronline{Sobol1993} \cite{Sobol1993} foi utilizado para a AS, pois permite a identificação de parâmetros influentes, mesmo para casos onde a relação entre as entradas e saídas dos modelos são não-monotônicas e apresentam efeitos colineares.
 		
 		A AS foi aplicada por meio de programação, utilizando-se a biblioteca \textit{SALib} \cite{Herman2017}, escrita na linguagem \textit{Python} \cite{Python}.
-		Os casos simulados para conduzir a AS foram amostrados pelo método de amostragem específico da AS de Sobol, pelo qual gerou-se uma amostra de 99.978 casos.
+		Os casos simulados para conduzir a AS foram amostrados pelo método de amostragem específico da AS de Sobol, pelo qual gerou-se uma amostra de 155.648 casos.
 		Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}. 
 		%, que gera uma sequência quasi-randômica de baixa discrepância.é uma é feita a partir de uma amostra desenevolvida específica para essa análise é definida pelo próprio método, pela qual gerou-se 99.978 casos.		
-		A partir dos dados de entrada de cada caso, e dos valores de EHF's resultantes das simulações termoenergéticas, obteve-se índices de sensibilidade para análise de 1ª ordem, 2ª ordem, e total.
+		A partir dos dados de entrada de cada caso, e dos valores de EHF's resultantes das simulações termoenergéticas, obteve-se índices de sensibilidade para análise de primeira ordem, segunda ordem, e efeitos totais.
 		
 		\section{Desenvolvimento do metamodelo}
 		

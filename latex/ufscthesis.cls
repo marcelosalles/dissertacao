@@ -388,7 +388,7 @@
 \AtBeginDocument{
   \ifthenelse{\equal{\idiomaprincipal}{brazil}}{%
     \renewcommand{\orientadordata}{Orientador}%
-    %\renewcommand{\coorientadordata}{Coorientador}
+    \renewcommand{\coorientadordata}{Coorientador}
     \renewcommand{\coordenadortitulo}{Coordenador do Curso}
   }{}
   \ifthenelse{\equal{\idiomaprincipal}{english}}{%

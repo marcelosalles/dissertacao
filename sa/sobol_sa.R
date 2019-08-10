@@ -24,14 +24,14 @@ write.csv(data_validation, '/home/marcelo/dissertacao/dataset_validation_08-06.c
 sample_test = read.csv('/media/marcelo/OS/dissertacao/sample_ann_test.csv')
 outputs_test = read.csv('/media/marcelo/OS/dissertacao/ann_test/means_ann_test.csv')
 data_test = cbind(sample_test,outputs_test)
-write.csv(data_test, '/home/marcelo/dissertacao/dataset_test_08-05.csv', row.names = FALSE)
+write.csv(data_test, '/home/marcelo/dissertacao/dataset_test_08-10.csv', row.names = FALSE)
 
 df_ann = read.csv('/home/marcelo/dissertacao/dataset_08-06.csv')
 
 #
 # SOBOL----
-sample = read.csv('/media/marcelo/OS/dissertacao/sample_sobol.csv')
-outputs = read.csv('/media/marcelo/OS/dissertacao/sobol/means_sobol.csv')
+sample = read.csv('/media/marcelo/OS/dissertacao/sample_sobol2.csv')
+outputs = read.csv('/media/marcelo/OS/dissertacao/sobol2/means_sobol2.csv')
 
 data_set_sobol = cbind(sample,outputs)
 write.csv(data_set_sobol,'dataset_sobol.csv', row.names = FALSE)
@@ -43,8 +43,8 @@ parametros = c('Área','Razão L:C sala','Pé-direito','Azimute', 'Altura do pav
                'FS do vidro','Sombreamento', 'Ocupação','Fator de abertura','Cobertura exposta',
                'Contato com solo','Razão L:C edifício', 'Velocidade do ar', 'Exposição paredes e janelas')
 
-ehf_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol/s1_ehf.csv')
-ehf_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol/s2_ehf.csv')
+ehf_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol2/s1_ehf.csv')
+ehf_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol2/s2_ehf.csv')
 
 ehf_s1$Parameter
 # area         ratio        zone_height  azimuth      floor_height
@@ -57,27 +57,84 @@ ehf_s1$Parameter <- factor(ehf_s1$Parameter, levels = ehf_s1$Parameter[order(ehf
 # ehf_s1 = ehf_s1[order(ehf_s1$S1,decreasing = TRUE),]
 # ehf_s2 = ehf_s2[order(ehf_s2$S2,decreasing = TRUE),]
 
+azimuth = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'azimuth'],ehf_s2$S2[ehf_s2$Parameter_2 == ' azimuth'])
+sum(azimuth)
+open_fac = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'open_fac'],ehf_s2$S2[ehf_s2$Parameter_2 == ' open_fac'])
+sum(open_fac)
+v_ar = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'v_ar'],ehf_s2$S2[ehf_s2$Parameter_2 == ' v_ar'])
+sum(v_ar)
+ground = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'ground'],ehf_s2$S2[ehf_s2$Parameter_2 == ' ground'])
+sum(ground)
+roof = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'roof'],ehf_s2$S2[ehf_s2$Parameter_2 == ' roof'])
+sum(roof)
+room_type = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'room_type'],ehf_s2$S2[ehf_s2$Parameter_2 == ' room_type'])
+sum(room_type)
+wwr_ehf = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'wwr'],ehf_s2$S2[ehf_s2$Parameter_2 == ' wwr'])
+sum(wwr_ehf)
+area_ehf = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'area']) #,ehf_s2$S2[ehf_s2$Parameter_2 == ' area'])
+sum(area_ehf)
+people_ehf = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'people'],ehf_s2$S2[ehf_s2$Parameter_2 == ' people'])
+sum(people_ehf)
+ratio_ehf = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'ratio'],ehf_s2$S2[ehf_s2$Parameter_2 == ' ratio'])
+sum(ratio_ehf)
+zone_height_ehf = c(ehf_s2$S2[ehf_s2$Parameter_1 == 'zone_height'],ehf_s2$S2[ehf_s2$Parameter_2 == ' zone_height'])
+sum(zone_height_ehf)
 # TEMP ---
 
-temp_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol/s1_temp.csv')
-temp_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol/s2_temp.csv')
+temp_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol2/s1_temp.csv')
+temp_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol2/s2_temp.csv')
 temp_s1$Parameter = parametros
 temp_s1$Parameter <- factor(temp_s1$Parameter, levels = temp_s1$Parameter[order(temp_s1$ST, decreasing = TRUE)])
 
 # temp_s1 = temp_s1[order(temp_s1$S1,decreasing = TRUE),]
 
+azimuth_temp = c(temp_s2$S2[temp_s2$Parameter_1 == 'azimuth'],temp_s2$S2[temp_s2$Parameter_2 == ' azimuth'])
+sum(azimuth_temp)
+open_fac_temp = c(temp_s2$S2[temp_s2$Parameter_1 == 'open_fac'],temp_s2$S2[temp_s2$Parameter_2 == ' open_fac'])
+sum(open_fac_temp)
+v_ar_temp = c(temp_s2$S2[temp_s2$Parameter_1 == 'v_ar'],temp_s2$S2[temp_s2$Parameter_2 == ' v_ar'])
+sum(v_ar_temp)
+ground_temp = c(temp_s2$S2[temp_s2$Parameter_1 == 'ground'],temp_s2$S2[temp_s2$Parameter_2 == ' ground'])
+sum(ground_temp)
+roof_temp = c(temp_s2$S2[temp_s2$Parameter_1 == 'roof'],temp_s2$S2[temp_s2$Parameter_2 == ' roof'])
+sum(roof_temp)
+room_type_temp = c(temp_s2$S2[temp_s2$Parameter_1 == 'room_type'],temp_s2$S2[temp_s2$Parameter_2 == ' room_type'])
+sum(room_type_temp)
+wwr_temp = c(temp_s2$S2[temp_s2$Parameter_1 == 'wwr'],temp_s2$S2[temp_s2$Parameter_2 == ' wwr'])
+sum(wwr_temp)
+
 # ach ---
 
-ach_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol/s1_ach.csv')
-ach_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol/s2_ach.csv')
+ach_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol2/s1_ach.csv')
+ach_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol2/s2_ach.csv')
 ach_s1$Parameter = parametros
 ach_s1$Parameter <- factor(ach_s1$Parameter, levels = ach_s1$Parameter[order(ach_s1$ST, decreasing = TRUE)])
 
 # ach_s1 = ach_s1[order(ach_s1$S1,decreasing = TRUE),]
 
+azimuth_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'azimuth'],ach_s2$S2[ach_s2$Parameter_2 == ' azimuth'])
+sum(azimuth_ach)
+open_fac_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'open_fac'],ach_s2$S2[ach_s2$Parameter_2 == ' open_fac'])
+sum(open_fac_ach)
+v_ar_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'v_ar'],ach_s2$S2[ach_s2$Parameter_2 == ' v_ar'])
+sum(v_ar_ach)
+ground_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'ground'],ach_s2$S2[ach_s2$Parameter_2 == ' ground'])
+sum(ground_ach)
+roof_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'roof'],ach_s2$S2[ach_s2$Parameter_2 == ' roof'])
+sum(roof_ach)
+room_type_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'room_type'],ach_s2$S2[ach_s2$Parameter_2 == ' room_type'])
+sum(room_type_ach)
+wwr_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'wwr'],ach_s2$S2[ach_s2$Parameter_2 == ' wwr'])
+sum(wwr_ach)
+area_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'area']) #,ach_s2$S2[ach_s2$Parameter_2 == ' area'])
+sum(area_ach)
+floor_height_ach = c(ach_s2$S2[ach_s2$Parameter_1 == 'floor_height'],ach_s2$S2[ach_s2$Parameter_2 == ' floor_height'])
+sum(floor_height_ach)
+
 # PLOTS ----
 cols = c('Efeitos totais' = 'darkblue','1ª ordem' = 'lightblue')
 legend_limits = c(0.8, 0.6)
+y_limits = c(0,0.4)
 
 ggplot(ehf_s1,aes(ehf_s1$Parameter,ehf_s1$ST)) +
   geom_col(aes(fill='Efeitos totais'))+#'darkblue') +
@@ -87,7 +144,7 @@ ggplot(ehf_s1,aes(ehf_s1$Parameter,ehf_s1$ST)) +
   # ggtitle('Análise de Sensibilidade - EHF') +
   xlab('Parâmetro') +
   ylab('Índice de sensibilidade') +
-  ylim(c(0,.6))
+  ylim(y_limits)
 save_img('as_ehf')
 
 ggplot(temp_s1,aes(temp_s1$Parameter,temp_s1$ST)) +
@@ -98,7 +155,7 @@ ggplot(temp_s1,aes(temp_s1$Parameter,temp_s1$ST)) +
   # ggtitle('Análise de Sensibilidade - Temp. Op.') +
   xlab('Parâmetro') +
   ylab('Índice de sensibilidade') +
-  ylim(c(0,.6))
+  ylim(y_limits)
 save_img('as_temp')
 
 ggplot(ach_s1,aes(ach_s1$Parameter,ach_s1$ST)) +
@@ -108,8 +165,8 @@ ggplot(ach_s1,aes(ach_s1$Parameter,ach_s1$ST)) +
   scale_fill_manual(name=NULL, values=cols)+
   # ggtitle('Análise de Sensibilidade - ACH') +
   xlab('Parâmetro') +
-  ylab('Índice de sensibilidade') +
-  ylim(c(0,.6))
+  ylab('Índice de sensibilidade')# +
+  # ylim(y_limits)
 save_img('as_ach')
 
 factor(ehf_s1$Parameter)
