@@ -1,0 +1,44 @@
+
+
+Site:GroundTemperature:Undisturbed:FiniteDifference,
+    FiniteDiff,              !- Name
+    1.5,                     !- Soil Thermal Conductivity {W/m-K}
+    1250,                    !- Soil Density {kg/m3}
+    1500,                    !- Soil Specific Heat {J/kg-K}
+    30,                      !- Soil Moisture Content Volume Fraction {percent}
+    50,                      !- Soil Moisture Content Volume Fraction at Saturation {percent}
+    0.4;                     !- Evapotranspiration Ground Cover Parameter {dimensionless}
+
+
+Site:GroundDomain:Slab,
+    GroundDomain,            !- Name
+    10,                      !- Ground Domain Depth {m}
+    1,                       !- Aspect Ratio
+    5,                       !- Perimeter Offset {m}
+    1.5,                     !- Soil Thermal Conductivity {W/m-K}
+    1250,                    !- Soil Density {kg/m3}
+    1500,                    !- Soil Specific Heat {J/kg-K}
+    30,                      !- Soil Moisture Content Volume Fraction {percent}
+    50,                      !- Soil Moisture Content Volume Fraction at Saturation {percent}
+    Site:GroundTemperature:Undisturbed:FiniteDifference,  !- Undisturbed Ground Temperature Model Type
+    FiniteDiff,              !- Undisturbed Ground Temperature Model Name
+    0.4,                     !- Evapotranspiration Ground Cover Parameter
+    GroundCoupledOSCM,       !- Slab Boundary Condition Model Name
+    OnGrade,                 !- Slab Location
+    ,                        !- Slab Material Name
+    No,                      !- Horizontal Insulation
+    ,                        !- Horizontal Insulation Material Name
+    Full,                    !- Horizontal Insulation Extents
+    ,                        !- Perimeter Insulation Width {m}
+    No,                      !- Vertical Insulation
+    ,                        !- Vertical Insulation Material Name
+    ,                        !- Vertical Insulation Depth {m}
+    Timestep,                !- Simulation Timestep
+    1.6,                     !- Geometric Mesh Coefficient
+    6;                       !- Mesh Density Parameter
+
+
+SurfaceProperty:OtherSideConditionsModel,
+    GroundCoupledOSCM,       !- Name
+    GroundCoupledSurface;    !- Type of Modeling
+

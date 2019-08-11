@@ -1,0 +1,46 @@
+{
+    "Site:GroundDomain:Slab": {
+        "GroundDomain": {
+            "aspect_ratio": 1,
+            "evapotranspiration_ground_cover_parameter": 0.4,
+            "geometric_mesh_coefficient": 1.6,
+            "ground_domain_depth": 10,
+            "horizontal_insulation": "No",
+            "horizontal_insulation_extents": "Full",
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 25,
+            "mesh_density_parameter": 6,
+            "perimeter_offset": 5,
+            "simulation_timestep": "Timestep",
+            "slab_boundary_condition_model_name": "GroundCoupledOSCM",
+            "slab_location": "OnGrade",
+            "soil_density": 1250,
+            "soil_moisture_content_volume_fraction": 30,
+            "soil_moisture_content_volume_fraction_at_saturation": 50,
+            "soil_specific_heat": 1500,
+            "soil_thermal_conductivity": 1.5,
+            "undisturbed_ground_temperature_model_name": "FiniteDiff",
+            "undisturbed_ground_temperature_model_type": "Site:GroundTemperature:Undisturbed:FiniteDifference",
+            "vertical_insulation": "No"
+        }
+    },
+    "Site:GroundTemperature:Undisturbed:FiniteDifference": {
+        "FiniteDiff": {
+            "evapotranspiration_ground_cover_parameter": 0.4,
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 7,
+            "soil_density": 1250,
+            "soil_moisture_content_volume_fraction": 30,
+            "soil_moisture_content_volume_fraction_at_saturation": 50,
+            "soil_specific_heat": 1500,
+            "soil_thermal_conductivity": 1.5
+        }
+    },
+    "SurfaceProperty:OtherSideConditionsModel": {
+        "GroundCoupledOSCM": {
+            "idf_max_extensible_fields": 0,
+            "idf_max_fields": 2,
+            "type_of_modeling": "GroundCoupledSurface"
+        }
+    }
+}

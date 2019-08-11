@@ -211,9 +211,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{amstext}
 \AtEndOfClass{%
-\RequirePackage[abnt-emphasize=bf,abnt-etal-cite=2]{abntex2cite}%
+\RequirePackage[alf, abnt-emphasize=bf,abnt-etal-cite=2]{abntex2cite}%
 \RequirePackage{breakcites}
-\citebrackets[]
+\citebrackets()%[]
 }
 
 \AtBeginDocument{
@@ -388,7 +388,7 @@
 \AtBeginDocument{
   \ifthenelse{\equal{\idiomaprincipal}{brazil}}{%
     \renewcommand{\orientadordata}{Orientador}%
-    %\renewcommand{\coorientadordata}{Coorientador}
+    \renewcommand{\coorientadordata}{Coorientador}
     \renewcommand{\coordenadortitulo}{Coordenador do Curso}
   }{}
   \ifthenelse{\equal{\idiomaprincipal}{english}}{%
