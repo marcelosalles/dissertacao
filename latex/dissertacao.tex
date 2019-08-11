@@ -1,4 +1,4 @@
-\documentclass[brazil,hardcopy,openany,a4paper]{ufscthesis}
+\documentclass[brazil,hardcopy,openany,a4paper]{ufscthesis} %
 \usepackage[brazil]{babel}
 \usepackage{amsfonts, amsmath, amsthm, amsbsy,amssymb,bm,mathtools} % For math fonts, symbols and environments %
 \usepackage{graphicx} 		% Required for including images
@@ -51,7 +51,7 @@
 \coorientador[Universidade Federal de Santa Catariana]{Prof. Roberto Lamberts, Phd.}
 \coordenador[Universidade Federal de Santa Catariana]{Prof. Fulano de Tal, Dr.}
 \orientadornabanca{sim} % Se faz parte da banca definir como sim
-\coorientadornabanca{nao} % Se faz parte da banca definir como sim
+\coorientadornabanca{sim} % Se faz parte da banca definir como sim
 \bancaMembroA{Prof. Saulo Guths, Dr.\\Universidade Federal de Santa Catarina}  %Nome do presidente da banca
 \bancaMembroB{Prof. Membro Dois, Dr.\\Universidade Federal de Santa Catarina}   % Nome do membro da Banca
 \bancaMembroC{Profa. Membro Três, Dra.\\Outra Universidade} % Nome do membro da Banca
@@ -84,6 +84,7 @@ Como resultado, espera-se obter um metamodelo capaz de predizer, com boa precis�
 \textabstract {Text...}
 \keywords{Word 1. Word 2. Word 3.}
 
+\input{abreviaturas}
 \begin{document}
 
 	
@@ -100,8 +101,9 @@ Como resultado, espera-se obter um metamodelo capaz de predizer, com boa precis�
 	% ---
 	\listadefiguras % as listas dependem da necessidade do usuário
 	\listadetabelas 
-	%\listadeabreviaturas
-	%\listadesimbolos
+	%\gls{q} \Gls{latex} \Glspl{formula} \acrshort{gcd} \acrlong{DCC} \acrfull{lcm}
+	\listadeabreviaturas
+	\listadesimbolos
 	\sumario
 	%--------------------------------------------------------
 	\mainmatter
@@ -109,7 +111,9 @@ Como resultado, espera-se obter um metamodelo capaz de predizer, com boa precis�
 \chapter{Introdução}
 \label{chapter:introducao}
 
-De acordo com a Agência Internacional de Energia (IEA) \cite{IEA2018}, o consumo de energia elétrica global destinado ao resfriamento de edificações em 2016 foi de 2.020 TWh/ano, correspondendo a quase um quinto do consumo total no setor. A demanda por energia destinada ao resfriamento de ar em edificações mais que triplicou do ano de 1990 a 2016 e, se não houver mudanças no cenário atual, estima-se que essa demanda mais que triplicará até o ano de 2050, representando 37\% do aumento no consumo de eletricidade em edificações. Isso corresponderá a 11,5\% do consumo de energia total em edificações comerciais. O relatório da IEA mostra que esse cenário de aumento na demanda de energia é ainda mais impactante em países em desenvolvimento de clima quente. Apenas 8\% das 2,8 bilhões de pessoas que vivem nas partes mais quentes do mundo hoje possui condicionamento de ar para resfriamento. No caso Brasil, a parcela do resfriamento de ar nas cargas de pico das redes elétricas em 2016 correspondia a 7,6\% do total. A estimativa considerando-se o crescimento econômico e populacional, é de que essa parcela possa representar 30,8\% da carga de pico até o ano de 2050, se nenhuma medida for tomada para a mitigação do problema. O aumento na demanda por energia é fundamental para o desenvolvimento econômico, porém pode causar grandes impactos ambientais, como poluição, alterações climáticas e esgotamento dos recursos naturais. Para garantir a melhora na qualidade de vida de forma sustentável, busca-se políticas de incentivo à eficiência energética. No Brasil, desde 2009 o INMETRO possui um programa de etiquetagem de edificações voltado para padrões de eficiência energética de edificações \cite{BRASIL2009}.
+De acordo com a \acrlong{iea} \cite{IEA2018}, o consumo de energia elétrica global destinado ao resfriamento de edificações em 2016 foi de 2.020 TWh/ano, correspondendo a quase um quinto do consumo total no setor. A demanda por energia destinada ao resfriamento de ar em edificações mais que triplicou do ano de 1990 a 2016 e, se não houver mudanças no cenário atual, estima-se que essa demanda mais que triplicará até o ano de 2050, representando 37\% do aumento no consumo de eletricidade em edificações. Isso corresponderá a 11,5\% do consumo de energia total em edificações comerciais. O relatório da IEA mostra que esse cenário de aumento na demanda de energia é ainda mais impactante em países em desenvolvimento de clima quente. Apenas 8\% das 2,8 bilhões de pessoas que vivem nas partes mais quentes do mundo hoje possui condicionamento de ar para resfriamento. No caso Brasil, a parcela do resfriamento de ar nas cargas de pico das redes elétricas em 2016 correspondia a 7,6\% do total. 
+A estimativa considerando-se o crescimento econômico e populacional, é de que essa parcela possa representar 30,8\% da carga de pico até o ano de 2050, se nenhuma medida for tomada para mitigar o problema. O aumento na demanda por energia é fundamental para o desenvolvimento econômico, porém pode causar grandes impactos ambientais, como poluição, alterações climáticas e esgotamento dos recursos naturais. Para garantir a melhora na qualidade de vida de forma sustentável, busca-se políticas de incentivo à eficiência energética. 
+%No Brasil, desde 2009 o INMETRO possui um programa de etiquetagem de edificações voltado para padrões de eficiência energética de edificações \cite{BRASIL2009}.
 
 A redução dos impactos ambientais relacionados ao resfriamento de edificações pode ser alcançada através da geração de energia proveniente de fontes renováveis, do desenvolvimento de equipamentos com maior eficiência energética, ou pela busca de soluções passivas. O resfriamento passivo é um conjunto de técnicas sustentáveis para resfriar edifícios por meios naturais \cite{Samani2016}. Consiste em qualquer sistema que busca minimizar, ou eliminar se possível, o uso de sistemas de condicionamento de ar, com o objetivo de reduzir as altas temperaturas internas e o consumo de energia para resfriamento, proporcionando conforto térmico para os ocupantes.
 
@@ -121,7 +125,7 @@ Atualmente, a forma mais avançada de predição do desempenho energético de ed
 
 Metamodelos para eficiência energética de edificações podem ser desenvolvidos a partir de diferentes métodos \cite{Ostergard2018}. A solução mais apropriada depende do contexto e propósitos de cada aplicação.
 \citeauthoronline{Versage2015} \cite{Versage2015} foi capaz de estimar as cargas térmicas de edificações comerciais através de diferentes métodos de metamodelagem.
-\citeauthoronline{Melo2016} \cite{Melo2016} desenvolveram um modelo de redes neurais artificiais (ANN) para estimar graus hora de resfriamento e cargas térmicas de aquecimento e resfriamento em edificações residenciais.
+\citeauthoronline{Melo2016} \cite{Melo2016} desenvolveram um modelo de \acrfull{ann} para estimar graus hora de resfriamento e cargas térmicas de aquecimento e resfriamento em edificações residenciais.
 O desenvolvimento de um metamodelo de máquina de vetores de suporte capaz de estimar conforto térmico em edificações comerciais foi proposto por \citeauthoronline{Rackes2016} \cite{Rackes2016}. Voltado principalmente a tipologias de escolas, o metamodelo estima a fração de horas em desconforto por calor dos ocupantes ao longo do ano.
 
 A VN em edificações apresenta comportamentos complexos e a avaliação do seu potencial de resfriamento faz-se necessária desde a fase inicial de projeto. Possibilitar esse tipo de análise de forma simples e rápida pode ser fundamental nas tomadas de decisão em projetos de edificações e na aplicação de políticas públicas voltadas à eficiência energética. Por meio de ferramentas de aprendizagem automática, surge a oportunidade de se desenvolver metamodelos capazes de obter resultados de conforto térmico em edificações.
@@ -136,7 +140,7 @@ O objetivo deste estudo é desenvolver um metamodelo capaz de estimar o conforto
 Dentre os objetivos específicos deste trabalho, destacam-se:
 
 \begin{itemize}
-	\item Identificar o universo de possíveis características encontradas em edifícios de escritórios ventilados naturalmente na cidade de São Paulo;
+	\item Identificar as características construtivas encontradas em edifícios de escritórios ventilados naturalmente na cidade de São Paulo;
 	\item Definir as variáveis com maior e menor influência no desempenho térmico dos edifícios ventilados naturalmente;
 	\item Desenvolver um modelo de simulação termoenergética simplificado, com apenas uma zona térmica, capaz de representar as trocas térmicas de uma sala em um edifício de escritórios. % MELHORAR!!!
 \end{itemize}
@@ -145,7 +149,7 @@ Dentre os objetivos específicos deste trabalho, destacam-se:
 
 \section{Ventilação natural}
 
-A ventilação natural (VN) ocorre quando diferenças de pressão geradas pelo vento ou por forças de empuxo agem em uma ou mais aberturas da envoltória de uma edificação \cite{CarrilhodaGraca2016}. Um sistema de VN pode ser caracterizado pela estratégia de ventilação, locação das aberturas e suas áreas.  \citeonline{CarrilhodaGraca2016} comentam que, apesar de muitos regulamentos exigirem uma área mínima de ventilação, tipicamente definida em função da área de piso, essas exigências se baseiam em grandes simplificações. A área de abertura ideal depende da estratégia de ventilação (unilateral ou cruzada), do clima e dos objetivos relacionados ao período de uso da VN.
+A \acrfull{vn} ocorre quando diferenças de pressão geradas pelo vento ou por forças de empuxo agem em uma ou mais aberturas da envoltória de uma edificação \cite{CarrilhodaGraca2016}. Um sistema de VN pode ser caracterizado pela estratégia de ventilação, locação das aberturas e suas áreas.  \citeonline{CarrilhodaGraca2016} comentam que, apesar de muitos regulamentos exigirem uma área mínima de ventilação, tipicamente definida em função da área de piso, essas exigências se baseiam em grandes simplificações. A área de abertura ideal depende da estratégia de ventilação (unilateral ou cruzada), do clima e dos objetivos relacionados ao período de uso da VN.
 
 A VN pode ser aplicada por meio de grelhas, sistemas de dutos, ou simplesmente grandes aberturas, como janelas ou portas. No caso de grandes aberturas, duas configurações podem ser consideradas: ventilação cruzada, ou ventilação unilateral. Na estratégia ventilação unilateral, a turbulência do vento e as variações nos gradientes de pressão induzidos por rajadas podem afetar fortemente o fluxo de ar nas aberturas.
 Como esses parâmetros não são estáveis, é mais complicado avaliar a ventilação unilateral em relação à ventilação cruzada \cite{Freire2013}.
@@ -155,16 +159,16 @@ Além das diferentes estratégias relacionadas à configuração das aberturas n
 O mecanismo de ventilação natural noturna é baseado na transferência de calor por convecção da estrutura exposta do edifício para o fluxo de ar frio da noite (momento em que a diferença entre a temperatura do ar interno e externo é maior) \cite{Breesch2010}. Durante o dia, a massa térmica da	edificação é utilizada para acumular os ganhos de calor internos e do sol, e prevenir condições desconfortáveis durante as horas de operação da edificação.	
 Isso leva a três consequências: para garantir o funcionamento, o calor deve ser armazenado na estrutura da edificação, e é necessário garantir uma ponte para que haja a transferência de calor para/da estrutura; a ventilação noturna é mais apropriada para climas moderados e frios, com maiores diferenças diárias de temperatura ao longo do dia; como essa tecnologia utiliza apenas calor sensível, é menos aplicável em climas quentes e úmidos.
 
-Prover, efetivamente, VN em edifícios pode economizar energia e custo em comparação à ventilação mecânica devido à baixa manutenção e custo zero de operação \cite{Omrani2017}. O desempenho da VN é medido, primariamente, através de parâmetros de dinâmica dos fluidos, como padrão do fluxo de ar, velocidade média, taxa de fluxo de ar, distribuição de pressão, renovações de ar, fluxo volumétrico e outras qualidades que podem ser derivadas desses parâmetros.
+Prover, efetivamente, VN em edifícios pode economizar energia e custo em comparação à ventilação mecânica, devido à baixa manutenção e custo zero de operação \cite{Omrani2017}. O desempenho da VN é medido, primariamente, através de parâmetros de dinâmica dos fluidos, como padrão do fluxo de ar, velocidade média, taxa de fluxo de ar, distribuição de pressão, renovações de ar, fluxo volumétrico e outras qualidades que podem ser derivadas desses parâmetros.
 Esses elementos do fluxo também podem ser usados para determinar características mais amplas do ambiente interno de edificações, como a qualidade do ar e o conforto térmico. Há diferentes métodos de avaliação de desempenho de VN, cada um com suas vantagens e limitações. O método escolhido deve ser o mais apropriado, baseado nos recursos, exigências e estágio do projeto.
 
-Estimar o desempenho da VN no projeto da edificação envolve a consideração de fenômenos físicos complexos, o que pode ser dificultoso. Para a simulação computacional, há duas principais formas de descrever a ventilação natural: \textit{Computer Fluid Dynamics} (CFD) e \textit{Airflow Network} (AFN). O CFD utiliza equações de Navier-Stokes para resolver diretamente o problema do fluxo de ar através das propriedades da dinâmica dos fluidos \cite{Arendt2017}. Apesar do grande custo computacional, o CFD disponibiliza informações detalhadas sobre a distribuição da velocidade do ar, temperatura, pressão e concentração de partículas na área analisada. No entanto, bons resultados com o uso dessa ferramenta dependem da qualidade da grade adotada, da aplicação correta das condições de contorno, e da aplicação correta das diversas suposições tomadas ao adotar-se modelo. 
+Estimar o desempenho da VN no projeto da edificação envolve a consideração de fenômenos físicos complexos, o que pode ser dificultoso. Para a simulação computacional, há duas principais formas de descrever a ventilação natural: \acrfull{cfd} e \acrfull{afn}. O CFD utiliza equações de Navier-Stokes para resolver diretamente o problema do fluxo de ar através das propriedades da dinâmica dos fluidos \cite{Arendt2017}. Apesar do grande custo computacional, o CFD disponibiliza informações detalhadas sobre a distribuição da velocidade do ar, temperatura, pressão e concentração de partículas na área analisada. No entanto, bons resultados com o uso dessa ferramenta dependem da qualidade da grade adotada, da aplicação correta das condições de contorno, e da aplicação correta das diversas suposições tomadas ao adotar-se modelo. 
 
 O AFN funciona a partir de uma rede de nós, análoga a um circuito elétrico. A cada zona térmica da edificação é atribuído um nó, e os caminhos do fluxo recebem uma resistência equivalente para cada ligação entre as zonas.
 Condições dentro da zona, como velocidade do ar, temperatura, umidade são então computadas com base nas diferenças de pressão entre as zonas definidas e são comumente resolvidas em condições estacionárias \cite{Omrani2017}.	
 O uso de modelos multi-zona exige a suposição de que o ar dentro de cada zona é homogêneo, com temperatura, velocidade, concentração de contaminantes e umidade relativa uniformes. Modelos multi-zona são úteis na predição do desempenho de VN do edifício, por prover resultados robustos. Porém, não podem prover informações detalhadas sobre o comportamento do ar dentro da zona. Apesar de ser uma abordagem muito mais simplificada, o AFN é muito utilizado em razão da facilidade de aplicação e por ter um custo computacional muito mais baixo, quando comparado ao CFD. Ferramentas de simulação computacional, como o programa EnergyPlus, podem integrar o modelo térmico de um edifício com um modelo AFN \cite{Belleri2014}.
 
-O modelo de pressão e fluxo de ar utilizado pelo EnergyPlus \cite{EnergyPlus2018} foi desenvolvido baseado no modelo AIRNET \cite{Walton1989}. Os cálculos de fluxo de ar multi-zona são realizados no timestep do sistema HVAC (\textit{Heating, Ventilation and Air-Conditioning}). O modelo de rede de fluxo de ar consiste em três passos sequenciais:
+O modelo de pressão e fluxo de ar utilizado pelo EnergyPlus \cite{EnergyPlus2018} foi desenvolvido baseado no modelo AIRNET \cite{Walton1989}. Os cálculos de fluxo de ar multi-zona são realizados no \textit{timestep} do sistema HVAC (\textit{Heating, Ventilation and Air-Conditioning}). O modelo de rede de fluxo de ar consiste em três passos sequenciais:
 
 1- cálculos de pressão e fluxo de ar;
 
@@ -175,7 +179,7 @@ O modelo de pressão e fluxo de ar utilizado pelo EnergyPlus \cite{EnergyPlus201
 Os cálculos de pressão e fluxo de ar determinam, a partir das pressões de vento e fluxos de ar forçados, a pressão em cada nó e o fluxo de ar através de cada ligação. Baseando-se no fluxo de ar calculado para cada ligação, o modelo	calcula as temperaturas e umidades relativas em cada nó a partir das temperaturas e umidades relativas das zonas. 
 Utilizando as temperaturas e umidades relativas calculadas, as cargas latentes e sensíveis conduzidas pelos	sistemas de fluxo forçado e das infiltrações são somadas em cada zona. As cargas latentes e sensíveis obtidas nessa etapa são utilizadas então nas equações de balanço energético das zonas para predizer possíveis cargas relacionadas ao sistema HVAC e calcular as temperaturas do ar, umidades relativas e pressões finais da zona.
 
-Uma ligação utilizada no modelo do AFN tem dois nós, um de entrada e um de saída, e possui um componente que determina a relação entre o fluxo de ar e a pressão. A diferença de pressão entre cada componente em uma ligação é calculada pela equação de Bernoulli \cite{Walton1989}. Cada nó é atribuído a uma zona e cada ligação corresponde a um elemento de resistência entre os nós, que pode representar uma abertura, ou uma superfície com frestas. A Figura \ref{fig:nos_AFN} representa uma rede de fluxo de ar, com um nó externo pro fachada, e zonas internas ligadas por portas. As setas representam a direção do fluxo de ar para uma condição estacionária em que a pressão no Nó Externo 1 é maior do que a pressão no Nó Externo 2.
+Uma ligação utilizada no modelo do AFN tem dois nós, um de entrada e um de saída, e possui um componente que determina a relação entre o fluxo de ar e a pressão. A diferença de pressão entre cada componente em uma ligação é calculada pela equação de Bernoulli \cite{Walton1989}. Cada nó é atribuído a uma zona e cada ligação corresponde a um elemento de resistência entre os nós, que pode representar uma abertura, ou uma superfície com frestas. A Figura \ref{fig:nos_AFN} representa uma rede de fluxo de ar, com um nó externo por fachada, e zonas internas ligadas por portas. As setas representam a direção do fluxo de ar para uma condição estacionária em que a pressão no Nó Externo 1 é maior do que a pressão no Nó Externo 2.
 
 \begin{figure}[]
 	\centering
@@ -199,7 +203,7 @@ Os coeficientes do perfil de velocidade do vento são variáveis que dependem da
 		\begin{tabular}{|c |c |c |c | } % \textwidth}{@{\extracolsep{\fill}} \hspace{-.33\columnwidth}
 			\hline	
 			\textbf{Categoria} & \textbf{Descrição do terreno} & \textbf{Expoente,} & \textbf{Espessura da camada} \\
-			\textbf{do terreno} & {} & \textbf{$\alpha$} & \textbf{limite, $\delta$ (m)} \\
+			\textbf{do terreno} & {} & \textbf{$\alpha$} & \textbf{limite, $\delta$ ($m$)} \\
 			\hline
 			{} & Grandes centros urbanos nos quais & {} & \\
 			1 & pelo menos 50\% das edificações são & 0,33 & 460 \\
@@ -227,11 +231,11 @@ Os coeficientes do perfil de velocidade do vento são variáveis que dependem da
 	%		\vspace{-12pt}
 \end{table}
 
-Os valores padrão para $\alpha_{met}$ e $\delta_{met}$, a partir dos quais se estima a velocidade do vento, são 0,14 e 270 m, respectivamente. Isso se deve ao fato de que estações meteorológicas são tipicamente estabelecidas em terrenos de categoria 3. A altura padrão é 10 m. 
+Os valores padrão para \gls{alphamet} e \gls{deltamet}, a partir dos quais se estima a velocidade do vento, são 0,14 e 270 m, respectivamente. Isso se deve ao fato de que estações meteorológicas são tipicamente estabelecidas em terrenos de categoria 3. A altura padrão é 10 m. 
 
 Ao definir a velocidade do vento, o programa EnergyPlus calcula a pressão do vento sobre as edificações, determinada também pelo princípio da equação de Bernoulli \cite{Walton1989}.
 
-A maior dificuldade no desenvolvimento do AFN é a necessidade de estimar as características do fluxo nas aberturas e o coeficiente de pressão do vento na edificação \cite{Arendt2017}. Os coeficientes de pressão do vento (Cp) descrevem como o vento interfere na distribuição externa de pressões em volta da edificação. 
+A maior dificuldade no desenvolvimento do AFN é a necessidade de estimar as características do fluxo nas aberturas e o coeficiente de pressão do vento na edificação \cite{Arendt2017}. Os \acrfull{cp} descrevem como o vento interfere na distribuição externa de pressões em volta da edificação. 
 Os Cp dependem principalmente da geometria da edificação, dos detalhes da fachada, do entorno da edificação, da velocidade e direção do vento, e da intensidade da turbulência. Na prática, 	destaca-se a dificuldade em determinar precisamente a relação entre o Cp e todos esses fatores. As abordagens mais realistas são os experimentos em escala real in-situ. No entanto, esses experimentos possuem custo elevado e normalmente possuem grandes incertezas. Os dados dos Cp podem ser estimados das seguintes fontes: testes de túnel de vento; simulações com CFD; modelos analíticos; e bases de dados.
 Bases de dados de Cp são compilações de uma ou mais fontes, onde os dados são classificados de acordo com alguns parâmetros, como a forma da edificação e a orientação de incidência do vento. 
 
@@ -239,13 +243,29 @@ A dificuldade em se considerar toda a complexidade de variação do Cp faz com q
 
 Os túneis de vento permitem um bom grau de controle sobre os experimentos, assim como a repetitividade e reprodutibilidade dos testes conduzidos \cite{Omrani2017}. No entanto, a escala pode afetar o fluxo de ar e as transferências de calor se os parâmetros adimensionais corretos não são mantidos entre os modelos de diferentes tamanhos. Isso faz com que o ideal seja usar modelos em escala real.
 
-Em casos em que não é possível obter os valores de Cp por fontes primárias, \citeonline{Costola2009} apontam as bases de dados como as fontes secundárias mais comuns. A base de dados de pressão de vento da Universidade Politécnica de Tóquio (TPU) oferece dados experimentais obtidos a partir de experimentos em túnel de vento \cite{TPU2018}. A base de dados possui os resultados de testes conduzidos utilizando-se modelos de acrílico em um túnel de vento de seção de 2,2 m de largura por 1,8 m de altura. A camada limite atmosférica foi simulada por elementos geradores de turbulência e outros elementos de rugosidade. Diferentes perfis de vento foram usados para construir a base de dados. Na maioria dos experimentos a velocidade média e os perfis de intensidade de turbulência estavam de acordo com as de terreno suburbano. A intensidade de turbulência à altura de 10 cm foi cerca de 0,25, e a velocidade de vento teste a essa altura foi 7,4 m/s. O número mínimo de Reynolds foi 25340, que é acima do limite 11000 para o fluxo independente.
+Em casos em que não é possível obter os valores de Cp por fontes primárias, \citeonline{Costola2009} apontam as bases de dados como as fontes secundárias mais comuns.
+A base de dados de pressão de vento da acrfull{tpu} oferece dados experimentais obtidos a partir de experimentos em túnel de vento \cite{TPU2018}.
+A base de dados possui os resultados de testes conduzidos utilizando-se modelos de acrílico em um túnel de vento de seção de 2,2 m de largura por 1,8 m de altura.
+A camada limite atmosférica foi simulada por elementos geradores de turbulência e outros elementos de rugosidade. Diferentes perfis de vento foram usados para construir a base de dados. Na maioria dos experimentos a velocidade média e os perfis de intensidade de turbulência estavam de acordo com as de terreno suburbano. A intensidade de turbulência à altura de 10 cm foi cerca de 0,25, e a velocidade de vento teste a essa altura foi 7,4 m/s. O número mínimo de Reynolds foi 25340, que é acima do limite 11000 para o fluxo independente.
+A base de dados da TPU oferece valores de Cp para modelos de edificações com geometrias de diferentes proporções. Para cada modelo, valores diferentes de Cp são disponibilizados para diversos pontos sobre suas superfícies. 
+A localização dos pontos sobre as superfícies dos modelos é apresentada de acordo com o exemplo da Figura \ref{fig:TPU_points}. Na imagem, 240 pontos de medição se distribuem sobre um modelos de dimensões igual a 0,2 x 0,1 x 0,2 m. As linhas pontilhadas representam as arestas do modelo.
+
+
+\begin{figure}[H]
+	\centering
+	\caption{Distribuição de pontos de medição dos Cps sobre a fachada}
+	\includegraphics[width=1\linewidth]{img/tpu_points.png}
+	\label{fig:TPU_points}
+	\begin{flushleft}
+		Fonte: \citeonline{TPU2018}.
+	\end{flushleft}
+\end{figure}
 
 Diversos fatores que afetam o valor do Cp são comumente simplificados, como apontado por \citeonline{Costola2010} na Tabela \ref{tab:CpSimp}.
 
 \begin{table}[h]
 	%		\vspace{-10pt}
-	\caption{Fatores que afetam o Cp e simplificações comuns.}
+	\caption{Fatores que afetam o Cp e simplificações comuns}
 	\label{tab:CpSimp}
 	\centering
 	\resizebox{\textwidth}{!}{
@@ -291,15 +311,17 @@ P_d = \frac{\rho V^{2}_{ref}}{2}
 
 Onde:
 
-$P_x$ é a pressão estática em um dado ponto da fachada do edifício ($Pa$);
+\gls{cpp} é o coeficiente de pressão ($-$);
 
-$P_0$ é a pressão estática de referência ($Pa$);
+\gls{px} é a pressão estática em um dado ponto da fachada do edifício ($Pa$);
 
-$P_d$ é a pressão dinâmica ($Pa$);
+\gls{p0} é a pressão estática de referência ($Pa$);
 
-$\rho$ é a densidade do ar ($kg/m^3$);
+\gls{pd} é a pressão dinâmica ($Pa$);
 
-$V_{ref}$ é a velocidade do vento de referência ($m/s$).
+\gls{rho} é a densidade do ar ($kg/m^3$);
+
+\gls{vref} é a velocidade do vento de referência ($m/s$).
 \\
 
 Nas simulações termoenergéticas de edificações, há muita incerteza relacionada ao Cp. Isso deve-se à influência do Cp em muitos dos indicadores de desempenho, como consumo de energia ou conforto térmico, que são frequentemente sensíveis à taxa de fluxo de ar \cite{Costola2009}. 
@@ -308,7 +330,7 @@ As bases de dados de Cp são amplamente disponíveis, particularmente para o cá
 O estudo de \citeonline{Costola2010} quantifica a incerteza na taxa de fluxo de ar devido ao uso do Cp médio da fachada, considerando 15 formas de edifícios e diferentes configurações de aberturas. O foco se deu em ventilação e infiltração movidas por vento, e a força de empuxo não foi considerada. Este estudo apresentou a estimativa de incerteza para edificações com duas aberturas idênticas, e uma zona interna, baseando-se em uma grande faixa de formas e ângulos de incidência do vento. A incerteza na taxa de fluxo de ar calculada usando-se os coeficientes médios da superfície para edificações isoladas com duas aberturas varia entre 0,23 e 5,05 vezes o fluxo se comparada ao uso do Cp local, para um intervalo de confiança de 95\%. As grandes incertezas relativas devem-se às pequenas taxas de fluxo de ar. Quando se considera apenas as superfícies com maiores diferenças de pressão relativa, a incerteza diminui para  valores entre 0,52 e 1,42 vezes. Conclui-se que a magnitude da incerteza é alta, mas o julgamento em relação à aplicabilidade desses dados depende do problema em análise e do indicador de desempenho escolhido.
 
 O trabalho de \citeonline{Arendt2017} estuda a influência dos dados de Cp de diferentes fontes na precisão de um modelo AFN. Uma edificação real com um sistema de ventilação movido por vento e força de empuxo foi adotado para um estudo de caso. Oito casos com diferentes dados de Cp foram estudados. Os resultados de temperatura do ar e fluxo do ar interno foram então comparados com as medições na escala real. Uma edificação residencial de dois pavimentos, localizada em Skarszewy, no norte da Polônia, foi escolhida para o estudo de caso. A edificação possui janelas e chaminés de ventilação. A densidade de construção na área de entorno da edificação não foi especificada no estudo. As simulações foram efetuadas para um período de tempo de 7 dias no fim da primavera. 
-A modelagem da edificação foi realizada através do programa EnergyPlus 8.1 \cite{EnergyPlus2015}. Os valores de Cp foram obtidos de duas fontes: CPCALC+, que é um modelo analítico; e AIVC, que oferece uma base de dados. A partir dos dados do AIVC, considerou-se duas possibilidades: área plana aberta; e área rural com barreiras de vento espalhadas. A partir do CPCALC+ considerou-se as seguintes densidades de construção: 1\%, 10\% e 20\%. Para cada densidade de construção utilizada,considerou-se mais um caso onde o Cp para o ângulo de incidência de 180$^{\circ}$ teve seu valor alterado em -0,1. Essa foi uma variação arbitrária para verificar a influência nos resultados, uma vez que 180$^{\circ}$ era a direção de incidênciacpredominante do vento no local. Em todos os casos considerou-se o coeficiente de descarga (Cd) das aberturas igual a 0,6. 
+A modelagem da edificação foi realizada através do programa EnergyPlus 8.1 \cite{EnergyPlus2015}. Os valores de Cp foram obtidos de duas fontes: CPCALC+, que é um modelo analítico; e AIVC, que oferece uma base de dados. A partir dos dados do AIVC, considerou-se duas possibilidades: área plana aberta; e área rural com barreiras de vento espalhadas. A partir do CPCALC+ considerou-se as seguintes densidades de construção: 1\%, 10\% e 20\%. Para cada densidade de construção utilizada,considerou-se mais um caso onde o Cp para o ângulo de incidência de 180$^{\circ}$ teve seu valor alterado em -0,1. Essa foi uma variação arbitrária para verificar a influência nos resultados, uma vez que 180$^{\circ}$ era a direção de incidênciacpredominante do vento no local. Em todos os casos considerou-se o \acrfull{cd} das aberturas igual a 0,6. 
 Os casos mais precisos foram: o que considerou os valores da AIVC para terrenos com barreiras esparsas; e o que considerou os valores do CPCALC+ para 1\% de densidade, e variação de -0,1 no Cp para o ângulo de incidência de 180$^{\circ}$. O caso mais próximo do real obteve uma diferença relativa de 10\%, enquanto o pior caso (CPCALC+ 1\% de densidade) obteve um erro relativo de 169\%. Os erros do CPCALC+ foram maiores do que o do AIVC, mesmo considerando-se o Cp para a posição exata da abertura, enquanto o AIVC considerou a média na superfície da fachada. Nos melhores resultados, a diferença calculada para a temperatura do ar foi menor do que 0,5 $^{\circ}$C, enquanto nos piores, foi entre 1,1 $^{\circ}$C e 1,2 $^{\circ}$C. A correlação entre a precisão relativa do fluxo de ar e da temperatura do ar não foi linear. A conclusão final foi que simulações com AFN na fase inicial de projeto, quando não há dados experimentais disponíveis para a validação do modelo, possuem significantes incertezas.
 
 \citeonline{Freire2013} avaliaram diferentes modelos de ventilação cruzada e unilateral (\textit{British Standard}, Gids e Phafe, e Larsen) e compararam com resultados de medições \textit{in-situ} e em túneis de vento. Também são avaliadas as bases utilizadas para obtenção dos Cp. 
@@ -322,7 +344,7 @@ O modelo de Larsen mostrou-se mais apropriado para a ventilação unilateral, po
 \end{itemize}
 
 O componente \textit{Detailed Opening} do EnergyPlus \cite{EnergyPlus2018} assume que, além da diferença de pressão entre os nós ligados pela abertura, há diferenças de pressão em função da altura da abertura, relacionadas à densidade do ar e à velocidade do vento. Por isso, é possível haver dois planos neutros de pressão ao longo da abertura, permitindo que o fluxo de ar se divida em três partes. 
-Na Figura \ref{fig:DetailedOpening}, $P_{01}$ e $P_{02}$ representam as pressões nos nós, $\rho_{1}$ e $\rho_{2}$ representam a diferença de densidade do ar em função da altura, e $P_z$ representa a diferença de pressão em função da altura, causada pela turbulência do vento.
+Na Figura \ref{fig:DetailedOpening}, $P_{01}$ e $P_{02}$ representam as pressões nos nós, $\rho_{1}$ e $\rho_{2}$ representam funções que definem a diferença de densidade do ar em relação à altura, e $P_z$ representa uma função que define a diferença de pressão em relação à altura, causada pela turbulência do vento.
 
 
 \begin{figure}[h]
@@ -377,11 +399,11 @@ T_{sup} = 21,3 + 0,31 T_m
 
 Onde:
 
-$T_{inf}$ é o limite inferior da temperatura operativa para que haja conforto térmico ($^{\circ}$C);
+\gls{tinf} é o limite inferior da temperatura operativa para que haja conforto térmico ($^{\circ}C$);
 
-$T_{sup}$ é o limite superior da temperatura operativa para que haja conforto térmico ($^{\circ}$C);
+\gls{tsup} é o limite superior da temperatura operativa para que haja conforto térmico ($^{\circ}C$);
 
-$T_m$ é a temperatura média do ar externo ($^{\circ}$C).
+\gls{tm} é a temperatura média do ar externo ($^{\circ}C$).
 \\
 
 A temperatura média do ar externo representa o ambiente climático externo com o qual os ocupantes da edificação estão fisiologicamente,
@@ -400,7 +422,7 @@ Ao longo da maior parte da história, as edificações eram projetadas de forma 
 
 A intensidade de ocupação em edifícios de escritórios varia de acordo com as atividades exercidas. Alguns escritórios são continuamente ocupados por computadores e equipamentos ligados constantemente, enquanto outros são pouco ocupados e têm pouco uso de computadores e iluminação \cite{Elharidi2018}.
 
-\citeonline{Neves2019} desenvolveram um banco de dados com informações levantadas em edifícios de escritórios que operam com ventilação híbrida (VN e condicionamento artificial de ar). Para isso, 153 edifícios construídos após o ano de 1995 na cidade de São Paulo foram selecionados. Dentre os edifícios selecionados, foi realizado um levantamento de campo em 50 edifícios, obtendo-se informações relacionadas às dimensões das salas de escritórios, ao tipo de esquadria utilizado e à presença de elementos de sombreamento. As informações disponíveis em todos os edifícios do banco de dados incluem: áreas, dimensões, formato e número de pavimentos das edificações; absortância das paredes externas e coberturas; e percentual de abertura na fachada (PAF). Os autores observaram as correlações entre as características encontradas nestes edifícios. As estratégias de VN adotadas não parecem ser algo que procura-se otimizar nos projetos dos edifícios analisados. Tampouco há indicação de uma mudança nesse cenário em edificações de anos mais recentes. O que se nota é o aumento de elementos de sombreamento na fachada em razão do uso de equipamentos condicionadores de ar do tipo \textit{split}. Os autores concluem que o levantamento realizado permite a identificação das características mais recorrentes nos edifícios analisados, e os intervalos de variação nos parâmetros observados.
+\citeonline{Neves2019} desenvolveram um banco de dados com informações levantadas em edifícios de escritórios que operam com ventilação híbrida (VN e condicionamento artificial de ar). Para isso, 153 edifícios construídos após o ano de 1995 na cidade de São Paulo foram selecionados. Dentre os edifícios selecionados, foi realizado um levantamento de campo em 50 edifícios, obtendo-se informações relacionadas às dimensões das salas de escritórios, ao tipo de esquadria utilizado e à presença de elementos de sombreamento. As informações disponíveis em todos os edifícios do banco de dados incluem: áreas, dimensões, formato e número de pavimentos das edificações; absortância das paredes externas e coberturas; e \acrfull{paf}. Os autores observaram as correlações entre as características encontradas nestes edifícios. As estratégias de VN adotadas não parecem ser algo que procura-se otimizar nos projetos dos edifícios analisados. Tampouco há indicação de uma mudança nesse cenário em edificações de anos mais recentes. O que se nota é o aumento de elementos de sombreamento na fachada em razão do uso de equipamentos condicionadores de ar do tipo \textit{split}. Os autores concluem que o levantamento realizado permite a identificação das características mais recorrentes nos edifícios analisados, e os intervalos de variação nos parâmetros observados.
 Isso possibilita que trabalhos relacionados ao desempenho térmico de edificações sejam desenvolvidos considerando-se características de edificações reais.
 
 \citeonline{Belleri2014} compararam predições de desempenho de VN em estágio inicial de projeto pelo programa EnergyPlus com medições de campo. O escritório estudado localiza-se no segundo andar de um edifício de dois andares na Califórnia, Estados Unidos, e tem seu espaço dividido em dois planos abertos de 130 m2, conectados por duas grandes aberturas. Não há ventilação forçada ou sistema de resfriamento. As quatro fachadas são providas de janelas, que podem ser operadas pelos ocupantes. Há ventiladores de teto com controle variável disponíveis. Os autores partiram da simulação de um modelo simples, e modificaram gradativamente os seguintes dados de entrada, de acordo com medições em campo: temperaturas internas; controle das janelas; dados climáticos (com intervalos de 5 minutos); fatores de abertura das janelas, coeficientes de pressão do vento (baseados em medições em túnel de vento). Enquanto a simulação inicial superestimou a média das trocas de ar em 1671\%, a simulação com todas as modificações superestimou as trocas de ar em apenas 148\%. O estudo conclui que, com dados suficientes, a utilização do programa EnergyPlus com o AFN pode oferecer  estimativas informativas relacionadas ao desempenho da VN. No entanto, para melhores estimativas é necessário obter dados relacionados ao vento e ao comportamento dos ocupantes, o que pode ser dificultoso na fase de projeto.
@@ -427,7 +449,7 @@ No entanto, a variação de determinadas características das edificações pode
 
 \section{Análise de sensibilidade}
 
-Análise de sensibilidade (AS) é uma ferramenta valiosa na simulação termoenergética de edificações. Por isso, a AS é usada amplamente para explorar as características do desempenho térmico em edificações em diversas aplicações, como projetos, calibração de modelos, \textit{retrofits}, impacto das mudanças climáticas entre outros \cite{Tian2013a}. A metodologia para a aplicação da AS tipicamente adota os seguintes passos: determinar as variações dos dados de entrada; determinar os modelos das edificações; executar as simulações dos modelos; coletar os resultados; executar a AS; apresentar os resultados da AS. Os métodos de AS podem ser divididos entre as abordagens local e global. A AS local é focada nos efeitos da incerteza de parâmetros de entrada em torno de um caso base, enquanto a AS global é mais interessada na influência dos parâmetros de entrada sobre todo o espaço de parâmetros de entrada possíveis. Por isso, a AS global é considerada mais confiável. A AS global inclui métodos de regressão, baseados em screening, em variância e metamodelos.
+Análise de sensibilidade (\acrshort{as}) é uma ferramenta valiosa na simulação termoenergética de edificações. Por isso, a AS é usada amplamente para explorar as características do desempenho térmico em edificações em diversas aplicações, como projetos, calibração de modelos, \textit{retrofits}, impacto das mudanças climáticas entre outros \cite{Tian2013a}. A metodologia para a aplicação da AS tipicamente adota os seguintes passos: determinar as variações dos dados de entrada; determinar os modelos das edificações; executar as simulações dos modelos; coletar os resultados; executar a AS; apresentar os resultados da AS. Os métodos de AS podem ser divididos entre as abordagens local e global. A AS local é focada nos efeitos da incerteza de parâmetros de entrada em torno de um caso base, enquanto a AS global é mais interessada na influência dos parâmetros de entrada sobre todo o espaço de parâmetros de entrada possíveis. Por isso, a AS global é considerada mais confiável. A AS global inclui métodos de regressão, baseados em screening, em variância e metamodelos.
 
 O primeiro passo para realizar uma AS é determinar a faixa dos dados de entrada. Quando o objetivo é determinar diferentes opções de projeto,  \citeonline{Tian2013a} sugere distribuições uniformes nos dados de entrada, pois assume-se que os diferentes valores para os dados de entrada são igualmente prováveis.
 
@@ -445,16 +467,16 @@ Projetistas encontram dificuldades no uso de ferramentas de simulação de desem
 Há modelos baseados em equações físicas, que simulam os sistemas de transferência de calor, e modelos baseados em funções estatísticas, que deduzem esses comportamentos. Modelos estatísticos funcionam apenas com entradas e saídas, sem correlacionar causa e efeito, mas têm maior agilidade. 
 Os modelos escritos com equações físicas seguem os princípios da conservação de energia e são os que mais se aproximam do comportamento real, mas podem ser dificultosos de se aplicar por serem muito complexos. Para adaptar as principais funcionalidades de ambos os modelos, existem modelos híbridos, chamados metamodelos.
 
-Modelos preditivos são funções matemáticas que, aplicadas a uma quantidade significativa de dados, conseguem identificar padrões ocultos e prever o que poderá ocorrer. Os métodos de inteligência artificial mais utilizados para predição de desempenho energético de edificações são redes neurais artificiais (RNA) e máquinas de vetores de suporte (MVS) \cite{Zhao2012}. São modelos altamente eficazes na solução de problemas não-lineares. Esses métodos podem oferecer predições altamente precisas, desde que as definições do modelo e parâmetros estabelecidos estejam definidos adequadamente. Modelos de RNA já foram usados para analisar vários tipos de consumo de energia em edificações em diversas condições, como em cargas de aquecimento e resfriamento, consumo de eletricidade, operação e otimização de componentes, e estimativa de parâmetros de uso. O uso de MVS vem crescendo em pesquisas e indústria. Em muitos casos as MVS mostram performances superiores às das RNA, mesmo com pequena quantidade de dados para treinamento.
+Modelos preditivos são funções matemáticas que, aplicadas a uma quantidade significativa de dados, conseguem identificar padrões ocultos e prever o que poderá ocorrer. Os métodos de inteligência artificial mais utilizados para predição de desempenho energético de edificações são redes neurais artificiais (\acrshort{ann}) e \acrfull{svm} \cite{Zhao2012}. São modelos altamente eficazes na solução de problemas não-lineares. Esses métodos podem oferecer predições altamente precisas, desde que as definições do modelo e parâmetros estabelecidos estejam definidos adequadamente. Modelos de \acrshort{ann} já foram usados para analisar vários tipos de consumo de energia em edificações em diversas condições, como em cargas de aquecimento e resfriamento, consumo de eletricidade, operação e otimização de componentes, e estimativa de parâmetros de uso. O uso de MVS vem crescendo em pesquisas e indústria. Em muitos casos as MVS mostram performances superiores às das \acrshort{ann}, mesmo com pequena quantidade de dados para treinamento.
 
 Os resultados de simulações podem ser avaliados a partir de características específicas. Essas características podem incluir pico da demanda de energia, consumo anual de energia, conforto, custo do ciclo de vida, entre outros. No desenvolvimento de um metamodelo analítico para otimização de modelos de energia de edificações, \citeonline{Eisenhower2012} utilizaram o PMV para a avaliação dos resultados. A caracterização dos dados e técnica de regressão do modelo foram baseadas em princípios de aprendizagem automática. Aprendizagem automática é uma classificação de algoritmos que tentam identificar características dentre os dados, sem conhecimento prévio dessas características. 
-Dentre diferentes possíveis abordagens (RNA, Programação Genética, Redes Bayesianas) a escolhida para o caso foi a MVS. 
+Dentre diferentes possíveis abordagens (\acrshort{ann}, Programação Genética, Redes Bayesianas) a escolhida para o caso foi a MVS. 
 A identificação dos parâmetros mais influentes no processo de otimização foi realizada através de uma análise de sensibilidade global, baseada em derivadas locais. O metamodelo gerado foi capaz de identificar a minimização do consumo de energia, mantendo ou melhorando o conforto, sem necessidade de extensivas repetições de simulações de energia.
 
 \citeonline{Rackes2016} propõem um metamodelo para analisar edificações comerciais e escolas de poucos pavimentos, ventiladas naturalmente. Primeiramente, foi construído um banco de dados com aproximadamente 50.000 simulações. As simulações foram executadas a partir dos modelos termoenergéticos e AFN do programa EnergyPlus, e do modelo de conforto adaptativo da  \citeonline{ASHRAEStandard552013}, que determina a zona de conforto que satisfaz 80\% dos ocupantes. As características dos edifícios simulados foram variadas a partir de 55 dados de entrada relacionados à tipologia do edifício, layout interno, geometria das janelas e sombreamento, propriedades do fluxo de ar, materiais de construção, cargas internas e transferência de calor pelo solo. Os arquivos de IDF utilizados pelo EnergyPlus foram criados a partir de uma rotina escrita no programa MatLab. Foram utilizados 427 arquivos climáticos do Brasil para a representação geográfica. 
 O indicador de desempenho em conforto térmico escolhido foi o \textit{Exceedance Hour Fraction} (EHF), que é a fração de horas de desconforto em relação às horas de ocupação. Na etapa seguinte, 93 parâmetros preditores foram definidos para a análise do banco de dados. A principal ferramenta para a análise de sensibilidade foi a regressão linear múltipla da variável resposta em relação aos preditores. O método de aprendizagem automática escolhido foi a MVS. Após treinar e avaliar diversos modelos, 53 parâmetros preditores foram selecionados para a versão final. Esses parâmetros podem ser obtidos a partir de 29 dados de entrada e um arquivo climático. Comparando as simulações do EnergyPlus com as predições, o metamodelo apresentou RMSE (erro médio quadrático) igual a 0,059 e AE95 (erro absoluto do 95o percentil) igual a 0,126. Quando testado com outros 2000 casos não usados no treinamento do metamodelo, o RMSE foi 0,060 e o AE95 foi 0,129, o que indica consistência nos resultados. 
 
-\citeonline{Versage2015} desenvolveu um metamodelo para estimar a carga integrada anual de energia de refrigeração para avaliação de desempenho energético de edificações condicionadas artificialmente através do desempenho individual de suas zonas térmicas. Foi desenvolvida uma base de dados de aproximadamente 1,29 milhões de casos simulados, com parâmetros construtivos variados, para o clima de Florianópolis. Uma amostra dos dados foi adotada para a elaboração de metamodelos com as técnicas de regressão linear múltipla, regressão adaptativa multivariada por \textit{splines}, processo gaussiano, máquina de vetores de suporte, \textit{random forest} e redes neurais artificiais. Para avaliar e comparar os metamodelos, quatro índices de desempenho foram escolhidos: tempo de treinamento, coeficiente de determinação (R$^2$), RMSE e erro médio quadrático normalizado (NRMSE). O metamodelo de RNA obteve o melhor desempenho entre os testados. A rede neural artificial treinada com 1\% dos casos do banco de dados, e com 72 nós na camada interna, obteve o melhor desempenho global, e foi capaz de reproduzir resultados com erros menores que 10\% para 99,2\% do casos. O metamodelo elaborado a partir de MVS obteve o pior desempenho. Porém, o autor destaca que outras configurações e tratamentos dos dados poderiam mudar o desempenho dos metamodelos avaliados.
+\citeonline{Versage2015} desenvolveu um metamodelo para estimar a carga integrada anual de energia de refrigeração para avaliação de desempenho energético de edificações condicionadas artificialmente através do desempenho individual de suas zonas térmicas. Foi desenvolvida uma base de dados de aproximadamente 1,29 milhões de casos simulados, com parâmetros construtivos variados, para o clima de Florianópolis. Uma amostra dos dados foi adotada para a elaboração de metamodelos com as técnicas de regressão linear múltipla, regressão adaptativa multivariada por \textit{splines}, processo gaussiano, máquina de vetores de suporte, \textit{random forest} e redes neurais artificiais. Para avaliar e comparar os metamodelos, quatro índices de desempenho foram escolhidos: tempo de treinamento, coeficiente de determinação (R$^2$), RMSE e erro médio quadrático normalizado (NRMSE). O metamodelo de \acrshort{ann} obteve o melhor desempenho entre os testados. A rede neural artificial treinada com 1\% dos casos do banco de dados, e com 72 nós na camada interna, obteve o melhor desempenho global, e foi capaz de reproduzir resultados com erros menores que 10\% para 99,2\% do casos. O metamodelo elaborado a partir de MVS obteve o pior desempenho. Porém, o autor destaca que outras configurações e tratamentos dos dados poderiam mudar o desempenho dos metamodelos avaliados.
 
 \chapter{Metodologia}
 \label{chapter:metodologia}
@@ -487,7 +509,7 @@ Dentre as informações  disponíveis no banco de dados, obtém-se:
 
 Os valores desses parâmetros foram observados através de suas distribuições de ocorrência. Desta forma definiu-se os limites mínimos e máximos para o desenvolvimento das simulações termoenergéticas, com parâmetros variando de acordo com o que se encontra comumente em edifícios reais. Como as edificações do banco de dados localizam-se na cidade de São Paulo, esse foi o clima para qual o metamodelo foi desenvolvido.
 
-Certas informações não estão disponibilizadas pelo banco de dados analisado, como algumas relacionadas às propriedades termofísicas dos materiais da envoltória, às densidades de potência de iluminação e equipamentos, e aos padrões e taxas de ocupação. Frente a essa limitação, os valores desses parâmetros foram definidos a partir da Proposta de Instrução Normativa do Inmetro para a Classe de Eficiência Energética de Edificações Comerciais, de Serviços e Públicas \cite{INIC}. %, através da Tabela 4.1, da Tabela A.1 do anexo A e da Tabela B.I.1 do anexo B.  % Hora início e fim: 8 - 18,  INI-C
+Certas informações não estão disponibilizadas pelo banco de dados analisado, como algumas relacionadas às propriedades termofísicas dos materiais da envoltória, às densidades de potência de iluminação e equipamentos, e aos padrões e taxas de ocupação. Frente a essa limitação, os valores desses parâmetros foram definidos a partir da \acrlong{inic} \cite{INIC}. %, através da Tabela 4.1, da Tabela A.1 do anexo A e da Tabela B.I.1 do anexo B.  % Hora início e fim: 8 - 18,  INI-C
 
 A Tabela \ref{table:paramconst} apresenta os parâmetros que mantiveram-se com valores constantes no desenvolvimento do trabalho. Esses valores foram escolhidos a partir do que é apresentado na \citeonline{INIC} para a simulação das edificações nas condições de referência. A cobertura tem suas propriedades termofísicas baseadas na consideração de uma laje de concreto de 10cm de espessura e telha de fibrocimento, separadas por uma câmara de ar. O padrão de ocupação foi definido de acordo com o que é estabelecido para a análise de conforto térmico em edificações de escritórios pelo método simplificado, considerando-se apenas dias de semana. Valores relacionados às propriedades termofísicas do piso em contato com solo e da laje entre pavimentos não são especificados pela INI-C, portanto foi considerado, para ambos os casos, uma laje de concreto de 12cm de espessura com uma camada de piso cerâmico.
 
@@ -575,9 +597,9 @@ Onde:
 
 $EHF$ é igual a fração de horas de desconforto por calor na zona térmica;
 
-$timesteps_{sup}$ é igual ao número de \textit{timesteps} em que há ocupação na zona térmica e a temperatura operativa ultrapassa o limite superior determinado pelo método adaptativo;
+\gls{tssup} é igual ao número de \textit{timesteps} em que há ocupação na zona térmica e a temperatura operativa ultrapassa o limite superior determinado pelo método adaptativo;
 
-$timesteps_{ocup}$ é igual ao número de \textit{timesteps} em que há ocupação na zona térmica.
+\gls{tsocup} é igual ao número de \textit{timesteps} em que há ocupação na zona térmica.
 \\
 
 Para avaliar o potencial do uso de ventiladores, o movimento do ar foi considerado no desenvolvimento do metamodelo.
@@ -592,11 +614,11 @@ O aumento de aceitabilidade da temperatura operativa foi considerado para os tr�
 		\hline
 		\textbf{Velocidade média do ar} & \textbf{Temperatura} \\
 		\hline
-		0,6 m/s & 1,2 $^{\circ}$C \\
+		0,6 m/s & 1,2 $^{\circ}C$ \\
 		\hline
-		0,9 m/s & 1,8 $^{\circ}$C \\
+		0,9 m/s & 1,8 $^{\circ}C$ \\
 		\hline
-		1,2 m/s & 2,2 $^{\circ}$C \\
+		1,2 m/s & 2,2 $^{\circ}C$ \\
 		\hline 
 	\end{tabular}
 	\begin{flushleft}
@@ -608,16 +630,16 @@ Como o modelo de ventilação natural do programa EnergyPlus não calcula a velo
 
 \begin{equation}
 \label{eq:Tsup}
-T_{sup} = T_{sup,0} + T_{v_{ar}}
+T_{sup,v} = T_{sup} + T_{v_{ar}}
 \end{equation}
 
 Onde:
 
-$T_{sup}$ é igual à temperatura limite superior na faixa de conforto, considerando-se a velocidade do ar ($^{\circ}$C);
+\gls{tsupv} é igual à temperatura limite superior na faixa de conforto, considerando-se a velocidade do ar ($^{\circ}C$);
 
-$T_{sup,0}$ é igual à temperatura limite superior na faixa de conforto definida pelo método adaptativo, sem considerar a velocidade do ar ($^{\circ}$C);
+\gls{tsup} é igual à temperatura limite superior na faixa de conforto definida pelo método adaptativo, sem considerar a velocidade do ar ($^{\circ}C$);
 
-$T_{v_{ar}}$ é igual à margem extra de temperatura permitida pela consideração da velocidade do ar ($^{\circ}$C).
+\gls{tvar} é igual à margem extra de temperatura permitida pela consideração da velocidade do ar ($^{\circ}C$).
 \\
 
 \section{Simulação termoenergética}
@@ -718,7 +740,7 @@ Os coeficientes de pressão nos nós externos à edificação foram definidos at
 \subsection{Simulação simplificada}
 
 Nesta etapa do método, buscou-se simplificar o modelo de escritório desenvolvido no EnergyPlus, atentando-se às limitações relacionadas à simplificação do modelo.
-O objetivo de gerar um metamodelo por meio de redes neurais artificiais (RNA) para se obter a EHF faz com que se busque parametrizar ao máximo as simulações no EnergyPlus.
+O objetivo de gerar um metamodelo por meio de redes neurais artificiais (\acrshort{ann}) para se obter a EHF faz com que se busque parametrizar ao máximo as simulações no EnergyPlus.
 Essa parametrização pode facilitar o desenvolvimento de amostras para a pesquisa, assim como garantir uma relação mais direta dos parâmetros de entrada com os dados de saída. 
 Dentre as simplificações consideradas, estão:
 
@@ -778,15 +800,15 @@ Para verificar o quanto a fonte escolhida na definição dos Cp's influencia nos
 
 Onde:
 
-$\overline{\Delta}_{Cp}$ é igual à diferença absoluta média entre os valores dos Cp's obtidos pela base da TPU e obtidos pelo MA;
+\gls{deltacp} é igual à diferença absoluta média entre os valores dos Cp's obtidos pela base da TPU e obtidos pelo MA;
 
-$\overline{Cp}^{TPU}_{f_i,\alpha_j}$ é igual ao valor médio dos Cp's disponibilizados pela base de dados da TPU para a fachada $i$ de uma edificação, para o ângulo de incidência do vento igual a $\alpha_j$;
+\gls{meancptpu} é igual ao valor médio dos Cp's disponibilizados pela base de dados da TPU para a fachada $i$ de uma edificação, para o ângulo de incidência do vento igual a $\alpha_j$;
 
-$Cp^{MA}_{f_i,\alpha_j}$ é igual ao Cp calculado pelo MA para a fachada de uma edificação com proporções iguais às da fachada $i$, para o ângulo de incidência do vento igual a $\alpha_j$;
+\gls{cpma} é igual ao Cp calculado pelo MA para a fachada de uma edificação com proporções iguais às da fachada $i$, para o ângulo de incidência do vento igual a $\alpha_j$;
 
-$f_i$ é a fachada $i$ da edificação avaliada;
+\gls{fi} é a fachada $i$ da edificação avaliada;
 
-$\alpha_j$ é o ângulo de incidência do vento  sobre a fachada, em graus, e tem valor igual a $30 \cdot j$.		
+\gls{alphaj} é o ângulo de incidência do vento  sobre a fachada, em graus, e tem valor igual a $30 \cdot j$.	
 %		$\alpha_j$ é o ângulo de incidência do vento considerado sobre a fachada, que varia de 0 a 330 graus, com intervalos de 30 graus;
 \\
 
@@ -914,25 +936,23 @@ Quando o objeto \textit{AirflowNetwork:MultiZone:Component: DetailedOpening} é 
 
 Onde:
 
-$\dot{m}_{i,j}$ é o fluxo de ar entre os pontos $i$ e $j$, quando a porta/janela está aberta (kg/s);
+\gls{m} é o fluxo de ar entre os pontos $i$ e $j$, quando a porta/janela está aberta (kg/s);
 
-$C_d$ é o coeficiente de descarga da abertura (-);
+\gls{cdd} é o coeficiente de descarga da abertura (-);
 
-$\Theta$ é a fração de abertura (-);
+\gls{theta} é a fração de abertura (-);
 
-$H$ é a altura da abertura (m);
+\gls{height} é a altura da abertura (m);
 
-$\rho$ é a densidade do ar (kg/m$^{3}$);
+\gls{piz} é a pressão de ar no ponto $i$, altura $z$ (Pa);
 
-$P_{i(z)}$ é a pressão de ar no ponto $i$, altura $z$ (Pa);
+\gls{width} é a largura da abertura (m);
 
-$W$ é a largura da abertura (m);
+\gls{n} é o fluxo de ar entre os pontos $i$ e $j$, quando a porta/janela está fechada (kg/s);
 
-$\dot{n}_{i,j}$ é o fluxo de ar entre os pontos $i$ e $j$, quando a porta/janela está fechada (kg/s);
+\gls{cq} é o coeficiente de fluxo mássico de ar da abertura (-);
 
-$C_q$ é o coeficiente de fluxo mássico de ar da abertura (-);
-
-$exp$ é o expoente de fluxo de massa de ar (-).
+\gls{exp} é o expoente de fluxo de massa de ar (-).
 \\
 
 As seguintes condições de contorno foram estabelecidas para facilitar o cálculo do $Cp_{eq}$:
@@ -958,21 +978,21 @@ P_{zn} = \frac{\sum_{i=1}^{N_P}{P_{i} (C_q L_i)^2} +  %\\
 
 Onde:
 
-$P_{zn}$ é a pressão do ar na zona analisada (Pa);
+\gls{pzn} é a pressão do ar na zona analisada ($Pa$);
 
-$N_P$ é igual ao número de portas que se conectam à zona (-);
+\gls{np} é igual ao número de portas que se conectam à zona ($-$);
 
-$P_i$ é a pressão de ar na zona ligada pela porta $i$ (Pa);
+\gls{pi} é a pressão de ar na zona ligada pela porta $i$ ($Pa$);
 
-$L_i$ é igual ao perímetro da porta $i$ (m);
+\gls{li} é igual ao perímetro da porta $i$ ($m$);
 
-$N_J$ é igual ao número de janelas que se conectam à zona (-);
+\gls{nj} é igual ao número de janelas que se conectam à zona ($-$);
 
-$P_{ext}$ é a pressão do ar no ambiente externo (Pa);
+\gls{pext} é a pressão do ar no ambiente externo ($Pa$);
 
-$C_{p,j}$ é o Cp na superfície da janela $j$ (-);
+\gls{cpj} é o Cp na superfície da janela $j$ ($-$);
 
-$A_j$ é igual à área da janela $j$ (m$^2$).
+\gls{area} é igual à área da janela $j$ ($m^2$).
 \\
 
 Finalmente, os Cp's equivalentes ($Cp_{eq}$) foram definidos calculando-se a relação entre a pressão de ar na zona da circulação e a pressão do ar no ambiente externo, para cada direção angular do vento, de acordo com a Equação \ref{eq:Cpeq}.
@@ -1009,7 +1029,7 @@ Para cada caso, gerou-se uma simulação referência, mais dez simulações simp
 
 \section{Análise de sensibilidade}
 
-Após definir como seriam gerados os modelos para as simulações simplificadas, uma análise de sensibilidade (AS) foi aplicada. Através da AS, a influência dos diferentes dados de entrada variados nas simulações foi avaliada. Com base nos resultados da AS, parâmetros não relevantes nos resultados de temperatura operativa e, consequentemente, fração de horas de desconforto por calor (EHF), foram determinados com valores fixos. Desta forma, o metamodelo foi desenvolvido considerando-se apenas parâmetros com influência expressiva nos dados de saída desejados.
+Após definir como seriam gerados os modelos para as simulações simplificadas, uma análise de sensibilidade (AS) foi aplicada. Através da AS, a influência dos diferentes dados de entrada variados nas simulações foi avaliada. Com base nos resultados da AS, parâmetros não relevantes nos resultados de temperatura operativa e, consequentemente, \acrfull{ehf}, foram determinados com valores fixos. Desta forma, o metamodelo foi desenvolvido considerando-se apenas parâmetros com influência expressiva nos dados de saída desejados.
 
 O método de \citeauthoronline{Sobol1993} \cite{Sobol1993} foi utilizado para a AS, pois permite a identificação de parâmetros influentes, mesmo para casos onde a relação entre as entradas e saídas dos modelos são não-monotônicas e apresentam efeitos colineares.
 
@@ -1021,24 +1041,24 @@ A partir dos dados de entrada de cada caso, e dos valores de EHF's resultantes d
 
 \section{Desenvolvimento do metamodelo}
 
-O metamodelo foi desenvolvido por meio de redes neurais artificiais (RNA).		
+O metamodelo foi desenvolvido por meio de redes neurais artificiais (\acrshort{ann}).		
 A maneira como se descreve as variáveis de entrada dos modelos simulados para o metamodelo a ser desenvolvido pode influenciar na sua precisão e na representação adequada dos fenômenos termofísicos.
 Portanto, no processo de definição das variáveis de entrada do metamodelo, busca-se a melhor forma de descrever as diversas características das zonas térmicas.
 Esse é um processo iterativo, que envolve diferentes variáveis, utilizando-se transformações, normalizações e funções destas. 
-É importante também observar os hiperparâmetros (parâmetros relacionados ao processo de aprendizagem automática) escolhidos no desenvolvimento da RNA. 
-A precisão dos resultados obtidos pela RNA pode depender do número de nós, número de camadas, taxa de aprendizagem, número de iterações, assim como outros parâmetros definidos durante o processo de treinamento. 
+É importante também observar os hiperparâmetros (parâmetros relacionados ao processo de aprendizagem automática) escolhidos no desenvolvimento da \acrshort{ann}. 
+A precisão dos resultados obtidos pela \acrshort{ann} pode depender do número de nós, número de camadas, taxa de aprendizagem, número de iterações, assim como outros parâmetros definidos durante o processo de treinamento. 
 
-Ao longo do processo de desenvolvimento do metamodelo, RNA's com diferentes configurações foram testadas, utilizando-se diferentes maneiras de descrever as variáveis de entrada, e diferentes combinações de hiperparâmetros.
+Ao longo do processo de desenvolvimento do metamodelo, \acrshort{ann}'s com diferentes configurações foram testadas, utilizando-se diferentes maneiras de descrever as variáveis de entrada, e diferentes combinações de hiperparâmetros.
 A base de dados utilizada para o treinamento do metamodelo foi gerada a partir de 20.000 simulações, amostrados pelo método de amostragem do LHS. %100.000 simulações, amostrados pelo método de amostragem de Sobol.
 A amostra utilizada para validação foi composta por 5.000 casos, geradas por LHS.
 % O motivo para se utilizar diferentes métodos de amostragem é para evitar qualquer enviesamento possivelmente relacionado ao método de amostragem.
 Em ambas as amostras, os parâmetros variados tiveram seus limites mínimos e máximos definidos de acordo com o item \ref{subsec:par}, com excessão daqueles parâmetros que tiveram seus valores determinados como fixos na etapa da AS.
 Os indicadores de precisão utilizados foram o erro absoluto médio e o erro absoluto do $95^{\circ}$ percentil.
-É comum se utilizar a raiz quadrada do erro quadrático médio (RMSE), ou o coeficiente de determinação (R$^2$) como indicadores de desempenho. Contudo, considerando-se que o dado de saída do metamodelo será uma fração (EHF) com valor entre zero e um, o erro absoluto já é consequentemente um erro relativo. Portanto, conclui-se que o erro absoluto médio, associado ao erro absoluto $95^{\circ}$ percentil, pode estimar de maneira mais adequada a imprecisão esperada para os resultados do metamodelo.
+É comum se utilizar a \acrfull{rmse}, ou o \acrfull{r2} como indicadores de desempenho. Contudo, considerando-se que o dado de saída do metamodelo será uma fração (EHF) com valor entre zero e um, o erro absoluto já é consequentemente um erro relativo. Portanto, conclui-se que o erro absoluto médio, associado ao erro absoluto $95^{\circ}$ percentil, pode estimar de maneira mais adequada a imprecisão esperada para os resultados do metamodelo.
 
-A RNA com os melhores indicadores de precisão na etapa de treinamento foi escolhida para ter seu desempenho analisado com uma amostra de teste. 
-A amostra de teste foi utilizada para verificar o desempenho da RNA quando os valores dos parâmetros determinados como fixos na etapa da AS variam. Para isso, utilizou-se a mesma amostra gerada para etapa da AS, pois as simulações já estavam finalizadas, e os casos eram diferentes daqueles utilizados no desenvolvimento da RNA.
-Ao analisar os indicadores de precisão da RNA em relação às amostras de validação e de teste, o metamodelo final foi definido.
+A \acrshort{ann} com os melhores indicadores de precisão na etapa de treinamento foi escolhida para ter seu desempenho analisado com uma amostra de teste. 
+A amostra de teste foi utilizada para verificar o desempenho da \acrshort{ann} quando os valores dos parâmetros determinados como fixos na etapa da AS variam. Para isso, utilizou-se a mesma amostra gerada para etapa da AS, pois as simulações já estavam finalizadas, e os casos eram diferentes daqueles utilizados no desenvolvimento da \acrshort{ann}.
+Ao analisar os indicadores de precisão da \acrshort{ann} em relação às amostras de validação e de teste, o metamodelo final foi definido.
 
 \chapter{Resultados e Discussões}
 \label{chapter:Resultados}
@@ -1135,7 +1155,7 @@ Observou-se que esquadrias do tipo maxim-ar são predominantes. Os objetos do \t
 O uso de elementos de sombreamento é pouco explorado nas edificações existentes. De qualquer maneira, considerou-se a modelagem de sombreamento horizontal sobre as aberturas da edificação, por considerar o potencial do sombreamento para bloquear a entrada de radiação nas zonas térmicas simuladas. Esse parâmetro foi variado a partir do ângulo de sombreamento formado entre a base da abertura e a proteção solar, localizada no topo da abertura.	
 A maioria das salas observadas possuem ventilação cruzada, mas a ventilação unilateral é uma estratégia com ocorrência considerável.
 
-As informações relacionadas ao tipo de vidro não permitem definir valores relacionados ao fator solar (FS). Observa-se apenas a ocorrência de vidros laminados e vidro comum incolor. Optou-se por variar o fator solar dos vidros nas simulações para avaliar o impacto deste parâmetro nos resultados de conforto térmico.
+As informações relacionadas ao tipo de vidro não permitem definir valores relacionados ao \acrfull{fs}. Observa-se apenas a ocorrência de vidros laminados e vidro comum incolor. Optou-se por variar o fator solar dos vidros nas simulações para avaliar o impacto deste parâmetro nos resultados de conforto térmico.
 
 %	Os demais parâmetros observados tiveram suas distribuições variando continuamente de acordo com as distribuições obtidas. 
 Como as simulações de referência foram modeladas como pavimentos da edificação, o parâmetro relacionado ao número de pavimento das edificações foi transformado no parâmetro "altura do pavimento".
@@ -1150,33 +1170,33 @@ A Tabela \ref{table:param_def} apresenta os limites mínimos e máximos atribuí
 		\hline
 		\textbf{Parâmetro} & \textbf{Valores} \\
 		\hline
-		Área da sala (m$^2$) & 20 - 100 \\
+		Área da sala ($m^2$) & 20 - 100 \\
 		\hline
-		Razão L:C da sala (-) & 0,4 - 2,5 \\
+		Razão L:C da sala ($-$) & 0,4 - 2,5 \\
 		\hline
-		Pé-direito (m) & 2,3 - 3,2 \\
+		Pé-direito ($m$) & 2,3 - 3,2 \\
 		\hline
 		Azimute ($^{\circ}$) & 0 - 360 \\
 		\hline
-		Altura do pavimento (m) & 0 - 50 \\
+		Altura do pavimento ($m$) & 0 - 50 \\
 		\hline 
-		Absortância da parede (-) & 0,2 - 0,8 \\
+		Absortância da parede ($-$) & 0,2 - 0,8 \\
 		\hline 
-		Transmitância da parede (W/m$^2$K) & 0,5 - 4,4 \\
+		Transmitância da parede ($W/m^2K$) & 0,5 - 4,4 \\
 		\hline 
-		Capacidade térmica da parede (kJ/m$^2$K) & 0,22 - 450,00 \\
+		Capacidade térmica da parede ($kJ/m^2K$) & 0,22 - 450,00 \\
 		\hline 
-		PAF (-) & 0,1 - 0,6 \\
+		PAF ($-$) & 0,1 - 0,6 \\
 		\hline 
-		Fator solar do vidro (-) & 0,20 - 0,87 \\
+		Fator solar do vidro ($-$) & 0,20 - 0,87 \\
 		\hline 
 		Sombreamento ($^{\circ}$) & 0 - 80 \\
 		\hline 
-		Densidade de ocupação (pessoa/m$^2$) & 0,05 - 0,20 \\
+		Densidade de ocupação ($pessoa/m^2$) & 0,05 - 0,20 \\
 		\hline 
-		Fator de abertura da janela (-) & 0,2 - 1,0 \\
+		Fator de abertura da janela ($-$) & 0,2 - 1,0 \\
 		\hline 
-		Razão L:C do edifício (-) & 0,2 - 1,0 \\
+		Razão L:C do edifício ($-$) & 0,2 - 1,0 \\
 		\hline 
 		Cobertura exposta & Sim / Não\\
 		\hline 
@@ -1184,7 +1204,7 @@ A Tabela \ref{table:param_def} apresenta os limites mínimos e máximos atribuí
 		\hline 
 		Ventilação & Cruzada / Unilateral\\
 		\hline 
-		Velocidade do ar (m/s) & 0,0 - 1,2 \\
+		Velocidade do ar ($m/s$) & 0,0 - 1,2 \\
 		\hline 
 	\end{tabular}
 	%			\begin{flushleft}
@@ -1196,7 +1216,7 @@ A Tabela \ref{table:param_def} apresenta os limites mínimos e máximos atribuí
 
 \subsection{Cálculo do coeficiente de pressão pelo método analítico}
 
-Ao comparar os valores dos coeficientes de pressão (Cp’s) das medições em túnel de vento da Universidade Politécnica de Tóquio (TPU) e os valores dos Cp’s obtidos pelo método analítico (MA), obteve-se um gráficos de pontos. 
+Ao comparar os valores dos coeficientes de pressão (Cp’s) das medições em túnel de vento da Universidade Politécnica de Tóquio (TPU) e os valores dos Cp’s obtidos pelo \acrfull{ma}, obteve-se um gráficos de pontos. 
 A Figura \ref{fig:cp_diff_scatter_all} apresenta a comparação para as 25 geometrias diferentes, para cada fachada, e para cada ponto disponibilizado pela TPU.
 Como os valores calculados pelo MA são únicos para cada fachada, e a TPU oferece valores diferentes para diversos pontos ao longo das fachadas, os pontos no gráfico da Figura \ref{fig:cp_diff_scatter_all} distribuem-se horizontalmente. 
 %		A Figura \ref{fig:cp_diff_scatter_facade} apresenta a comparação considerando-se os valores médios do Cp para cada fachada. 
@@ -1227,8 +1247,8 @@ Dentre as geometrias analisadas, a proporção com a maior diferença absoluta m
 A partir da comparação conduzida, decidiu-se comparar as diferenças nos resultados de simulações termoenergéticas utilizando como base uma tipologia com proporções de largura, profundidade e altura igual a 2:1:2.
 
 Os resultados das 1000 simulações foram comparados por gráficos de pontos.
-A comparação entre as médias anuais de trocas de ar por hora (ACH), apresentada na Figura \ref{fig:cpaverage_ACH_scatter}, mostra que o MA faz com que as simulações subestimem as trocas de ar nas simulações, possivelmente devido aos menores valores dos Cp's obtidos pelo método.
-A diferença média foi igual a -0,67 para o ACH, com o erro absoluto do 95º percentil (AE95) é igual a 5,23 ACH.
+A comparação entre as médias anuais de \acrfull{ach}, apresentada na Figura \ref{fig:cpaverage_ACH_scatter}, mostra que o MA faz com que as simulações subestimem as trocas de ar nas simulações, possivelmente devido aos menores valores dos Cp's obtidos pelo método.
+A diferença média foi igual a -0,67 para o ACH, com o \acrfull{ae95} é igual a 5,23 ACH.
 
 \begin{figure}[H]
 	\centering
@@ -1334,13 +1354,13 @@ A partir dos resultados obtidos, definiu-se as paredes voltadas para a circulaç
 \subsection{Modelagem da ventilação natural na simulação simplificada}
 
 Nesta etapa do trabalho as simulações foram conduzidas para se obter duas respostas:
-(1) se é adequado o uso do coeficiente de pressão equivalente ($Cp_{eq}$) para ser associado à porta da zona térmica; (2) qual deveria ser o coeficiente de fluxo mássico de ar adotado para o objeto \textit{AirflowNetwork:MultiZone:Surface:Crack}.
+(1) se é adequado o uso do \acrfull{cpeq} para ser associado à porta da zona térmica; (2) qual deveria ser o coeficiente de fluxo mássico de ar adotado para o objeto \textit{AirflowNetwork:MultiZone:Surface:Crack}.
 
 Para analisar simultaneamente o desempenho do $Cp_{eq}$ e dos coeficientes de fluxo mássico de ar, o gráfico da Figura \ref{fig:pareto} foi gerado, observando-se as raízes dos erros médios quadráticos (RMSE).
 É possível observar que as simulações desenvolvidas utilizando-se o $Cp_{eq}$ obtiveram resultados com RMSE menores do que as simulações desenvolvidas utilizando-se o Cp obtido diretamente pelo MA.
 Para a definir o coeficiente de fluxo mássico de ar, levou-se em conta inicialmente os erros relacionados ao ACH.
 No entanto, foi identificada uma fronteira de Pareto entre os erros analisados, que mostra como a busca por menores erros de ACH aumenta os erros relacionados ao EHF.
-O resultado dessa análise levanta duas suspeitas. A primeira é de que as diferenças maiores nas trocas de ar anulem erros relacionados à definição das paredes adjacentes à edificação como adiabáticas. A segunda hipótese, é de que os maiores erros relacionados ao MACH sejam em casos onde as diferenças nas trocas de ar não sejam relevantes para alterar a temperatura operativa nas zonas térmicas e, consequentemente, o EHF.
+O resultado dessa análise levanta duas suspeitas. A primeira é de que as diferenças maiores nas trocas de ar anulem erros relacionados à definição das paredes adjacentes à edificação como adiabáticas. A segunda hipótese, é de que os maiores erros relacionados à médias anuais do ACH sejam em casos onde as diferenças nas trocas de ar não sejam relevantes para alterar a temperatura operativa nas zonas térmicas e, consequentemente, o EHF.
 
 \begin{figure}[H]
 	\centering
@@ -1418,15 +1438,15 @@ Baseando-se nos resultados das AS, alguns dos parâmetros não foram considerado
 		\hline
 		\textbf{Parâmetro} & Valor fixo \\
 		\hline
-		Razão L:C do edifício (-) & 1 \\
+		Razão L:C do edifício ($-$) & 1 \\
 		\hline
-		Razão L:C da sala (-) & 1 \\
+		Razão L:C da sala ($-$) & 1 \\
 		\hline
-		Pé-direito (m) & 2,5 \\
+		Pé-direito ($m$) & 2,5 \\
 		\hline
-		Capacidade térmica (kJ/m$^2$K) & 161 \\
+		Capacidade térmica ($kJ/m^2K$) & 161 \\
 		\hline
-		%			Fator solar do vidro (-) & 0,87 \\
+		%			Fator solar do vidro ($-$) & 0,87 \\
 		%			\hline
 	\end{tabular}
 \end{table}
@@ -1472,7 +1492,7 @@ Baseando-se nos resultados das AS, alguns dos parâmetros não foram considerado
 
 \subsection{Desenvolvimento do metamodelo}
 
-A partir das 20.000 simulações geradas para o treinamento da rede neural artificial (RNA). %, obteve-se resultados de EHF variando entre 0,00 e 1,00.
+A partir das 20.000 simulações geradas para o treinamento da rede neural artificial (\acrshort{ann}). %, obteve-se resultados de EHF variando entre 0,00 e 1,00.
 O metamodelo final foi definido com 14 parâmetros:
 \begin{itemize}
 	\item Fator de abertura das janelas;
@@ -1507,10 +1527,10 @@ Os demais parâmetros foram normalizados com valores entre -1 e 1.
 	%			\end{flushleft}
 \end{figure}
 
-O modelo de RNA final foi definido com duas camadas, umas de 50 nós, e a outra com 20. 
+O modelo de \acrshort{ann} final foi definido com duas camadas, umas de 50 nós, e a outra com 20. 
 O algorítimo de otimização que obteve o melhor desempenho foi o \textit{Adagrad's Optimizer}, disponibilizado pela biblioteca \textit{TensorFlow}, com uma taxa de aprendizagem igual a 0,05.
 
-A Figura \ref{fig:ann_validation} apresenta um gráfico de pontos comparando os resultados de EHF obtidos para as simulações e para as estimativas da RNA, a partir da base de dados desenvolvida para a validação do metamodelo. A base de dados para a validação teve apenas os parâmetros incluídos no treinamento da RNA variados. 
+A Figura \ref{fig:ann_validation} apresenta um gráfico de pontos comparando os resultados de EHF obtidos para as simulações e para as estimativas da \acrshort{ann}, a partir da base de dados desenvolvida para a validação do metamodelo. A base de dados para a validação teve apenas os parâmetros incluídos no treinamento da \acrshort{ann} variados. 
 O erro absoluto médio do EHF para os casos de validação foi 0,0104, com o AE95 igual a 0,0226.
 
 \begin{figure}[H]
@@ -1520,7 +1540,7 @@ O erro absoluto médio do EHF para os casos de validação foi 0,0104, com o AE9
 	\label{fig:ann_validation}
 \end{figure}
 
-Outra comparação foi conduzida com a amostragem utilizada para a AS. Essa base de dados estava disponível, e não foi utilizada pra o desenvolvimento da RNA, então ela foi escolhida para testar o desempenho da RNA quando todos os parâmetros avaliados neste estudo variam. A Figura \ref{fig:ann_sobol} apresenta o gráfico de pontos comparando os resultados de EHF obtidos para as simulações e para as estimativas da RNA, a partir da base de dados da AS de sobol. O erro absoluto médio do EHF para os casos de validação foi 0,0104, com o AE95 igual a 0,0226.
+Outra comparação foi conduzida com a amostragem utilizada para a AS. Essa base de dados estava disponível, e não foi utilizada pra o desenvolvimento da \acrshort{ann}, então ela foi escolhida para testar o desempenho da \acrshort{ann} quando todos os parâmetros avaliados neste estudo variam. A Figura \ref{fig:ann_sobol} apresenta o gráfico de pontos comparando os resultados de EHF obtidos para as simulações e para as estimativas da \acrshort{ann}, a partir da base de dados da AS de sobol. O erro absoluto médio do EHF para os casos de validação foi 0,0104, com o AE95 igual a 0,0226.
 
 \begin{figure}[H]
 	\centering
