@@ -15,9 +15,9 @@ import other_crack_fac
 update = dict_update.update
 
 # Globals
-FOLDER = 'ann_validation'  # 'ann'  #  'ann_test'  # 
-SIZE =  5000  # 20000  # 155648
-OUTPUT_NAME = 'sample_ann_validation'  # 'sample_ann'  # 'sample_ann_test'  # 
+FOLDER = 'ann'  #  'ann_test'  # 'ann_validation'  # 
+SIZE =  100000  # 20000  # 155648
+OUTPUT_NAME = 'sample_ann'  # 'sample_ann_test'  # 'sample_ann_validation'  # 
 NUM_CLUSTERS = int(os.cpu_count()/2)
 # NAME_STDRD = 'whole'
 NAME_STDRD_2 = 'single'
@@ -108,12 +108,12 @@ for i in range(len(sample)):
     
     model_values = dict((param,parameter_value(param, sample.loc[i, param])) for param in col_names)
     
-    if model_values['roof'] > .5:
+    if model_values['roof'] > .8: # .5:  # MUDOU AQUI!!!
         roof = True
     else:
         roof = False
         
-    if model_values['ground'] > .5:
+    if model_values['ground'] > .85: # .5:  # MUDOU AQUI!!!
         ground = True
     else:
         ground = False
@@ -155,7 +155,7 @@ for i in range(len(sample)):
         azimuth = model_values['azimuth'],
         bldg_ratio = 1,  # model_values['bldg_ratio'],  #  
         wall_u = model_values['wall_u'], 
-        wall_ct = 161,  # model_values['wall_ct'], #  
+        wall_ct = 80,  # model_values['wall_ct'], #  161,  # 
         zn=zn,
         floor_height = model_values['floor_height'],
         corner_window = corner_window,
@@ -169,7 +169,7 @@ for i in range(len(sample)):
         open_fac=model_values['open_fac'],
         input_file=INPUT,
         output=output,
-        ground_domain = True,
+        ground_domain = True,  # False,  # 
         outdoors=False
     )
         

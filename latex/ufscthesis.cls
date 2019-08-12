@@ -66,8 +66,8 @@
 \ProcessOptions\relax
 
 %---------------------------------------------------------------------------
-% Load class memoir, with default font size 10pt (this will be reset later to match the BU-USFC Norm), page size A5, two sided printing, and chapters beginning at the right side of the page.
-\LoadClass[10pt,a5paper,twoside,openright]{memoir}
+% Load class memoir, with default font size 10pt (this will be reset later to match the BU-USFC Norm), page size A4, two sided printing, and chapters beginning at the right side of the page.
+\LoadClass[10pt,a4paper,twoside,openright]{memoir}
 
 %---------------------------------------------------------------------------
 % Packages Required

@@ -1,7 +1,7 @@
 library(ggplot2)
 
 setwd('~/dissertacao/base_de_dados/')
-
+# ----
 df50 <- read.csv('50_edificios.csv')
 
 # for(col in 1:ncol(df50)){
@@ -217,7 +217,7 @@ save_hist('formato_sala', fact=FACT)
 
 # ratio da sala
 
-df50$ratio = df50$X/df50$Dimensões..LxC...m.
+df50$ratio = df50$Dimensões..LxC...m./df50$X
 
 ggplot(df50,aes(df50$ratio)) +
   geom_histogram(binwidth = .1) +
@@ -260,6 +260,33 @@ ggplot(df50,aes(df50$Percentual.de.caixilho.operável....)) +
 save_hist('openfac', fact=FACT)
 
 #
+# ---- resultados ----
+min(df150$Number.of.floors)
+max(df150$Number.of.floors)
+mean(df150$Number.of.floors)
+getmode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+getmode(df150$Number.of.floors)
+
+resume_feat = function(feature){
+  feature = feature[!is.na(feature)]
+  print(min(feature))
+  print(max(feature))
+  print(mean(feature))
+  print(median(feature))
+  print(getmode(feature))
+}
+
+resume_feat(office_areas[!is.na(office_areas)])
+resume_feat(as.numeric(df50$Pé.direito..piso.forro...m.))
+resume_feat(df50$ratio[!is.na(df50$ratio)])
+resume_feat(df150$Ratio.between.width.and.length)
+resume_feat(absorptances)
+resume_feat(df50$PAF.total.da.sala..../100)
+
+varia#
 # rest ----
 df <- cbind(df50, 'Location'=NA,'Address'=NA,'Telephone'=NA,'Contacts'=NA,'Lease.cost'=NA,'Bldg.Ratio'=NA,'Total.floor.area'=NA,
             'Plenum.height'=NA,'Glazing.type'=NA,'Spandrel.height'=NA,'Control.system'=NA, 'Azimuth.angle'=NA)

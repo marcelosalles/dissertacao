@@ -8,18 +8,18 @@ save_img = function(name,fact=1){
 }
 # ANN----
 #
-basedir = '/media/marcelo/OS/dissertacao/'
-# basedir = '/home/marcelo/dissertacao/'
+# basedir = '/media/marcelo/OS/dissertacao/'
+basedir = '/home/marcelo/dissertacao/'
 
 sample = read.csv(paste(basedir,'sample_ann.csv',sep=''))
-outputs = read.csv(paste(basedir,'means_ann.csv',sep=''))
+outputs = read.csv(paste(basedir,'ann/means_ann_1.csv',sep=''))
 data = cbind(sample,outputs)
-write.csv(data, '/home/marcelo/dissertacao/dataset_08-06.csv', row.names = FALSE)
+write.csv(data, '/home/marcelo/dissertacao/dataset_08-12.csv', row.names = FALSE)
 
 sample_validation = read.csv('/media/marcelo/OS/dissertacao/sample_ann_validation.csv')
-outputs_validation = read.csv('/media/marcelo/OS/dissertacao/means_ann_validation_08-06.csv')  # ann_validation/means_ann_validation.csv')
+outputs_validation = read.csv('/media/marcelo/OS/dissertacao/ann_validation/means_ann_validation.csv')  # ann_validation/means_ann_validation.csv')
 data_validation = cbind(sample_validation,outputs_validation)
-write.csv(data_validation, '/home/marcelo/dissertacao/dataset_validation_08-06.csv', row.names = FALSE)
+write.csv(data_validation, '/home/marcelo/dissertacao/dataset_validation_08-12.csv', row.names = FALSE)
 
 sample_test = read.csv('/media/marcelo/OS/dissertacao/sample_ann_test.csv')
 outputs_test = read.csv('/media/marcelo/OS/dissertacao/ann_test/means_ann_test.csv')
@@ -27,6 +27,10 @@ data_test = cbind(sample_test,outputs_test)
 write.csv(data_test, '/home/marcelo/dissertacao/dataset_test_08-10.csv', row.names = FALSE)
 
 df_ann = read.csv('/home/marcelo/dissertacao/dataset_08-06.csv')
+
+# df =read.csv('~/dissertacao/dataset_test_08-10.csv')
+# df =read.csv('~/dissertacao/dataset_validation_08-06.csv')
+# df =read.csv('~/dissertacao/dataset_08-06.csv')
 
 #
 # SOBOL----
@@ -220,7 +224,7 @@ corrplot.mixed(cor_matrix_1, lower = "number", upper = "ellipse",
 # PLOTS ANN ----
 
 # sim_pred <- read.csv('/home/marcelo/Downloads/validation_results_08-05.csv')
-sim_pred <- read.csv('/home/marcelo/Downloads/plot_validation_08-09.csv')
+sim_pred <- read.csv('/home/marcelo/Downloads/plot_test_08-12.csv')
 ggplot(sim_pred,aes(sim_pred$pred,sim_pred$simulado)) +
   geom_point(alpha=.1, col='blue4') +
   geom_abline(col='black') +
@@ -234,7 +238,7 @@ save_img('ann_validation')
 
 # sim_pred_test <- read.csv('/home/marcelo/Downloads/test_results_08-05.csv')
 # sim_pred_test <- read.csv('/home/marcelo/Downloads/plot_test_08-06.csv')
-sim_pred <- read.csv('/home/marcelo/Downloads/plot_test_08-09.csv')
+sim_pred_test <- read.csv('/home/marcelo/Downloads/plot_test_08-12_ok.csv')
 ggplot(sim_pred_test,aes(sim_pred_test$pred,sim_pred_test$simulado)) +
   geom_point(alpha=.15, col='blue4') +
   geom_abline(col='black') +
