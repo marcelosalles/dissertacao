@@ -3,12 +3,12 @@
 \glsgroupheading{glssymbols}\relax \glsresetentrylist %
 \glossentry{area}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{58}}}%
+\glossentry{cqq}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{57}}}%
 \glossentry{cdd}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{57}}}%
 \glossentry{cpp}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{24}}}%
-\glossentry{cq}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{57}}}%
 \glossentry{cpj}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{58}}}%
 \glossentry{cpma}{\glossaryentrynumbers{\relax 
