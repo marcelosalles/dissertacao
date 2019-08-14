@@ -15,10 +15,10 @@ import other_crack_fac
 update = dict_update.update
 
 # Globals
-FOLDER = 'ann'  #  'ann_test'  # 'ann_validation'  # 
-SIZE =  100000  # 20000  # 155648
-OUTPUT_NAME = 'sample_ann'  # 'sample_ann_test'  # 'sample_ann_validation'  # 
-NUM_CLUSTERS = int(os.cpu_count()/2)
+FOLDER = 'ann_validation'  # 'ann'  #  'ann_test'  # 
+SIZE =  20000  # 20000  # 155648
+OUTPUT_NAME = 'sample_ann_validation'  # 'sample_ann'  # 'sample_ann_test'  # 
+NUM_CLUSTERS = 8  # int(os.cpu_count()/2)
 # NAME_STDRD = 'whole'
 NAME_STDRD_2 = 'single'
 INPUT = "seed.json"  # INPUT_WHOLE 

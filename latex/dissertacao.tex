@@ -1,4 +1,4 @@
-\documentclass[brazil,hardcopy,openany,a4paper]{ufscthesis} %
+\documentclass[brazil,hardcopy,openany,a5paper]{ufscthesis} %
 \usepackage[brazil]{babel}
 \usepackage{amsfonts, amsmath, amsthm, amsbsy,amssymb,bm,mathtools} % For math fonts, symbols and environments %
 \usepackage{graphicx} 		% Required for including images
@@ -33,6 +33,8 @@
 \DeclareMathOperator*{\argmax}{\arg\!\max}
 
 \newcommand{\sasize}{.7}
+\newcommand{\annsize}{.7}
+\newcommand{\figsize}{.7}
 
 %----------------------------------------------------------------------
 % Identificadores do trabalho
@@ -112,24 +114,28 @@ Como resultado, espera-se obter um metamodelo capaz de predizer, com boa precis�
 \chapter{Introdução}
 \label{chapter:introducao}
 
-De acordo com a \acrlong{iea} \cite{IEA2018}, o consumo de energia elétrica global destinado ao resfriamento de edificações em 2016 foi de 2.020 TWh/ano, correspondendo a quase um quinto do consumo total no setor. A demanda por energia destinada ao resfriamento de ar em edificações mais que triplicou do ano de 1990 a 2016 e, se não houver mudanças no cenário atual, estima-se que essa demanda mais que triplicará até o ano de 2050, representando 37\% do aumento no consumo de eletricidade em edificações. Isso corresponderá a 11,5\% do consumo de energia total em edificações comerciais. O relatório da IEA mostra que esse cenário de aumento na demanda de energia é ainda mais impactante em países em desenvolvimento de clima quente. Apenas 8\% das 2,8 bilhões de pessoas que vivem nas partes mais quentes do mundo hoje possui condicionamento de ar para resfriamento. No caso Brasil, a parcela do resfriamento de ar nas cargas de pico das redes elétricas em 2016 correspondia a 7,6\% do total. 
-A estimativa considerando-se o crescimento econômico e populacional, é de que essa parcela possa representar 30,8\% da carga de pico até o ano de 2050, se nenhuma medida for tomada para mitigar o problema. O aumento na demanda por energia é fundamental para o desenvolvimento econômico, porém pode causar grandes impactos ambientais, como poluição, alterações climáticas e esgotamento dos recursos naturais. Para garantir a melhora na qualidade de vida de forma sustentável, busca-se políticas de incentivo à eficiência energética. 
+De acordo com a \acrlong{iea} \cite{IEA2018a}, no ano de 2017 o setor de edificações representou mais de 30\% do consumo final total de energia no mundo. 
+O relatória da \citeonline{IEA2018} aponta que a demanda por energia destinada ao resfriamento de ar em edificações mais que triplicou do ano de 1990 a 2016 e, se não houver mudanças no cenário atual, estima-se que essa demanda mais que triplicará até o ano de 2050, representando 37\% do aumento no consumo de eletricidade em edificações. Isso corresponderá a 11,5\% do consumo de energia total em edificações comerciais. 
+O potencial de aumento na demanda por energia destinada ao resfriamento de ar em países de clima quente é ainda mais expressivo. Das 2,8 bilhões de pessoas que vivem nas partes mais quentes do mundo hoje, apenas 8\% possuem sistema de condicionamento de ar \cite{IEA2018}. No Brasil, a parcela do resfriamento de ar nas cargas de pico das redes elétricas em 2016 correspondia a 7,6\% do total, e a estimativa, considerando-se o cenário base, é de que essa parcela represente 30,8\% da carga de pico até o ano de 2050 \cite{IEA2018}. 
 %No Brasil, desde 2009 o INMETRO possui um programa de etiquetagem de edificações voltado para padrões de eficiência energética de edificações \cite{BRASIL2009}.
 
-A redução dos impactos ambientais relacionados ao resfriamento de edificações pode ser alcançada através da geração de energia proveniente de fontes renováveis, do desenvolvimento de equipamentos com maior eficiência energética, ou pela busca de soluções passivas. O resfriamento passivo é um conjunto de técnicas sustentáveis para resfriar edifícios por meios naturais \cite{Samani2016}. Consiste em qualquer sistema que busca minimizar, ou eliminar se possível, o uso de sistemas de condicionamento de ar, com o objetivo de reduzir as altas temperaturas internas e o consumo de energia para resfriamento, proporcionando conforto térmico para os ocupantes.
+Esse contexto evidencia a necessidade de medidas mitigadoras relacionadas ao consumo energético destinado ao resfriamento de edificações. Uma solução de resfriamento passivo é a \acrfull{vn}. O resfriamento passivo é um conjunto de técnicas sustentáveis para resfriar edifícios por meios naturais \cite{Samani2016}. Consiste em qualquer sistema que busca minimizar, ou eliminar, se possível, o uso de sistemas de condicionamento de ar, com o objetivo de reduzir as altas temperaturas internas e o consumo de energia para resfriamento, proporcionando conforto térmico aos ocupantes.
 
-Uma das técnicas de resfriamento passivo é a ventilação natural (VN). A VN como estratégia para resfriamento de edificações é um dos componentes fundamentais no projeto de edifícios energeticamente eficientes. Técnicas de VN são encontradas ao longo de toda a história na arquitetura vernacular  \cite{Pesic2018}, e hoje vêm sendo atualizadas de acordo com novos estudos no campo de conforto térmico e projetos sustentáveis de edificações. Além de assegurar a qualidade do ar, a VN promove o resfriamento da edificação, proporcionando conforto térmico aos usuários quando as condições do clima externo são favoráveis \cite{Yao2009}.
+Técnicas de VN são encontradas ao longo de toda a história na arquitetura vernacular \cite{Pesic2018}, e hoje vêm sendo atualizadas de acordo com novos estudos no campo de conforto térmico e projetos sustentáveis de edificações.
+Além de assegurar a qualidade do ar, a VN promove o resfriamento da edificação, proporcionando conforto térmico aos usuários quando as condições do clima externo são favoráveis \cite{Yao2009}.
 
-Para que o conforto térmico dos usuários seja garantido sem um consumo significativo de energia, é importante entender como ocorrem as variações térmicas em um edifício antes de construí-lo. Análises durante os estágios iniciais de projeto de uma edificação com VN podem apontar decisões fundamentais para o desempenho térmico. No estágio inicial de projeto, o potencial de otimização é maior e nesta etapa qualquer estimativa da influência dos ocupantes no conforto e desempenho energético da edificação pode refletir nas tomadas de decisão \cite{Belleri2014, Roetzel2014}.
+Apesar de um quinto da energia elétrica brasileira ser destinada a edificações comerciais, de serviços e públicas \cite{EPE2018}, o uso de VN em edifícios de escritórios vem diminuindo gradualmente no Brasil. De acordo com \citeonline{Alves2017}, apesar do uso de sistemas de condicionamento de ar e iluminação mais eficientes, edifícios da cidade de Belo Horizonte construídos a partir dos anos 2000 tendem a ser os maiores consumidores de energia, por não adotarem estratégias de resfriamento passivo.
 
-Atualmente, a forma mais avançada de predição do desempenho energético de edificações é a simulação computacional. No entanto, esse processo pode exigir o conhecimento técnico de um especialista. Simulações energéticas dinâmicas requerem modelos detalhados e enfrentam diversos problemas, associados principalmente a informações necessárias para dados de entrada do modelo processado \cite{Corgnati2013}. Uma alternativa para contornar essas questões, facilitando o uso dessa ferramenta por arquitetos e projetistas, é o desenvolvimento de metamodelos. Metamodelos são modelos gerados a partir de simulações computacionais, através dos quais é possível se obter resultados próximos aos de simulações de desempenho energético complexas.
+Para que o conforto térmico dos usuários seja garantido sem um consumo significativo de energia, é importante entender como ocorrem as variações térmicas em um edifício antes de construí-lo. Análises durante os estágios iniciais de projeto de uma edificação com VN apontam decisões fundamentais para o desempenho térmico. No estágio inicial de projeto, o potencial de otimização é maior e nesta etapa qualquer estimativa do conforto e desempenho energético da edificação pode refletir nas tomadas de decisão \cite{Belleri2014, Roetzel2014}.
+
+A maneira mais avançada de se estimar o desempenho termoenergético de edificações atualmente é por meio de simulações computacionais. No entanto, esse processo exige o conhecimento técnico de um especialista, pois simulações termoenergéticas dinâmicas requerem modelos detalhados e enfrentam diversos problemas, associados principalmente a informações necessárias para dados de entrada do modelo processado \cite{Corgnati2013}. No contexto brasileiro, a análise do desempenho térmico de edificações por meio de simulações computacionais é uma medida relevante, pois, assim como em outros países em desenvolvimento, a falta de acessibilidade a dados relacionados a padrões de consumo de energia e atributos físicos e operacionais de edifícios de escritório dificulta análises a partir de bancos de dados \cite{Alves2018}. Uma alternativa para contornar essas questões é o desenvolvimento de metamodelos. Metamodelos são modelos gerados a partir de simulações computacionais, através dos quais é possível se obter resultados próximos aos de simulações de desempenho energético complexas.
 
 Metamodelos para eficiência energética de edificações podem ser desenvolvidos a partir de diferentes métodos \cite{Ostergard2018}. A solução mais apropriada depende do contexto e propósitos de cada aplicação.
-\citeauthoronline{Versage2015} \cite{Versage2015} foi capaz de estimar as cargas térmicas de edificações comerciais através de diferentes métodos de metamodelagem.
-\citeauthoronline{Melo2016} \cite{Melo2016} desenvolveram um modelo de \acrfull{ann} para estimar graus hora de resfriamento e cargas térmicas de aquecimento e resfriamento em edificações residenciais.
-O desenvolvimento de um metamodelo de máquina de vetores de suporte capaz de estimar conforto térmico em edificações comerciais foi proposto por \citeauthoronline{Rackes2016} \cite{Rackes2016}. Voltado principalmente a tipologias de escolas, o metamodelo estima a fração de horas em desconforto por calor dos ocupantes ao longo do ano.
+\citeonline{Versage2015} foi capaz de estimar as cargas térmicas de edificações comerciais através de diferentes métodos de metamodelagem.
+\citeonline{Melo2016} desenvolveram um modelo de \acrfull{ann} para estimar graus hora de resfriamento e cargas térmicas de aquecimento e resfriamento em edificações residenciais.
+O desenvolvimento de um metamodelo de máquina de vetores de suporte capaz de estimar conforto térmico em edificações comerciais foi proposto por \citeonline{Rackes2016}. Voltado principalmente a tipologias de escolas, o metamodelo estima a fração de horas em desconforto por calor dos ocupantes ao longo do ano.
 
-A VN em edificações apresenta comportamentos complexos e a avaliação do seu potencial de resfriamento faz-se necessária desde a fase inicial de projeto. Possibilitar esse tipo de análise de forma simples e rápida pode ser fundamental nas tomadas de decisão em projetos de edificações e na aplicação de políticas públicas voltadas à eficiência energética. Por meio de ferramentas de aprendizagem automática, surge a oportunidade de se desenvolver metamodelos capazes de obter resultados de conforto térmico em edificações.
+A VN em edificações apresenta comportamentos complexos e a avaliação do seu potencial de resfriamento faz-se necessária desde a fase inicial de projeto. Possibilitar esse tipo de análise de forma simples e rápida é fundamental nas tomadas de decisão em projetos de edificações e na aplicação de políticas públicas voltadas à eficiência energética. Por meio de ferramentas de aprendizagem automática, surge a oportunidade de se desenvolver metamodelos capazes de obter resultados de conforto térmico em edificações.
 
 \section{Objetivos}
 \subsection{Objetivo geral}
@@ -142,8 +148,8 @@ Dentre os objetivos específicos deste trabalho, destacam-se:
 
 \begin{itemize}
 	\item Identificar as características construtivas encontradas em edifícios de escritórios ventilados naturalmente na cidade de São Paulo;
-	\item Definir as variáveis com maior e menor influência no desempenho térmico dos edifícios ventilados naturalmente;
-	\item Desenvolver um modelo de simulação termoenergética simplificado, com apenas uma zona térmica, capaz de representar as trocas térmicas de uma sala em um edifício de escritórios. % MELHORAR!!!
+	\item Desenvolver um modelo de simulação termoenergética simplificado, com apenas uma zona térmica, capaz de representar as trocas térmicas de uma sala em um edifício de escritórios;
+	\item Definir as variáveis com maior e menor influência no desempenho térmico dos edifícios ventilados naturalmente.
 \end{itemize}
 
 \chapter{Revisão de literatura}
@@ -185,11 +191,12 @@ Uma ligação utilizada no modelo do AFN tem dois nós, um de entrada e um de sa
 \begin{figure}[]
 	\centering
 	\caption{Relação entre nós e ligações do AFN.}
-	\includegraphics[width=1\linewidth]{img/nos_AFN.png}
+	\includegraphics[width=\figsize\linewidth]{img/nos_AFN.png}
 	\label{fig:nos_AFN}
-	\begin{flushleft}
-		Fonte: adaptado de \citeonline{EnergyPlus2018}.
-	\end{flushleft}
+	\source{adaptado de \citeonline{EnergyPlus2018}.}
+%	\begin{flushleft}
+%		Fonte: adaptado de \citeonline{EnergyPlus2018}.
+%	\end{flushleft}
 \end{figure}
 
 A velocidade na qual se considera que o vento atinge a edificação modelada é obtida a partir do arquivo climático utilizado na simulação computacional. A partir das medições de velocidade do vento na estação meteorológica, extrapola-se os valores para outras altitudes e perfis de terreno. Essa consideração em relação à velocidade do vento é baseada no \textit{Handbook of Fundamentals} da \citeonline{ASHRAE2005}.
@@ -203,7 +210,11 @@ Os coeficientes do perfil de velocidade do vento são variáveis que dependem da
 	\resizebox{\textwidth}{!}{
 		\begin{tabular}{|c |c |c |c | } % \textwidth}{@{\extracolsep{\fill}} \hspace{-.33\columnwidth}
 			\hline	
-			\textbf{Categoria} & \textbf{Descrição do terreno} & \textbf{Expoente,} & \textbf{Espessura da camada} \\
+%			\textbf{Categoria} & {} & \textbf{Expoente,} & \textbf{Espessura da camada} \\
+%			\textbf{do terreno} & {} & \textbf{$\alpha$} & \textbf{limite, $\delta$ ($m$)} \\
+%			\hline	
+			\textbf{Categoria} & {} & \textbf{Expoente,} & \textbf{Espessura da camada} \\
+			{} & {} & {} & {} \\
 			\textbf{do terreno} & {} & \textbf{$\alpha$} & \textbf{limite, $\delta$ ($m$)} \\
 			\hline
 			{} & Grandes centros urbanos nos quais & {} & \\
@@ -211,7 +222,9 @@ Os coeficientes do perfil de velocidade do vento são variáveis que dependem da
 			{} & maiores que 21 m. & {} & \\
 			\hline
 			{} & Terreno urbano, subúrbio, áreas com & {} & \\
-			2 & árvores, áreas com espaçamento & 0,22 & 370 \\
+%			2 & árvores, áreas com espaçamento & 0,22 & 370 \\
+			{} & árvores, áreas com espaçamento & {} & {} \vspace{-5pt} \\ 
+			2 & {} & 0,22 & 370 \vspace{-7pt} \\ 
 			{} & entre obstruções do tamanho ou & {} & \\
 			{} & maiores do que casas unifamiliares. & {} & \\
 			\hline
@@ -253,7 +266,7 @@ A base de dados da TPU oferece valores de Cp para modelos de edificações com g
 A localização dos pontos sobre as superfícies dos modelos é apresentada de acordo com o exemplo da Figura \ref{fig:TPU_points}. Na imagem, 240 pontos de medição se distribuem sobre um modelos de dimensões igual a 0,2 x 0,1 x 0,2 m. As linhas pontilhadas representam as arestas do modelo.
 
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\caption{Distribuição de pontos de medição dos Cp sobre a fachada}
 	\includegraphics[width=1\linewidth]{img/tpu_points.png}
@@ -278,13 +291,21 @@ Diversos fatores que afetam o valor do Cp são comumente simplificados, como apo
 			Ponto de interesse na superfície da & Dado médio para a superfície \\
 			fachada da edificação (Cp local) & (Cp médio)\\
 			\hline
-			Perfil do vento & Adoção de coeficientes que determinam \\
+%			Perfil do vento & Adoção de coeficientes que determinam \\
+			{} & Adoção de coeficientes que determinam \vspace{-5pt}\\
+			Perfil do vento & {} \vspace{-7pt}\\
 			{} & o perfil de vento de acordo com o local \\
 			\hline
 			Elementos de obstrução da edificação & Obstruções com formas genéricas  \\
 			\hline
-			Geometria da edificação e detalhes & Dados genéricos usados para \\
-			da fachada & qualquer forma, e sem detalhes na \\
+%			Geometria da edificação e detalhes & Dados genéricos usados para \\
+%			da fachada & qualquer forma, e sem detalhes na \\
+%			{} & fachada considerados \\
+%			\hline
+			{} & Dados genéricos usados para \vspace{-5pt} \\
+			Geometria da edificação e detalhes & {} \vspace{-7pt} \\
+			{} & qualquer forma, e sem detalhes na \vspace{-5pt} \\
+			da fachada & {} \vspace{-7pt} \\
 			{} & fachada considerados \\
 			\hline
 			Direção do vento & Resolução angular baixa \\
@@ -352,7 +373,7 @@ Na Figura \ref{fig:DetailedOpening}, $P_{01}$ e $P_{02}$ representam as pressõe
 \begin{figure}[h]
 	\centering
 	\caption{Fenômenos considerado pelo EnergyPlus ao modelar fluxo de ar através de grandes aberturas.}
-	\includegraphics[width=1\linewidth]{img/detailed_opening.png}
+	\includegraphics[width=\figsize\linewidth]{img/detailed_opening.png}
 	\label{fig:DetailedOpening}
 	\begin{flushleft}
 		Fonte: \citeonline{EnergyPlus2018}.
@@ -584,7 +605,7 @@ A Figura \ref{fig:temp_means} apresenta as temperaturas externas da cidade de S�
 %	\vspace{0pt}
 	\centering
 	\caption{Temperaturas externas da cidade de São Paulo, e limites superiores de aceitabilidade}
-	\includegraphics[width=.9\linewidth]{img/temp_means.png}
+	\includegraphics[width=\figsize\linewidth]{img/temp_means.png}
 	\label{fig:temp_means}
 %	\vspace{-5pt}
 \end{figure}
@@ -701,7 +722,7 @@ O solo foi modelado pelos objetos do \textit{Ground Domain}, nos casos onde o co
 \begin{figure}[h]
 	\centering
 	\caption{Croqui da tipologia base}
-	\includegraphics[width=1\linewidth]{img/croqui_07-11.png}
+	\includegraphics[width=\figsize\linewidth]{img/croqui_07-11.png}
 	\label{fig:croqui}
 	%			\begin{flushleft}
 	%				Fonte: o autor.
@@ -732,7 +753,7 @@ Os coeficientes de pressão nos nós externos à edificação foram definidos at
 \begin{figure}[h]
 	\centering
 	\caption{Exemplo de como os Cp foram considerados}
-	\includegraphics[width=1\linewidth]{img/ex_TPU_h.png}
+	\includegraphics[width=\figsize\linewidth]{img/ex_TPU_h.png}
 	\label{fig:tpuwindows}
 	%			\begin{flushleft}
 	%				Fonte: \citeauthoronline{TPU2018} \cite{TPU2018}, adaptado pelo autor.
@@ -833,7 +854,7 @@ Assim, as médias anuais das trocas de ar por hora (ACH) e a EHF foram comparada
 %		\begin{figure}[h]
 %			\centering
 %			\caption{Exemplo do posicionamento dos pontos com valores de Cp na fachada}
-%			\includegraphics[width=1\linewidth]{img/tpu_points.png}
+%			\includegraphics[width=\figsize\linewidth]{img/tpu_points.png}
 %			\label{fig:tpupoints}
 %			\begin{flushleft}
 %				Fonte: \citeauthoronline{TPU2018} \cite{TPU2018}, adaptado pelo autor.
@@ -847,16 +868,16 @@ Para possibilitar a parametrização contínua e independente das propriedades t
 \begin{figure}[h]
 	\centering
 	\caption{Parede equivalente}
-	\includegraphics[width=1\linewidth]{img/parede_eq.png}
+	\includegraphics[width=.5\linewidth]{img/parede_eq.png}
 	\label{fig:parede_eq}
 \end{figure}
 
-A validação da modelagem simplificada da parede foi realizada para dois tipos de paredes referência:
+A validação da modelagem simplificada da parede foi realizada para dois tipos de paredes referência (uma leve, outra pesada):
 
 \begin{itemize}
 	%			\item parede de concreto;
-	\item parede de gesso com lã de rocha;
-	\item parede de alvenaria e reboco.
+	\item parede de gesso com lã de rocha (leve);
+	\item parede de alvenaria e reboco (pesada).
 \end{itemize}
 
 Como a modelagem da parede de alvenaria possui uma camada de ar no meio da parede, avaliou-se a possibilidade de considerar apenas a metade interna desta parede referência para definir a capacidade térmica de sua parede equivalente. Essa consideração parte do pressuposto de que a camada interna de ar faz com que a inércia térmica da metade exterior da parede não influencie consideravelmente a zona térmica analisada.
@@ -876,7 +897,7 @@ A partir dessa premissa, foi desenvolvido um modelo com apenas uma zona térmica
 \begin{figure}[h]
 	\centering
 	\caption{Modelo de uma zona}
-	\includegraphics[width=1\linewidth]{img/model.PNG}
+	\includegraphics[width=\figsize\linewidth]{img/model.PNG}
 	\label{fig:singlezone}
 \end{figure}
 
@@ -886,7 +907,7 @@ A consideração do uso da condição \textit{outdoors} foi pela hipótese de qu
 \begin{figure}[h]
 	\centering
 	\caption{Modelagem com parede adiabática e \textit{outdoors}}
-	\includegraphics[width=1\linewidth]{img/adiabatic_outdoors.png}
+	\includegraphics[width=\figsize\linewidth]{img/adiabatic_outdoors.png}
 	\label{fig:adiabatic_outdoors}
 \end{figure}
 
@@ -916,7 +937,7 @@ A modelagem da ventilação natural na simulação simplificada deve ser adaptad
 \begin{figure}[h]
 	\centering
 	\caption{Rede de fluxo de ar na simulação simplificada}
-	\includegraphics[width=1\linewidth]{img/AFN_sz.png}
+	\includegraphics[width=\figsize\linewidth]{img/AFN_sz.png}
 	\label{fig:AFN_sz}
 \end{figure}
 %		As limitações desta adaptação e as formas de contorná-las serão explicadas neste item.
@@ -1019,7 +1040,7 @@ A modelagem do fluxo de ar pelas portas dos escritórios nas simulações simpli
 \begin{figure}[h]
 	\centering
 	\caption{Solução para infiltração de ar entre a zona e a circulação}
-	\includegraphics[width=1\linewidth]{img/AFN_crack.png}
+	\includegraphics[width=\figsize\linewidth]{img/AFN_crack.png}
 	\label{fig:AFN_crack}
 \end{figure}	
 
@@ -1178,7 +1199,8 @@ A definição dos parâmetros de entrada para o desenvolvimento do metamodelo fo
 \begin{table}[H]
 	\centering
 	\caption{Limites mínimos e máximos dos parâmetros}
-	\label{table:param_def}
+	\label{table:param_def}	
+	\resizebox{\textwidth}{!}{
 	\begin{tabular}{|l |r |}
 		\hline
 		\textbf{Parâmetro} & \textbf{Valores} \\
@@ -1224,6 +1246,7 @@ A definição dos parâmetros de entrada para o desenvolvimento do metamodelo fo
 		Velocidade do ar ($m/s$) & 0,0 - 1,2 \\
 		\hline 
 	\end{tabular}
+}
 	%			\begin{flushleft}
 	%				Fonte: \citeauthoronline{INIC} \cite{INIC}, adaptado pelo autor.
 	%			\end{flushleft}				
@@ -1294,7 +1317,7 @@ A diferença média foi igual a -0,67 para o ACH, com o \acrfull{ae95} é igual 
 \begin{figure}[H]
 	\centering
 	\caption{Comparação entre as médias anuais do ACH}
-	\includegraphics[width=1\linewidth]{img/cpaverage_ACH_scatter.png}
+	\includegraphics[width=\figsize\linewidth]{img/cpaverage_ACH_scatter.png}
 	\label{fig:cpaverage_ACH_scatter}
 	%			\begin{flushleft}
 	%				Fonte: o autor.
@@ -1308,7 +1331,7 @@ Por tanto, considerou-se que a utilização do MA para calcular os valores dos C
 \begin{figure}[H]
 	\centering
 	\caption{Comparação entre as médias das temperaturas operativas}
-	\includegraphics[width=1\linewidth]{img/cpaverage_temp_scatter.png}
+	\includegraphics[width=\figsize\linewidth]{img/cpaverage_temp_scatter.png}
 	\label{fig:cpaverage_temp_scatter}
 	%			\begin{flushleft}
 	%				Fonte: o autor.
@@ -1318,7 +1341,7 @@ Por tanto, considerou-se que a utilização do MA para calcular os valores dos C
 \begin{figure}[H]
 	\centering
 	\caption{Comparação entre os resultados de EHF}
-	\includegraphics[width=1\linewidth]{img/cpaverage_EHF_scatter.png}
+	\includegraphics[width=\figsize\linewidth]{img/cpaverage_EHF_scatter.png}
 	\label{fig:cpaverage_EHF_scatter}
 	%			\begin{flushleft}
 	%				Fonte: o autor.
@@ -1406,7 +1429,7 @@ O resultado dessa análise pode ser porque as diferenças maiores nas trocas de 
 \begin{figure}[H]
 	\centering
 	\caption{Eficiência de Pareto entre EHF e ACH médio}
-	\includegraphics[width=.5\linewidth]{img/cpeq_pareto.png}
+	\includegraphics[width=\figsize\linewidth]{img/cpeq_pareto.png}
 	\label{fig:pareto}
 	%			\begin{flushleft}
 	%				Fonte: o autor.
@@ -1415,7 +1438,7 @@ O resultado dessa análise pode ser porque as diferenças maiores nas trocas de 
 
 Como o desenvolvimento das simulações é voltado para obter a maior precisão possível para os resultados de EHF, optou-se por definir o coeficiente de vazão mássica de ar com valor igual a 0,8, pois as simulações desenvolvidas utilizando-se este valor estão na fronteira de Pareto, e resultaram nos menores erros de EHF.
 
-\subsection{Análise de sensibilidade}
+\section{Análise de sensibilidade}
 
 As Figuras \ref{fig:as_ach}, \ref{fig:as_temp} e \ref{fig:as_ehf} apresentam os resultados das análises de sensibilidade (AS) para efeitos de primeira ordem e efeitos totais, relacionados ao ACH, às temperaturas operativas das zonas, e ao EHF. Os índices apresentados são proporcionais às influências entre os dados de entrada e saída.
 
@@ -1493,9 +1516,8 @@ Baseando-se nos resultados das AS, alguns dos parâmetros não foram considerado
 	\end{tabular}
 \end{table}
 
-\subsection{Desenvolvimento do metamodelo}
-
-A partir das 100.000 simulações geradas para o treinamento da rede neural artificial (\acrshort{ann}), obteve-se resultados de EHF variando entre 0,00 e 1,00.
+\section{Desenvolvimento do metamodelo}
+ 
 O metamodelo final foi definido com 14 parâmetros:
 \begin{itemize}
 	\item Fator de abertura das janelas;
@@ -1513,6 +1535,9 @@ O metamodelo final foi definido com 14 parâmetros:
 	\item Azimute da sala;
 	\item \Acrlong{paf}.
 \end{itemize}
+
+As 100.000 simulações termoenergéticas foram desenvolvidas para o treinamento da rede neural artificial (\acrshort{ann}) a partir de combinações entre os parâmetros definidos.
+Por meio das diferentes combinações, obteve-se resultados de EHF entre 0,01 e 1,00, o que evidencia como o potencial de conforto térmico depende da escolha adequada dos parâmetros de projeto.
 
 Os parâmetros variaram na mesma faixa de valores estabelecida na Seção \ref{section:parametrosdeentrada}. O ângulo do azimute da sala é determinado considerando-se o eixo entre a parede voltada para a circulação e a parede oposta à circulação.
 O contato com o solo e a exposição da cobertura foram definidas como variáveis binárias, com o valor zero correspondendo à superfície adiabática, e 1 correspondendo à exposição.
@@ -1576,32 +1601,103 @@ A Figura \ref{fig:ann_sobol} apresenta o gráfico de pontos comparando os result
 \chapter{Conclusões}
 \label{chapter:conclusoes}
 	
-
+	O consumo de energia para resfriamento de edificações é expressivo no mundo todo, e a expectativa é de que a demanda por energia continue crescendo nas próximas décadas, principalmente em países de climas quentes.
+	Neste contexto, o uso de técnicas de \acrfull{vn} apresenta-se como uma solução para mitigar o uso de condicionamento de ar.	
+	Entretanto, o desempenho térmico das edificações apresenta fenômenos termofísicos complexos, fazendo com que estimativas de conforto térmico devam ser consideradas preferencialmente desde as etapas iniciais de projeto. 
+	
+	Na busca por uma ferramenta capaz de auxiliar projetistas de maneira rápida e simples, surge a possibilidade de utilizar-se metamodelos.
+	Portanto, este trabalho apresenta o desenvolvimento de um metamodelo capaz de estimar o conforto térmico em edifícios de escritórios ventilados naturalmente.
+	
+	A disponibilidade de um banco de dados com informações das características construtivas de edifícios de escritórios com VN na cidade de São Paulo foi fundamental para a definição dos parâmetros incluídos nas simulações termoenergéticas, com seus limites mínimos e máximos. 
+	As informações relacionadas à geometria das edificações permitiu o desenvolvimento de simulações paramétricas, capazes de explorar amplamente o espaço de possibilidades existente em edificações reais.
+	Alguns parâmetros apresentados no banco de dados, como o tipo de esquadria utilizado nos edifícios, não puderam ser diretamente modelados na simulações. Contudo, todas as informações analisadas contribuíram de maneira geral para o desenvolvimento das simulações termoenergéticas.
+	
+	O indicador de conforto térmico escolhido para o estudo foi a \acrfull{ehf}. As variações térmicas dentro das edificações ventiladas naturalmente, assim como a expectativa dos ocupantes em relação às temperaturas médias externas, faz com que o método de conforto térmico adaptativo proposto pela \citeonline{ASHRAEStandard552017} seja o mais adequado para definir os limites de temperaturas operativas nas zonas térmicas.
+	
+	Simulações simplificadas foram desenvolvidas, buscando-se meios de melhorar a parametrização dos modelos e agilizar o tempo das simulações.	
+	O uso de \acrfull{cp} disponibilizados pelo banco de dados da \acrfull{tpu} apresentam-se como fontes mais confiáveis do que o uso de métodos analíticos, pois oferece valores obtidos a partir de medições em túnel de vento. No entanto, comparações entre os resultados de simulações utilizando-se ambas as fontes apresentaram diferenças pouco significativas no \acrshort{ehf}, com um erro médio inferior a 0,01.
+	Além disso, o uso do método analítico permite a consideração de edificações com geometrias de diferentes proporções de maneira contínua, enquanto o banco de dados da TPU oferece dados para geometrias com proporções específicas.
+	Por apresentar-se como um método mais simples e mais genérico, o método analítico foi adotado como uma das simplificações nas simulações.
+	
+	O modelo de uma parede equivalente com duas camadas foi desenvolvido para possibilitar a representação de diferentes componentes construtivos, permitindo-se variar a transmitância e a capacidade térmica independentemente. A análise foi efetuada para dois tipos de parede: uma leve, e outra pesada. A parede de alvenaria (pesada) teve sua parede equivalente analisada considerando-se a capacidade térmica total da parede, e metade do valor da capacidade térmica.
+	Os resultados apontam que a adoção de um modelo de parede equivalente faz com que o EHF tenha uma diferença absoluta média no valor de 0,010, para a parede de gesso com isolamento (leve).
+	No caso da parede de alvenaria, a adoção de um valor de capacidade térmica com metade do valor calculado para a parede de referência mostra-se mais adequado, apresentando um erro absoluto médio de 0,0189 no EHF. A consideração da capacidade térmica total da parede de alvenaria de referência apresenta um erro absoluto médio de 0,0209 no EHF.
+	O modelo de parede de alvenaria utilizado no programa EnergyPlus possui uma camada de ar no meio da parede, que a separa em duas metades. Durante os processos termofísicos, a inércia térmica nas zonas simuladas não sofre influência significativa da parte da parede voltada para o ambiente externo, devido à camada de ar, que possui alta resistência térmica. Portanto, considerar apenas a metade do valor da capacidade térmica apresenta diferenças menores na adoção do modelo de parede equivalente.
+	Apesar de a consideração da metade do valor da capacidade térmica para a parede de alvenaria ser mais adequada, as diferenças entre as duas abordagens é pouco expressiva.
+	Essa questão foi esclarecida durante a análise de sensibilidade, que mostrou uma influência pouco significativa da capacidade térmica da parede nos resultados analisados.
+	
+	Durante o processo de simplificação das simulações, a descrição dos modelos em apenas uma zona térmica foi fundamental para parametrizar as diferentes variáveis observadas no estudo, e para tornar as simulações mais rápidas.
+	Definir uma zona térmica, buscando-se representar as trocas de calor com um edifício de escritórios, exige a adoção de condições de contorno para as paredes adjacentes à edificação. 
+	As paredes adjacentes a outros escritórios foram definidas como adiabáticas, pois considera-se comportamentos térmicos semelhantes em zonas térmicas com um mesmo padrão de ocupação. 
+	Por outro lado, as paredes voltadas para o corredor foram modeladas considerando-se duas condições de contorno: (1) paredes como adiabáticas (sem trocas de calor); (2) paredes \textit{Outdoors} (voltada para o ambiente externo, sem incidência de radiação solar e vento).
+	As análises conduzidas apontaram que considerar as paredes voltadas para a circulação como adiabáticas é mais apropriado na representação de paredes adjacentes a um edifício, gerando diferenças médias no EHF de 0,005.
+	
+	A última etapa para o desenvolvimento das simulações simplificadas foi adaptar a modelagem da VN para um modelo de uma zona térmica.
+	A adoção de um \acrshort{cp} equivalente, ou \acrshort{cpeq}, apresentou resultados de trocas de ar por hora mais robustos do que a adoção de valores de \acrshort{cp} calculados diretamente pelo métodos analítico do programa EnergyPlus. 
+	Para definir o coeficiente de vazão mássica de ar, atribuído ao objeto \textit{crack} do \acrfull{afn}, diferentes valores foram analisado.
+	O valor mais adequado foi definido buscando-se as menores raízes dos erros quadráticos médios (\acrshort{rmse}), relacionados ao EHF e às médias anuais de \acrfull{ach}. 
+	Observou-se uma fronteira de Pareto entre esses dois indicadores, a partir da qual definiu-se que o valor mais adequado para o coeficiente de vazão mássica de ar é 0,8, pois este apresenta o menor \acrshort{rmse} para o EHF, que é o dado de saída para o qual buscou-se minimizar ao máximo os erros.
+	
+%	A comparação entre os resultados obtidos pelas simulações simplificadas e as simulações detalhadas em cada etapa permitiu entender os fatores que causam as maiores incertezas, assim 
+	
+	Após a definir como seriam modeladas as simulações simplificadas, uma` \acrfull{as} foi aplicada para entender quais parâmetros são os mais influentes para a obtenção dos resultados de conforto térmico em edifícios de escritórios ventilados naturalmente da cidade de São Paulo.
+	Por meio da análise de \citeonline{Sobol1993}, foi possível identificar os efeitos de primeira ordem, segunda ordem, e os efeitos totais de cada variável nos dados de saída da simulação.
+	Quando aplicada nos resultados das médias anuais de ACH, a AS mostrou que os parâmetros relacionados às aberturas para ventilação da zona térmica são os mais influentes. O fator de abertura da janela mostrou-se significativamente mais influente do que os demais parâmetros, com interações de ordens superiores igualmente significativas.
+	As AS de Sobol aplicadas às temperaturas operativas médias das zonas e aos EHF apresentaram resultados mais semelhantes entre si, pois o EHF é um indicador derivado da temperatura operativa.
+	Assim como na análise do ACH, o parâmetro mais influente nessas análises é o fator de abertura na janela.
+	Entretanto, certas diferenças entre os resultados das AS são destacadas. 
+	O contato com o solo apresenta-se como um parâmetro com influência mais significativa na temperatura operativa do que no EHF. Esse resultado indica que as faixas de temperatura operativa mais impactadas pelo contato com o solo estão distantes dos limites superiores definidos pelo método adaptativo, pois não são capazes de alterar o EHF.
+	O EHF apresenta um potencial de melhora significativo com o movimento do ar. O aumento no limite superior de temperatura considerando-se a velocidade do ar (\gls{tsupv}) mostrou-se como o segundo parâmetro mais impactante nos resultados de conforto térmico.
+	
+	A partir dos resultados obtidos pela AS, foi possível desenvolver um metamodelo considerando-se apenas os parâmetros mais impactantes no o conforto térmico em edifícios de escritórios ventilados naturalmente da cidade de São Paulo.
+	Através de 14 variáveis de entrada, o metamodelo desenvolvido por meio de \acrfull{ann} obteve resultados com erro absoluto médio de 0,015 para a amostra de validação.
+	Mesmo nos casos onde as diferenças entre os resultados simulados e estimados pela \acrshort{ann} foram maiores, os erros não foram expressivos, pois o \acrfull{ae95} foi igual a 0,055.
+	Para avaliar o desempenho da \acrshort{ann} com a variação de parâmetros não incluídos como variáveis de entrada, uma outra amostra foi gerada e teve seu desempenho avaliado.
+	Para essa amostra o erro absoluto médio foi 0,020, e o AE95 foi 0,092. Apesar de apresentar diferenças maiores em relação aos casos simulados, os resultados estimados não apresentaram erros expressivos.
+	Esse comportamento da \acrshort{ann} confirma a influência pouco significativa dos parâmetros definidos como fixos na etapa da AS, pois a alteração dos parâmetros não incluídos no metamodelo não afetaram o desempenho da \acrshort{ann} significativamente.
+	
+	O metamodelo desenvolvido neste trabalho foi capaz de estimar o conforto térmico em edificações de escritórios ventilados naturalmente para a cidade de São Paulo com resultados próximos aos obtidos pelo programa de simulação computacional EnergyPlus.
+	Esse metamodelo pode ser utilizado por projetistas como uma ferramenta de suporte à tomada de decisão em fases iniciais de projeto, pois é capaz de oferecer resultados rápidos, de maneira simples.
+	
 \section{Limitações e justificativas}
 
-%As limitações desse estudo são indicadas em conformidade com a ordem de execução das etapas de desenvolvimento:
-%
-%\begin{itemize}
-%	\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo, augue non consectetur vehicula, felis velit commodo eros, nec bibendum augue purus quis mi. Donec dapibus id magna eget euismod;
-%	
-%	\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo, augue non consectetur vehicula, felis velit commodo eros, nec bibendum augue purus quis mi. Donec dapibus id magna eget euismod;
-%	
-%	\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo, augue non consectetur vehicula, felis velit commodo eros, nec bibendum augue purus quis mi. Donec dapibus id magna eget euismod.
-%	
-%\end{itemize}
+As limitações seguintes foram identificada no desenvolvimento deste estudo:
+
+\begin{itemize}
+%	\item Parede equivalente;
+	
+	\item O método de conforto térmico adaptativo utilizado neste trabalho é indicado para edificações naturalmente ventiladas. Os estudos abordados na revisão de literatura, assim como a base de dados de edifícios de escritórios da cidade de São Paulo, utilizada para o desenvolvimento do trabalho, abordam predominantemente o uso de modo misto (VN e condicionamento artificial de ar). Devido à ausência de normas de conforto térmico voltadas para edificações de modo misto, optou-se por analisar exclusivamente o desempenho térmico das edificações com o uso da VN;
+	
+	\item Devido ao aumento de vestimentas em épocas mais frias do ano, no contexto brasileiro, o desconforto térmico por frio foi desconsiderado neste trabalho. Os padrões de ocupação tipicamente diurnos e as cargas térmicas presentes em edifícios de escritórios indicam maior relevância ao desconforto térmico por calor. Metamodelos semelhantes ao desenvolvido neste trabalho seriam capazes de estimar o desconforto térmico por frio;
+	
+	\item O AFN, utilizado para modelar a VN, apresenta algumas limitações. 
+	As principais limitações estão relacionadas às incertezas na definição dos coeficientes utilizados na modelagem das redes de fluxo de ar. 
+	O Cp depende não só da geometria da edificação, mas da densidade de ocupação no entorno, a geografia local, e dos detalhes arquitetônicos nas fachadas dos edifícios.
+	O \acrfull{cd} depende não só da esquadria utilizada, mas de fração da abertura da esquadria, que pode variar em diferentes momentos, e de fatores como a direção incidente do vento, que varia a cada instante.
+	A velocidade do ar não é modelada dentro das zonas térmicas, o que impede a consideração do movimento do ar para o aumento dos limites superiores de temperatura operativa para garantir o conforto térmico. 
+	Por essa razão, o movimento do ar foi considerado apenas pela utilização de ventiladores.
+	O programa EnergyPlus integra o AFN aos seus algorítimos, mas a integração é falha em relação à abertura dos vidros. Mesmo em momentos em que o AFN considera as janelas abertas, o vidro é considerado presente na envoltória da edificação, o que resulta em uma modelagem inadequada das trocas de radiação com o entorno, da absorção de radiação solar.
+	
+\end{itemize}
 
 \section{Sugestões para trabalhos futuros}
 
-%As sugestões para trabalhos futuros são indicadas em conformidade com as potencialidades expressas nesse estudo, sendo:
-%
-%\begin{itemize}
-%	\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo, augue non consectetur vehicula, felis velit commodo eros, nec bibendum augue purus quis mi. Donec dapibus id magna eget euismod;
-%
-%	\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo, augue non consectetur vehicula, felis velit commodo eros, nec bibendum augue purus quis mi. Donec dapibus id magna eget euismod;
-%
-%	\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo, augue non consectetur vehicula, felis velit commodo eros, nec bibendum augue purus quis mi. Donec dapibus id magna eget euismod.
-%	
-%\end{itemize}
+De acordo com os resultados e conclusões decorrentes deste estudo, as seguintes sugestões para trabalhos futuros são indicadas:
+
+\begin{itemize}
+	\item O desenvolvimento de metamodelos capazes de estimar conforto térmico e carga térmica em edificações que operam em modo misto poderiam estar mais adequado com o cenário brasileiro. No entanto, esse trabalho exige a modelagem adequada do comportamento dos ocupantes, que podem optar por ambas as estratégias de resfriamento, assim como um indicador de conforto térmico apropriado para edificações de modo misto;
+
+	\item A influência das edificações no entorno da edificação analisada pode alterar os resultados de conforto térmico. Trabalhos futuros poderiam considerar o entorno da edificação, que além de influenciar no comportamento do vento, gera sombreamento nas fachadas do edifício, e fenômenos térmicos relacionados à ilha de calor;
+	
+	\item O metamodelo proposto neste trabalho é voltado para edificações de escritórios. Entretanto, o uso de ventilação natural em edificações residenciais apresenta grande potencial. Um estudo aplicado à edificações residenciais deveria observar as maiores incertezas em relação aos padrões de ocupação. O uso de um \acrfull{cpeq} pode ser fundamental ao se explorar o uso de ventilação cruzada entre diferentes ambientes, considerando-se as portas abertas;
+
+	\item Devido ao banco de dados disponível, este trabalho foi desenvolvido para o clima da cidade de São Paulo. O clima é fundamental no desempenho térmico de edificações ventiladas naturalmente. Expandir a aplicabilidade do metamodelo desenvolvido neste trabalho para outros climas exige a descrição adequada de diferentes parâmetros climáticos, como temperaturas externas, rediação solar, ou velocidade e direção do vento;
+	
+%	\item O contato com o solo apresentou maior influência na temperatura operativa das zonas térmicas do que no indicador de conforto térmico. ;
+
+	\item O metamodelo de \acrshort{ann} é capaz de simular o desempenho térmico em edificações de maneira simples e rápida. Para auxiliar nas fases de projeto de edificações, a integração de um algorítimo de otimização poderá encontrar combinações ótimas dos parâmetros construtivos, a partir de limitações impostas pelo projetista, como área construída, número de pavimentos, e áreas de abertura na fachada em relação às áreas de piso.
+	
+\end{itemize}
 
 %\begin{appendices}
 %	\chapter{Classificação climática de Köppen-Geiger}

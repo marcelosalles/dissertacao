@@ -1850,6 +1850,7 @@ epw$mean.temp[epw$V2 == 12] = mean(epw$V7[epw$V2 == 12])
 unique(epw$mean.temp)
 
 epw$t.sup = 17.8+3.5 + .31* epw$mean.temp
+epw$t.inf = 17.8-3.5 + .31* epw$mean.temp
 unique(epw$t.sup)
 
 epw$data = paste(epw$V2,epw$V3,epw$V4)
@@ -1857,12 +1858,14 @@ epw$data <- as.POSIXct(strptime(epw$data,"%m %d %H"),format = "%m/%d/%H")
 
 library(scales)
 
-cols = c('Temperatura\nbulbo seco\nexterna' = 'gray','Média mensal\ntemperatura\nexterna' = 'blue','Limite superior\ntemperatura\noperativa' = 'red')
+cols = c('Temperatura\nbulbo seco\nexterna' = 'gray','Média mensal\ntemperatura\nexterna' = 'black','Limite superior\ntemperatura\noperativa' = 'red',
+         'Limite inferior\ntemperatura\noperativa' = 'blue')
 
 ggplot(epw,aes(epw$data,epw$V7))+
   geom_line(aes(col='Temperatura\nbulbo seco\nexterna'))+
   geom_line(aes(epw$data,epw$mean.temp,col='Média mensal\ntemperatura\nexterna'))+
   geom_line(aes(epw$data,epw$t.sup,col='Limite superior\ntemperatura\noperativa')) +
+  geom_line(aes(epw$data,epw$t.inf,col='Limite inferior\ntemperatura\noperativa')) +
   scale_x_datetime(labels = date_format("%B")) +
   scale_colour_manual(name=NULL, values=cols) +
   ylab('Temperatura (°C)') +

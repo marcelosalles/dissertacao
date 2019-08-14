@@ -221,6 +221,21 @@ corrplot.mixed(cor_matrix_1, lower = "number", upper = "ellipse",
                tl.pos = "lt", number.cex = 0.6, bg = "black",
                tl.col = "black", tl.srt = 90, tl.cex = 0.8)
 
+ggplot(data_set_sobol[data_set_sobol$people < 0,],aes(data_set_sobol$ehf[data_set_sobol$people < 0])) +
+# ggplot(data_set_sobol,aes(data_set_sobol$ehf)) +
+  geom_histogram(binwidth = .05)
+
+resume_feat = function(feature){
+  feature = feature[!is.na(feature)]
+  print(min(feature))
+  print(max(feature))
+  print(mean(feature))
+  print(median(feature))
+  # print(getmode(feature))
+}
+
+resume_feat(data_set_sobol$ehf[data_set_sobol$open_fac > 0 & data_set_sobol$people < 0])
+
 # PLOTS ANN ----
 
 # sim_pred <- read.csv('/home/marcelo/Downloads/validation_results_08-05.csv')
