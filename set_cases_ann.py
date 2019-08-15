@@ -15,10 +15,10 @@ import other_crack_fac
 update = dict_update.update
 
 # Globals
-FOLDER = 'ann_validation'  # 'ann'  #  'ann_test'  # 
+FOLDER = 'ann_test'  # 'ann_validation'  # 'ann'  #  
 SIZE =  20000  # 20000  # 155648
-OUTPUT_NAME = 'sample_ann_validation'  # 'sample_ann'  # 'sample_ann_test'  # 
-NUM_CLUSTERS = 8  # int(os.cpu_count()/2)
+OUTPUT_NAME = 'sample_ann_test'  # 'sample_ann_validation'  # 'sample_ann'  # 
+NUM_CLUSTERS = int(os.cpu_count()/2)
 # NAME_STDRD = 'whole'
 NAME_STDRD_2 = 'single'
 INPUT = "seed.json"  # INPUT_WHOLE 
@@ -48,11 +48,11 @@ PARAMETERS = {
     'azimuth':[0,359.9],
     'wwr':[.1,.6],
     # 'corner_window':[0,1],  #####
-    # 'n_floor':[1,9],        #####
-    # 'ratio':[.4,2.5],
-    # 'zone_height':[2.3,3.2],
-    # 'wall_ct':[.22,450],
-    # 'bldg_ratio': [.2,1]
+    'n_floor':[1,9],        #####
+    'ratio':[.4,2.5],
+    'zone_height':[2.3,3.2],
+    'wall_ct':[.22,450],
+    'bldg_ratio': [.2,1]
 }
         
 start_time = datetime.datetime.now()
@@ -148,14 +148,14 @@ for i in range(len(sample)):
     df = df.append(pd.DataFrame([sample_line+['cluster'+name_length_cluster.format(cluster_n),NAME_STDRD_2+'_{}'.format(case)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
     singlezone_diss.main(
         zone_area = model_values['area'], 
-        zone_ratio = 1,  # model_values['ratio'],  #  
-        zone_height = 2.5,  # model_values['zone_height'],  #  
+        zone_ratio = model_values['ratio'],  #  1,  # 
+        zone_height = model_values['zone_height'],  #  2.5,  # 
         absorptance = model_values['absorptance'],
         shading = model_values['shading'],
         azimuth = model_values['azimuth'],
-        bldg_ratio = 1,  # model_values['bldg_ratio'],  #  
+        bldg_ratio = model_values['bldg_ratio'],  #  1,  # 
         wall_u = model_values['wall_u'], 
-        wall_ct = 80,  # model_values['wall_ct'], #  161,  # 
+        wall_ct = model_values['wall_ct'], #  161,  # 80,  # 
         zn=zn,
         floor_height = model_values['floor_height'],
         corner_window = corner_window,

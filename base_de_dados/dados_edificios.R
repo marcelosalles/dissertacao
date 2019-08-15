@@ -37,9 +37,10 @@ FACT = .7
 
 # azimute 
 ggplot(df150,aes(df150$Azimuth.angle.of.long.axis.of.building)) +
-  geom_histogram(binwidth = 30) +
+  geom_histogram(binwidth = 30, boundary=0) +
   ylab('Contagem') +
-  xlab('Azimute (°)')
+  xlab('Azimute (°)') +
+  scale_x_continuous(breaks = seq(0,180, by=30)) +
 save_hist('azimute', fact=FACT)
 
 # formato 
@@ -62,34 +63,39 @@ save_hist('formato', fact=FACT)
 # ratio edificio
 
 ggplot(df150,aes(df150$Ratio.between.width.and.length)) +
-  geom_histogram(binwidth = .1) +
+  geom_histogram(binwidth = .1, boundary=0) +
   ylab('Contagem') +
-  xlab('Razão L:C do edifício')
+  xlab('Razão entre menor e maior\ndimensão do edifício (-)') +
+  scale_x_continuous(limits=c(0,1), breaks = seq(0,1, by=.2)) 
 save_hist('ratio_edificio', fact=FACT)
 
 # area edificio
 
 ggplot(df150,aes(df150$Total.floor.area..m..)) +
-  geom_histogram(binwidth = 10) +
+  geom_histogram(binwidth = 10, boundary=0) +
   ylab('Contagem') +
-  xlab('Área do pavimento (m²)')
+  xlab('Área do pavimento (m²)') +
+  xlim(c(0,max(df150$Total.floor.area..m..)))
 save_hist('area_edificio', fact=FACT)
 
 # numero de pavimentos
 
 ggplot(df150,aes(df150$Number.of.floors)) +
-  geom_histogram(binwidth = 1) +
+  geom_histogram(binwidth = 1, boundary=0) +
   ylab('Contagem') +
-  xlab('Número de pavimentos')
+  xlab('Número de pavimentos') +
+  xlim(c(0,max(df150$Number.of.floors)))
 save_hist('numero_pavimentos', fact=FACT)
 
 # absortancia
 df_abs = data.frame('abs' = absorptances)
 
 ggplot(df_abs,aes(df_abs$abs)) +
-  geom_histogram(binwidth = .1) +
+  geom_histogram(binwidth = .1, boundary=0) +
   ylab('Contagem') +
-  xlab('Absortância da parede externa')
+  xlab('Absortância da parede externa (-)') +
+  scale_x_continuous(limits = c(0,1),breaks = seq(0,1, by=.2)) 
+
 save_hist('absortancia', fact=FACT)
 
 # cor cobertura
@@ -165,12 +171,13 @@ ggplot(df150,aes(df150$tipo_esquadria)) +
 save_hist('esquadria', fact=FACT)
 
 # areas zonas
-df_area = data.frame('area' = office_areas)
+df_area = data.frame('area' = office_areas[!is.na(office_areas)])
 
 ggplot(df_area,aes(df_area$area)) +
-  geom_histogram(binwidth = 5) +
+  geom_histogram(binwidth = 5, boundary=0) +
   ylab('Contagem') +
-  xlab('Áreas da sala (m²)')
+  xlab('Áreas da sala (m²)') +
+  scale_x_continuous(limits=c(0,max(df_area$area)), breaks = seq(0,160, by=20))
 save_hist('area_zonas', fact=FACT)
 
 # SOH OS 50!!!
@@ -178,7 +185,7 @@ save_hist('area_zonas', fact=FACT)
 # espessura da parede
 
 ggplot(df50,aes(df50$Espessura.da.parede..m.)) +
-  geom_histogram(binwidth = .05) +
+  geom_histogram(binwidth = .05, boundary=0) +
   ylab('Contagem') +
   xlab('Espessura da parede (m)')
 save_hist('espessura_parede', fact=FACT)
@@ -220,15 +227,16 @@ save_hist('formato_sala', fact=FACT)
 df50$ratio = df50$Dimensões..LxC...m./df50$X
 
 ggplot(df50,aes(df50$ratio)) +
-  geom_histogram(binwidth = .1) +
+  geom_histogram(binwidth = .1, boundary=0) +
   ylab('Contagem') +
-  xlab('Razão L:C da sala')
+  xlab('Razão entre menor e maior\ndimensão da sala (-)') +
+  scale_x_continuous(limits=c(0,1), breaks = seq(0,1, by=.2)) 
 save_hist('ratio_sala', fact=FACT)
 
 # pe direito
 
 ggplot(df50,aes(df50$Pé.direito..piso.forro...m.)) +
-  geom_histogram(binwidth = .1) +
+  geom_histogram(binwidth = .1, boundary=0) +
   ylab('Contagem') +
   xlab('Pé-direito (m)')
 save_hist('pe_direito', fact=FACT)
@@ -236,9 +244,9 @@ save_hist('pe_direito', fact=FACT)
 # PAF
 
 ggplot(df50,aes(df50$PAF.total.da.sala..../100)) +
-  geom_histogram(binwidth = .1) +
+  geom_histogram(binwidth = .1, boundary=0) +
   ylab('Contagem') +
-  xlab('PAF')
+  xlab('Percentual de abertura\nna fachada (-)')
 save_hist('PAF', fact=FACT)
 
 # altura da janela
@@ -246,7 +254,7 @@ save_hist('PAF', fact=FACT)
 df50$hjan = as.numeric(substr(df50$Dimensões.total.da.esquadria..LxAxP...m., 8,11))
 
 ggplot(df50,aes(df50$hjan)) +
-  geom_histogram(binwidth = .1) +
+  geom_histogram(binwidth = .1, boundary=0) +
   ylab('Contagem') +
   xlab('Altura da esquadria (m)')
 save_hist('hjan', fact=FACT)
@@ -254,9 +262,10 @@ save_hist('hjan', fact=FACT)
 # fator de abertura
 
 ggplot(df50,aes(df50$Percentual.de.caixilho.operável....)) +
-  geom_histogram(binwidth = .1) +
+  geom_histogram(binwidth = .1, boundary=0) +
   ylab('Contagem') +
-  xlab('Fator de abertura da janela')
+  xlab('Fator de abertura da janela (-)') +
+  scale_x_continuous(limits=c(0,1), breaks = seq(0,1, by=.2)) 
 save_hist('openfac', fact=FACT)
 
 #

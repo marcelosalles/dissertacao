@@ -8,25 +8,27 @@ save_img = function(name,fact=1){
 }
 # ANN----
 #
-# basedir = '/media/marcelo/OS/dissertacao/'
-basedir = '/home/marcelo/dissertacao/'
+basedir = '/media/marcelo/OS/dissertacao/'
+# basedir = '/home/marcelo/dissertacao/'
 
 sample = read.csv(paste(basedir,'sample_ann.csv',sep=''))
-outputs = read.csv(paste(basedir,'ann/means_ann_1.csv',sep=''))
+outputs = read.csv(paste(basedir,'ann/means_ann.csv',sep=''))
 data = cbind(sample,outputs)
-write.csv(data, '/home/marcelo/dissertacao/dataset_08-12.csv', row.names = FALSE)
+write.csv(data, paste('/home/marcelo/dissertacao/dataset_',format(Sys.time(), "%m-%d"),'.csv',sep=''), row.names = FALSE)
 
 sample_validation = read.csv('/media/marcelo/OS/dissertacao/sample_ann_validation.csv')
 outputs_validation = read.csv('/media/marcelo/OS/dissertacao/ann_validation/means_ann_validation.csv')  # ann_validation/means_ann_validation.csv')
 data_validation = cbind(sample_validation,outputs_validation)
-write.csv(data_validation, '/home/marcelo/dissertacao/dataset_validation_08-12.csv', row.names = FALSE)
+write.csv(data_validation, paste('/home/marcelo/dissertacao/dataset_validation_',format(Sys.time(), "%m-%d"),'.csv',sep=''), row.names = FALSE)
 
 sample_test = read.csv('/media/marcelo/OS/dissertacao/sample_ann_test.csv')
 outputs_test = read.csv('/media/marcelo/OS/dissertacao/ann_test/means_ann_test.csv')
 data_test = cbind(sample_test,outputs_test)
-write.csv(data_test, '/home/marcelo/dissertacao/dataset_test_08-10.csv', row.names = FALSE)
+write.csv(data_test, paste('/home/marcelo/dissertacao/dataset_test_',format(Sys.time(), "%m-%d"),'.csv',sep=''), row.names = FALSE)
 
-df_ann = read.csv('/home/marcelo/dissertacao/dataset_08-06.csv')
+df_ann = read.csv('/home/marcelo/dissertacao/dataset_08-14.csv')
+ggplot(df_ann,aes(df_ann$ehf)) +
+  geom_histogram(binwidth = .05)
 
 # df =read.csv('~/dissertacao/dataset_test_08-10.csv')
 # df =read.csv('~/dissertacao/dataset_validation_08-06.csv')
@@ -40,12 +42,19 @@ outputs = read.csv('/media/marcelo/OS/dissertacao/sobol2/means_sobol2.csv')
 data_set_sobol = cbind(sample,outputs)
 write.csv(data_set_sobol,'dataset_sobol.csv', row.names = FALSE)
 
+ggplot(data_set_sobol,aes(data_set_sobol$ehf)) +
+  geom_histogram(binwidth = .1, boundary = 0) +
+  ylab('Contagem') +
+  xlab('EHF (-)')
+save_img('sobol_EHF', fact=FACT)
+min(data_set_sobol$ehf[data_set_sobol$ground > 0])
+
 # EHF ---
 
-parametros = c('Área','Razão L:C sala','Pé-direito','Azimute', 'Altura do pavimento',
-               'Absortância','Transmitância', 'Capacidade térmica','PAF',
-               'FS do vidro','Sombreamento', 'Ocupação','Fator de abertura','Cobertura exposta',
-               'Contato com solo','Razão L:C edifício', 'Velocidade do ar', 'Exposição paredes e janelas')
+parametros = c('Área da zona térmica','Razão entre a menor e\nmaior dimensão sala','Pé-direito','Azimute da zona térmica', 'Altura do pavimento',
+               'Absortância da parede','Transmitância da parede', 'Capacidade térmica','Percentual de abertura\nna fachada',
+               'Fator solar do vidro','Sombreamento horizontal', 'Densidade de ocupação','Fator de abertura\nda janela','Exposição da cobertura',
+               'Contato com solo','Razão entre a menor e\nmaior dimensão edifício', 'Velocidade do ar', 'Exposição paredes e janelas')
 
 ehf_s1 = read.csv('/media/marcelo/OS/dissertacao/sobol2/s1_ehf.csv')
 ehf_s2 = read.csv('/media/marcelo/OS/dissertacao/sobol2/s2_ehf.csv')
@@ -143,35 +152,35 @@ y_limits = c(0,0.4)
 ggplot(ehf_s1,aes(ehf_s1$Parameter,ehf_s1$ST)) +
   geom_col(aes(fill='Efeitos totais'))+#'darkblue') +
   geom_col(aes(ehf_s1$Parameter,ehf_s1$S1, fill='1ª ordem'))+#'lightblue') +
-  theme(axis.text.x = element_text(angle = 90),legend.position = legend_limits) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),legend.position = legend_limits) +
   scale_fill_manual(name=NULL, values=cols)+
   # ggtitle('Análise de Sensibilidade - EHF') +
-  xlab('Parâmetro') +
-  ylab('Índice de sensibilidade') +
-  ylim(y_limits)
-save_img('as_ehf')
+  xlab('Parâmetros') +
+  ylab('Índices de sensibilidade') +
+  ylim(y_limits) 
+save_img('as_ehf',fact = 1.2)
 
 ggplot(temp_s1,aes(temp_s1$Parameter,temp_s1$ST)) +
   geom_col(aes(fill='Efeitos totais'))+#'darkblue') +
   geom_col(aes(temp_s1$Parameter,temp_s1$S1, fill='1ª ordem'))+#'lightblue') +
-  theme(axis.text.x = element_text(angle = 90),legend.position = legend_limits) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),legend.position = legend_limits) +
   scale_fill_manual(name=NULL, values=cols)+
   # ggtitle('Análise de Sensibilidade - Temp. Op.') +
-  xlab('Parâmetro') +
-  ylab('Índice de sensibilidade') +
+  xlab('Parâmetros') +
+  ylab('Índices de sensibilidade') +
   ylim(y_limits)
-save_img('as_temp')
+save_img('as_temp',fact = 1.2)
 
 ggplot(ach_s1,aes(ach_s1$Parameter,ach_s1$ST)) +
   geom_col(aes(fill='Efeitos totais'))+#'darkblue') +
   geom_col(aes(ach_s1$Parameter,ach_s1$S1, fill='1ª ordem'))+#'lightblue') +
-  theme(axis.text.x = element_text(angle = 90),legend.position = legend_limits) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),legend.position = legend_limits) +
   scale_fill_manual(name=NULL, values=cols)+
   # ggtitle('Análise de Sensibilidade - ACH') +
-  xlab('Parâmetro') +
-  ylab('Índice de sensibilidade')# +
+  xlab('Parâmetros') +
+  ylab('Índices de sensibilidade')# +
   # ylim(y_limits)
-save_img('as_ach')
+save_img('as_ach',fact = 1.2)
 
 factor(ehf_s1$Parameter)
 table = table(factor(ehf_s1$Parameter, levels = ehf_s1$Parameter[order(ehf_s1$ST, decreasing = TRUE)]),
@@ -239,28 +248,50 @@ resume_feat(data_set_sobol$ehf[data_set_sobol$open_fac > 0 & data_set_sobol$peop
 # PLOTS ANN ----
 
 # sim_pred <- read.csv('/home/marcelo/Downloads/validation_results_08-05.csv')
-sim_pred <- read.csv('/home/marcelo/Downloads/plot_test_08-12.csv')
+# sim_pred <- read.csv('/home/marcelo/Downloads/plot_test_08-12.csv')
+sim_pred <- read.csv('/home/marcelo/Downloads/ann_validation_08-14.csv')
 ggplot(sim_pred,aes(sim_pred$pred,sim_pred$simulado)) +
   geom_point(alpha=.1, col='blue4') +
   geom_abline(col='black') +
-  xlab('Predicted EHF') + 
-  ylab('Simulated EHF') +
+  xlab('Casos preditos - EHF (-)') + 
+  ylab('Casos simulados - EHF (-)') +
   ylim(c(0,1)) +
   xlim(c(0,1)) +
-  annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(sim_pred$pred-sim_pred$simulado)),4))) +
-  annotate("text", x = .2, y = .83, label = paste("AE95 =",round(quantile((sim_pred$pred-sim_pred$simulado),.95),4)))
-save_img('ann_validation')
+  annotate("text", x = .2, y = .9, label = paste("Média =",round(erro.absoluto(sim_pred$pred,sim_pred$simulado),4))) +
+  annotate("text", x = .2, y = .83, label = paste("AE95 =",round(erro.ae95(sim_pred$pred,sim_pred$simulado),4)))
+save_img('ann_validation',square = TRUE)
+erro.medio(sim_pred$pred,sim_pred$simulado)
+sim_pred_diff = sim_pred$pred-sim_pred$simulado
+sim_pred_diff = sim_pred_diff[sim_pred$simulado < .5]
+sim_pred_diff = sim_pred_diff[!is.na(sim_pred_diff)]
+min(sim_pred_diff)
+max(sim_pred_diff)
+mean(sim_pred_diff)
+mean(abs(sim_pred_diff))
 
 # sim_pred_test <- read.csv('/home/marcelo/Downloads/test_results_08-05.csv')
 # sim_pred_test <- read.csv('/home/marcelo/Downloads/plot_test_08-06.csv')
-sim_pred_test <- read.csv('/home/marcelo/Downloads/plot_test_08-12_ok.csv')
+# sim_pred_test <- read.csv('/home/marcelo/Downloads/plot_test_08-12_ok.csv')
+sim_pred_test <- read.csv('/home/marcelo/Downloads/ann_test_08-14(1).csv')
+sim_pred_test <- read.csv('/home/marcelo/Downloads/ann_test_08-14(2).csv')
 ggplot(sim_pred_test,aes(sim_pred_test$pred,sim_pred_test$simulado)) +
   geom_point(alpha=.15, col='blue4') +
   geom_abline(col='black') +
-  xlab('Predicted EHF') + 
-  ylab('Simulated EHF') +
+  xlab('Casos preditos - EHF (-)') + 
+  ylab('Casos simulados - EHF (-)') +
   ylim(c(0,1)) +
   xlim(c(0,1)) +
-  annotate("text", x = .2, y = .9, label = paste("Média =",round(mean(abs(sim_pred_test$pred-sim_pred_test$simulado)),4))) +
-  annotate("text", x = .2, y = .83, label = paste("AE95 =",round(quantile((sim_pred_test$pred-sim_pred_test$simulado),.95),4)))
-save_img('ann_test')
+  annotate("text", x = .2, y = .9, label = paste("Média =",round(erro.absoluto(sim_pred_test$pred,sim_pred_test$simulado),4))) +
+  annotate("text", x = .2, y = .83, label = paste("AE95 =",round(erro.ae95(sim_pred_test$pred,sim_pred_test$simulado),4)))
+save_img('ann_test',square = TRUE)
+erro.medio(sim_pred_test$pred,sim_pred_test$simulado)
+sim_pred_diff = sim_pred_test$pred-sim_pred_test$simulado
+sim_pred_diff = sim_pred_diff[sim_pred_test$simulado < .5]
+sim_pred_diff = sim_pred_diff[!is.na(sim_pred_diff)]
+min(sim_pred_diff)
+max(sim_pred_diff)
+mean(sim_pred_diff)
+mean(abs(sim_pred_diff))
+
+length((sim_pred_diff)[sim_pred_diff  > 0])
+length((sim_pred_diff)[sim_pred_diff  < 0])

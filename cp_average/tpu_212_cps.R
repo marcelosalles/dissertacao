@@ -296,32 +296,37 @@ ggplot(df_tpu,aes(df_tpu$ehf,df_ave$ehf)) +
   geom_point(alpha=.25)+
   geom_abline() +
   # ggtitle('Comparação do EHF') +
-  xlab('EHF TPU') +
-  ylab('EHF MA') +
-  xlim(c(0,1)) + ylim(c(0,1))
-  # annotate("text", x = .25, y = .9, label = paste("Média =",round(ehf_mean,4))) +
-  # annotate("text", x = .25, y = .8, label = paste("AE95 =",round(quantile(abs(df_dif$ehf),.95),4)))
+  xlab('Cp obtido base de dados da TPU\nEHF (-)') +
+  ylab('Cp obtido pelo método analítico\nEHF (-)') +
+  xlim(c(0,1)) + ylim(c(0,1)) +
+  annotate("text", x = .25, y = .9, label = paste("Erro médio =",round(erro.medio(df_tpu$ehf,df_ave$ehf),4))) +
+  # annotate("text", x = .25, y = .8, label = paste("RMSE =",round(rmse(df_tpu$ehf,df_ave$ehf),4))) #+
+  annotate("text", x = .20, y = .8, label = paste("AE95 =",round(erro.ae95(df_tpu$ehf,df_ave$ehf),4))) 
 save_img('cpaverage_EHF_scatter')
 
 ggplot(df_tpu,aes(df_tpu$ach,df_ave$ach)) +
   geom_point(alpha=.25)+
   geom_abline() +
   # ggtitle('Comparação do ACH') +
-  xlab('ACH média TPU') +
-  ylab('ACH média MA') 
-  # annotate("text", x = 10, y = 90, label = paste("Média =",round(ach_mean,4))) +
-  # annotate("text", x = 10, y = 80, label = paste("AE95 =",round(quantile(abs(df_dif$ach),.95),2)))
+  xlab('Cp obtido base de dados da TPU\nMédia anual de trocas de ar (ACH)') +
+  ylab('Cp obtido pelo método analítico\nMédia anual de trocas de ar (média anual ACH)') +
+  xlim(c(0,120)) + ylim(c(0,120)) +
+  annotate("text", x = 23, y = 100, label = paste("Erro médio =",round(erro.medio(df_tpu$ach,df_ave$ach),3),'ACH')) +
+  annotate("text", x = 20, y = 90, label = paste("AE95 =",round(erro.ae95(df_tpu$ach,df_ave$ach),3),'ACH')) #+
+  # annotate("text", x = 20, y = 90, label = paste("RMSE =",round(rmse(df_tpu$ach,df_ave$ach),3),'ACH')) #+
 save_img('cpaverage_ACH_scatter')
 
 ggplot(df_tpu,aes(df_tpu$temp,df_ave$temp)) +
   geom_point(alpha=.25)+
   geom_abline() +
   # ggtitle('Comparação da Temp. Operativa') +
-  xlab('Temperatura operativa média (°C) TPU') +
-  ylab('Temperatura operativa média (°C) MA') +
-  # annotate("text", x = 24, y = 33, label = paste("Média =",round(temp_mean,2))) +
-  # annotate("text", x = 24, y = 32, label = paste("AE95 =",round(quantile(abs(df_dif$temp),.95),2)))
+  xlab('Cp obtido pela base de dados da TPU\nTemperatura operativa média (°C))') +
+  ylab('Cp obtido pelo método analítico\nTemperatura operativa média (°C))') +
+  annotate("text", x = 25.5, y = 33, label = paste("Erro médio =",round(erro.medio(df_tpu$temp,df_ave$temp),2),'°C')) +
+  # annotate("text", x = 25, y = 32.5, label = paste("RMSE =",round(rmse(df_tpu$temp,df_ave$temp),2),'°C')) #+
+  annotate("text", x = 25, y = 32.5, label = paste("AE95 =",round(erro.ae95(df_tpu$temp,df_ave$temp),2),'°C')) #+
 save_img('cpaverage_temp_scatter')
+erro.ae95(df_tpu$temp,df_ave$temp)
 
 ggplot(df_tpu,aes(df_tpu$ehf)) +
   geom_histogram(binwidth = .05)
