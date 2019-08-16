@@ -280,7 +280,9 @@ ggplot(df_ref_par2a,aes(df_ref_par2a$ehf, df_eps_par2a$ehf)) +
   ylab('Parede Equivalente - valor total da CT\nEHF (-)') +
   annotate("text", x = .2, y = .9, label = paste("Média =",round(erro.medio(df_ref_par2a$ehf, df_eps_par2a$ehf),4))) +
   annotate("text", x = .2, y = .8, label = paste("AE95 = ",round(erro.ae95(df_ref_par2a$ehf, df_eps_par2a$ehf),4),0,sep=''))
-save_img('paredeeq_EHF_par2a_scatter')
+# save_img('paredeeq_EHF_par2a_scatter')
+erro.absoluto(df_ref_par2a$ehf, df_eps_par2a$ehf)
+
 mean(df_ref_par2a$ehf-df_eps_par2a$ehf)
 mean(abs(df_ref_par2a$ehf-df_eps_par2a$ehf))
 quantile((abs(df_ref_par2a$ehf-df_eps_par2a$ehf)),.95)
@@ -294,7 +296,11 @@ ggplot(df_ref_par2b,aes(df_ref_par2b$ehf, df_eps_par2b$ehf)) +
   ylab('Parede Equivalente - metade do valor da CT\nEHF (-)') +
   annotate("text", x = .2, y = .9, label = paste("Média =",round(erro.medio(df_ref_par2b$ehf, df_eps_par2b$ehf),4))) +
   annotate("text", x = .2, y = .8, label = paste("AE95 =",round(erro.ae95(df_ref_par2b$ehf, df_eps_par2b$ehf),4)))
-save_img('paredeeq_EHF_par2b_scatter')
+# save_img('paredeeq_EHF_par2b_scatter')
+
+erro.absoluto(df_ref_par2b$ehf, df_eps_par2b$ehf)
+
+erro.absoluto(df_ref_par3$ehf, df_eps_par3$ehf)
 mean(df_ref_par2b$ehf-df_eps_par2b$ehf)
 mean(abs(df_ref_par2b$ehf-df_eps_par2b$ehf))
 quantile((abs(df_ref_par2b$ehf-df_eps_par2b$ehf)),.95)
@@ -308,8 +314,9 @@ ggplot(df_ref_par3,aes(df_ref_par3$ehf, df_eps_par3$ehf)) +
   ylab('Parede Equivalente - EHF (-)') +
   annotate("text", x = .2, y = .9, label = paste("Média =",round(erro.medio(df_ref_par3$ehf, df_eps_par3$ehf),4))) +
   annotate("text", x = .2, y = .8, label = paste("AE95 =",round(erro.ae95(df_ref_par3$ehf, df_eps_par3$ehf),4)))
-save_img('paredeeq_EHF_par3_scatter')
+# save_img('paredeeq_EHF_par3_scatter')
 
+erro.absoluto(df_ref_par3$ehf, df_eps_par3$ehf)
 mean(df_ref_par3$ehf-df_eps_par3$ehf)
 mean(abs(df_ref_par3$ehf-df_eps_par3$ehf))
 

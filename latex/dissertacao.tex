@@ -79,12 +79,12 @@ vem diminuindo gradualmente no Brasil, pois edificações de escritórios recent
 Para que seja aplicada de forma efetiva, é importante que a VN seja concebida desde a fase inicial de projeto. Durante a fase inicial de projeto, há pouco detalhamento relacionado ao projeto arquitetônico, e há necessidade de agilidade nas tomadas de decisão.
 Diante deste cenário, uma ferramento capaz de estimar o conforto térmico em edificações de forma simples e rápida pode ser de grande utilidade.
 
-O objetivo deste estudo é desenvolver um metamodelo de rede neural artificial capaz de estimar o conforto térmico em escritórios de edificações ventiladas naturalmente. 
+O objetivo deste estudo é desenvolver um metamodelo de rede neural artificial capaz de estimar o conforto térmico em edificações de escritórios ventilados naturalmente. 
 O indicador de conforto térmico utilizado é a fração de horas do ano em que há desconforto térmico por calor no ambiente (EHF), de acordo com o método adaptativo da ASHRAE Standard 55 (2017), para 80\% de aceitabilidade entre os ocupantes.
 
 O metamodelo é desenvolvido a partir de uma base de dados de simulações termoenergéticas obtidas através do programa computacional EnergyPlus. Os modelos que compõem a base de dados foram definidos a partir das características comumente encontradas em edificações de escritórios da cidade de São Paulo. A definição dos parâmetros variados no desenvolvimento dos modelos é estabelecida através da análise de sensibilidade global de Sobol.
 
-O treinamento da rede neural artificial é realizado com uma uma base de dados de 100.000 simulações termoenergéticas, amostradas pelo métode de amostragem do hipercubo latino. 
+O treinamento da rede neural artificial é realizado com uma base de dados de 100.000 simulações termoenergéticas, amostradas pelo método de amostragem do hipercubo latino. 
 O desempenho do metamodelo foi avaliado para uma amostra de validação com 20.000 casos, e obteve resultados de EHF com um erro absoluto médio igual a 0,009, e um erro absoluto do 95º percentil igual a 0,024.
 
 O metamodelo desenvolvido foi capaz de estimar o conforto térmico em edificações de escritórios ventilados naturalmente para a cidade de São Paulo com resultados próximos aos obtidos pelo programa de simulação computacional EnergyPlus.
@@ -93,29 +93,29 @@ Esse metamodelo pode ser utilizado por projetistas como uma ferramenta de fácil
 \palavraschave{Ventilação natural. Metamodelo. Simulação termoenergética de edificações.}
 
 \textabstract {
-	The world's energy demand for air cooling in buildings is significant, and it is expected to increase in the next decades.
-	A solution to mitigate the energy use for air cooling in the use of natural ventilation (NV).
+	Energy demand in the world for air cooling in buildings is significant, and it is expected to increase in the next decades.
+	A solution to mitigate energy use for air cooling is the use of natural ventilation (NV).
 	NV is as passive cooling strategy with significant potential for hot climates.
-	Despite its potential, the use of NV has being decreasing in recent years for office buildings in Brazil, since the design of buildings with air conditioning prevails.
+	Despite its potential, the use of NV has been decreasing in recent years for office buildings in Brazil, since the design of buildings with air conditioning prevails.
 	
-	It is important to conceive the use of NV since the early-design phases of the building to guarantee its effectiveness.
+	It is important to conceive the use of NV since early-design phases of the building to guarantee its effectiveness.
 	During early-design phases, there are uncertainties related to the many construction parameters, and the decision process has to occur fast.
 	Given the current scenario, the development of a surrogate model capable of estimate thermal comfort in buildings in a simple and fast way could be of great use.
 	
-	The aim of this study is to develop a neural networks surrogate model to estimate thermal comfort in naturally ventilated office building.
-	The annual fraction of occupied hours with operative temperatures above the upper limit of ASHRAE's Standards 55 (2017) adaptive model, for 80\% of acceptability, is used as at thermal comfort index.
+	The aim of this study is to develop a neural network surrogate model to estimate thermal comfort in naturally ventilated office buildings.
+	The annual fraction of occupied hours within the thermal zone with operative temperatures above the upper limit of ASHRAE's Standards 55 (2017) adaptive model, for 80\% of acceptability, is used as a thermal comfort index.
 	
 	The surrogate model is developed from a data set of building performance simulations, using the software EnergyPlus.
-	Simulation models were defined based on a database of naturally ventilated office buildings in the city of Sao Paulo.
-	The variables used as input in the surrogate model are defined by Sobol's sensitivity analysis.
+	Simulation models were defined based on a database of naturally ventilated office buildings in the city of São Paulo.
+	The variables used as inputs in the surrogate model are defined by Sobol's sensitivity analysis.
 	
-	From data of 100,000 simulations, sampled by the Latin hypercube sampling method, the neural network was trained.
+	From data of 100,000 simulations, sampled by Latin hypercube sampling method, the neural network was trained.
 	The performance of the surrogate model was measured with a validation data set of 20,000 cases.
 	The mean absolute error for the fraction of hours outside ASHRAE's Standards 55 (2017) adaptive model limits for the validation data set was 0,009, and the absolute error of the 95$^{th}$ percentile was 0,024.
 	
-	The final surrogate model achieved estimates for thermal comfort in naturally ventilated office buildings in the city of Sao Paulo with results close to the simulations developed on the software EnergyPlus. This surrogate model can be used by building designers as a simple tool to support decision making in early-design phases.
+	The final surrogate model achieved estimates for thermal comfort in naturally ventilated office buildings in the city of São Paulo with results close to the simulations developed on the software EnergyPlus. This surrogate model can be used by building designers as a simple tool to support decision making in early-design phases.
 }
-\keywords{Natural Ventilation. Surrogate Model. Building performance simulation.}
+\keywords{Natural ventilation. Surrogate model. Building performance simulation.}
 
 \input{abreviaturas}
 \begin{document}
@@ -306,7 +306,7 @@ A base de dados de pressão de vento da \acrfull{tpu} oferece dados experimentai
 A base de dados possui os resultados de testes conduzidos utilizando-se modelos de acrílico em um túnel de vento de seção de 2,2 m de largura por 1,8 m de altura.
 A camada limite atmosférica foi simulada por elementos geradores de turbulência e outros elementos de rugosidade. Diferentes perfis de vento foram usados para construir a base de dados. Na maioria dos experimentos a velocidade média e os perfis de intensidade de turbulência estavam de acordo com as de terreno suburbano. A intensidade de turbulência à altura de 10 cm foi cerca de 0,25, e a velocidade de vento teste a essa altura foi 7,4 m/s. O número mínimo de Reynolds foi 25340, que é acima do limite 11000 para o fluxo independente.
 A base de dados da \acrshort{tpu} oferece valores de \acrshort{cp} para modelos de edificações com geometrias de diferentes proporções. Para cada modelo, valores diferentes de \acrshort{cp} são disponibilizados para diversos pontos sobre suas superfícies. 
-A localização dos pontos sobre as superfícies dos modelos é apresentada de acordo com o exemplo da Figura \ref{fig:TPU_points}. Na imagem, 240 pontos de medição se distribuem sobre um modelos de dimensões igual a 0,2 x 0,1 x 0,2 m. As linhas pontilhadas representam as arestas do modelo.
+A localização dos pontos sobre as superfícies dos modelos é apresentada de acordo com o exemplo da Figura \ref{fig:TPU_points}. Na imagem, 240 pontos de medição se distribuem sobre um modelo de dimensões igual a 0,2 m x 0,1 m x 0,2 m. As linhas pontilhadas representam as arestas do modelo.
 
 
 \begin{figure}[h]
@@ -396,7 +396,9 @@ A modelagem da edificação foi realizada através do programa EnergyPlus 8.1 \c
 Os casos mais precisos foram: o que considerou os valores da \acrshort{aivc} para terrenos com barreiras esparsas; e o que considerou os valores do CPCALC+ para 1\% de densidade, e variação de -0,1 no \acrshort{cp} para o ângulo de incidência de 180$^{\circ}$. O caso mais próximo do real obteve uma diferença relativa de 10\%, enquanto o pior caso (CPCALC+ 1\% de densidade) obteve um erro relativo de 169\%. Os erros do CPCALC+ foram maiores do que o do \acrshort{aivc}, mesmo considerando-se o \acrshort{cp} para a posição exata da abertura, enquanto o \acrshort{aivc} considerou a média na superfície da fachada. Nos melhores resultados, a diferença calculada para a temperatura do ar foi menor do que 0,5 $^{\circ}$C, enquanto nos piores, foi entre 1,1 $^{\circ}$C e 1,2 $^{\circ}$C. A correlação entre a precisão relativa do fluxo de ar e da temperatura do ar não foi linear. A conclusão final foi que simulações com \acrshort{afn} na fase inicial de projeto, quando não há dados experimentais disponíveis para a validação do modelo, possuem significantes incertezas.
 
 \citeonline{Freire2013} avaliaram diferentes modelos de ventilação cruzada e unilateral (\textit{British Standard}, Gids e Phafe, e Larsen) e compararam com resultados de medições \textit{in-situ} e em túneis de vento. Também foram avaliadas as bases utilizadas para obtenção dos \acrshort{cp}. 
-O modelo de Larsen mostrou-se mais apropriado para a ventilação unilateral, por considerar variações em função do ângulo de incidência do vento. Os \acrshort{cp} do CPCALC (\acrshort{cp} local) obtiveram resultados mais precisos do que os das equações de \citeonline{Swami1988} (\acrshort{cp} médio), que é o método padrão do programa EnergyPlus \cite{EnergyPlus2018} para a obtenção do \acrshort{cp}. Porém, ambos obtiveram erros relativos por volta de 30\%. O fluxo de ar por grandes aberturas envolve diferentes obstáculos, que inclui desde fluxos gravitacionais estáveis, até fluxos flutuantes devido à turbulência do vento. A solução utilizada pelo programa EnergyPlus 8.9 \cite{EnergyPlus2018} para a modelagem de grandes aberturas é baseada no modelo COMIS \cite{Feustel1990}. As principais premissas para esse modelo são:
+O modelo de Larsen mostrou-se mais apropriado para a ventilação unilateral, por considerar variações em função do ângulo de incidência do vento. Os \acrshort{cp} do CPCALC (\acrshort{cp} local) obtiveram resultados mais precisos do que os das equações de \citeonline{Swami1988} (\acrshort{cp} médio), que é o método padrão do programa EnergyPlus \cite{EnergyPlus2018} para a obtenção do \acrshort{cp}. Porém, ambos obtiveram erros relativos por volta de 30\%.
+
+O fluxo de ar por grandes aberturas envolve diferentes obstáculos, que inclui desde fluxos gravitacionais estáveis, até fluxos flutuantes devido à turbulência do vento. A solução utilizada pelo programa EnergyPlus 8.9 \cite{EnergyPlus2018} para a modelagem de grandes aberturas é baseada no modelo COMIS \cite{Feustel1990}. As principais premissas para esse modelo são:
 
 \begin{itemize}
 	\item fluxo estável, fluido não-viscoso e incompressível;
@@ -421,7 +423,7 @@ Na Figura \ref{fig:DetailedOpening}, $P_{01}$ e $P_{02}$ representam as pressõe
 \end{figure}
 
 O \acrfull{cd} é utilizado para representar a característica do fluxo na abertura quando a abertura é grande. Para frestas, utiliza-se o coeficiente de fluxo de ar por frestas (\acrshort{cq}) \cite{Arendt2017}.
-Esses coeficientes se definem como a razão entre o fluxo real em relação ao	ideal, quando a vazão mássica de ar de referência é definida para a diferença de pressão de 1 Pa. Ambos os parâmetros dependem da geometria da abertura, velocidade do ar, orientação geográfica, edificações do entorno, morfologia urbana e a forma do edifício em questão.
+Esses coeficientes são definidos como a razão entre o fluxo real em relação ao	ideal, quando a vazão mássica de ar de referência é definida para a diferença de pressão de 1 Pa. Ambos os parâmetros dependem da geometria da abertura, velocidade do ar, orientação geográfica, edificações do entorno, morfologia urbana e a forma do edifício em questão.
 O valor do \acrshort{cd} é o produto entre o coeficiente de velocidade e o coeficiente de contração \cite{Flourentzou1998}. Ele pode ser determinado experimentalmente quando a vazão de ar é medida diretamente, com gás rastreador, por exemplo. O coeficiente de velocidade também pode ser determinado similarmente medindo-se as velocidades do ar.
 
 \citeonline{Iqbal2015} apontam que o \acrshort{cd} representa os efeitos não ideais de fluxo, que são causados principalmente pela fricção no caminho do fluxo de ar e o efeito de contração devido a mudanças na direção do fluxo. Devido à dificuldade de se estimar esses efeitos separadamente, normalmente apenas o \acrshort{cd} é usado para especificar vazão de ar através de aberturas. O valor de \acrshort{cd} para janelas operáveis não é constante, mas varia consideravelmente de acordo com a área de abertura, o tipo de janela e a diferença de pressão entre a abertura. O uso de valores constantes de \acrshort{cd} podem levar a estimativas errôneas do fluxo de ar.
@@ -446,7 +448,7 @@ O modelo estático foi desenvolvido por \citeonline{Fanger1970a}, a partir de es
 
 Para determinar o nível de conforto térmico no ambiente construído, \citeonline{Fanger1970a} desenvolveu a partir dessas variáveis o “Voto Médio Predito” (\acrshort{pmv}), uma escala para otimizar as condições de conforto térmico em um ambiente construído. A escala do \acrshort{pmv} prediz se os ocupantes do ambiente estarão sentindo frio, calor ou neutros. Para que haja conforto térmico, é necessário que haja neutralidade térmica. A neutralidade térmica é a condição na qual a pessoa prefere que o ambiente à sua volta não esteja nem mais frio, nem mais quente.
 
-A abordagem no modelo adaptativo é diferente da proposta no modelo estático. \citeonline{Dear1997} afirmam que uma premissa importante do modelo adaptativo é que o ocupante da edificação não é simplesmente um receptor passivo de um dado ambiente térmico, como no caso das câmaras climáticas, mas em vez disso é um agente ativo, que interage em diversos níveis do sistema “pessoa-ambiente” via ciclos retroalimentados. As expectativas térmicas resultam da confluência de experiências correntes e passadas e práticas técnicas e culturais. Sendo assim, leva-se em conta diferenças não apenas quantitativas, mas também qualitativas entre o conforto térmico em edificações condicionadas artificialmente e naturalmente ventiladas. Baseando-se em um estudo de um banco de dados de 21 mil medições realizadas em edificações comerciais, \citeonline{Dear1997} concluíram que, em edificações ventiladas naturalmente, a tolerância dos usuários em relação à variação de temperatura é maior, e o conforto depende diretamente das temperaturas médias externas.
+A abordagem no modelo adaptativo é diferente da proposta no modelo estático. \citeonline{Dear1997} afirmam que uma premissa importante do modelo adaptativo é que o ocupante da edificação não é simplesmente um receptor passivo de um dado ambiente térmico, como no caso das câmaras climáticas, mas em vez disso é um agente ativo, que interage em diversos níveis do sistema “pessoa-ambiente” via ciclos retroalimentados. As expectativas térmicas resultam da confluência de experiências correntes e passadas, e práticas técnicas e culturais. Sendo assim, leva-se em conta diferenças não apenas quantitativas, mas também qualitativas entre o conforto térmico em edificações condicionadas artificialmente e naturalmente ventiladas. Baseando-se em um estudo de um banco de dados de 21 mil medições realizadas em edificações comerciais, \citeonline{Dear1997} concluíram que, em edificações ventiladas naturalmente, a tolerância dos usuários em relação à variação de temperatura é maior, e o conforto depende diretamente das temperaturas médias externas.
 
 A \citeonline{ASHRAEStandard552017} define os limites inferior e superior de temperatura operativa do ambiente, para 80\% de aceitabilidade, em ambientes ventilados naturalmente, a partir das Equações \ref{eq:limInf} e \ref{eq:limSup}.
 
@@ -473,10 +475,10 @@ Onde:
 A temperatura média do ar externo representa o ambiente climático externo com o qual os ocupantes da edificação estão fisiologicamente,
 comportamentalmente e psicologicamente adaptados. Essa variável de entrada é baseada na média aritmética das temperaturas médias externas diárias em um período de dias, e pode ser considerada como a temperatura média mensal.
 
-O movimento do ar influencia no conforto térmico, causando desconforto por frio em algumas situações, mas também aliviando o desconforto por calor.
+O movimento do ar influencia no conforto térmico, causando desconforto por frio em algumas situações, mas também reduzindo o desconforto por calor.
 Isso ocorre devido ao aumento da convecção sobre as superfícies, o que causa maior evaporação, fenômeno endotérmico. Devido a essa influência no conforto térmico, a \citeonline{ASHRAEStandard552017} permite considerar a velocidade do ar como um fator determinante na busca por um ambiente termicamente confortável. Essa consideração é baseada nos valores do  \textit{Standard Effective Temperature} (SET), que relaciona a velocidade do ar e a temperatura operativa do ambiente para ambientes climatizados.
 
-\citeonline{DeVecchi2015} aplicaram o método adaptativo da \citeonline{ASHRAEStandard552013} para o contexto climático brasileiro, caracterizado como quente e úmido. Os resultados indicam que é possível encontrar níveis aceitabilidade térmica significativos abaixo dos limites inferiores do método adaptativo. Essa tolerância a temperaturas mais baixas deve-se ao aumento de vestimentas por parte dos ocupantes, antes de se recorrer ao aquecimento artificial. Os autores sugerem que a fixação do limite inferior de temperatura operativa em no máximo 19,5 $^{\circ}$C, para umidade relativa de 80\%, representaria mais adequadamente o comportamento dos usuários no contexto climático brasileiro.
+\citeonline{DeVecchi2015} aplicaram o método adaptativo da \citeonline{ASHRAEStandard552013} para o contexto climático brasileiro, caracterizado como quente e úmido. Os resultados indicam que é possível encontrar níveis aceitabilidade térmica significativamente abaixo dos limites inferiores do método adaptativo. Essa tolerância a temperaturas mais baixas deve-se ao aumento de vestimentas por parte dos ocupantes, antes de se recorrer ao aquecimento artificial. Os autores sugerem que a fixação do limite inferior de temperatura operativa em no máximo 19,5 $^{\circ}$C, para umidade relativa de 80\%, representaria mais adequadamente o comportamento dos usuários no contexto climático brasileiro.
 
 \section{Ventilação natural em edifícios de escritórios}
 
@@ -489,9 +491,9 @@ A intensidade de ocupação em edifícios de escritórios varia de acordo com as
 \citeonline{Neves2019} desenvolveram um banco de dados com informações levantadas em edifícios de escritórios que operam com ventilação híbrida (\acrshort{vn} e condicionamento artificial de ar). Para isso, 153 edifícios construídos após o ano de 1995 na cidade de São Paulo foram selecionados. Dentre os edifícios selecionados, foi realizado um levantamento de campo em 50 edifícios, obtendo-se informações relacionadas às dimensões das salas de escritórios, ao tipo de esquadria utilizado e à presença de elementos de sombreamento. As informações disponíveis em todos os edifícios do banco de dados incluem: áreas, dimensões, formato e número de pavimentos das edificações; absortância das paredes externas e coberturas; e \acrfull{paf}. Os autores observaram as correlações entre as características encontradas nestes edifícios. As estratégias de \acrshort{vn} adotadas não parecem ser algo que procura-se otimizar nos projetos dos edifícios analisados. Tampouco há indicação de uma mudança nesse cenário em edificações de anos mais recentes. O que se nota é o aumento de elementos de sombreamento na fachada em razão do uso de equipamentos condicionadores de ar do tipo \textit{split}. Os autores concluem que o levantamento realizado permite a identificação das características mais recorrentes nos edifícios analisados, e os intervalos de variação nos parâmetros observados.
 Isso possibilita que trabalhos relacionados ao desempenho térmico de edificações sejam desenvolvidos considerando-se características de edificações reais.
 
-\citeonline{Belleri2014} compararam predições de desempenho de \acrshort{vn} em estágio inicial de projeto pelo programa EnergyPlus com medições de campo. O escritório estudado localiza-se no segundo andar de um edifício de dois andares na Califórnia, Estados Unidos, e tem seu espaço dividido em dois planos abertos de 130 m$^2$, conectados por duas grandes aberturas. Não há ventilação forçada ou sistema de resfriamento. As quatro fachadas são providas de janelas, que podem ser operadas pelos ocupantes. Há ventiladores de teto com controle variável disponíveis. Os autores partiram da simulação de um modelo simples, e modificaram gradativamente os seguintes dados de entrada, de acordo com medições em campo: temperaturas internas; controle das janelas; dados climáticos (com intervalos de 5 minutos); fatores de abertura das janelas, coeficientes de pressão do vento (baseados em medições em túnel de vento). Enquanto a simulação inicial superestimou a média das trocas de ar em 1671\%, a simulação com todas as modificações superestimou as trocas de ar em apenas 148\%. O estudo conclui que, com dados suficientes, a utilização do programa EnergyPlus com o \acrshort{afn} pode oferecer  estimativas informativas relacionadas ao desempenho da \acrshort{vn}. No entanto, para melhores estimativas é necessário obter dados relacionados ao vento e ao comportamento dos ocupantes, o que pode ser dificultoso na fase de projeto.
+\citeonline{Belleri2014} compararam predições de desempenho de \acrshort{vn} em estágio inicial de projeto pelo programa EnergyPlus com medições de campo. O escritório estudado localiza-se no segundo andar de um edifício de dois andares na Califórnia, Estados Unidos, e tem seu espaço dividido em dois planos abertos de 130 m$^2$, conectados por duas grandes aberturas. Não há ventilação forçada ou sistema de resfriamento. As quatro fachadas são providas de janelas, que podem ser operadas pelos ocupantes. Há ventiladores de teto com controle variável disponíveis. Os autores partiram da simulação de um modelo simples, e modificaram gradativamente os seguintes dados de entrada, de acordo com medições em campo: temperaturas internas; controle das janelas; dados climáticos (com intervalos de 5 minutos); fatores de abertura das janelas, coeficientes de pressão do vento (baseados em medições em túnel de vento). Enquanto a simulação inicial superestimou a média das trocas de ar em 1671\%, a simulação com todas as modificações superestimou as trocas de ar em apenas 148\%. O estudo conclui que, com dados suficientes, a utilização do programa EnergyPlus com o \acrshort{afn} pode oferecer  estimativas informativas relacionadas ao desempenho da \acrshort{vn}. No entanto, para melhores estimativas é necessário obter dados relacionados ao vento e ao comportamento dos ocupantes, o que pode ser inviável na fase de projeto.
 
-O trabalho realizado por \citeonline{Elharidi2018} buscou identificar o desempenho energético e a qualidade do ar interno de edifícios de escritórios no Egito, propondo medidas para minimizar o uso de energia. Os dados foram levantados a partir de questionários realizados em 59 escritórios, sendo complementado por dados da literatura. Os dados registrados incluem: área interna, atividade exercida no escritório, tipo de serviço prestado na edificação, tipo de edificação, e contas de energia elétrica. Dentre as atividades nos escritórios, inclui-se contadores, agências de viagem, vendas, administração da saúde, seguros, consultores, administração de bancos, recursos humanos, e governo. As edificações de escritórios foram classificadas em quatro tipos: \acrshort{vn} sem resfriamento; \acrshort{vn} com resfriamento local; ventilação mecânica com resfriamento local; ventilação mecânica e resfriamento central. A maioria das edificações estudadas possui apenas \acrlong{vn}, ou \acrshort{vn} com resfriamento local. A estratégia adotada para resfriamento e ventilação dos edifícios foi identificada como o fator mais impactante no consumo de energia. A eficiência dos equipamentos, iluminação e sistemas de resfriamento, relacionada ao comportamento dos ocupantes, pode reduzir significativamente o consumo elétrico da edificação. 
+O trabalho realizado por \citeonline{Elharidi2018} buscou identificar o desempenho energético e a qualidade do ar interno de edifícios de escritórios no Egito, propondo medidas para minimizar o uso de energia. Os dados foram levantados a partir de questionários realizados em 59 escritórios, sendo complementados por dados da literatura. Os dados registrados incluem: área interna, atividade exercida no escritório, tipo de serviço prestado na edificação, tipo de edificação, e contas de energia elétrica. Dentre as atividades nos escritórios, inclui-se contadores, agências de viagem, vendas, administração da saúde, seguros, consultores, administração de bancos, recursos humanos, e governo. As edificações de escritórios foram classificadas em quatro tipos: \acrshort{vn} sem resfriamento; \acrshort{vn} com resfriamento local; ventilação mecânica com resfriamento local; ventilação mecânica e resfriamento central. A maioria das edificações estudadas possui apenas \acrlong{vn}, ou \acrshort{vn} com resfriamento local. A estratégia adotada para resfriamento e ventilação dos edifícios foi identificada como o fator mais impactante no consumo de energia. A eficiência dos equipamentos, iluminação e sistemas de resfriamento, relacionada ao comportamento dos ocupantes, pode reduzir significativamente o consumo elétrico da edificação. 
 Os edifícios com apenas \acrshort{vn} têm os menores consumos de energia, sendo que há a possibilidade de desconforto térmico em certas épocas do ano sob essas condições. Os edifícios com \acrshort{vn} e resfriamento local têm maior consumo de energia nos meses de verão, mas demandam menos da metade do consumo de energia dos edifícios com resfriamento central.
 
 O estudo de \citeonline{Roetzel2014} investigou o impacto do projeto da edificação e da ocupação no conforto térmico e desempenho energético em escritórios, para identificar padrões que ajudem nas considerações relacionadas aos estágios iniciais de projeto. O estudo baseia-se no cenário A2 do \textit{International Panel on Climate Change} (IPCC), para o ano de 2030.
@@ -499,7 +501,7 @@ Uma sala de escritório celular foi modelada e simulada para três climas atrav�
 O estudo conclui que os comportamento dos ocupantes é o que mais influencia no consumo final de energia para todos os climas investigados.
 Para buscar um melhor desempenho e melhores níveis de conforto, as seguintes estratégias para o projeto da edificação são indicadas: proteção solar externa que permita iluminação natural; \acrshort{paf} maiores que 70\% e janelas localizadas acima do plano de trabalho; massa térmica aplicada ao piso, paredes e cobertura. Em relação ao comportamento dos ocupantes, as estratégias sugeridas são: operar ativamente as janelas durante o dia e também para a ventilação noturna; operar venezianas para aproveitar a iluminação natural, prevenindo-se de ofuscamento e calor; operar iluminação artificial dependendo da luz natural; e utilizar equipamentos de escritório com baixa potência de consumo.
 
-\citeonline{Pesic2018} descrevem a aplicabilidade geoclimática da \acrshort{vn} na região da Catalunha, na costa do Mediterrâneo. O objetivo é providenciar diretrizes e parâmetros básicos de eficiência energética para arquitetos, engenheiros e políticos, para que possam visualizar o potencial da \acrshort{vn}. Três cidades foram analisadas: Barcelona; Terrassa; e Tarragona. O modelo de escritório representa um edifício de três pavimentos \textit{open-plan}. A ventilação cruzada é modelada considerando-se a passagem de ar por janelas operáveis, com movimento gerado primariamente por força do vento. A orientação da edificação foi definida perpendicularmente à principal direção do vento nos meses em que a \acrshort{vn} é mais favorável. O \acrshort{paf} é definido como 40\% e a infiltração na envoltória é considerada constante, com 0,25 \acrfull{ach} por hora. As temperaturas limite de aceitabilidade do ar externo para \acrshort{vn} é entre 10 $^{\circ}$C e 33,5 $^{\circ}$C. O horário de ocupação é das 8h00 às 18h00, e a ventilação noturna é das 21h00 às 7h00. Considerou-se a possibilidade de uso de condicionamento de ar para aquecimento e resfriamento, ou ventilação mecânica (\acrshort{hvac}) entre as 6h00 e 18h00. A ocupação foi considerada apenas nos dias de semana. A construção e isolamento da edificação foram definidos de acordo com os padrões da Passivhaus, padrão de construção baseado no uso de isolamento térmico da edificação. A \acrshort{vn} foi considerada entre os dias 1º de abril e 31 de outubro (meses quentes). Seis modos de resfriamento foram considerados na análise: apenas \acrshort{hvac}; \acrshort{vn} ou \acrshort{hvac}; \acrshort{vn} ou \acrshort{hvac}, e ventilação noturna; \acrshort{vn} e \acrshort{hvac} simultaneamente; \acrshort{vn} e \acrshort{hvac} simultaneamente, e ventilação noturna; apenas ventilação noturna. O maior potencial de redução de energia foi observado para o uso simultâneo de \acrshort{hvac} e \acrshort{vn}, com ventilação noturna. Em relação ao caso com apenas \acrshort{hvac}, a redução relativa foi de 28,4\%, em Tarragona, a 40,9\%, em Barcelona.
+\citeonline{Pesic2018} descrevem a aplicabilidade geoclimática da \acrshort{vn} na região da Catalunha, na costa do Mediterrâneo. O objetivo é providenciar diretrizes e parâmetros básicos de eficiência energética para arquitetos, engenheiros e políticos, para que possam visualizar o potencial da \acrshort{vn}. Três cidades foram analisadas: Barcelona; Terrassa; e Tarragona. O modelo de escritório representa um edifício de três pavimentos \textit{open-plan}. A ventilação cruzada é modelada considerando-se a passagem de ar por janelas operáveis, com movimento gerado primariamente por força do vento. A orientação da edificação foi definida perpendicularmente à principal direção do vento nos meses em que a \acrshort{vn} é mais favorável. O \acrshort{paf} é definido como 40\% e a infiltração na envoltória é considerada constante, com 0,25 \acrfull{ach} por hora. As temperaturas limite de aceitabilidade do ar externo para \acrshort{vn} são entre 10 $^{\circ}$C e 33,5 $^{\circ}$C. O horário de ocupação é das 8h00 às 18h00, e a ventilação noturna é das 21h00 às 7h00. Considerou-se a possibilidade de uso de condicionamento de ar para aquecimento e resfriamento, ou ventilação mecânica (\acrshort{hvac}) entre as 6h00 e 18h00. A ocupação foi considerada apenas durante os dias de semana. A construção e isolamento da edificação foram definidos de acordo com os padrões da Passivhaus, padrão de construção baseado no uso de isolamento térmico da edificação. A \acrshort{vn} foi considerada entre os dias 1º de abril e 31 de outubro (meses quentes). Seis modos de resfriamento foram considerados na análise: apenas \acrshort{hvac}; \acrshort{vn} ou \acrshort{hvac}; \acrshort{vn} ou \acrshort{hvac}, e ventilação noturna; \acrshort{vn} e \acrshort{hvac} simultaneamente; \acrshort{vn} e \acrshort{hvac} simultaneamente, e ventilação noturna; apenas ventilação noturna. O maior potencial de redução de energia foi observado para o uso simultâneo de \acrshort{hvac} e \acrshort{vn}, com ventilação noturna. Em relação ao caso com apenas \acrshort{hvac}, a redução relativa foi de 28,4\%, em Tarragona, a 40,9\%, em Barcelona.
 
 O estudo de \citeonline{Yao2009} buscou um método de analisar estrategicamente o uso de \acrshort{vn} nas etapas iniciais de projeto. Consideraram-se as condições climáticas locais, tipo de edificação, padrões de ocupação e ventilação. O trabalho é desenvolvido a partir de um modelo de escritório para cinco climas da China: muito frio; frio; verão quente e inverno frio; verão quente e inverno ameno; e ameno. Os escritórios na China se dividem em dois tipos principais: de alto padrão com sistema central de ar condicionado; e escritório tradicional com ar condicionado \textit{split}. O modelo de escritório utilizado para o estudo possui as seguintes características: sala com dimensões 3,6 m x 5,4 m x 3,0 m; orientação sul-norte; \acrshort{paf} de 0,35 na parede sul e 0,25 na parede norte; ocupação das 8h00 às 18h00; capacidade térmica média; elementos de sombreamento interno na fachada sul no verão; tipo de terreno urbano; ganhos internos igual a 25 W/m$^2$. Os autores concluem que em zonas de clima ameno a \acrshort{vn} é altamente recomendável para edifícios de escritório em ambos os turnos. A ventilação cruzada tem maior eficiência do que a ventilação unilateral.
 Em zonas de verão quente e inverno ameno, o uso de \acrshort{vn} não satisfaz as exigências para conforto térmico. Portanto, o resfriamento mecânico é recomendado. Observou-se que o uso unicamente da ventilação noturna não é adequada para edifícios de escritórios, pois os ganhos internos gerados ao longo do dia não podem ser liberados, causando desconforto térmico. 
@@ -509,11 +511,11 @@ Dos casos analisados, o que obteve melhor índice de conforto foi o escritório 
 
 De acordo com \citeonline{CarrilhodaGraca2016}, nos climas quentes, que é o caso do Brasil, há maior potencial de economia e maior desafio na aplicação de \acrshort{vn}. \citeonline{Roetzel2014} afirmam que o modelo adaptativo da \citeonline{ASHRAEStandard552017} tem uma faixa maior de aplicabilidade em climas mais quentes, o que pode propiciar um maior potencial de otimização.
 Esta parte da revisão bibliográfica apresentou estudos que abordam o potencial de \acrshort{vn} como uma solução para o resfriamento passivo em edificações de escritórios. Nos diferentes casos e configurações dos sistemas de resfriamento considerados, algumas características avaliadas e soluções propostas são predominantes, como o uso de ventilação cruzada ou de sombreamento das aberturas.
-No entanto, a variação de determinadas características das edificações podem resultar em desempenhos térmicos diferentes de acordo com as combinações de parâmetros, ou características climáticas 
+No entanto, a variação de determinadas características das edificações podem resultar em desempenhos térmicos diferentes de acordo com as combinações de parâmetros, ou características climáticas. 
 
 \section{Análise de sensibilidade}
 
-\Acrfull{as} é uma ferramenta valiosa na simulação termoenergética de edificações. Por isso, a \acrshort{as} é usada amplamente para explorar as características do desempenho térmico em edificações em diversas aplicações, como projetos, calibração de modelos, \textit{retrofits}, impacto das mudanças climáticas entre outros \cite{Tian2013a}. A metodologia para a aplicação da \acrshort{as} tipicamente adota os seguintes passos: determinar as variações dos dados de entrada; determinar os modelos das edificações; executar as simulações dos modelos; coletar os resultados; executar a \acrshort{as}; apresentar os resultados da \acrshort{as}. Os métodos de \acrshort{as} podem ser divididos entre as abordagens local e global. A \acrshort{as} local é focada nos efeitos da incerteza de parâmetros de entrada em torno de um caso base, enquanto a \acrshort{as} global é mais interessada na influência dos parâmetros de entrada sobre todo o espaço de parâmetros de entrada possíveis. Por isso, a \acrshort{as} global é considerada mais confiável. A \acrshort{as} global inclui métodos de regressão, baseados em screening, em variância e metamodelos.
+\Acrfull{as} é uma ferramenta valiosa na simulação termoenergética de edificações. Por isso, a \acrshort{as} é usada amplamente para explorar as características do desempenho térmico em edificações em diversas aplicações, como projetos, calibração de modelos, \textit{retrofits}, impacto das mudanças climáticas, entre outros \cite{Tian2013a}. A metodologia para a aplicação da \acrshort{as} tipicamente adota os seguintes passos: determinar as variações dos dados de entrada; determinar os modelos das edificações; executar as simulações dos modelos; coletar os resultados; executar a \acrshort{as}; apresentar os resultados da \acrshort{as}. Os métodos de \acrshort{as} podem ser divididos entre as abordagens local e global. A \acrshort{as} local é focada nos efeitos da incerteza de parâmetros de entrada em torno de um caso base, enquanto a \acrshort{as} global é mais interessada na influência dos parâmetros de entrada sobre todo o espaço de parâmetros de entrada possíveis. Por isso, a \acrshort{as} global é considerada mais confiável. A \acrshort{as} global inclui métodos de regressão, baseados em screening, em variância e metamodelos.
 
 O primeiro passo para realizar uma \acrshort{as} é determinar a faixa dos dados de entrada. Quando o objetivo é determinar diferentes opções de projeto,  \citeonline{Tian2013a} sugere distribuições uniformes nos dados de entrada, pois assume-se que os diferentes valores para os dados de entrada são igualmente prováveis.
 
@@ -537,10 +539,10 @@ Os resultados de simulações podem ser avaliados a partir de características e
 Dentre diferentes possíveis abordagens (\acrshort{ann}, Programação Genética, Redes Bayesianas) a escolhida para o caso foi a \acrshort{svm}. 
 A identificação dos parâmetros mais influentes no processo de otimização foi realizada através de uma análise de sensibilidade global, baseada em derivadas locais. O metamodelo gerado foi capaz de identificar a minimização do consumo de energia, mantendo ou melhorando o conforto, sem necessidade de extensivas repetições de simulações de energia.
 
-\citeonline{Rackes2016} propõem um metamodelo para analisar edificações comerciais e escolas de poucos pavimentos, ventiladas naturalmente. Primeiramente, foi construído um banco de dados com aproximadamente 50.000 simulações. As simulações foram executadas a partir dos modelos termoenergéticos e \acrshort{afn} do programa EnergyPlus, e do modelo de conforto adaptativo da  \citeonline{ASHRAEStandard552013}, que determina a zona de conforto que satisfaz 80\% dos ocupantes. As características dos edifícios simulados foram variadas a partir de 55 dados de entrada relacionados à tipologia do edifício, layout interno, geometria das janelas e sombreamento, propriedades do fluxo de ar, materiais de construção, cargas internas e transferência de calor pelo solo. Os arquivos de IDF utilizados pelo EnergyPlus foram criados a partir de uma rotina escrita no programa MatLab. Foram utilizados 427 arquivos climáticos do Brasil para a representação geográfica. 
+\citeonline{Rackes2016} propõem um metamodelo para analisar edificações comerciais e escolas de poucos pavimentos, ventiladas naturalmente. Primeiramente, foi construído um banco de dados com aproximadamente 50.000 simulações. As simulações foram executadas a partir dos modelos termoenergéticos e \acrshort{afn} do programa EnergyPlus, e do modelo de conforto adaptativo da  \citeonline{ASHRAEStandard552013}, que determina a zona de conforto que satisfaz 80\% dos ocupantes. As características dos edifícios simulados foram variadas a partir de 55 dados de entrada relacionados à tipologia do edifício, layout interno, geometria das janelas e sombreamento, propriedades do fluxo de ar, materiais de construção, cargas internas e transferência de calor pelo solo. Os arquivos de IDF utilizados pelo EnergyPlus foram desenvolvidos a partir de uma rotina escrita no programa MatLab. Foram utilizados 427 arquivos climáticos do Brasil para a representação geográfica. 
 O indicador de desempenho em conforto térmico escolhido foi o \textit{Exceedance Hour Fraction} (\acrshort{ehf}), que é a fração de horas de desconforto em relação às horas de ocupação. Na etapa seguinte, 93 parâmetros preditores foram definidos para a análise do banco de dados. A principal ferramenta para a análise de sensibilidade foi a regressão linear múltipla da variável resposta em relação aos preditores. O método de aprendizagem automática escolhido foi a \acrshort{svm}. Após treinar e avaliar diversos modelos, 53 parâmetros preditores foram selecionados para a versão final. Esses parâmetros podem ser obtidos a partir de 29 dados de entrada e um arquivo climático. Comparando as simulações do EnergyPlus com as predições, o metamodelo apresentou \acrfull{rmse} igual a 0,059 e \acrfull{ae95} igual a 0,126. Quando testado com outros 2000 casos não usados no treinamento do metamodelo, o \acrshort{rmse} foi 0,060 e o \acrshort{ae95} foi 0,129, o que indica consistência nos resultados. 
 
-\citeonline{Versage2015} desenvolveu um metamodelo para estimar a carga integrada anual de energia de refrigeração para avaliação de desempenho energético de edificações condicionadas artificialmente através do desempenho individual de suas zonas térmicas. Foi desenvolvida uma base de dados de aproximadamente 1,29 milhões de casos simulados, com parâmetros construtivos variados, para o clima de Florianópolis. Uma amostra dos dados foi adotada para a elaboração de metamodelos com as técnicas de regressão linear múltipla, regressão adaptativa multivariada por \textit{splines}, processo gaussiano, máquina de vetores de suporte, \textit{random forest} e \acrlong{ann}. Para avaliar e comparar os metamodelos, quatro índices de desempenho foram escolhidos: tempo de treinamento, coeficiente de determinação (\acrshort{r2}), \acrshort{rmse} e \acrfull{nrmse}. O metamodelo de \acrshort{ann} obteve o melhor desempenho entre os testados. A rede neural artificial treinada com 1\% dos casos do banco de dados, e com 72 nós na camada interna, obteve o melhor desempenho global, e foi capaz de reproduzir resultados com erros menores que 10\% para 99,2\% do casos. O metamodelo elaborado a partir de \acrshort{svm} obteve o pior desempenho. Porém, o autor destaca que outras configurações e tratamentos dos dados poderiam mudar o desempenho dos metamodelos avaliados.
+\citeonline{Versage2015} desenvolveu um metamodelo para estimar a carga integrada anual de energia de refrigeração para avaliação de desempenho energético de edificações condicionadas artificialmente através do desempenho individual de suas zonas térmicas. Foi desenvolvida uma base de dados de aproximadamente 1,29 milhões de casos simulados, com parâmetros construtivos variados, para o clima de Florianópolis. Uma amostra dos dados foi adotada para a elaboração de metamodelos com as técnicas de regressão linear múltipla, regressão adaptativa multivariada por \textit{splines}, processo gaussiano, máquina de vetores de suporte, \textit{random forest} e \acrlong{ann}. Para avaliar e comparar os metamodelos, quatro índices de desempenho foram escolhidos: tempo de treinamento, coeficiente de determinação (\acrshort{r2}), \acrshort{rmse} e \acrfull{nrmse}. O metamodelo de \acrshort{ann} obteve o melhor desempenho entre os testados. A rede neural artificial treinada com 1\% dos casos do banco de dados, e com 72 nós na camada interna, obteve o melhor desempenho global, e foi capaz de reproduzir resultados com erros menores que 10\% para 99,2\% dos casos. O metamodelo elaborado a partir de \acrshort{svm} obteve o pior desempenho. Porém, o autor destaca que outras configurações e tratamentos dos dados poderiam mudar o desempenho dos metamodelos avaliados.
 
 \chapter{Metodologia}
 \label{chapter:metodologia}
@@ -755,7 +757,7 @@ Sabendo-se que o metamodelo estima o conforto térmico baseado no método adapta
 As simulações foram realizadas através do programa de simulação computacional EnergyPlus 8.9 \cite{EnergyPlus2018} e os modelos simulados foram obtidos a partir da parametrização de uma tipologia base, que permite a variação de diferentes parâmetros.  % variados pelo método de amostragem do hipercubo latino (HCL).
 A maioria desses parâmetros são numéricos e podem ser variados de forma contínua. 
 Inicialmente, cada simulação representou um pavimento de uma edificação com seis salas de escritórios, onde cada sala representava uma zona térmica (Figura \ref{fig:croqui}).
-O solo foi modelado pelos objetos do \textit{Ground Domain}, nos casos onde o contato com solo foi considerado. As superfícies superiores e inferiores consideradas ajacentes a outros pavimentos do edifício foram modeladas como adiabáticas.
+O solo foi modelado pelos objetos do \textit{Ground Domain}, nos casos onde o contato com solo foi considerado. As superfícies superiores e inferiores consideradas adjacentes a outros pavimentos do edifício foram modeladas como adiabáticas.
 
 \begin{figure}[h]
 	\centering
@@ -804,7 +806,7 @@ Dentre as simplificações consideradas, estão:
 	\item cálculo do \acrshort{cp} através do \acrlong{ma}, em vez dos valores obtidos por medições em túnel de vento pela \acrshort{tpu};
 	\item representação dos materiais da envoltória através de duas camadas: uma camada representando a capacidade térmica, e uma camada para regular a transmitância;  %(concreto)  (objeto Material:NoMass)
 	\item modelagem da zona que representa apenas um escritório, sem modelar as demais zonas térmicas da edificação. Para isso, são definidas as condições de contorno relacionadas às faces da zona correspondentes a paredes adjacentes à edificação;
-	\item definição de um coeficiente de fluxo mássico de ar relacionado à infiltração de ar pela porta, e do valor do \acrshort{cp} relacionado a essa porta, que no modelo de uma zona está voltada para o ambiente externo, e não para a circulação.
+	\item definição de um coeficiente de vazão mássica de ar relacionado à infiltração de ar pela porta, e do valor do \acrshort{cp} relacionado a essa porta, que no modelo de uma zona está voltada para o ambiente externo, e não para a circulação.
 \end{itemize}
 
 O impacto nos resultados das simulações foram verificados para cada uma das simplificações mencionadas, a partir da análise de diversos casos amostrados pelo método de amostragem do hipercubo latino (LHS). O tamanho das amostras foi definido em relação ao tempo disponível para executar as simulações.
@@ -822,14 +824,14 @@ Para verificar o quanto a fonte escolhida na definição dos \acrshort{cp} influ
 
 \begin{equation}
 \label{eq:Cpdiff}
-\overline{\Delta}_{Cp} = \frac{\sum_{i=1}^{4}{\sum_{j=0}^{11}{|\overline{Cp}^{TPU}_{f_i,\alpha_j} - Cp^{MA}_{f_i,\alpha_j}}|}}{48}
+RMSE_{Cp} = \sqrt{\frac{\sum_{i=1}^{4}{\sum_{j=0}^{11}{(\overline{Cp}^{TPU}_{f_i,\alpha_j,p_k} - Cp^{MA}_{f_i,\alpha_j}})^2}}{48}}
 \end{equation}
 
 Onde:
 
-\gls{deltacp} é igual à diferença absoluta média entre os valores dos \acrshort{cp} obtidos pela base da \acrshort{tpu} e obtidos pelo \acrlong{ma};
+\gls{rmsecp} é igual ao \acrshort{rmse} das diferenças entre os valores dos \acrshort{cp} obtidos pela base da \acrshort{tpu} e obtidos pelo \acrlong{ma};
 
-\gls{meancptpu} é igual ao valor médio dos \acrshort{cp} disponibilizados pela base de dados da \acrshort{tpu} para a fachada $i$ de uma edificação, para o ângulo de incidência do vento igual a $\alpha_j$;
+\gls{meancptpu} é igual ao valor do \acrshort{cp} disponibilizado pela base de dados da \acrshort{tpu} para a fachada $i$ de uma edificação, para o ângulo de incidência do vento igual a $\alpha_j$, no ponto $k$;
 
 \gls{cpma} é igual ao \acrshort{cp} calculado pelo \acrlong{ma} para a fachada de uma edificação com proporções iguais às da fachada $i$, para o ângulo de incidência do vento igual a $\alpha_j$;
 
@@ -842,7 +844,7 @@ Onde:
 %		Cada \acrshort{cp} médio ($Cp_{TPU,i,j}$), medido pela \acrshort{tpu} em um ponto $j$ de uma fachada $i$, teve um \acrshort{cp} correspondente calculado pelo método analítico ($Cp_{ANALITICO, i}$), para a mesma fachada $i$. Essa subtração foi efetuada para os diferentes ângulos ($\alpha$) disponíveis na base da \acrshort{tpu}.
 %		As diferenças entre os valores dos \acrshort{cp} foram calculadas obtendo-se o \acrshort{cp} pelo método analítico para cada fachada, de cada geometria disponível pela \acrshort{tpu}, e subtraindo-se o valor do \acrshort{cp} calculado pelos valores disponibilizados pela base da \acrshort{tpu} para a sua fachada correspondente (Equação \ref{eq:Cpdiff}).
 
-A partir dessas diferenças entre os valores dos \acrshort{cp} ($\overline{\Delta}_{Cp}$), escolheu-se a geometria com a maior diferença absoluta média como modelo base na análise da influência nos resultados das simulações no EnergyPlus.
+A partir dessas diferenças entre os valores dos \acrshort{cp}, escolheu-se a geometria com o maior  \gls{rmsecp} como modelo base na análise da influência nos resultados das simulações no EnergyPlus.
 Esta análise foi conduzida gerando-se uma amostra de 1.000 casos pelo LHS.
 Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}, com exceção da razão entre a largura e profundidade das zonas e a altura do pavimento em relação ao solo.
 A razão entre a largura e profundidade das zonas teve que ser alterada de acordo com a variação da área das salas, para se ajustar à geometria da edificação definida como modelo base da análise.
@@ -888,7 +890,7 @@ Como a modelagem da parede de alvenaria possui uma camada de ar no meio da pared
 Para validar essa simplificação, gerou-se uma amostra utilizando LHS, com 100 casos.
 Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}, com exceção da transmitância e capacidade térmica da parede.  % os parâmetros relacionados com a propriedades termofísicas da parede.	% e a absortância????
 %		O modelo preliminar sofreu variação dos seguintes parâmetros: área, razão entre largura e profundidade da zona, pé-direito, azimute, absortância, \acrshort{paf}, taxa de ocupação. Os demais parâmtros foram fixados de acordo com a Tabela \ref{table:paramfix}.
-Cada caso da amostra foi simulado com os dois tipos de paredes diferentes, e suas paredes equivalentes. No caso da parede de alvenaria, dois modelos de parede equivalente foram desenvolvidos: considerando a capacidade térmica total da parede, e considerado apenas metade da capacidade térmica.
+Cada caso da amostra foi simulado com os dois tipos de paredes diferentes, e suas paredes equivalentes. No caso da parede de alvenaria, dois modelos de parede equivalente foram desenvolvidos: considerando o valor total da capacidade térmica da parede, e considerado apenas metade do valor da capacidade térmica.
 A partir dos resultados, observou-se a diferença média entre as temperaturas operativas das zonas simuladas com as paredes referências em relação às simulações com as respectivas paredes equivalentes. O mesmo foi realizado comparando-se o \acrshort{ehf}.
 
 \subsection*{Condição de contorno das paredes adjacentes à edificação}
@@ -905,7 +907,7 @@ A partir dessa premissa, foi desenvolvido um modelo com apenas uma zona térmica
 \end{figure}
 
 Para modelar essa zona, considerou-se as paredes correspondentes a superfícies voltadas para outros escritórios como adiabáticas (sem trocas de calor). A superfície que representa a parede voltada para a circulação foi avaliada com duas condições de contorno: 1) como adiabática, e 2) como \textit{outdoors}, sem incidência de vento ou sol (Figura \ref{fig:adiabatic_outdoors}).	
-A consideração do uso da condição \textit{outdoors} foi pela hipótese de que, sem a radiação solar direta e sem o aumento de convecção causada pelo vento, a temperatura do ar da zona da circulação (por não ter cargas internas consideráveis) poderia se manter mais próxima à temperatura do ar externo do que às das zonas das salas de escritórios.
+A consideração do uso da condição \textit{outdoors} foi realizado pela hipótese de que, sem a radiação solar direta e sem o aumento de convecção causada pelo vento, a temperatura do ar da zona da circulação (por não ter cargas internas consideráveis) poderia se manter mais próxima à temperatura do ar externo do que às das zonas das salas de escritórios.
 
 \begin{figure}[h]
 	\centering
@@ -924,7 +926,7 @@ A amostra gerada pelo LHS nesta etapa foi de 100 casos.
 Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}.
 Para cada caso gerado pelo LHS, além da simulação detalhada, seis modelos de uma zona foram simulados, correspondendo a cada uma das zonas do modelo detalhado.
 Para validar o uso de diferentes condições de contorno, comparou-se os resultados de \acrshort{ehf} e temperaturas operativas das simulações de uma zona térmica com os resultados obtidos para as zonas térmicas das simulações detalhadas.
-A condição de contorno com menores diferenças médias absolutas, de temperatura operativa e \acrshort{ehf}, foi escolhida para se conduzir as simulações simplificadas.
+A condição de contorno com menores diferenças médias, de temperatura operativa e \acrshort{ehf}, foi escolhida para se conduzir as simulações simplificadas.
 
 \subsection*{Modelagem da ventilação natural na simulação simplificada}
 
@@ -977,9 +979,9 @@ Onde:
 
 \gls{n} é o fluxo de ar entre os pontos $i$ e $j$, quando a porta/janela está fechada ($kg/s$);
 
-\gls{cqq} é o coeficiente de fluxo mássico de ar da abertura ($-$);
+\gls{cqq} é o coeficiente de vazão mássica de ar da abertura ($-$);
 
-\gls{exp} é o expoente de fluxo de massa de ar ($-$).
+\gls{exp} é o expoente de vazão mássica de ar ($-$).
 \\
 
 As seguintes condições de contorno foram estabelecidas para facilitar o cálculo do $Cp_{eq}$:
@@ -1059,7 +1061,7 @@ A escolha da melhor configuração observando-se dois indicadores simultaneament
 
 \section{Análise de sensibilidade}
 
-Após definir como seriam gerados os modelos para as simulações simplificadas, uma \acrfull{as} foi aplicada. Através da \acrshort{as}, a influência dos diferentes dados de entrada variados nas simulações foi avaliada. Com base nos resultados da \acrshort{as}, parâmetros não relevantes nos resultados de temperatura operativa e, consequentemente, \acrfull{ehf}, foram determinados com valores fixos. Desta forma, o metamodelo foi desenvolvido considerando-se apenas parâmetros com influência expressiva nos dados de saída desejados.
+Após definir como seriam desenvolvidos os modelos para as simulações simplificadas, uma \acrfull{as} foi aplicada. Através da \acrshort{as}, a influência dos diferentes dados de entrada variados nas simulações foi avaliada. Com base nos resultados da \acrshort{as}, parâmetros não relevantes nos resultados de temperatura operativa e, consequentemente, \acrfull{ehf}, foram determinados com valores fixos. Desta forma, o metamodelo foi desenvolvido considerando-se apenas parâmetros com influência expressiva nos dados de saída desejados.
 
 O método de \citeauthoronline{Sobol1993} \cite{Sobol1993} foi utilizado para a \acrshort{as}, pois permite a identificação de parâmetros influentes, mesmo para casos onde a relação entre as entradas e saídas dos modelos são não-monotônicas e apresentam efeitos colineares.
 
@@ -1080,16 +1082,16 @@ Esse é um processo iterativo, que envolve diferentes variáveis, utilizando-se 
 É importante também observar os hiperparâmetros (parâmetros relacionados ao processo de aprendizagem automática) escolhidos no desenvolvimento da \acrshort{ann}. 
 A precisão dos resultados obtidos pela \acrshort{ann} pode depender do número de nós, número de camadas, taxa de aprendizagem, número de iterações, assim como outros parâmetros definidos durante o processo de treinamento. 
 
-Ao longo do processo de desenvolvimento do metamodelo, \acrshort{ann}'s com diferentes configurações foram testadas, utilizando-se diferentes maneiras de descrever as variáveis de entrada, e diferentes combinações de hiperparâmetros.
-A base de dados utilizada para o treinamento do metamodelo foi gerada a partir de 20.000 simulações, amostrados pelo método de amostragem do LHS. %100.000 simulações, amostrados pelo método de amostragem de Sobol.
-A amostra utilizada para validação foi composta por 5.000 casos, geradas por LHS.
+Ao longo do processo de desenvolvimento do metamodelo, \acrshort{ann} com diferentes configurações foram testadas, utilizando-se diferentes maneiras de descrever as variáveis de entrada, e diferentes combinações de hiperparâmetros.
+A base de dados utilizada para o treinamento do metamodelo foi gerada a partir de 100.000 simulações, amostrados pelo método de amostragem do LHS. %100.000 simulações, amostrados pelo método de amostragem de Sobol.
+A amostra utilizada para validação foi composta por 20.000 casos, geradas por LHS.
 % O motivo para se utilizar diferentes métodos de amostragem é para evitar qualquer enviesamento possivelmente relacionado ao método de amostragem.
 Em ambas as amostras, os parâmetros variados tiveram seus limites mínimos e máximos definidos de acordo com o item \ref{subsec:par}, com excessão daqueles parâmetros que tiveram seus valores determinados como fixos na etapa da \acrshort{as}.
 Os indicadores de precisão utilizados foram o erro absoluto médio e o \acrfull{ae95}.
 É comum se utilizar a \acrfull{rmse}, ou o \acrfull{r2} como indicadores de desempenho. Contudo, considerando-se que o dado de saída do metamodelo será uma fração (\acrshort{ehf}) com valor entre zero e um, o erro absoluto já é consequentemente um erro relativo. Portanto, conclui-se que o erro absoluto médio, associado ao \acrlong{ae95}, pode estimar de maneira mais adequada a imprecisão esperada para os resultados do metamodelo.
 
 A \acrshort{ann} com os melhores indicadores de precisão na etapa de treinamento foi escolhida para ter seu desempenho analisado com uma amostra de teste. 
-A amostra de teste foi utilizada para verificar o desempenho da \acrshort{ann} quando os valores dos parâmetros determinados como fixos na etapa da \acrshort{as} variam. Para isso, utilizou-se a mesma amostra gerada para etapa da \acrshort{as}, pois as simulações já estavam finalizadas, e os casos eram diferentes daqueles utilizados no desenvolvimento da \acrshort{ann}.
+A amostra de teste foi utilizada para verificar o desempenho da \acrshort{ann} quando os valores dos parâmetros determinados como fixos na etapa da \acrshort{as} variam. Para isso, utilizou-se uma amostra de 20.000 casos.
 Ao analisar os indicadores de precisão da \acrshort{ann} em relação às amostras de validação e de teste, o metamodelo final foi definido.
 
 \chapter{Resultados e Discussões}
@@ -1183,13 +1185,13 @@ O ângulo do azimute é medido em relação ao eixo mais longo das edificações
 O número de pavimentos dos edifícios analisados varia entre 2 e 20 pavimentos, com a maioria das ocorrências em 12 pavimentos.
 Tanto os edifícios, quanto as salas existentes no banco de dados apresentam predominantemente formato retangular, a partir do qual considera-se que definir as simulações baseando-se em modelos de edificações retangulares, com salas retangulares, representa adequadamente as tipologias de edifícios encontradas na cidade de São Paulo.
 A altura do pé direito não varia significativamente, mas tem a maioria das ocorrências em volta de 2,5 m.
-A área das salas de escritório varias entre aproximadamente 25 m$^2$ e 160 m$^2$, como a maior ocorrência em valores próximos a 40 m$^2$.
+A área das salas de escritório varia entre, aproximadamente, 25 m$^2$ e 160 m$^2$, com a maior ocorrência em valores próximos a 40 m$^2$.
 As proporções entre as suas menores e maiores dimensões variam entre, aproximadamente, 0,3 e 1, mas a maior ocorrência está próxima ao valor 0,6.
 As proporções entre as menores e maiores dimensões dos pavimentos varia consideravelmente, entre 0,1 e 1.
 
-A absortância das paredes dos edifícios varia entre 0,2 e 0,8, de forma consideravelmente bem distribuída entre absortâncias baixas, médias e altas. A cor das coberturas é predominantemente cinza. Por tanto, foi definido o valor fixo de 0,7 para absortância da cobertura.
+A absortância das paredes dos edifícios varia entre 0,2 e 0,8, de forma distribuída entre absortâncias baixas, médias e altas. A cor das coberturas é predominantemente cinza. Portanto, foi definido o valor fixo de 0,7 para absortância da cobertura.
 
-Observou-se que esquadrias do tipo maxim-ar são predominantes. Os objetos do \textit{Airflow Network} do programa EnergyPlus não modelam especificamente este tipo de esquadria. Porém, optou-se por considerar as janelas como não pivotantes. Considerar uma janela como horizontalmente pivotante implicaria na consideração de que a abertura acontece simultaneamente na parte de cima e de baixo da janela. No caso da janela maxim-ar, por mais que a abertura aconteça em um eixo horizontal, apenas a parte inferior da janela abre. 
+Observou-se que esquadrias do tipo maxim-ar são predominantes. Os objetos do \textit{Airflow Network} do programa EnergyPlus não modelam especificamente este tipo de esquadria. Porém, optou-se por considerar as janelas como não pivotantes. Considerar uma janela como horizontalmente pivotante implicaria na consideração de que a abertura acontece simultaneamente na parte de cima e de baixo da janela. No caso da janela maxim-ar, por mais que a abertura aconteça em um eixo horizontal, apenas a parte inferior da janela se abre. 
 Os fatores de abertura variam entre zero e um. No entanto, não é aplicável janelas com fatores de abertura igual a zero para edificações com \acrshort{vn}.
 O \acrfull{paf} varia entre 0,1 e 0,6 aproximadamente.
 
@@ -1199,7 +1201,7 @@ A maioria das salas observadas possuem ventilação cruzada, mas a ventilação 
 As informações relacionadas ao tipo de vidro não permitem definir valores relacionados ao \acrfull{fs}. Observa-se apenas a ocorrência de vidros laminados e vidro comum incolor. Optou-se por variar o fator solar dos vidros nas simulações para avaliar o impacto deste parâmetro nos resultados de conforto térmico.
 
 %	Os demais parâmetros observados tiveram suas distribuições variando continuamente de acordo com as distribuições obtidas. 
-Como as simulações detalhadas foram modeladas como pavimentos da edificação, o parâmetro relacionado ao número de pavimento das edificações foi transformado no parâmetro "altura do pavimento", ou seja, um pavimento localizado em um andar $n$, com um pé-direito de dimensão $h$, foi considerado com uma altura do pavimento iguala $n{\cdot}h$.
+Como as simulações detalhadas foram modeladas como pavimentos da edificação, o parâmetro relacionado ao número de pavimento das edificações foi transformado no parâmetro "altura do pavimento", ou seja, um pavimento localizado em um andar $n$, com um pé-direito de dimensão $h$, foi considerado com uma altura do pavimento igual a $n{\cdot}h$.
 
 A definição dos parâmetros de entrada para o desenvolvimento do metamodelo foi baseada no banco de dados analisados. A Tabela \ref{table:param_def} apresenta os limites mínimos e máximos atribuídos aos diferentes parâmetros contínuos variados nas simulações, assim como os parâmetros variados pela lógica "sim/não". A velocidade do ar foi variada com valores discretos, de acordo com os valores definidos pela \citeonline{ASHRAEStandard552017}, apresentados na Tabela \ref{table:var} do Capítulo \ref{chapter:metodologia}.
 
@@ -1263,13 +1265,13 @@ A definição dos parâmetros de entrada para o desenvolvimento do metamodelo fo
 
 \subsection{Cálculo do coeficiente de pressão pelo método analítico}
 
-Ao comparar os valores dos \acrfull{cp} das medições em túnel de vento da \acrfull{tpu} e os valores dos \acrshort{cp} obtidos pelo\acrlong{ma}, obteve-se gráficos de pontos. 
+Ao comparar os valores dos \acrfull{cp} das medições em túnel de vento da \acrfull{tpu} e os valores dos \acrshort{cp} obtidos pelo \acrlong{ma}, obteve-se gráficos de pontos. 
 A Figura \ref{fig:cp_diff_scatter}a apresenta a comparação para as 25 proporções geométricas disponibilizadas pela \acrshort{tpu}, para cada fachada, e para cada ponto na fachada.
 Como os valores calculados pelo \acrlong{ma} são únicos para cada fachada, e a \acrshort{tpu} oferece valores diferentes para diversos pontos ao longo das fachadas, os pontos no gráfico da Figura \ref{fig:cp_diff_scatter} distribuem-se horizontalmente. 
 %		A Figura \ref{fig:cp_diff_scatter_facade} apresenta a comparação considerando-se os valores médios do \acrshort{cp} para cada fachada. 
 É possível observar que a faixa de valores dos \acrshort{cp} disponibilizados pela \acrshort{tpu} é maior do que  faixa de valores calculados pelo \acrlong{ma}. Enquanto o menor valor de \acrshort{cp} disponibilizado pela \acrshort{tpu} é \mbox{-1,40}, e o maior valor é 1,08, pelo \acrlong{ma} o valor mínimo é igual a -0,96 e o máximo é igual a 0,60.
 
-Dentre as geometrias analisadas, a proporção com a maior \acrfull{rmse} entre os valores dos \acrshort{cp} foi igual a 0,42, para a geometria da edificação \textit{highrise} com proporções de largura, profundidade e altura igual a 2:1:2 (Figura \ref{fig:cp_diff_scatter}b).
+Dentre as geometrias analisadas, a proporção com a maior \gls{rmsecp} entre os valores dos \acrshort{cp} foi igual a 0,42, para a geometria da edificação \textit{highrise} com proporções de largura, profundidade e altura igual a 2:1:2 (Figura \ref{fig:cp_diff_scatter}b).
 
 \vspace{40pt}
 \newpage
@@ -1298,7 +1300,8 @@ Dentre as geometrias analisadas, a proporção com a maior \acrfull{rmse} entre 
 \end{figure}
 
 %A partir do resultado da comparação dos \acrshort{cp} nas diferentes geometrias,  
-Partindo-se de uma tipologia com proporções de largura, profundidade e altura igual a 2:1:2, as diferenças nos resultados de simulações termoenergéticas com \acrshort{cp} obtidos pelos diferentes métodos foram avaliadas (Figura \ref{fig:cpaverage_ACH_scatter}). %, apresentada na ,
+Partindo-se de uma tipologia com proporções de largura, profundidade e altura igual a 2:1:2, as diferenças nos resultados de simulações termoenergéticas com \acrshort{cp} obtidos pelos diferentes métodos foram avaliadas. 
+A Figura \ref{fig:cpaverage_ACH_scatter} apresenta a comparação entre as médias anuais de \acrfull{ach}. %, apresentada na ,
 
 \begin{figure}[H]
 	\centering
@@ -1310,12 +1313,12 @@ Partindo-se de uma tipologia com proporções de largura, profundidade e altura 
 	%			\end{flushleft}
 \end{figure}
 
-A comparação entre as médias anuais de \acrfull{ach} mostra que o \acrlong{ma} faz com que as trocas de ar sejam predominantemente subestimadas nas simulações, possivelmente devido aos menores valores dos \acrshort{cp} obtidos pelo método.
+A comparação entre as médias anuais de \acrshort{ach} mostra que o \acrlong{ma} faz com que as trocas de ar sejam predominantemente subestimadas nas simulações, possivelmente devido aos menores valores dos \acrshort{cp} obtidos pelo método.
 A diferença média foi igual a 0,56 \acrshort{ach}, com o \acrfull{ae95} é igual a 5,23 \acrshort{ach}.
 
 Apesar dessas diferenças nas trocas de ar, a comparação entre as temperaturas operativas médias, apresentada na Figura \ref{fig:cpaverage_tempEHF_scatter}a, mostra que a diferença média da temperatura operativa é 0,04 $^{\circ}$C, sendo que o \acrshort{ae95} é igual a 0,31 $^{\circ}$C.
 Essas diferenças são confirmadas como pouco significativas ao se analisar a Figura \ref{fig:cpaverage_tempEHF_scatter}b, com a comparação da \acrfull{ehf}. A média de diferença do \acrshort{ehf} nos casos analisados foi igual a 0,0037, com o \acrshort{ae95} igual a 0,0277.
-Por tanto, considerou-se que a utilização do \acrlong{ma} para calcular os valores dos \acrshort{cp} é uma alternativa adequada para a simplificação das simulações termoenergéticas.
+Portanto, considerou-se que a utilização do \acrlong{ma} para calcular os valores dos \acrshort{cp} é uma alternativa adequada para a simplificação das simulações termoenergéticas.
 
 \begin{figure}[h]
 	\centering
@@ -1362,7 +1365,10 @@ Por tanto, considerou-se que a utilização do \acrlong{ma} para calcular os val
 \subsection{Representação da envoltória com duas camadas}
 
 Os resultados das simulações com as paredes equivalentes subestimaram o \acrshort{ehf} em 0,0107 na média, quando comparados aos resultados das simulações com as paredes de referência. 
-Os resultados das simulações para a parede de gesso com isolamento resultaram em um erro absolto médio igual a 0,0099, e um \acrshort{ae95} igual a 0,0304 para o \acrshort{ehf} (Figura \ref{fig:par3_scatter}).
+Os resultados das simulações para a parede de gesso com isolamento resultaram em um erro médio igual a 0,0099, e um \acrshort{ae95} igual a 0,0304 para o \acrshort{ehf} (Figura \ref{fig:par3_scatter}). O erro absoluto médio foi igual a 0,0100.
+
+A representação da parede de alvenaria resultou em comportamentos semelhantes aos da parede de gesso com isoladamente.
+Por mais que as diferenças sejam pouco expressivas, observou-se que utilizar o modelo de parede equivalente apresenta-se mais adequado considerando-se apenas metade do valor da \acrfull{ct} da parede. Enquanto que, para a parede equivalente com o valor total da capacidade térmica o erro médio foi igual a 0,0159, o \acrshort{ae95} foi igual a 0,0650, e o erro absoluto médio foi igual a 0,0209 (Figura \ref{fig:par2_scatter}a), para a parede equivalente com a metade do valor da capacidade térmica, o erro médio foi igual a 0,0115, o \acrshort{ae95} foi igual a 0,0604, e o erro absoluto médio foi igual a 0,0189 (Figura \ref{fig:par2_scatter}b).
 
 \begin{figure}[h]
 	\centering
@@ -1373,9 +1379,6 @@ Os resultados das simulações para a parede de gesso com isolamento resultaram 
 	%				Fonte: o autor.
 	%			\end{flushleft}
 \end{figure}
-
-A representação da parede de alvenaria resultou em comportamentos semelhantes aos da parede de gesso com isolamente.
-Por mais que as diferenças sejam pouco expressivas, observou-se que utilizar o modelo de parede equivalente apresenta-se mais adequado considerando-se apenas metade do valor da \acrfull{ct} da parede. Enquanto que, para a parede equivalente com o valor total da capacidade térmica o erro médio foi igual a 0,0159, e o \acrshort{ae95} foi igual a 0,0650 (\ref{fig:par2_scatter}a), para a parede equivalente com o metade do valor da capacidade térmica, o erro médio foi igual a 0,0115, e o \acrshort{ae95} foi igual a 0,0604 (\ref{fig:par2_scatter}b).
 
 \begin{figure}[h]
 	%	\centering
@@ -1458,7 +1461,7 @@ Para analisar simultaneamente o desempenho do $Cp_{eq}$ e dos coeficientes de va
 É possível observar que as simulações desenvolvidas utilizando-se o $Cp_{eq}$ obtiveram resultados com \acrshort{rmse} menores do que as simulações desenvolvidas utilizando-se o \acrshort{cp} obtido diretamente pelo \acrlong{ma}.
 Para a definir o coeficiente de vazão mássica de ar, levou-se em conta, inicialmente, os erros relacionados ao \acrshort{ach}.
 No entanto, foi identificada uma fronteira de Pareto entre os erros analisados, que mostra como a busca por menores erros de \acrshort{ach} aumenta os erros relacionados ao \acrshort{ehf}.
-O resultado dessa análise pode ser porque as diferenças maiores nas trocas de ar anulam erros relacionados à definição das paredes adjacentes à edificação como adiabáticas, ou porque os maiores erros relacionados à médias anuais do \acrshort{ach} sejam em casos onde as diferenças nas trocas de ar não sejam relevantes para alterar a temperatura operativa nas zonas térmicas e, consequentemente, o \acrshort{ehf}.
+O resultado dessa análise pode ser atribuída ao fato de que as diferenças maiores nas trocas de ar anulem erros relacionados à definição das paredes adjacentes à edificação como adiabáticas, ou porque os maiores erros relacionados à médias anuais do \acrshort{ach} sejam em casos onde as diferenças nas trocas de ar não sejam relevantes para alterar a temperatura operativa nas zonas térmicas e, consequentemente, o \acrshort{ehf}.
 
 \begin{figure}[h]
 	\centering
@@ -1472,15 +1475,15 @@ O resultado dessa análise pode ser porque as diferenças maiores nas trocas de 
 
 Como o desenvolvimento das simulações é voltado para obter a maior precisão possível para os resultados de \acrshort{ehf}, optou-se por definir o coeficiente de vazão mássica de ar com valor igual a 0,8 kg/sPa$^n$ em 1 Pa, pois as simulações desenvolvidas utilizando-se este valor estão na fronteira de Pareto, e resultaram nos menores erros de \acrshort{ehf}.
 Na Figura \ref{fig:pareto}, o ponto do coeficiente de vazão mássica de ar com valor a 0,8 kg/sPa$^n$ em 1 Pa está destacado com um "X".
-A Figura \ref{fig:crack08} apresenta a comparação dos resultados de \acrshort{ehf} e \acrshort{ehf} obtidos pelas simulações detalhadas, comparados aos resultados obtidos pela simulação simplificada, utilizando-se o coeficiente de vazão mássica de ar adotado, com valor igual 0,8 kg/sPa$^n$ em 1 Pa.
+A Figura \ref{fig:crack08} apresenta a comparação dos resultados de \acrshort{ach} e \acrshort{ehf} obtidos pelas simulações detalhadas, comparados aos resultados obtidos pela simulação simplificada, utilizando-se o coeficiente de vazão mássica de ar adotado, com valor igual 0,8 kg/sPa$^n$ em 1 Pa.
 
 \begin{figure}[h]
-	\caption{Comparação entre os resultados de EHF e ACH para coeficiente de vazão mássica de ar com valor igual 0,8 kg/sPa$^n$ em 1 Pa}
+	\caption{Comparação entre os resultados de ACH e EHF para coeficiente de vazão mássica de ar com valor igual 0,8 kg/sPa$^n$ em 1 Pa}
 	\begin{minipage}{.5\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{img/cpeq_COM_80.png}
 		\begin{center}
-			\small{(a) comparação do \acrshort{ehf}}
+			\small{(a) comparação do \acrshort{ach}}
 		\end{center}
 	\end{minipage}%
 	\begin{minipage}{.5\textwidth}
@@ -1523,15 +1526,15 @@ As Figuras \ref{fig:as_ach}, \ref{fig:as_temp} e \ref{fig:as_ehf} apresentam os 
 	%			\end{flushleft}
 \end{figure}
 
-Os parâmetros mais influentes nas \acrshort{ehf}, como esperado, são aqueles relacionados às aberturas da zona. 
+Os parâmetros mais influentes no \acrshort{ach}, como esperado, são aqueles relacionados às aberturas da zona. 
 O primeiro parâmetro de maior influência é o fator de abertura das janelas, seguido do parâmetro relacionado à exposição das paredes e à presença de \acrshort{vn} cruzada ou unilateral. 
 A área da zona  térmica tem influência significativa, pois o cálculo das trocas de ar leva em conta o volume de ar na zona, que é diretamente relacionado à sua área. 
-A altura do pavimento é determinante nos resultados do \acrshort{ehf}, pois a velocidade do vento no EnergyPlus é calculada em função da altura da zona.
+A altura do pavimento é determinante nos resultados do \acrshort{ach}, pois a velocidade do vento no EnergyPlus é calculada em função da altura da zona.
 A orientação da zona (azimute) não tem uma influência significativa de primeira ordem. No entanto, percebe-se uma influência mais significativa considerando-se os efeitos totais. 
 O azimute é determinante para a definição dos coeficientes de pressão sobre as fachadas da edificação. Por isso, a influência deste parâmetro nos resultados das simulações depende de outros parâmetros, relacionados ao posicionamento e às áreas das aberturas na zona.
-A velocidade do ar não influencia os resultados relacionados ao \acrshort{ehf}, pois é considerada somente após o término das simulações, ao se calcular o \acrshort{ehf}.
+A velocidade do ar não influencia os resultados relacionados ao \acrshort{ach}, pois é considerada somente após o término das simulações, ao se calcular o \acrshort{ach}.
 A \acrshort{as} apresentou interações de segunda ordem significativas entre o fator de abertura das janelas e a presença de \acrshort{vn} cruzada ou unilateral, com um índice de sensibilidade igual a 0,121.
-Contudo, o parâmetro com maiores interações de segunda ordem relacionados ao \acrshort{ehf} foi o \acrshort{paf}, com a soma dos índices de segunda ordem igual a 0,300.
+Contudo, o parâmetro com maiores interações de segunda ordem relacionados ao \acrshort{ach} foi o \acrshort{paf}, com a soma dos índices de segunda ordem igual a 0,300.
 
 \begin{figure}[H]
 	\centering
@@ -1554,7 +1557,7 @@ Contudo, o parâmetro com maiores interações de segunda ordem relacionados ao 
 \end{figure}
 
 As análises relacionadas à temperatura operativa e ao \acrshort{ehf} indicam relevância dos parâmetros relacionados à \acrshort{vn}. Para ambas as análises, o parâmetro mais influente foi o fator de abertura da janela, enquanto o parâmetro relacionado à exposição das paredes e à presença de \acrshort{vn} cruzada ou unilateral foi o terceiro mais influente. 
-O contato com o solo apresentou-se como o segundo parâmetro mais influente nas médias anuais de temperatura operativa, considerando-se os esfeitos totais. No entanto, a influência deste parâmetro não é tão significativa no \acrshort{ehf}. Isso indica que a influência do contato com o solo nas temperaturas operativas das zonas é mais significativa em faixas de temperatura que não interferem no cálculo do \acrshort{ehf}, ou seja, consideravelmente a cima ou abaixo dos limites superiores de aceitabilidade estabelecidos pelo método de conforto adaptativo.
+O contato com o solo apresentou-se como o segundo parâmetro mais influente nas médias anuais de temperatura operativa, considerando-se os esfeitos totais. No entanto, a influência deste parâmetro não é tão significativa no \acrshort{ehf}. Isso indica que a influência do contato com o solo nas temperaturas operativas das zonas é mais significativa em faixas de temperatura que não interferem no cálculo do \acrshort{ehf}, ou seja, consideravelmente acima ou abaixo dos limites superiores de aceitabilidade estabelecidos pelo método de conforto adaptativo.
 Observa-se que os efeitos totais entre o segundo (contato com o solo) e o quarto (exposição da cobertura) índice de sensibilidade com valores mais altos na \acrshort{as} relacionada à média anual da temperatura operativa são expressivos.
 A transmitância das paredes, o azimute, e a razão entre a largura e o comprimento da sala também apresentam efeitos totais relevantes, apesar dos baixos índices de sensibilidade para primeira ordem. Isso indica que há interações significativas entre esses parâmetros e os demais.
 
@@ -1564,7 +1567,7 @@ O azimute, apesar de seu índice de sensibilidade baixo para a análise de prime
 
 A complexidade dos fenômenos representados junto às interações entre as diferentes variáveis exige um grande número de casos para reduzir incertezas, pois o método de \acrshort{as} utiliza uma base amostral. Por isso, existe uma incerteza associada aos índices de sensibilidade obtidos nas \acrshort{as} conduzidas, e a soma dos valores dos índices ultrapassa o valor 1. Entretanto, a aplicação da análise de sensibilidade global ofereceu resultados relevantes para o trabalho, com índices de sensibilidade condizentes aos comportamentos físicos representados pelas simulações. 
 
-Baseando-se nos resultados das \acrshort{as}, alguns dos parâmetros não foram considerados para o desenvolvimento do metamodelo. Desconsiderar parâmetros com índices de sensibilidade significativamente baixos possibilita o desenvolvimento de um metamodelo mais simples, com menos dados e entrada e maior precisão nos resultados. Os parâmetros desconsiderados tiveram seus valores fixados, se acordo com a Tabela \ref{table:param_fixed}. O valor do pé-direito foi determinado considerando-se o valor encontrado com mais frequência na base de dados analisada. A capacidade térmica da parede foi estabelecida de acordo com o valor de uma parede de bloco cerâmico de dimensões 14x19x29 cm, e argamassa de 2,5 cm, que é igual a 161 kJ/m$^2$K. No entanto, como as simulações foram desenvolvidos com o modelo de parede equivalente, considerou-se apenas metade do valor da capacidade térmica. Os parâmetros relacionados às proporções entre largura e profundidade das salas e edifícios foram determinados com valor igual a 1. 
+Baseando-se nos resultados das \acrshort{as}, alguns dos parâmetros não foram considerados para o desenvolvimento do metamodelo. Desconsiderar parâmetros com índices de sensibilidade significativamente baixos possibilita o desenvolvimento de um metamodelo mais simples, com menos dados de entrada e maior precisão nos resultados. Os parâmetros desconsiderados tiveram seus valores fixados, de acordo com a Tabela \ref{table:param_fixed}. O valor do pé-direito foi determinado considerando-se o valor encontrado com mais frequência na base de dados analisada. A capacidade térmica da parede foi estabelecida de acordo com o valor de uma parede de bloco cerâmico de dimensões 14x19x29 cm, e argamassa de 2,5 cm, resultando em um valor de 161 kJ/m$^2$K. No entanto, como as simulações foram desenvolvidos com o modelo de parede equivalente, considerou-se apenas metade do valor da capacidade térmica. Os parâmetros relacionados às proporções entre largura e profundidade das salas e edifícios foram determinados com valor igual a 1. 
 
 \begin{table}[h]		
 	\centering
@@ -1630,7 +1633,7 @@ O algorítimo de otimização que obteve o melhor desempenho foi o \textit{Adagr
 
 A Figura \ref{fig:ann_validation} apresenta um gráfico de pontos comparando os resultados de \acrshort{ehf} obtidos para as simulações e para as estimativas da \acrshort{ann}, a partir da base de dados desenvolvida para a validação do metamodelo. A base de dados para a validação (Figura \ref{fig:ann_validation}a) teve apenas os parâmetros incluídos no treinamento da \acrshort{ann} variados. 
 O erro absoluto médio do \acrshort{ehf} para os casos de validação foi 0,0091, com o \acrshort{ae95} igual a 0,0244.
-Para essa amostra, a \acrshort{ann} não superestimou, nem subestimou significativamente os resultado, revelando uma diferença média entre os resultados preditos e simulados igual a 0,0003.
+Para essa amostra, a \acrshort{ann} não superestimou, nem subestimou significativamente os resultados, revelando uma diferença média entre os resultados preditos e simulados igual a 0,0003.
 
 \begin{figure}[h]
 	\caption{Comparação entre os resultados de EHF estimados e simulados pelo metamodelo}
@@ -1677,8 +1680,8 @@ Em situações em que há a necessidade de respostas rápidas, sem a possibilida
 \label{chapter:conclusoes}
 	
 	A disponibilidade de um banco de dados com informações das características construtivas de edifícios de escritórios com \acrfull{vn} na cidade de São Paulo foi fundamental para a definição dos parâmetros incluídos nas simulações termoenergéticas, com seus limites mínimos e máximos. 
-	As informações relacionadas à geometria das edificações permitiu o desenvolvimento de simulações paramétricas, capazes de explorar amplamente o espaço de possibilidades existente em edificações reais.
-	Alguns parâmetros apresentados no banco de dados, como o tipo de esquadria utilizado nos edifícios, não puderam ser diretamente modelados na simulações. Contudo, todas as informações analisadas contribuíram de maneira geral para o desenvolvimento das simulações termoenergéticas.
+	As informações relacionadas à geometria das edificações permitiu o desenvolvimento de simulações paramétricas, capazes de explorar amplamente o espaço de possibilidades existente em edificações reais mapeadas no estudo.
+	Alguns parâmetros apresentados no banco de dados, como o tipo de esquadria utilizado nos edifícios, não puderam ser diretamente modelados na simulações. Contudo, todas as informações analisadas contribuíram para o desenvolvimento das simulações termoenergéticas.
 	
 	O indicador de conforto térmico escolhido para o estudo foi a \acrfull{ehf}. As variações térmicas dentro das edificações ventiladas naturalmente, assim como a expectativa dos ocupantes em relação às temperaturas médias externas, faz com que o método de conforto térmico adaptativo proposto pela \citeonline{ASHRAEStandard552017} seja o mais adequado para definir os limites de temperaturas operativas nas zonas térmicas.
 	
@@ -1691,7 +1694,7 @@ Em situações em que há a necessidade de respostas rápidas, sem a possibilida
 	Os resultados apontam que a adoção de um modelo de parede equivalente faz com que o \acrshort{ehf} tenha uma diferença absoluta média no valor de 0,010, para a parede de gesso com isolamento (leve).
 	No caso da parede de alvenaria, a adoção de um valor de capacidade térmica com metade do valor calculado para a parede de referência mostra-se mais adequado, apresentando um erro absoluto médio de 0,0189 no \acrshort{ehf}. A consideração da capacidade térmica total da parede de alvenaria de referência apresenta um erro absoluto médio de 0,0209 no \acrshort{ehf}.
 	O modelo de parede de alvenaria utilizado no programa EnergyPlus possui uma camada de ar no meio da parede, que a separa em duas metades. Durante os processos termofísicos, a inércia térmica nas zonas simuladas não sofre influência significativa da parte da parede voltada para o ambiente externo, devido à camada de ar, que possui alta resistência térmica. Portanto, considerar apenas a metade do valor da capacidade térmica apresenta diferenças menores na adoção do modelo de parede equivalente.
-	Apesar de a consideração da metade do valor da capacidade térmica para a parede de alvenaria ser mais adequada, as diferenças entre as duas abordagens é pouco expressiva.
+	Apesar da consideração da metade do valor da capacidade térmica para a parede de alvenaria ser mais adequada, as diferenças entre as duas abordagens é pouco expressiva.
 	Essa questão foi esclarecida durante a análise de sensibilidade, que mostrou uma influência pouco significativa da capacidade térmica da parede nos resultados analisados.
 	
 	Durante o processo de simplificação das simulações, a descrição dos modelos em apenas uma zona térmica foi fundamental para parametrizar as diferentes variáveis observadas no estudo, e para tornar as simulações mais rápidas.
@@ -1701,10 +1704,10 @@ Em situações em que há a necessidade de respostas rápidas, sem a possibilida
 	As análises conduzidas apontaram que considerar as paredes voltadas para a circulação como adiabáticas é mais apropriado na representação de paredes adjacentes a um edifício, gerando diferenças médias no \acrshort{ehf} de 0,005.
 	
 	A última etapa para o desenvolvimento das simulações simplificadas foi adaptar a modelagem da \acrshort{vn} para um modelo de uma zona térmica.
-	A adoção de um \acrshort{cp} equivalente, ou \acrshort{cpeq}, apresentou resultados de \acrlong{ach} mais robustos do que a adoção de valores de \acrshort{cp} calculados diretamente pelo métodos analítico do programa EnergyPlus. 
+	A adoção de um \acrshort{cp} equivalente, ou \acrshort{cpeq}, apresentou resultados de \acrfull{ach} mais robustos do que a adoção de valores de \acrshort{cp} calculados diretamente pelo métodos analítico do programa EnergyPlus. 
 	Para definir o coeficiente de vazão mássica de ar, atribuído ao objeto \textit{crack} do \acrfull{afn}, diferentes valores foram analisados.
-	O valor mais adequado foi definido buscando-se as menores raízes dos erros quadráticos médios (\acrshort{rmse}), relacionados ao \acrshort{ehf} e às médias anuais de \acrfull{ach}. 
-	Observou-se uma fronteira de Pareto entre esses dois indicadores, a partir da qual definiu-se que o valor mais adequado para o coeficiente de vazão mássica de ar é 0,8, pois este apresenta o menor \acrshort{rmse} para o \acrshort{ehf}, que é o dado de saída para o qual buscou-se minimizar ao máximo os erros.
+	O valor mais adequado foi definido buscando-se as menores raízes dos erros quadráticos médios (\acrshort{rmse}), relacionados ao \acrshort{ehf} e às médias anuais de \acrlong{ach}. 
+	Observou-se uma fronteira de Pareto entre esses dois indicadores, a partir da qual definiu-se que o valor mais adequado para o coeficiente de vazão mássica de ar é 0,8 kg/sPa$^n$ em 1 Pa, pois este apresenta o menor \acrshort{rmse} para o \acrshort{ehf}, que é o dado de saída para o qual buscou-se minimizar ao máximo os erros.
 	
 %	A comparação entre os resultados obtidos pelas simulações simplificadas e as simulações detalhadas em cada etapa permitiu entender os fatores que causam as maiores incertezas, assim 
 	
@@ -1755,9 +1758,9 @@ As limitações seguintes foram identificadas no desenvolvimento deste estudo:
 De acordo com os resultados e conclusões decorrentes deste estudo, as seguintes sugestões para trabalhos futuros são indicadas:
 
 \begin{itemize}
-	\item O desenvolvimento de metamodelos capazes de estimar conforto térmico e carga térmica em edificações que operam em modo misto poderiam estar mais adequado com o cenário brasileiro. No entanto, esse trabalho exige a modelagem adequada do comportamento dos ocupantes, que podem optar por ambas as estratégias de resfriamento, assim como um indicador de conforto térmico apropriado para edificações de modo misto;
+	\item O desenvolvimento de metamodelos capazes de estimar conforto térmico e carga térmica em edificações que operam em modo misto poderia estar mais adequado com o cenário brasileiro. No entanto, esse trabalho exige a modelagem adequada do comportamento dos ocupantes, que podem optar por ambas as estratégias de resfriamento, assim como um indicador de conforto térmico apropriado para edificações de modo misto;
 
-	\item A influência das edificações no entorno da edificação analisada pode alterar os resultados de conforto térmico. Trabalhos futuros poderiam considerar o entorno da edificação, que além de influenciar no comportamento do vento, gera sombreamento nas fachadas do edifício, e fenômenos térmicos relacionados à ilha de calor;
+	\item A influência das edificações no entorno da edificação analisada pode alterar os resultados de conforto térmico. Trabalhos futuros poderiam considerar o entorno da edificação, que além de influenciar no comportamento do vento, causa sombreamento nas fachadas do edifício, e fenômenos térmicos relacionados à ilha de calor;
 	
 	\item O metamodelo proposto neste trabalho é voltado para edificações de escritórios. Entretanto, o uso de \acrlong{vn} em edificações residenciais apresenta grande potencial. Um estudo aplicado à edificações residenciais deveria observar as maiores incertezas em relação aos padrões de ocupação. O uso de um \acrfull{cpeq} pode ser fundamental ao se explorar o uso de ventilação cruzada entre diferentes ambientes, considerando-se as portas abertas;
 

@@ -103,10 +103,10 @@ name={\ensuremath{T_{v_{ar}}}},
 description={margem extra de temperatura permitida pela consideração da velocidade do ar},
 user1= \unexpanded{\si{\celsius}}
 }
-\newglossaryentry{deltacp}{	% how the symbol will be called in the text \gls{x}
+\newglossaryentry{rmsecp}{	% how the symbol will be called in the text \gls{x}
 type=symbols,		% set the glossary entry type as "symbol"
-name={\ensuremath{\overline{\Delta}_{Cp}}},
-description={diferença absoluta média entre os valores dos Cp's obtidos pela base da TPU e obtidos pelo MA},
+name={\ensuremath{RMSE_{Cp}}},
+description={RMSE das diferenças entre os valores dos Cp's obtidos pela base da TPU e obtidos pelo MA},
 user1= {-}%\unexpanded{\si{\celsius}}
 }
 \newglossaryentry{alphaj}{	% how the symbol will be called in the text \gls{x}
@@ -117,8 +117,8 @@ user1= \ensuremath{^{\circ}}
 }
 \newglossaryentry{meancptpu}{	% how the symbol will be called in the text \gls{x}
 type=symbols,		% set the glossary entry type as "symbol"
-name={\ensuremath{\overline{Cp}^{TPU}_{f_i,\alpha_j}}},	
-description={valor médio dos Cp's disponibilizados pela base de dados da TPU para a fachada $i$ de uma edificação, para o ângulo de incidência do vento igual a $\alpha_j$}, %\glsname{tpu} \glsname{alphaj}}
+name={\ensuremath{\overline{Cp}^{TPU}_{f_i,\alpha_j,p_k}}},	
+description={valor do Cp disponibilizado pela base de dados da TPU para a fachada $i$ de uma edificação, para o ângulo de incidência do vento igual a $\alpha_j$, no ponto $k$}, %\glsname{tpu} \glsname{alphaj}}
 user1= {-}%\unexpanded{\si{\celsius}}
 }
 \newglossaryentry{cpma}{	% how the symbol will be called in the text \gls{x}
