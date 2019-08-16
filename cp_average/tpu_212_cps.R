@@ -302,7 +302,7 @@ ggplot(df_tpu,aes(df_tpu$ehf,df_ave$ehf)) +
   annotate("text", x = .25, y = .9, label = paste("Erro médio =",round(erro.medio(df_tpu$ehf,df_ave$ehf),4))) +
   # annotate("text", x = .25, y = .8, label = paste("RMSE =",round(rmse(df_tpu$ehf,df_ave$ehf),4))) #+
   annotate("text", x = .20, y = .8, label = paste("AE95 =",round(erro.ae95(df_tpu$ehf,df_ave$ehf),4))) 
-save_img('cpaverage_EHF_scatter')
+save_img('cpaverage_EHF_scatter',square = TRUE)
 
 ggplot(df_tpu,aes(df_tpu$ach,df_ave$ach)) +
   geom_point(alpha=.25)+
@@ -311,21 +311,21 @@ ggplot(df_tpu,aes(df_tpu$ach,df_ave$ach)) +
   xlab('Cp obtido base de dados da TPU\nMédia anual de trocas de ar (ACH)') +
   ylab('Cp obtido pelo método analítico\nMédia anual de trocas de ar (média anual ACH)') +
   xlim(c(0,120)) + ylim(c(0,120)) +
-  annotate("text", x = 23, y = 100, label = paste("Erro médio =",round(erro.medio(df_tpu$ach,df_ave$ach),3),'ACH')) +
-  annotate("text", x = 20, y = 90, label = paste("AE95 =",round(erro.ae95(df_tpu$ach,df_ave$ach),3),'ACH')) #+
+  annotate("text", x = 33, y = 120, label = paste("Erro médio =",round(erro.medio(df_tpu$ach,df_ave$ach),3),'ACH')) +
+  annotate("text", x = 27, y = 110, label = paste("AE95 =",round(erro.ae95(df_tpu$ach,df_ave$ach),3),'ACH')) #+
   # annotate("text", x = 20, y = 90, label = paste("RMSE =",round(rmse(df_tpu$ach,df_ave$ach),3),'ACH')) #+
-save_img('cpaverage_ACH_scatter')
+save_img('cpaverage_ACH_scatter',square = TRUE)
 
 ggplot(df_tpu,aes(df_tpu$temp,df_ave$temp)) +
   geom_point(alpha=.25)+
   geom_abline() +
   # ggtitle('Comparação da Temp. Operativa') +
-  xlab('Cp obtido pela base de dados da TPU\nTemperatura operativa média (°C))') +
-  ylab('Cp obtido pelo método analítico\nTemperatura operativa média (°C))') +
-  annotate("text", x = 25.5, y = 33, label = paste("Erro médio =",round(erro.medio(df_tpu$temp,df_ave$temp),2),'°C')) +
+  xlab('Cp obtido pela base de dados da TPU\nTemperatura operativa média (°C)') +
+  ylab('Cp obtido pelo método analítico\nTemperatura operativa média (°C)') +
+  annotate("text", x = 25.7, y = 33.2, label = paste("Erro médio =",round(erro.medio(df_tpu$temp,df_ave$temp),2),'°C')) +
   # annotate("text", x = 25, y = 32.5, label = paste("RMSE =",round(rmse(df_tpu$temp,df_ave$temp),2),'°C')) #+
   annotate("text", x = 25, y = 32.5, label = paste("AE95 =",round(erro.ae95(df_tpu$temp,df_ave$temp),2),'°C')) #+
-save_img('cpaverage_temp_scatter')
+save_img('cpaverage_temp_scatter',square = TRUE)
 erro.ae95(df_tpu$temp,df_ave$temp)
 
 ggplot(df_tpu,aes(df_tpu$ehf)) +

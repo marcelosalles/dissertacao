@@ -67,8 +67,8 @@
 
 %---------------------------------------------------------------------------
 % Load class memoir, with default font size 10pt (this will be reset later to match the BU-USFC Norm), page size A4, two sided printing, and chapters beginning at the right side of the page.
-%\LoadClass[12pt,a4paper,twoside,openright]{memoir}
-\LoadClass[10pt,a5paper,twoside,openright]{memoir}
+\LoadClass[12pt,a4paper,twoside,openright]{memoir}
+%\LoadClass[10pt,a5paper,twoside,openright]{memoir}
 
 %---------------------------------------------------------------------------
 % Packages Required
@@ -94,8 +94,11 @@
 % Todo o texto deve ser digitado em tamanho 10,5 pt inclusive títulos das seções e subseções. Citação com mais de três linhas, legendas de ilustrações e tabelas, notas de rodapé, natureza do trabalho, objetivo e nome da instituição a que é submetida e área de concentração, devem ser digitadas em tamanho: 9,5 pt. Citações com mais de três linhas devem ter um recuo de 4 cm a partir da margem esquerda.
 % setting up correct font size
 \RequirePackage{anyfontsize}
-\renewcommand{\normalsize}{\fontsize{10.5pt}{12pt}}  %  \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}}  %
-\renewcommand{\footnotesize}{\fontsize{9.5pt}{11pt}}  %\renewcommand{\footnotesize}{\fontsize{11pt}{13.4pt}}  %
+%\renewcommand{\normalsize}{\fontsize{10.5pt}{12pt}}  
+\renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}}  %
+%\renewcommand{\footnotesize}{\fontsize{9.5pt}{11pt}}  
+\renewcommand{\footnotesize}{\fontsize{11pt}{13.4pt}}  %
+
 % memoir caption commands
 \captionnamefont{\footnotesize} % Figure XX:, or Table XX: size
 \captiontitlefont{\footnotesize} % Title size
@@ -115,8 +118,10 @@
 \settrimmedsize{\stockheight}{\stockwidth}{*}
 
 % Document spacing according with UFSC guidelines
-\setlrmarginsandblock{25mm}{15mm}{*}  %  \setlrmarginsandblock{20mm}{20mm}{*}  %  
-\setulmarginsandblock{20mm}{15mm}{*}  %  \setulmarginsandblock{20mm}{20mm}{*}  %  
+%\setlrmarginsandblock{25mm}{15mm}{*} 
+%\setulmarginsandblock{20mm}{15mm}{*}    
+\setlrmarginsandblock{30mm}{20mm}{*} 
+\setulmarginsandblock{30mm}{20mm}{*}    
 
 % Setting up header and footer dimensions (Keep the lines below commented. Memoir will handle the footnote space correctly for most of the situations
 % \setheadfoot{1cm}{7mm} %{headheight}{footskip}

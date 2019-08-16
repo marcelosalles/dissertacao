@@ -15,12 +15,12 @@ import other_crack_fac
 update = dict_update.update
 
 # Globals
-FOLDER = 'ann_whole'  #  'ann_whole_test'  # 'ann_whole_validation'  # 
-SIZE =  20000  # 20000  # 155648
-OUTPUT_NAME = 'sample_ann_whole'  # 'sample_ann_whole_test'  # 'sample_ann_whole_validation'  # 
+FOLDER = 'ann_whole_test'  # 'ann_whole_validation'  # 'ann_whole'  #  
+SIZE =  5000  # 20000  # 155648
+OUTPUT_NAME = 'sample_ann_whole_test'  # 'sample_ann_whole_validation'  # 'sample_ann_whole'  # 
 NUM_CLUSTERS = int(os.cpu_count()/2)
-# NAME_STDRD = 'whole'
-NAME_STDRD_2 = 'single'
+NAME_STDRD = 'whole'
+# NAME_STDRD_2 = 'single'
 INPUT = "seed.json"  # INPUT_WHOLE 
 # INPUT_SZ = "seed_sz.json"
 EXTENSION = 'epJSON'
@@ -35,7 +35,8 @@ SOBOL =  False  # True
 PARAMETERS = {
     'open_fac':[0.2,1],
     'v_ar':[0,1],
-    'room_type':[0,1],
+    'corner_window':[0,1],  #####
+    # 'room_type':[0,1],
     'area':[20,100],
     'people':[.05,.2],
     'floor_height':[0,50],
@@ -47,11 +48,10 @@ PARAMETERS = {
     'glass':[.2,.87],
     'azimuth':[0,359.9],
     'wwr':[.1,.6],
-    # 'corner_window':[0,1],  #####
     # 'n_floor':[1,9],        #####
-    # 'ratio':[.4,2.5],
-    # 'zone_height':[2.3,3.2],
-    # 'wall_ct':[.22,450],
+    'ratio':[.4,2.5],
+    'zone_height':[2.3,3.2],
+    'wall_ct':[.22,450],
     # 'bldg_ratio': [.2,1]
 }
         
@@ -131,19 +131,19 @@ for i in range(len(sample)):
     
     case = name_length.format(line)
     
-    output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD+'_{}.epJSON'.format(case))
-    df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD+'_{}.epJSON'.format(case)]],columns=col_names+['folder','file']))
+    output = (FOLDER+'/cluster'+name_length_cluster.format(cluster_n)+'/'+NAME_STDRD+'_{}'.format(case)+'.epJSON')
+    df = df.append(pd.DataFrame([sample_line+['cluster'+name_length_cluster.format(cluster_n),NAME_STDRD+'_{}'.format(case)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
     print(output)
     whole_gen.main(
         zone_area = model_values['area'],
-        zone_ratio = 1,  # model_values['ratio'],
-        zone_height = 2.5,  # model_values['zone_height'],
+        zone_ratio = model_values['ratio'],  #1,  # 
+        zone_height = model_values['zone_height'],  # 2.5,  # 
         absorptance = model_values['absorptance'],
         shading = model_values['shading'],
         azimuth = model_values['azimuth'],
         corr_width = corr_width,
         wall_u = model_values['wall_u'], 
-        wall_ct = 80.5,  # model_values['wall_ct'], 
+        wall_ct = model_values['wall_ct'],  # 80.5,  # 
         corr_vent = 1, 
         stairs = 0, 
         zone_feat = zone_feat, 
@@ -174,13 +174,15 @@ print("Total processing time: " + str(total_time))
    
 ########################################################################
 
+os.chdir('/media/marcelo/OS/dissertacao')
+
 # Globals
 FOLDER = 'ann_whole_validation'  #  'ann_whole_test'  # 'ann_whole_validation'  # 
 SIZE =  5000  # 20000  # 155648
 OUTPUT_NAME = 'sample_ann_whole_validation'  # 'sample_ann_whole'  # 'sample_ann_whole_test'  # 
 NUM_CLUSTERS = int(os.cpu_count()/2)
-# NAME_STDRD = 'whole'
-NAME_STDRD_2 = 'single'
+NAME_STDRD = 'whole'
+# NAME_STDRD_2 = 'single'
 INPUT = "seed.json"  # INPUT_WHOLE 
 # INPUT_SZ = "seed_sz.json"
 EXTENSION = 'epJSON'
@@ -195,7 +197,8 @@ SOBOL =  False  # True
 PARAMETERS = {
     'open_fac':[0.2,1],
     'v_ar':[0,1],
-    'room_type':[0,1],
+    'corner_window':[0,1],  #####
+    # 'room_type':[0,1],
     'area':[20,100],
     'people':[.05,.2],
     'floor_height':[0,50],
@@ -207,7 +210,6 @@ PARAMETERS = {
     'glass':[.2,.87],
     'azimuth':[0,359.9],
     'wwr':[.1,.6],
-    # 'corner_window':[0,1],  #####
     # 'n_floor':[1,9],        #####
     # 'ratio':[.4,2.5],
     # 'zone_height':[2.3,3.2],
@@ -291,8 +293,8 @@ for i in range(len(sample)):
     
     case = name_length.format(line)
     
-    output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD+'_{}.epJSON'.format(case))
-    df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD+'_{}.epJSON'.format(case)]],columns=col_names+['folder','file']))
+    output = (FOLDER+'/cluster'+name_length_cluster.format(cluster_n)+'/'+NAME_STDRD+'_{}'.format(case)+'.epJSON')
+    df = df.append(pd.DataFrame([sample_line+['cluster'+name_length_cluster.format(cluster_n),NAME_STDRD+'_{}'.format(case)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
     print(output)
     whole_gen.main(
         zone_area = model_values['area'],
