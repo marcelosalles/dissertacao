@@ -293,34 +293,6 @@ Os valores padrão para \gls{alphamet} e \gls{deltamet}, a partir dos quais se e
 Ao definir a velocidade do vento, o programa EnergyPlus calcula a pressão do vento sobre as edificações, determinada também pelo princípio da equação de Bernoulli \cite{Walton1989}.
 
 A maior dificuldade no desenvolvimento do \acrshort{afn} é a necessidade de estimar as características do fluxo nas aberturas e o coeficiente de pressão do vento na edificação \cite{Arendt2017}. Os \acrfull{cp} descrevem como o vento interfere na distribuição externa de pressões em volta da edificação. 
-De acordo com \citeonline{Costola2010}, os \acrshort{cp} médios se definem de acordo com Equação \ref{eq:CalcCp} e Equação \ref{eq:Pvel}.
-
-%	\vspace{-8pt}
-\begin{equation}\label{eq:CalcCp}
-C_p = \frac{P_x - P_{\infty}}{P_d}
-\end{equation}
-%	\vspace{-5pt}
-%	\vspace{-8pt}
-\begin{equation}\label{eq:Pvel}
-P_d = \frac{\rho V^{2}_{\infty}}{2}
-\end{equation}
-%	\vspace{-5pt}
-
-Onde:
-
-\gls{cpp} é o coeficiente de pressão ($-$);
-
-\gls{px} é a pressão estática em um dado ponto da fachada do edifício ($Pa$);
-
-\gls{p0} é a pressão estática no ambiente externo ($Pa$);
-
-\gls{pd} é a pressão dinâmica ($Pa$);
-
-\gls{rho} é a densidade do ar ($kg/m^3$);
-
-\gls{vref} é a velocidade do vento no ambiente externo ($m/s$).
-\\
-
 Os \acrshort{cp} dependem principalmente da geometria da edificação, dos detalhes da fachada, do entorno da edificação, da velocidade e direção do vento, e da intensidade da turbulência. Na prática, destaca-se a dificuldade em determinar precisamente a relação entre o \acrshort{cp} e todos esses fatores. As abordagens mais realistas são os experimentos em escala real \textit{in-situ}. No entanto, esses experimentos possuem custo elevado e normalmente possuem grandes incertezas. 
 Os dados dos \acrshort{cp} podem ser estimados pelas seguintes fontes: testes de túnel de vento; simulações com \acrshort{cfd}; modelos analíticos; e bases de dados.
 Bases de dados de \acrshort{cp} são compilações de uma ou mais fontes, onde os dados são classificados de acordo com alguns parâmetros, como a forma da edificação e a orientação de incidência do vento. 
@@ -385,6 +357,34 @@ Diversos fatores que afetam o valor do \acrshort{cp} são comumente simplificado
 	\source{adaptado de \citeonline{Costola2010} (traduzido pelo autor)}
 	%		\vspace{-12pt}
 \end{table}
+
+De acordo com \citeonline{Costola2010}, os \acrshort{cp} médios se definem de acordo com Equação \ref{eq:CalcCp} e Equação \ref{eq:Pvel}.
+
+%	\vspace{-8pt}
+\begin{equation}\label{eq:CalcCp}
+C_p = \frac{P_x - P_0}{P_d}
+\end{equation}
+%	\vspace{-5pt}
+%	\vspace{-8pt}
+\begin{equation}\label{eq:Pvel}
+P_d = \frac{\rho V^{2}_{ref}}{2}
+\end{equation}
+%	\vspace{-5pt}
+
+Onde:
+
+\gls{cpp} é o coeficiente de pressão ($-$);
+
+\gls{px} é a pressão estática em um dado ponto da fachada do edifício ($Pa$);
+
+\gls{p0} é a pressão estática de referência ($Pa$);
+
+\gls{pd} é a pressão dinâmica ($Pa$);
+
+\gls{rho} é a densidade do ar ($kg/m^3$);
+
+\gls{vref} é a velocidade do vento de referência ($m/s$).
+\\
 
 Nas simulações termoenergéticas de edificações, há muita incerteza relacionada ao \acrshort{cp}. Isso deve-se à influência do \acrshort{cp} em muitos dos indicadores de desempenho, como consumo de energia ou conforto térmico, que são frequentemente sensíveis à vazão de ar \cite{Costola2009}. 
 As bases de dados de \acrshort{cp} são amplamente disponíveis, particularmente para o cálculo de carga de vento em estruturas. Esses valores de \acrshort{cp} para edificações sem obstruções, com geometria simples, podem ser utilizados quando experimentos em túneis de vento não são disponíveis. Uma abordagem similar é usada para bases de dados de ventilação e infiltração na literatura. Nenhuma das bases de dados e modelos analíticos lidam com os efeitos da topografia local, detalhes da fachada, ou informam a incerteza dos dados disponibilizados. Os efeitos das edificações do entorno são considerados com muitas limitações e simplificações.
@@ -469,7 +469,7 @@ Onde:
 
 \gls{tsup} é o limite superior da temperatura operativa para que haja conforto térmico ($^{\circ}C$);
 
-\gls{tm} é a temperatura média do ar no ambiente externo ($^{\circ}C$).
+\gls{tm} é a temperatura média do ar externo ($^{\circ}C$).
 \\
 
 A temperatura média do ar externo representa o ambiente climático externo com o qual os ocupantes da edificação estão fisiologicamente,
@@ -577,7 +577,7 @@ Os valores desses parâmetros foram observados através de suas distribuições 
 
 Certas informações não estão disponibilizadas pelo banco de dados analisado, como algumas relacionadas às propriedades termofísicas dos materiais da envoltória, às densidades de potência de iluminação e equipamentos, e aos padrões e taxas de ocupação. Frente a essa limitação, os valores desses parâmetros foram definidos a partir da \acrlong{inic} \cite{INIC}. %, através da Tabela 4.1, da Tabela A.1 do anexo A e da Tabela B.I.1 do anexo B.  % Hora início e fim: 8 - 18,  INI-C
 
-A Tabela \ref{table:paramconst} apresenta os parâmetros que mantiveram-se com valores constantes no desenvolvimento do trabalho. Esses valores foram escolhidos a partir do que é apresentado na \citeonline{INIC} para a simulação das edificações nas condições de referência. A cobertura tem suas propriedades termofísicas baseadas na consideração de uma laje de concreto de 10 cm de espessura e telha de fibrocimento, separadas por uma câmara de ar. O padrão de ocupação foi definido de acordo com o que é estabelecido para a análise de conforto térmico em edificações de escritórios pelo método simplificado, considerando-se apenas dias de semana. Valores relacionados às propriedades termofísicas do piso em contato com solo e da laje entre pavimentos não são especificados pela \acrshort{inic} para o caso de referência, portanto foi considerado, para ambos os casos, uma laje de concreto de 12cm de espessura com uma camada de piso cerâmico.
+A Tabela \ref{table:paramconst} apresenta os parâmetros que mantiveram-se com valores constantes no desenvolvimento do trabalho. Esses valores foram escolhidos a partir do que é apresentado na \citeonline{INIC} para a simulação das edificações nas condições de referência. A cobertura tem suas propriedades termofísicas baseadas na consideração de uma laje de concreto de 10cm de espessura e telha de fibrocimento, separadas por uma câmara de ar. O padrão de ocupação foi definido de acordo com o que é estabelecido para a análise de conforto térmico em edificações de escritórios pelo método simplificado, considerando-se apenas dias de semana. Valores relacionados às propriedades termofísicas do piso em contato com solo e da laje entre pavimentos não são especificados pela \acrshort{inic} para o caso de referência, portanto foi considerado, para ambos os casos, uma laje de concreto de 12cm de espessura com uma camada de piso cerâmico.
 
 \begin{table}[h]
 	\centering
