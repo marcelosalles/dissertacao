@@ -77,7 +77,7 @@ Apesar de seu pontencial de aplicabilidade, o uso de VN em edifícios de escrit�
 vem diminuindo gradualmente no Brasil, pois edificações de escritórios recentes vêm sendo projetadas exclusivamente com sistemas de condicionamento de ar.
 
 Para que seja aplicada de forma efetiva, é importante que a VN seja concebida desde a fase inicial de projeto. Durante a fase inicial de projeto, há pouco detalhamento relacionado ao projeto arquitetônico, e há necessidade de agilidade nas tomadas de decisão.
-Diante deste cenário, uma ferramento capaz de estimar o conforto térmico em edificações de forma simples e rápida pode ser de grande utilidade.
+Diante deste cenário, uma ferramenta capaz de estimar o conforto térmico em edificações de forma simples e rápida pode ser de grande utilidade.
 
 O objetivo deste estudo é desenvolver um metamodelo de rede neural artificial capaz de estimar o conforto térmico em edificações de escritórios ventilados naturalmente. 
 O indicador de conforto térmico utilizado é a fração de horas do ano em que há desconforto térmico por calor no ambiente (EHF), de acordo com o método adaptativo da ASHRAE Standard 55 (2017), para 80\% de aceitabilidade entre os ocupantes.
@@ -94,15 +94,14 @@ Esse metamodelo pode ser utilizado por projetistas como uma ferramenta de fácil
 
 \textabstract {
 	Energy demand in the world for air cooling in buildings is significant, and it is expected to increase in the next decades.
-	A solution to mitigate energy use for air cooling is the use of natural ventilation (NV).
-	NV is as passive cooling strategy with significant potential for hot climates.
+	Natural ventilation (NV) could be a solution to mitigate energy use for air cooling, since it is a passive cooling strategy with significant potential for hot climates.
 	Despite its potential, the use of NV has been decreasing in recent years for office buildings in Brazil, since the design of buildings with air conditioning prevails.
 	
 	It is important to conceive the use of NV since early-design phases of the building to guarantee its effectiveness.
 	During early-design phases, there are uncertainties related to the many construction parameters, and the decision process has to occur fast.
 	Given the current scenario, the development of a surrogate model capable of estimate thermal comfort in buildings in a simple and fast way could be of great use.
 	
-	The aim of this study is to develop a neural network surrogate model to estimate thermal comfort in naturally ventilated office buildings.
+	The aim of this study is to develop an artificial neural network model to estimate thermal comfort in naturally ventilated office buildings.
 	The annual fraction of occupied hours within the thermal zone with operative temperatures above the upper limit of ASHRAE's Standards 55 (2017) adaptive model, for 80\% of acceptability, is used as a thermal comfort index.
 	
 	The surrogate model is developed from a data set of building performance simulations, using the software EnergyPlus.
@@ -158,7 +157,7 @@ Apesar de um quinto da energia elétrica brasileira ser destinada a edificaçõe
 
 Para que o conforto térmico dos usuários seja garantido sem um consumo significativo de energia, é importante entender como ocorrem as variações térmicas em um edifício antes de construí-lo. Análises durante os estágios iniciais de projeto de uma edificação com \acrshort{vn} apontam decisões fundamentais para o desempenho térmico. No estágio inicial de projeto, o potencial de otimização é significativo, e nesta etapa qualquer estimativa do conforto e desempenho energético da edificação pode refletir nas tomadas de decisão \cite{Belleri2014, Roetzel2014}.
 
-O método mais avançado de se estimar o desempenho termoenergético de edificações atualmente é por meio de simulações computacionais. No entanto, esse processo exige o conhecimento técnico de um especialista, pois simulações termoenergéticas dinâmicas requerem modelos detalhados e enfrentam diversos problemas, associados principalmente a informações necessárias para dados de entrada do modelo processado \cite{Corgnati2013}. No contexto brasileiro, a análise do desempenho térmico de edificações por meio de simulações computacionais é uma medida relevante, pois, assim como em outros países em desenvolvimento, a falta de acessibilidade a dados relacionados a padrões de consumo de energia e atributos físicos e operacionais de edifícios de escritório dificulta as análises a partir de bancos de dados \cite{Alves2018}. Uma alternativa para contornar essas questões é o desenvolvimento de metamodelos. Metamodelos são modelos desenvolvidos a partir de simulações computacionais, através dos quais é possível se obter resultados próximos aos de simulações complexas de desempenho energético.
+O método mais avançado de se estimar o desempenho termoenergético de edificações atualmente é por meio de simulações computacionais. No entanto, esse processo exige o conhecimento técnico de um especialista, pois simulações termoenergéticas dinâmicas requerem modelos detalhados e enfrentam diversos problemas, associados principalmente a informações necessárias para dados de entrada do modelo processado \cite{Corgnati2013}. No contexto brasileiro, a análise do desempenho térmico de edificações por meio de simulações computacionais é uma medida relevante, pois, assim como em outros países em desenvolvimento, a falta de acessibilidade a dados relacionados a padrões de consumo de energia e atributos físicos e operacionais de edifícios de escritório dificulta as análises a partir de bancos de dados \cite{Alves2018}. Uma alternativa para contornar essas questões é o desenvolvimento de modelos a partir de simulações computacionais, os metamodelos. Por meio de metamodelos é possível se obter resultados próximos aos de simulações complexas de desempenho energético.
 
 Metamodelos para eficiência energética de edificações podem ser desenvolvidos a partir de diferentes métodos \cite{Ostergard2018}. A solução mais apropriada depende do contexto e propósitos de cada aplicação.
 \citeonline{Versage2015} foi capaz de estimar as cargas térmicas de edificações comerciais através de diferentes métodos de metamodelagem.
@@ -293,7 +292,7 @@ Os valores padrão para \gls{alphamet} e \gls{deltamet}, a partir dos quais se e
 Ao definir a velocidade do vento, o programa EnergyPlus calcula a pressão do vento sobre as edificações, determinada também pelo princípio da equação de Bernoulli \cite{Walton1989}.
 
 A maior dificuldade no desenvolvimento do \acrshort{afn} é a necessidade de estimar as características do fluxo nas aberturas e o coeficiente de pressão do vento na edificação \cite{Arendt2017}. Os \acrfull{cp} descrevem como o vento interfere na distribuição externa de pressões em volta da edificação. 
-De acordo com \citeonline{Costola2010}, os \acrshort{cp} médios se definem de acordo com Equação \ref{eq:CalcCp} e Equação \ref{eq:Pvel}.
+De acordo com \citeonline{Costola2010}, os \acrshort{cp} se definem de acordo com Equação \ref{eq:CalcCp} e Equação \ref{eq:Pvel}.
 
 %	\vspace{-8pt}
 \begin{equation}\label{eq:CalcCp}
@@ -422,7 +421,7 @@ Na Figura \ref{fig:DetailedOpening}, $P_{01}$ e $P_{02}$ representam as pressõe
 %	\end{flushleft}
 \end{figure}
 
-O \acrfull{cd} é utilizado para representar a característica do fluxo na abertura quando a abertura é grande. Para frestas, utiliza-se o coeficiente de fluxo de ar por frestas (\acrshort{cq}) \cite{Arendt2017}.
+O \acrfull{cd} é utilizado para representar a característica do fluxo na abertura quando a abertura é grande. Para frestas, utiliza-se o coeficiente de fluxo mássico de ar (\acrshort{cq}) \cite{Arendt2017}.
 Esses coeficientes são definidos como a razão entre o fluxo real em relação ao	ideal, quando a vazão mássica de ar de referência é definida para a diferença de pressão de 1 Pa. Ambos os parâmetros dependem da geometria da abertura, velocidade do ar, orientação geográfica, edificações do entorno, morfologia urbana e a forma do edifício em questão.
 O valor do \acrshort{cd} é o produto entre o coeficiente de velocidade e o coeficiente de contração \cite{Flourentzou1998}. Ele pode ser determinado experimentalmente quando a vazão de ar é medida diretamente, com gás rastreador, por exemplo. O coeficiente de velocidade também pode ser determinado similarmente medindo-se as velocidades do ar.
 
@@ -440,7 +439,7 @@ O estudo de \citeonline{Iqbal2015} avalia o efeito do ângulo de abertura na vaz
 
 A \acrlong{vn} é um fenômeno complexo, dependente de diversos fatores. O uso de modelos \acrshort{afn} tem algumas limitações, assim como os coeficientes adotados para a aplicação dos modelos. Apesar das condições de contorno e simplificações adotadas, o \acrshort{afn} apresenta-se como uma solução mais compatível com programas de simulação termoenergética de edificações como o EnergyPlus, devido ao relativo baixo custo computacional e à integração já	existente aos demais algoritmos do programa.
 
-\section{Conforto Térmico}
+\section{Conforto térmico}
 
 Dentro de uma edificação, diversos fatores podem influenciar no conforto dos ocupantes, como características acústicas, visuais ou térmicas. Devido ao foco deste trabalho, serão discutidas questões relacionadas ao conforto térmico.
 A busca por conforto térmico tem influência significativa na construção de edificações e na escolha dos materiais construtivos. Esse conforto depende de fatores físicos, fisiológicos e psicológicos. De acordo com a \citeonline{ASHRAEStandard552017}, conforto térmico é o estado da mente que expressa satisfação da pessoa com o ambiente térmico que a circunda, e é estimado através de avaliação subjetiva. No estudo do conforto térmico há duas abordagens principais: o modelo estático e o modelo adaptativo. % \textit{Standard 55}
@@ -583,27 +582,27 @@ A Tabela \ref{table:paramconst} apresenta os parâmetros que mantiveram-se com v
 	\centering
 	\caption{Parâmetros com valores constantes}
 	\label{table:paramconst}
-	\begin{tabular}{|l |r |}
+	\begin{tabular}{|l |c |c |}
 		\hline
-		\textbf{Parâmetros} & \textbf{Valores} \\
+		\textbf{Parâmetros} & \textbf{Valores} & \textbf{Unidades} \\
 		\hline
-		Capacidade térmica da cobertura & 233 kJ/m$^2$K \\
+		Capacidade térmica da cobertura & 233 & kJ/m$^2$K \\
 		\hline
-		Transmitância da cobertura & 2,06 W/m$^2$K \\
+		Transmitância da cobertura & 2,06 & W/m$^2$K \\
 		\hline
-		Capacidade térmica do piso / laje & 306 kJ/m$^2$K \\
+		Capacidade térmica do piso / laje & 306 & kJ/m$^2$K \\
 		\hline
-		Transmitância do piso / laje & 4,30 W/m$^2$K \\
+		Transmitância do piso / laje & 4,30 & W/m$^2$K \\
 		\hline
-		Transmitância do vidro & 5,7 W/m$^2$K \\
+		Transmitância do vidro & 5,7 & W/m$^2$K \\
 		\hline 
-		Densidade de potência de iluminação & 14 W/m$^2$ \\
+		Densidade de potência de iluminação & 14 & W/m$^2$ \\
 		\hline 
-		Densidade de potência de equipamentos & 97 W/pessoa \\
+		Densidade de potência de equipamentos & 97 & W/pessoa \\
 		\hline 
-		Hora de início de ocupação & 8 horas \\
+		Hora de início de ocupação & 8 & horas \\
 		\hline 
-		Hora final de ocupação & 18 horas \\
+		Hora final de ocupação & 18 & horas \\
 		\hline 
 	\end{tabular}
 	%			\begin{flushleft}
@@ -618,19 +617,19 @@ A única excessão é a taxa de ocupação, que é sempre considerada com o valo
 	\centering
 	\caption{Limites mínimos e máximos de valores dos parâmetros variáveis não disponíveis no banco de dados}
 	\label{table:paraminic}
-	\begin{tabular}{|l |r |}
+	\begin{tabular}{|l |c |c |}
 		\hline
-		\textbf{Parâmetro} & \textbf{Faixa de valores} \\
+		\textbf{Parâmetros} & \textbf{Faixa de valores} & \textbf{Unidades} \\
 		\hline
-		Capacidade térmica da parede & 0,22 - 450 [kJ/m$^2$K] \\
+		Capacidade térmica da parede & 0,22 - 450 & kJ/m$^2$K \\
 		\hline
-		Transmitância da parede & 0,50 4,40 [W/m$^2$K] \\
+		Transmitância da parede & 0,50 - 4,40 & W/m$^2$K \\
 		\hline
-		Fator solar do vidro & 0,20 - 0,87 [-] \\
+		Fator solar do vidro & 0,20 - 0,87 & - \\
 		\hline 
-		Ângulo horizontal de sombreamento & 0 - 80 [$^{\circ}$] \\
+		Ângulo horizontal de sombreamento & 0 - 80 & graus \\
 		\hline 
-		Taxa de ocupação & 0,05 - 0,20 [pessoas/m$^2$] \\
+		Taxa de ocupação & 0,05 - 0,20 & pessoas/m$^2$ \\
 		\hline 
 	\end{tabular}
 	%			\begin{flushleft}
@@ -652,7 +651,7 @@ A Figura \ref{fig:temp_means} apresenta as temperaturas externas da cidade de S�
 %	\vspace{-5pt}
 \end{figure}
 
-Durante as simulações, para cada \textit{timestep} com ocupação na sala, foi calculado se a temperatura operativa da zona térmica ultrapassou o limite superior determinado pelo método adaptativo da \citeonline{ASHRAEStandard552017}. Ao fim de cada simulação, a fração de horas de desconforto foi obtida para cada zona térmica modelada, de acordo com a Equação \ref{eq:EHF}:
+A partir dos resultados das simulações, para cada \textit{timestep} com ocupação na sala, foi calculado se as temperaturas operativas das zonas térmicas ultrapassaram o limite superior determinado pelo método adaptativo da \citeonline{ASHRAEStandard552017}. A fração de horas de desconforto foi obtida para cada zona térmica modelada, de acordo com a Equação \ref{eq:EHF}:
 
 \begin{equation}
 \label{eq:EHF}
@@ -710,7 +709,7 @@ Onde:
 
 \subsection{Simulação detalhada}
 
-Sabendo-se que o metamodelo estima o conforto térmico baseado no método adaptativo da \citeonline{ASHRAEStandard552017}, o principal dado de saída a se obter nas simulações foi a temperatura operativa da zona térmica, assim como a temperatura do ar externo. Portanto, todo o desenvolvimento das simulações termoenergéticas do trabalho foi voltado para que se obtivesse, com boa precisão, a temperatura operativa das zonas térmicas e, posteriormente, a sua relação com a temperatura do ar externo, chegando-se ao indicador de conforto térmico.
+Sabendo-se que o metamodelo estima o conforto térmico baseado no método adaptativo da \citeonline{ASHRAEStandard552017}, o principal dado de saída a se obter nas simulações foi a temperatura operativa da zona térmica, assim como a temperatura do ar externo. Portanto, todo o desenvolvimento das simulações termoenergéticas do trabalho foi voltado para que se obtivesse, com boa exatidão, a temperatura operativa das zonas térmicas e, posteriormente, a sua relação com a temperatura do ar externo, chegando-se ao indicador de conforto térmico.
 
 %		A Tabela \ref{table:parametros} apresenta os parâmetros que serão considerados no desenvolvimento dos modelos, com suas faixas de valores admitidos.	
 %		
@@ -1080,21 +1079,21 @@ A maneira como se descreve as variáveis de entrada dos modelos simulados para o
 Portanto, no processo de definição das variáveis de entrada do metamodelo, busca-se a melhor forma de descrever as diversas características das zonas térmicas.
 Esse é um processo iterativo, que envolve diferentes variáveis, utilizando-se transformações, normalizações e funções destas. 
 É importante também observar os hiperparâmetros (parâmetros relacionados ao processo de aprendizagem automática) escolhidos no desenvolvimento da \acrshort{ann}. 
-A precisão dos resultados obtidos pela \acrshort{ann} pode depender do número de nós, número de camadas, taxa de aprendizagem, número de iterações, assim como outros parâmetros definidos durante o processo de treinamento. 
+A exatidão dos resultados obtidos pela \acrshort{ann} pode depender do número de nós, número de camadas, taxa de aprendizagem, número de iterações, assim como outros parâmetros definidos durante o processo de treinamento. 
 
 Ao longo do processo de desenvolvimento do metamodelo, \acrshort{ann} com diferentes configurações foram testadas, utilizando-se diferentes maneiras de descrever as variáveis de entrada, e diferentes combinações de hiperparâmetros.
 A base de dados utilizada para o treinamento do metamodelo foi gerada a partir de 100.000 simulações, amostrados pelo método de amostragem do LHS. %100.000 simulações, amostrados pelo método de amostragem de Sobol.
 A amostra utilizada para validação foi composta por 20.000 casos, geradas por LHS.
 % O motivo para se utilizar diferentes métodos de amostragem é para evitar qualquer enviesamento possivelmente relacionado ao método de amostragem.
 Em ambas as amostras, os parâmetros variados tiveram seus limites mínimos e máximos definidos de acordo com o item \ref{subsec:par}, com excessão daqueles parâmetros que tiveram seus valores determinados como fixos na etapa da \acrshort{as}.
-Os indicadores de precisão utilizados foram o erro absoluto médio e o \acrfull{ae95}.
-É comum se utilizar a \acrfull{rmse}, ou o \acrfull{r2} como indicadores de desempenho. Contudo, considerando-se que o dado de saída do metamodelo será uma fração (\acrshort{ehf}) com valor entre zero e um, o erro absoluto já é consequentemente um erro relativo. Portanto, conclui-se que o erro absoluto médio, associado ao \acrlong{ae95}, pode estimar de maneira mais adequada a imprecisão esperada para os resultados do metamodelo.
+Os indicadores de exatidão utilizados foram o erro absoluto médio e o \acrfull{ae95}.
+É comum se utilizar a \acrfull{rmse}, ou o \acrfull{r2} como indicadores de desempenho. Contudo, considerando-se que o dado de saída do metamodelo será uma fração (\acrshort{ehf}) com valor entre zero e um, o erro absoluto já é consequentemente um erro relativo. Portanto, conclui-se que o erro absoluto médio, associado ao \acrlong{ae95}, pode estimar de maneira mais adequada a exatidão esperada para os resultados do metamodelo.
 
-A \acrshort{ann} com os melhores indicadores de precisão na etapa de treinamento foi escolhida para ter seu desempenho analisado com uma amostra de teste. 
+A \acrshort{ann} com os melhores indicadores de exatidão na etapa de treinamento foi escolhida para ter seu desempenho analisado com uma amostra de teste. 
 A amostra de teste foi utilizada para verificar o desempenho da \acrshort{ann} quando os valores dos parâmetros determinados como fixos na etapa da \acrshort{as} variam. Para isso, utilizou-se uma amostra de 20.000 casos.
-Ao analisar os indicadores de precisão da \acrshort{ann} em relação às amostras de validação e de teste, o metamodelo final foi definido.
+Ao analisar os indicadores de exatidão da \acrshort{ann} em relação às amostras de validação e de teste, o metamodelo final foi definido.
 
-\chapter{Resultados e Discussões}
+\chapter{Resultados e discussões}
 \label{chapter:Resultados}
 
 \section{Parâmetros de entrada} \label{section:parametrosdeentrada}
@@ -1473,7 +1472,7 @@ O resultado dessa análise pode ser atribuída ao fato de que as diferenças mai
 	%			\end{flushleft}
 \end{figure}
 
-Como o desenvolvimento das simulações é voltado para obter a maior precisão possível para os resultados de \acrshort{ehf}, optou-se por definir o coeficiente de vazão mássica de ar com valor igual a 0,8 kg/sPa$^n$ em 1 Pa, pois as simulações desenvolvidas utilizando-se este valor estão na fronteira de Pareto, e resultaram nos menores erros de \acrshort{ehf}.
+Como o desenvolvimento das simulações é voltado para obter a maior exatidão possível para os resultados de \acrshort{ehf}, optou-se por definir o coeficiente de vazão mássica de ar com valor igual a 0,8 kg/sPa$^n$ em 1 Pa, pois as simulações desenvolvidas utilizando-se este valor estão na fronteira de Pareto, e resultaram nos menores erros de \acrshort{ehf}.
 Na Figura \ref{fig:pareto}, o ponto do coeficiente de vazão mássica de ar com valor a 0,8 kg/sPa$^n$ em 1 Pa está destacado com um "X".
 A Figura \ref{fig:crack08} apresenta a comparação dos resultados de \acrshort{ach} e \acrshort{ehf} obtidos pelas simulações detalhadas, comparados aos resultados obtidos pela simulação simplificada, utilizando-se o coeficiente de vazão mássica de ar adotado, com valor igual 0,8 kg/sPa$^n$ em 1 Pa.
 
