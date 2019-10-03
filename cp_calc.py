@@ -96,21 +96,21 @@ def const_calc(room_type, WindPressureCoefficientValues, zone_x, zone_y, wwr, zn
         "idf_max_extensible_fields": 0,
         "idf_max_fields": 14
     }
-    Cjan, Cjancorr, Cpor, Cp_0, Cp_1, Cp_2, Cp_3, Pout, Pcorr, P0, P1, P2, P3, P4, P5 = symbols('Cjan, Cjancorr, Cpor, Cp_0, Cp_1, Cp_2, Cp_3, Pout, Pcorr, P0, P1, P2, P3, P4, P5')
+    Cjan, Cjancorr, Cpor, Cp_0, Cp_1, Cp_2, Cp_3, Pout, Pd, Pcorr, P0, P1, P2, P3, P4, P5 = symbols('Cjan, Cjancorr, Cpor, Cp_0, Cp_1, Cp_2, Cp_3, Pout, Pd, Pcorr, P0, P1, P2, P3, P4, P5')
 
-    p_2 = Eq(Cjan*(P2-Pout*Cp_3)-Cjancorr*(Pcorr-P2))
-    p_3 = Eq(Cjan*(P3-Pout*Cp_1)-Cjancorr*(Pcorr-P3))
+    p_2 = Eq(Cjan*(P2-Pout-Pd*Cp_3)-Cjancorr*(Pcorr-P2))
+    p_3 = Eq(Cjan*(P3-Pout-Pd*Cp_1)-Cjancorr*(Pcorr-P3))
     
     if corner_window:
-        p_0 = Eq(Cjan*(P0-Pout*Cp_3)-Cjancorr*(Pcorr-P0) + Cjan*(P0-Pout*Cp_2))
-        p_1 = Eq(Cjan*(P1-Pout*Cp_1)-Cjancorr*(Pcorr-P1)+ Cjan*(P1-Pout*Cp_2))
-        p_4 = Eq(Cjan*(P4-Pout*Cp_3)-Cjancorr*(Pcorr-P4) + Cjan*(P4-Pout*Cp_0))
-        p_5 = Eq(Cjan*(P5-Pout*Cp_1)-Cjancorr*(Pcorr-P5) + Cjan*(P5-Pout*Cp_0))
+        p_0 = Eq(Cjan*(P0-Pout-Pd*Cp_3)-Cjancorr*(Pcorr-P0) + Cjan*(P0-Pout-Pd*Cp_2))
+        p_1 = Eq(Cjan*(P1-Pout-Pd*Cp_1)-Cjancorr*(Pcorr-P1)+ Cjan*(P1-Pout-Pd*Cp_2))
+        p_4 = Eq(Cjan*(P4-Pout-Pd*Cp_3)-Cjancorr*(Pcorr-P4) + Cjan*(P4-Pout-Pd*Cp_0))
+        p_5 = Eq(Cjan*(P5-Pout-Pd*Cp_1)-Cjancorr*(Pcorr-P5) + Cjan*(P5-Pout-Pd*Cp_0))
     else:
-        p_0 = Eq(Cjan*(P0-Pout*Cp_3)-Cjancorr*(Pcorr-P0))
-        p_1 = Eq(Cjan*(P1-Pout*Cp_1)-Cjancorr*(Pcorr-P1))
-        p_4 = Eq(Cjan*(P4-Pout*Cp_3)-Cjancorr*(Pcorr-P4))
-        p_5 = Eq(Cjan*(P5-Pout*Cp_1)-Cjancorr*(Pcorr-P5))
+        p_0 = Eq(Cjan*(P0-Pout-Pd*Cp_3)-Cjancorr*(Pcorr-P0))
+        p_1 = Eq(Cjan*(P1-Pout-Pd*Cp_1)-Cjancorr*(Pcorr-P1))
+        p_4 = Eq(Cjan*(P4-Pout-Pd*Cp_3)-Cjancorr*(Pcorr-P4))
+        p_5 = Eq(Cjan*(P5-Pout-Pd*Cp_1)-Cjancorr*(Pcorr-P5))
 
     p_0 = sp.expand(sp.solve(p_0, P0)[0])
     p_1 = sp.expand(sp.solve(p_1, P1)[0])
@@ -119,7 +119,7 @@ def const_calc(room_type, WindPressureCoefficientValues, zone_x, zone_y, wwr, zn
     p_4 = sp.expand(sp.solve(p_4, P4)[0])
     p_5 = sp.expand(sp.solve(p_5, P5)[0])
 
-    p_corr = Eq(Cpor*(Pcorr-p_0)+Cpor*(Pcorr-p_1)+Cpor*(Pcorr-p_2)+Cpor*(Pcorr-p_3)+Cpor*(Pcorr-p_4)+Cpor*(Pcorr-p_5)+Cjan*(2*Pcorr-Pout*(Cp_0+Cp_2)))
+    p_corr = Eq(Cpor*(Pcorr-p_0)+Cpor*(Pcorr-p_1)+Cpor*(Pcorr-p_2)+Cpor*(Pcorr-p_3)+Cpor*(Pcorr-p_4)+Cpor*(Pcorr-p_5)+Cjan*(2*Pcorr-Pout-Pd*(Cp_0+Cp_2)))
     p_corr = sp.expand(sp.solve(p_corr, Pcorr)[0])
     
     Cjan_value = Cd**2+A**2*2*rho
@@ -130,7 +130,8 @@ def const_calc(room_type, WindPressureCoefficientValues, zone_x, zone_y, wwr, zn
         
         if zn %2 == 0:
             const = p_corr.subs({
-                'Pout': 1,
+                'Pd': 4.7,  # 2.8**2*1.2 / 2
+                'Pout': 92055,
                 'Cjan': Cjan_value,
                 'Cjancorr': Cjancorr_value,
                 'Cpor': Cpor_value,
@@ -141,7 +142,8 @@ def const_calc(room_type, WindPressureCoefficientValues, zone_x, zone_y, wwr, zn
             })
         else:
             const = p_corr.subs({
-                'Pout': 1,
+                'Pd': 4.7,  # 2.8**2*1.2 / 2
+                'Pout': 92055,
                 'Cjan': Cjan_value,
                 'Cjancorr': Cjancorr_value,
                 'Cpor': Cpor_value,

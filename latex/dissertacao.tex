@@ -116,7 +116,7 @@ Esse metamodelo pode ser utilizado por projetistas como uma ferramenta de fácil
 }
 \keywords{Natural ventilation. Surrogate model. Building performance simulation.}
 
-\input{abreviaturas}
+\input{abreviaturas} % para atualizar a lista, usar o comando "makeglossaries dissertacao" no terminal
 \begin{document}
 
 	
@@ -819,11 +819,12 @@ Quando essa opção é escolhida o programa gera apenas um \acrshort{cp} por fac
 Enquanto que pelo \acrlong{ma} os \acrshort{cp} podem ser obtidos para quaisquer razões entre as dimensões das fachadas da edificação, os valores medidos em túnel de vento pela \acrshort{tpu} são fornecidos para edificações com proporções entre largura, profundida e altura específicas.
 Os valores de \acrshort{cp} para o tipo de edificação abordada neste estudo são disponibilizados pela \acrshort{tpu} para 25 geometrias diferentes, das quais 13 são para edificações \textit{highrise}, e 12 são para edificações \textit{lowrise}.
 
-Para verificar o quanto a fonte escolhida na definição dos \acrshort{cp} influencia nos resultados das simulações, inicialmente verificou-se as diferenças entre os valores dos \acrshort{cp} das medições em túnel de vento (fornecidos pela \acrshort{tpu}), e os valores dos \acrshort{cp} obtidos pelo \acrlong{ma} (algorítimos do EnergyPlus). Para cada uma das 25 geometrias disponíveis, calculou-se a diferença entre os \acrshort{cp}, de acordo com a Equação \ref{eq:Cpdiff}.
+Para verificar o quanto a fonte escolhida na definição dos \acrshort{cp} influencia nos resultados das simulações, inicialmente verificou-se as diferenças entre os valores dos \acrshort{cp} das medições em túnel de vento (fornecidos pela \acrshort{tpu}), e os valores dos \acrshort{cp} obtidos pelo \acrlong{ma} (algorítimos do EnergyPlus). Para cada uma das 25 geometrias disponíveis, calculou-se a diferença entre os \acrshort{cp}, de acordo com a Equação \ref{eq:Cpdiff}. 
+Geometrias definidas como \textit{highrise} pela \acrshort{tpu} foram comparadas utilizando-se o \acrlong{ma} de \citeonline{Atkins}, enquanto que geometrias definidas como \textit{lowrise} pela \acrshort{tpu} foram comparadas utilizando o \acrlong{ma} de \citeonline{Swami1988}.
 
 \begin{equation}
 \label{eq:Cpdiff}
-RMSE_{Cp} = \sqrt{\frac{\sum_{i=1}^{4}{\sum_{j=0}^{11}{(\overline{Cp}^{TPU}_{f_i,\alpha_j,p_k} - Cp^{MA}_{f_i,\alpha_j}})^2}}{48}}
+RMSE_{Cp} = \sqrt{\frac{\sum_{i=1}^{4}{\sum_{j=0}^{11}}{\sum_{k=0}^{N_d}{(\overline{Cp}^{TPU}_{f_i,\alpha_j,p_k} - Cp^{MA}_{f_i,\alpha_j}})^2}}{48}}
 \end{equation}
 
 Onde:
@@ -836,7 +837,9 @@ Onde:
 
 \gls{fi} é a fachada $i$ da edificação avaliada;
 
-\gls{alphaj} é o ângulo de incidência do vento  sobre a fachada, em graus, e tem valor igual a $30 \cdot j$.	
+\gls{alphaj} é o ângulo de incidência do vento  sobre a fachada, em graus, e tem valor igual a $30 \cdot j$;
+
+\gls{nd} é o número de pontos de \acrshort{cp}` disponibilizados na fachada do edifício.	
 %		$\alpha_j$ é o ângulo de incidência do vento considerado sobre a fachada, que varia de 0 a 330 graus, com intervalos de 30 graus;
 \\
 
@@ -997,7 +1000,7 @@ Em cada \textit{timestep}, a soma dos fluxos de ar que entram e saem de uma zona
 %\resizebox{\linewidth}{!}{
 \begin{split}
 P_{zn} = \frac{\sum_{i=1}^{N_P}{P_{i} (C_q L_i)^2} +  %\\
-	\sum_{j=1}^{N_J}{P_{ext} C_{p,j} 2 \rho (C_{d} \Theta_j A_j)^2 }}
+	\sum_{j=1}^{N_J}{(P_{d} C_{p,j} + P_{\infty}) 2 \rho (C_{d} \Theta_j A_j)^2 }}
 {\sum_{i=1}^{N_P}{(C_q L_i)^2} +  %\\
 	\sum_{j=1}^{N_J}{2 \rho (C_{d} \Theta_j A_j)^2 }}
 \end{split}
@@ -1016,7 +1019,9 @@ Onde:
 
 \gls{nj} é igual ao número de janelas que se conectam à zona ($-$);
 
-\gls{pext} é a pressão do ar no ambiente externo ($Pa$);
+\gls{pd} é a pressão dinâmica do ar ($Pa$);
+
+\gls{p0} é a pressão estática do ar no ambiente externo ($Pa$);
 
 \gls{cpj} é o \acrshort{cp} na superfície da janela $j$ ($-$);
 
@@ -1026,7 +1031,7 @@ Onde:
 Finalmente, os \acrshort{cp} equivalentes (\acrshort{cpeq}) foram definidos calculando-se a relação entre a pressão de ar na zona da circulação e a pressão do ar no ambiente externo, para cada direção angular do vento, de acordo com a Equação \ref{eq:Cpeq}.
 
 \begin{equation}\label{eq:Cpeq}
-Cp_{eq,\alpha} = \frac{P_{circ}}{P_{ext}}
+Cp_{eq,\alpha} = \frac{P_{circ}-P_{\infty}}{P_{d}}
 \end{equation}
 
 Onde:
@@ -1064,7 +1069,7 @@ Após definir como seriam desenvolvidos os modelos para as simulações simplifi
 
 O método de \citeauthoronline{Sobol1993} \cite{Sobol1993} foi utilizado para a \acrshort{as}, pois permite a identificação de parâmetros influentes, mesmo para casos onde a relação entre as entradas e saídas dos modelos são não-monotônicas e apresentam efeitos colineares.
 
-A \acrshort{as} foi aplicada por meio de programação, utilizando-se a biblioteca \textit{SALib} \cite{Herman2017}, escrita na linguagem \citeonline{Python}.
+A \acrshort{as} foi aplicada por meio de programação, utilizando-se a biblioteca \textit{SALib} \cite{Herman2017}, escrita na linguagem \citeonline{Python}, versão 3.
 Os casos simulados para conduzir a \acrshort{as} foram amostrados pelo método de amostragem específico da \acrshort{as} de Sobol, pelo qual gerou-se uma amostra de 155.648 casos.
 Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}. 
 %, que gera uma sequência quasi-randômica de baixa discrepância.é uma é feita a partir de uma amostra desenevolvida específica para essa análise é definida pelo próprio método, pela qual gerou-se 99.978 casos.		

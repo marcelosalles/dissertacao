@@ -4,20 +4,21 @@ import json
 import pandas as pd
 import os
 
-def main(df, folder='cp_eq', num_clusters=10, pattern='_10_'):
+def main(df, folder='cpeq', num_clusters=10, pattern='_10_'):
     FOLDER_STDRD = 'cluster'
+    name_length_cluster = '{:0'+str(len(str(num_clusters)))+'.0f}'
     REST = {
         '10': .1,
         # '15': .15,
-        # '20': .2,
+        '20': .2,
         '30': .3,
         # '45': .45,
-        # '40': .4,
-        # '50': .5,
+        '40': .4,
+        '50': .5,
         # '55': .55,
-        # '60': .60,
+        '60': .60,
         '70': .70,
-        # '80': .80,
+        '80': .80,
         '90': .90,
         # '95': .95,
         '99': 1
@@ -26,7 +27,7 @@ def main(df, folder='cp_eq', num_clusters=10, pattern='_10_'):
     os.chdir(folder)
     for i in range(num_clusters):
         
-        os.chdir(FOLDER_STDRD+str(i))
+        os.chdir(FOLDER_STDRD+name_length_cluster.format(i))
         
         epjson_files = sorted(glob.glob('single*.epJSON')) 
         # print(len(epjson_files))
@@ -49,6 +50,7 @@ def main(df, folder='cp_eq', num_clusters=10, pattern='_10_'):
                 file_name = f.replace(pattern,'_'+crack+'_')
                 new_line = pd.DataFrame(df.loc[df['file'] == f],columns=df.columns)
                 new_line['file'] = file_name
+                print(file_name)
                 
                 df_out = df_out.append(new_line)
                 with open(file_name, 'w') as file:
