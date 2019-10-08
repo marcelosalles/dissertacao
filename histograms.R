@@ -935,12 +935,49 @@ df_no_070 = subset(df_noeq, grepl(pattern = '_noeq_70_',df_noeq$file))  # substr
 df_no_090 = subset(df_noeq, grepl(pattern = '_noeq_90_',df_noeq$file))  # substr(df_noeq$file,1,10) == '090crack_c')  # & df_ref$ehf < .9)
 df_no_099 = subset(df_noeq, grepl(pattern = '_noeq_99_',df_noeq$file))  # substr(df_noeq$file,1,10) == '099crack_c')  # & df_ref$ehf < .9)
 
-df_cpeq = rbind(df_cp_010,df_cp_020,df_cp_030,df_cp_040,df_cp_045,df_cp_050,df_cp_055,df_cp_060,
-                df_cp_070,df_cp_080,df_cp_090,df_cp_095,df_cp_099)
-df_noeq = rbind(df_no_010,df_no_020,df_no_030,df_no_040,df_no_045,df_no_050,df_no_055,df_no_060,
-                df_no_070,df_no_080,df_no_090,df_no_099)
 
-Cqs = c('10','30','40','45','50','55','60','70','80','90','99')
+df = read.csv('/media/marcelo/OS/dissertacao/cpeq/means_cpeq.csv')
+df_cp_010 = subset(df, grepl(pattern = '_cpeq_10_',df$file))  # substr(df$file,1,10) == '010crack_c')  # & df_ref$ehf < .9)  # 
+# df_cp_015 = subset(df, grepl(pattern = '_cpeq_15_',df$file))  # substr(df_015$file,1,10) == '015crack_c')  # & df_ref$ehf < .9)  # 
+df_cp_020 = subset(df, grepl(pattern = '_cpeq_20_',df$file))  # substr(df$file,1,10) == '020crack_c')  # & df_ref$ehf < .9)
+df_cp_030 = subset(df, grepl(pattern = '_cpeq_30_',df$file))  # substr(df$file,1,10) == '030crack_c')  # & df_ref$ehf < .9)
+df_cp_040 = subset(df, grepl(pattern = '_cpeq_40_',df$file))  # substr(df$file,1,10) == '040crack_c')  # & df_ref$ehf < .9)
+df_cp_050 = subset(df, grepl(pattern = '_cpeq_50_',df$file))  # substr(df_noeq$file,1,10) == '050crack_c')  # & df_ref$ehf < .9)
+df_cp_060 = subset(df, grepl(pattern = '_cpeq_60_',df$file))  # substr(df_noeq$file,1,10) == '060crack_c')  # & df_ref$ehf < .9)
+df_cp_070 = subset(df, grepl(pattern = '_cpeq_70_',df$file))  # substr(df_noeq$file,1,10) == '070crack_c')  # & df_ref$ehf < .9)
+df_cp_080 = subset(df, grepl(pattern = '_cpeq_80_',df$file))  # substr(df_noeq$file,1,10) == '080crack_c')  # & df_ref$ehf < .9)
+df_cp_090 = subset(df, grepl(pattern = '_cpeq_90_',df$file))  # substr(df_noeq$file,1,10) == '090crack_c')  # & df_ref$ehf < .9)
+df_cp_099 = subset(df, grepl(pattern = '_cpeq_99_',df$file))  # substr(df_noeq$file,1,10) == '099crack_c')  # & df_ref$ehf < .9)
+df_no_010 = subset(df, grepl(pattern = '_noeq_10_',df$file))  # substr(df$file,1,10) == '010crack_c')  # & df_ref$ehf < .9)  # 
+# df_no_015 = subset(df, grepl(pattern = '_noeq_15_',df$file))  # substr(df_015$file,1,10) == '015crack_c')  # & df_ref$ehf < .9)  # 
+df_no_020 = subset(df, grepl(pattern = '_noeq_20_',df$file))  # substr(df$file,1,10) == '020crack_c')  # & df_ref$ehf < .9)
+df_no_030 = subset(df, grepl(pattern = '_noeq_30_',df$file))  # substr(df$file,1,10) == '030crack_c')  # & df_ref$ehf < .9)
+df_no_040 = subset(df, grepl(pattern = '_noeq_40_',df$file))  # substr(df$file,1,10) == '040crack_c')  # & df_ref$ehf < .9)
+df_no_050 = subset(df, grepl(pattern = '_noeq_50_',df$file))  # substr(df$file,1,10) == '050crack_c')  # & df_ref$ehf < .9)
+df_no_060 = subset(df, grepl(pattern = '_noeq_60_',df$file))  # substr(df$file,1,10) == '060crack_c')  # & df_ref$ehf < .9)
+df_no_070 = subset(df, grepl(pattern = '_noeq_70_',df$file))  # substr(df$file,1,10) == '070crack_c')  # & df_ref$ehf < .9)
+df_no_080 = subset(df, grepl(pattern = '_noeq_80_',df$file))  # substr(df$file,1,10) == '080crack_c')  # & df_ref$ehf < .9)
+df_no_090 = subset(df, grepl(pattern = '_noeq_90_',df$file))  # substr(df$file,1,10) == '090crack_c')  # & df_ref$ehf < .9)
+df_no_099 = subset(df, grepl(pattern = '_noeq_99_',df$file))  # substr(df$file,1,10) == '099crack_c')  # & df_ref$ehf < .9)
+
+df_ref = subset(df, grepl(pattern = 'whole',df$file))  # substr(df$file,1,1) == 'w')  # & df$ehf < .9)
+samp = read.csv('/media/marcelo/OS/dissertacao/sample_cpeq.csv')
+df_ref = cbind(df_ref, samp)
+
+df_half = df_cp_010[1:(nrow(df_cp_010)/2),]
+nrow(unique(df_half))
+df_cp_010 = df_cp_010[1:(nrow(df_cp_010)/2),]
+
+df_half = df_no_010[1:(nrow(df_no_010)/2),]
+nrow(unique(df_half))
+df_no_010 = df_no_010[1:(nrow(df_cp_010)/2),]
+
+df_cpeq = rbind(df_cp_010,df_cp_020,df_cp_030,df_cp_040,df_cp_050,df_cp_060,
+                df_cp_070,df_cp_080,df_cp_090,df_cp_099)  # df_cp_045,df_cp_055,df_cp_095,
+df_noeq = rbind(df_no_010,df_no_020,df_no_030,df_no_040,df_no_050,df_no_060,
+                df_no_070,df_no_080,df_no_090,df_no_099)  # df_no_045,df_no_055,
+
+Cqs = c('10','20','30','40','50','60','70','80','90','99')
 cq_compare = data.frame('Method'=rep(NA,2*length(Cqs)),'Cq'=rep(NA,2*length(Cqs)),
                         'RMSE'=rep(NA,2*length(Cqs)),'mean'=rep(NA,2*length(Cqs)),'abs_mean'=rep(NA,2*length(Cqs)),'AE95'=rep(NA,2*length(Cqs)),
                         'RMSE_ehf'=rep(NA,2*length(Cqs)),'mean_ehf'=rep(NA,2*length(Cqs)),'abs_mean_ehf'=rep(NA,2*length(Cqs)),'AE95_ehf'=rep(NA,2*length(Cqs)))
@@ -988,27 +1025,49 @@ ggplot(cq_compare,aes(cq_compare$RMSE,cq_compare$RMSE_ehf,shape=`Método`)) +
   xlab('RMSE ACH') + ylab('RMSE EHF') +
   annotate("text", x = cq_compare$RMSE[cq_compare$Método == 'Cp equivalente' & cq_compare$Cq == '80'],
            y = cq_compare$RMSE_ehf[cq_compare$Método == 'Cp equivalente' & cq_compare$Cq == '80'], colour = "red",label='X',size =7)
-save_img('cpeq_pareto',fact = 1)
+save_img('cpeq_pareto_fixed',fact = 1)
+
+ggplot(df_cp_010,aes(df_ref$ach, df_cp_010$ach)) +
+  geom_point(alpha=.31) +
+  geom_abline() +
+  xlim(c(0,140)) + ylim(c(0,140))  +
+  xlab('Modelo detalhado\nmédia anual de trocas de ar (ACH)') +
+  ylab('Modelo simplificado\nmédia anual de trocas de ar (ACH)') +
+  annotate("text", x = 50, y = 135, label = paste("Erro médio =",round(erro.medio(df_ref$ach, df_cp_010$ach),2),'ACH')) +
+  annotate("text", x = 45, y = 125, label = paste("AE95 =",round(erro.ae95(df_ref$ach, df_cp_010$ach),2),'ACH'))
+save_img(('cpeq_COM_10'),square = TRUE)
+
+ggplot(df_cp_010,aes(df_ref$ehf, df_cp_010$ehf)) +
+  geom_point(alpha=.1) +
+  geom_abline() +
+  xlim(c(0,1)) + ylim(c(0,1))  +
+  xlab('Modelo detalhado - EHF (-)') +
+  ylab('Modelo simplificado - EHF (-)') +
+  annotate("text", x = .25, y = .95, label = paste("Erro médio =",round(erro.medio(df_ref$ehf, df_cp_010$ehf),4))) +
+  annotate("text", x = .21, y = .85, label = paste("AE95 =",round(erro.ae95(df_ref$ehf, df_cp_010$ehf),4)))
+save_img(('cpeq_COM_10EHF'),square = TRUE)
 
 ggplot(df_cp_080,aes(df_ref$ach, df_cp_080$ach)) +
-    geom_point(alpha=.31) +
-    geom_abline() +
-    xlim(c(0,140)) + ylim(c(0,140))  +
-    xlab('Modelo detalhado\nmédia anual de trocas de ar (ACH)') +
-    ylab('Modelo simplificado\nmédia anual de trocas de ar (ACH)') +
-    annotate("text", x = 50, y = 135, label = paste("Erro médio =",round(erro.medio(df_ref$ach, df_cp_080$ach),2),'ACH')) +
-    annotate("text", x = 45, y = 125, label = paste("AE95 =",round(erro.ae95(df_ref$ach, df_cp_080$ach),2),'ACH'))
-save_img(('cpeq_COM_80'),square = TRUE)
+  geom_point(alpha=.31) +
+  geom_abline() +
+  xlim(c(0,140)) + ylim(c(0,140))  +
+  xlab('Modelo detalhado\nmédia anual de trocas de ar (ACH)') +
+  ylab('Modelo simplificado\nmédia anual de trocas de ar (ACH)') +
+  annotate("text", x = 50, y = 135, label = paste("Erro médio =",round(erro.medio(df_ref$ach, df_cp_080$ach),2),'ACH')) +
+  annotate("text", x = 45, y = 125, label = paste("AE95 =",round(erro.ae95(df_ref$ach, df_cp_080$ach),2),'ACH')) +
+  ggtitle('80')
+# save_img(('cpeq_COM_80'),square = TRUE)
 
 ggplot(df_cp_080,aes(df_ref$ehf, df_cp_080$ehf)) +
-    geom_point(alpha=.1) +
-    geom_abline() +
-    xlim(c(0,1)) + ylim(c(0,1))  +
-    xlab('Modelo detalhado - EHF (-)') +
-    ylab('Modelo simplificado - EHF (-)') +
-    annotate("text", x = .25, y = .95, label = paste("Erro médio =",round(erro.medio(df_ref$ehf, df_cp_080$ehf),4))) +
-    annotate("text", x = .21, y = .85, label = paste("AE95 =",round(erro.ae95(df_ref$ehf, df_cp_080$ehf),4)))
-save_img(('cpeq_COM_80EHF'),square = TRUE)
+  geom_point(alpha=.1) +
+  geom_abline() +
+  xlim(c(0,1)) + ylim(c(0,1))  +
+  xlab('Modelo detalhado - EHF (-)') +
+  ylab('Modelo simplificado - EHF (-)') +
+  annotate("text", x = .25, y = .95, label = paste("Erro médio =",round(erro.medio(df_ref$ehf, df_cp_080$ehf),4))) +
+  annotate("text", x = .21, y = .85, label = paste("AE95 =",round(erro.ae95(df_ref$ehf, df_cp_080$ehf),4))) +
+  ggtitle('80')
+# save_img(('cpeq_COM_80EHF'),square = TRUE)
   
 # threshold = .8
 # 
