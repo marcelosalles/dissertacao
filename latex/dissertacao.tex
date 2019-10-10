@@ -641,6 +641,8 @@ A única excessão é a taxa de ocupação, que é sempre considerada com o valo
 
 A variável de saída do metamodelo desenvolvido é a \acrfull{ehf}. Neste trabalho, o indicador escolhido para o limite superior da temperatura é estabelecido pelo método de conforto adaptativo da \citeonline{ASHRAEStandard552017}, para 80\% de aceitabilidade entre os ocupantes. O desconforto por frio não foi considerado.
 A Figura \ref{fig:temp_means} apresenta as temperaturas externas da cidade de São Paulo, com suas médias mensais, e os limites superiores de temperatura pelo método de conforto adaptativo da \citeonline{ASHRAEStandard552017}, para 80\% de aceitabilidade entre os ocupantes.
+O arquivo climático utilizado para o desenvolvimento do gráfico é o TMYx 2003-2017. 
+Observando-se os valores das temperaturas externas entre às 8 horas e 18 horas ao longo do ano, obtém-se um \acrshort{ehf} igual a 0,124.
 
 \begin{figure}[H]
 %	\vspace{0pt}
@@ -1047,12 +1049,12 @@ Desta forma define-se o \acrshort{cp} para uma superfície (seja janela ou pared
 A modelagem do fluxo de ar pelas portas dos escritórios nas simulações simplificadas foi desenvolvida com o objeto \textit{AirflowNetwork:MultiZone:Surface:Crack}. O motivo para se utilizar este objeto é porque este é um objeto que pode ser associado a qualquer tipo de superfície. Portanto, o objeto do \textit{crack} foi associado sempre à parede externa oposta à parede que estaria voltada para a circulação, como apresentado na Figura \ref{fig:AFN_crack}.
 
 Devido a essas considerações, a validação nesta etapa foi conduzida para duas condições: utilizando-se o \acrshort{cp} calculado diretamente pelo método analítico, e utilizando-se o \acrfull{cpeq}.		
-Estas análises foram conduzidas considerando-se diferentes valores de coeficiente de vazão mássica de ar para o \textit{crack}, para ajustar o valor mais adequado à taxa de infiltração que se obtém no modelo detalhado. Os valores considerados foram: 0,10; 0,30; 0,40; 0,45; 0,50; 0,55; 0,6; 0,7; 0,80; e 0,90 kg/s em 1 Pa.
+Estas análises foram conduzidas considerando-se diferentes valores de coeficiente de vazão mássica de ar para o \textit{crack}, para ajustar o valor mais adequado à taxa de infiltração que se obtém no modelo detalhado. Os valores considerados foram: 0,005; 0,010; 0,100; e 0,200 kg/s em 1 Pa.
 Uma amostra de 200 casos foi gerada por LHS.
 Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}.
 Para cada caso, gerou-se uma simulação detalhada, mais 120 simulações simplificadas. Essas 120 simulações simplificadas devem-se à consideração dos dois métodos para se obter os \acrshort{cp}, mais os dez valores de coeficiente de vazão mássica de ar analisados, avaliados para as seis zonas térmicas do modelo detalhado. 
 Para escolher a configuração mais adequada entre os métodos de obtenção do \acrshort{cp} e o coeficiente de vazão mássica de ar, as comparações foram efetuadas observando-se os resultados das médias anuais de \acrshort{ach} e \acrshort{ehf}.
-A escolha da melhor configuração observando-se dois indicadores simultaneamente foi possível através de uma análise de eficiência de Pareto.
+%A escolha da melhor configuração observando-se dois indicadores simultaneamente foi possível através de uma análise de eficiência de Pareto.
 %Como as taxas de infiltração são influenciadas pela temperatura do ar, as comparações com os modelos detalhados foram feitas considerando-se diferentes faixas de temperatura.
 
 \begin{figure}[H]
@@ -1462,42 +1464,40 @@ Nesta etapa do trabalho, as simulações foram conduzidas para se obter duas res
 (1) se é adequado o uso do \acrfull{cpeq} para ser associado à porta da zona térmica; (2) qual deveria ser o coeficiente de vazão mássica de ar adotado para o objeto \textit{AirflowNetwork:MultiZone:Surface:Crack}.
 
 Para analisar simultaneamente o desempenho do $Cp_{eq}$ e dos coeficientes de vazão mássica de ar, o gráfico da Figura \ref{fig:pareto} foi gerado, observando-se as raízes dos erros médios quadráticos (\acrshort{rmse}).
-É possível observar que as simulações desenvolvidas utilizando-se o $Cp_{eq}$ obtiveram resultados com \acrshort{rmse} menores do que as simulações desenvolvidas utilizando-se o \acrshort{cp} obtido diretamente pelo \acrlong{ma}.
-Para a definir o coeficiente de vazão mássica de ar, levou-se em conta, inicialmente, os erros relacionados ao \acrshort{ach}.
-No entanto, foi identificada uma fronteira de Pareto entre os erros analisados, que mostra como a busca por menores erros de \acrshort{ach} aumenta os erros relacionados ao \acrshort{ehf}.
-O resultado dessa análise pode ser atribuída ao fato de que as diferenças maiores nas trocas de ar anulem erros relacionados à definição das paredes adjacentes à edificação como adiabáticas, ou porque os maiores erros relacionados à médias anuais do \acrshort{ach} sejam em casos onde as diferenças nas trocas de ar não sejam relevantes para alterar a temperatura operativa nas zonas térmicas e, consequentemente, o \acrshort{ehf}.
+%É possível observar que as simulações desenvolvidas utilizando-se o $Cp_{eq}$ obtiveram resultados com \acrshort{rmse} menores do que as simulações desenvolvidas utilizando-se o \acrshort{cp} obtido diretamente pelo \acrlong{ma}.
+Para a definir o coeficiente de vazão mássica de ar, levou-se em conta, inicialmente, as diferenças relacionadas ao \acrshort{ach}, observando-se suas médias anuais.
+No entanto, valores iguais de médias anuais não garante que os resultados de \acrshort{ach} sejam iguais nos mesmos \textit{timesteps} das simulações. Como os \acrshort{rmse} relacionados ao \acrshort{ach} eram semelhantes entre si, e o desenvolvimento das simulações é voltado para obter a maior exatidão possível para os resultados de \acrshort{ehf}, optou-se por definir o coeficiente de vazão mássica de ar com valor igual a 0,1 kg/sPa$^n$ em 1 Pa, pois as simulações desenvolvidas utilizando-se este valor resultaram nos menores erros de \acrshort{ehf}.
 
 \begin{figure}[h]
 	\centering
-	\caption{Eficiência de Pareto entre EHF e ACH médio}
-	\includegraphics[width=1\linewidth]{img/cpeq_pareto.png}
+	\caption{Análise relacionada ao RMSE do EHF e do ACH médio}
+	\includegraphics[width=1\linewidth]{img/cpeq_pareto_fixed.png}
 	\label{fig:pareto}
 	%			\begin{flushleft}
 	%				Fonte: o autor.
 	%			\end{flushleft}
 \end{figure}
 
-Como o desenvolvimento das simulações é voltado para obter a maior exatidão possível para os resultados de \acrshort{ehf}, optou-se por definir o coeficiente de vazão mássica de ar com valor igual a 0,8 kg/sPa$^n$ em 1 Pa, pois as simulações desenvolvidas utilizando-se este valor estão na fronteira de Pareto, e resultaram nos menores erros de \acrshort{ehf}.
-Na Figura \ref{fig:pareto}, o ponto do coeficiente de vazão mássica de ar com valor a 0,8 kg/sPa$^n$ em 1 Pa está destacado com um "X".
-A Figura \ref{fig:crack08} apresenta a comparação dos resultados de \acrshort{ach} e \acrshort{ehf} obtidos pelas simulações detalhadas, comparados aos resultados obtidos pela simulação simplificada, utilizando-se o coeficiente de vazão mássica de ar adotado, com valor igual 0,8 kg/sPa$^n$ em 1 Pa.
+Na Figura \ref{fig:pareto}, o ponto do coeficiente de vazão mássica de ar com valor a 0,1 kg/sPa$^n$ em 1 Pa está destacado com um "X".
+A Figura \ref{fig:crack01} apresenta a comparação dos resultados de \acrshort{ach} e \acrshort{ehf} obtidos pelas simulações detalhadas, comparados aos resultados obtidos pela simulação simplificada, utilizando-se o coeficiente de vazão mássica de ar adotado, com valor igual 0,1 kg/sPa$^n$ em 1 Pa.
 
 \begin{figure}[h]
-	\caption{Comparação entre os resultados de ACH e EHF para coeficiente de vazão mássica de ar com valor igual 0,8 kg/sPa$^n$ em 1 Pa}
+	\caption{Comparação entre os resultados de ACH e EHF para coeficiente de vazão mássica de ar com valor igual 0,1 kg/sPa$^n$ em 1 Pa}
 	\begin{minipage}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{img/cpeq_COM_80.png}
+		\includegraphics[width=1\linewidth]{img/cpeq_COM_10.png}
 		\begin{center}
 			\small{(a) comparação do \acrshort{ach}}
 		\end{center}
 	\end{minipage}%
 	\begin{minipage}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{img/cpeq_COM_80EHF.png}
+		\includegraphics[width=1\linewidth]{img/cpeq_COM_10EHF.png}
 		\begin{center}
 			\small{(b) comparação do \acrshort{ehf}}
 		\end{center}
 	\end{minipage}
-	\label{fig:crack08}
+	\label{fig:crack01}
 \end{figure}
 
 \newpage
@@ -1506,6 +1506,7 @@ A Figura \ref{fig:crack08} apresenta a comparação dos resultados de \acrshort{
 
 As análises de sensibilidade (\acrshort{as}) foram aplicadas a partir de 155.648 simulações termoenergéticas, a partir das quais se obteve valores de \acrshort{ehf} entre 0,01 e 1,00 (Figura \ref{fig:sobol_EHF}).
 A ausência de resultados de \acrshort{ehf} iguais a zero indica que, para o clima da cidade de São Paulo, o uso exclusivo de \acrshort{vn} como estratégia de resfriamento para edifícios de escritórios não é suficiente para garantir conforto térmico em todas as horas de ocupação ao longo do ano. Entretanto, a variabilidade dos resultados obtidos evidencia como o potencial de conforto térmico depende da configuração adequada dos parâmetros de projeto.
+Considerando-se que, em relação às temperaturas externas, o \acrshort{ehf} para São Paulo é igual a 0,12, qualquer edificação que obtenha valores de \acrshort{ehf} inferiores a 0,12 para suas zonas térmicas já apresenta um desempenho térmico capaz de manter as temperaturas internas à edificação inferiores às externas, mesmo considerando-se as cargas internas, relacionadas a pessoas e equipamentos.
 
 \begin{figure}[h]
 	\centering

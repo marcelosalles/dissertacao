@@ -937,6 +937,9 @@ df_no_099 = subset(df_noeq, grepl(pattern = '_noeq_99_',df_noeq$file))  # substr
 
 
 df = read.csv('/media/marcelo/OS/dissertacao/cpeq/means_cpeq.csv')
+df_extra = read.csv('/media/marcelo/OS/dissertacao/cp_eq_extra/means_cp_eq_extra.csv')
+df_cp_000 = subset(df_extra, grepl(pattern = '_cpeq_00_',df_extra$file))  # substr(df$file,1,10) == '000crack_c')  # & df_ref$ehf < .9)  # 
+df_cp_001 = subset(df_extra, grepl(pattern = '_cpeq_01_',df_extra$file))  # substr(df$file,1,10) == '001crack_c')  # & df_ref$ehf < .9)  # 
 df_cp_010 = subset(df, grepl(pattern = '_cpeq_10_',df$file))  # substr(df$file,1,10) == '010crack_c')  # & df_ref$ehf < .9)  # 
 # df_cp_015 = subset(df, grepl(pattern = '_cpeq_15_',df$file))  # substr(df_015$file,1,10) == '015crack_c')  # & df_ref$ehf < .9)  # 
 df_cp_020 = subset(df, grepl(pattern = '_cpeq_20_',df$file))  # substr(df$file,1,10) == '020crack_c')  # & df_ref$ehf < .9)
@@ -948,6 +951,8 @@ df_cp_070 = subset(df, grepl(pattern = '_cpeq_70_',df$file))  # substr(df_noeq$f
 df_cp_080 = subset(df, grepl(pattern = '_cpeq_80_',df$file))  # substr(df_noeq$file,1,10) == '080crack_c')  # & df_ref$ehf < .9)
 df_cp_090 = subset(df, grepl(pattern = '_cpeq_90_',df$file))  # substr(df_noeq$file,1,10) == '090crack_c')  # & df_ref$ehf < .9)
 df_cp_099 = subset(df, grepl(pattern = '_cpeq_99_',df$file))  # substr(df_noeq$file,1,10) == '099crack_c')  # & df_ref$ehf < .9)
+df_no_000 = subset(df_extra, grepl(pattern = '_noeq_00_',df_extra$file))  # substr(df$file,1,10) == '000crack_c')  # & df_ref$ehf < .9)  # 
+df_no_001 = subset(df_extra, grepl(pattern = '_noeq_01_',df_extra$file))  # substr(df$file,1,10) == '001crack_c')  # & df_ref$ehf < .9)  # 
 df_no_010 = subset(df, grepl(pattern = '_noeq_10_',df$file))  # substr(df$file,1,10) == '010crack_c')  # & df_ref$ehf < .9)  # 
 # df_no_015 = subset(df, grepl(pattern = '_noeq_15_',df$file))  # substr(df_015$file,1,10) == '015crack_c')  # & df_ref$ehf < .9)  # 
 df_no_020 = subset(df, grepl(pattern = '_noeq_20_',df$file))  # substr(df$file,1,10) == '020crack_c')  # & df_ref$ehf < .9)
@@ -970,14 +975,14 @@ df_cp_010 = df_cp_010[1:(nrow(df_cp_010)/2),]
 
 df_half = df_no_010[1:(nrow(df_no_010)/2),]
 nrow(unique(df_half))
-df_no_010 = df_no_010[1:(nrow(df_cp_010)/2),]
+df_no_010 = df_no_010[1:(nrow(df_no_010)/2),]
 
-df_cpeq = rbind(df_cp_010,df_cp_020,df_cp_030,df_cp_040,df_cp_050,df_cp_060,
-                df_cp_070,df_cp_080,df_cp_090,df_cp_099)  # df_cp_045,df_cp_055,df_cp_095,
-df_noeq = rbind(df_no_010,df_no_020,df_no_030,df_no_040,df_no_050,df_no_060,
-                df_no_070,df_no_080,df_no_090,df_no_099)  # df_no_045,df_no_055,
+df_cpeq = rbind(df_cp_000,df_cp_001,df_cp_010,df_cp_020)  # ,df_cp_030,df_cp_040,df_cp_050,df_cp_060,
+                # df_cp_070,df_cp_080,df_cp_090,df_cp_099)  # df_cp_045,df_cp_055,df_cp_095,
+df_noeq = rbind(df_no_000,df_no_001,df_no_010,df_no_020)  # ,df_no_030,df_no_040,df_no_050,df_no_060,
+                # df_no_070,df_no_080,df_no_090,df_no_099)  #  df_no_045,df_no_055,
 
-Cqs = c('10','20','30','40','50','60','70','80','90','99')
+Cqs = c('00','01','10','20')  #  ,'30','40','50','60','70','80','90','99')
 cq_compare = data.frame('Method'=rep(NA,2*length(Cqs)),'Cq'=rep(NA,2*length(Cqs)),
                         'RMSE'=rep(NA,2*length(Cqs)),'mean'=rep(NA,2*length(Cqs)),'abs_mean'=rep(NA,2*length(Cqs)),'AE95'=rep(NA,2*length(Cqs)),
                         'RMSE_ehf'=rep(NA,2*length(Cqs)),'mean_ehf'=rep(NA,2*length(Cqs)),'abs_mean_ehf'=rep(NA,2*length(Cqs)),'AE95_ehf'=rep(NA,2*length(Cqs)))
@@ -1015,6 +1020,7 @@ for(Cq in Cqs){
   line = line + 2
 }
 
+cq_compare$Cq[cq_compare$Cq == '00'] = '005'
 cq_compare$Cq_num = as.numeric(cq_compare$Cq)/100
 cq_compare$Cq_num[cq_compare$Cq_num == .99] = 1
 
@@ -1023,9 +1029,31 @@ names(cq_compare)[names(cq_compare)=="Cq_num"]  <- "Coeficiente de fluxo\n(kg/sP
 ggplot(cq_compare,aes(cq_compare$RMSE,cq_compare$RMSE_ehf,shape=`Método`)) +
   geom_point(size = 3, aes(col=`Coeficiente de fluxo\n(kg/sPa^n em 1 Pa)`)) +
   xlab('RMSE ACH') + ylab('RMSE EHF') +
-  annotate("text", x = cq_compare$RMSE[cq_compare$Método == 'Cp equivalente' & cq_compare$Cq == '80'],
-           y = cq_compare$RMSE_ehf[cq_compare$Método == 'Cp equivalente' & cq_compare$Cq == '80'], colour = "red",label='X',size =7)
+  xlim(c(0,7)) +
+  ylim(c(0,.12)) +
+  annotate("text", x = cq_compare$RMSE[cq_compare$Método == 'Cp equivalente' & cq_compare$Cq == '10'],
+           y = cq_compare$RMSE_ehf[cq_compare$Método == 'Cp equivalente' & cq_compare$Cq == '10'], colour = "red",label='X',size =5)
 save_img('cpeq_pareto_fixed',fact = 1)
+
+ggplot(df_cp_001,aes(df_ref$ach, df_cp_001$ach)) +
+  geom_point(alpha=.31) +
+  geom_abline() +
+  xlim(c(0,140)) + ylim(c(0,140))  +
+  xlab('Modelo detalhado\nmédia anual de trocas de ar (ACH)') +
+  ylab('Modelo simplificado\nmédia anual de trocas de ar (ACH)') +
+  annotate("text", x = 50, y = 135, label = paste("Erro médio =",round(erro.medio(df_ref$ach, df_cp_001$ach),2),'ACH')) +
+  annotate("text", x = 45, y = 125, label = paste("AE95 =",round(erro.ae95(df_ref$ach, df_cp_001$ach),2),'ACH'))
+save_img(('cpeq_COM_01'),square = TRUE)
+
+ggplot(df_cp_001,aes(df_ref$ehf, df_cp_001$ehf)) +
+  geom_point(alpha=.1) +
+  geom_abline() +
+  xlim(c(0,1)) + ylim(c(0,1))  +
+  xlab('Modelo detalhado - EHF (-)') +
+  ylab('Modelo simplificado - EHF (-)') +
+  annotate("text", x = .25, y = .95, label = paste("Erro médio =",round(erro.medio(df_ref$ehf, df_cp_001$ehf),4))) +
+  annotate("text", x = .21, y = .85, label = paste("AE95 =",round(erro.ae95(df_ref$ehf, df_cp_001$ehf),4)))
+save_img(('cpeq_COM_01EHF'),square = TRUE)
 
 ggplot(df_cp_010,aes(df_ref$ach, df_cp_010$ach)) +
   geom_point(alpha=.31) +
@@ -1937,7 +1965,7 @@ means = c(21.16,22.35,21.67,20.76,17.45,16.77,17.34,18.28,17.68,
 sp_means = data.frame('Meses'=months,'Temperatura.media'=means)
 sp_means$T_sup = 17.8+3.5 + .31* sp_means$Temperatura.media
 
-epw = read.csv('/media/marcelo/OS/LabEEE_1-2/idf-creator/epw_sp.epw',skip=8,header = FALSE)
+epw = read.csv('/home/marcelo/dissertacao/BRA_SP_Sao.Paulo-Congonhas.AP.837800_TMYx.2003-2017.epw',skip=8,header = FALSE)
 mean(epw$V7[epw$V2 == 1])
 epw$mean.temp[epw$V2 == 1] = mean(epw$V7[epw$V2 == 1])
 epw$mean.temp[epw$V2 == 2] = mean(epw$V7[epw$V2 == 2])
@@ -1960,6 +1988,11 @@ unique(epw$t.sup)
 epw$data = paste(epw$V2,epw$V3,epw$V4)
 epw$data <- as.POSIXct(strptime(epw$data,"%m %d %H"),format = "%m/%d/%H")
 
+# EHF epw outdoors
+epw$hot = ifelse(epw$V7 > epw$t.sup & epw$V4 > 8 & epw$V4 <= 18, 1,
+                 ifelse(epw$V4 > 8 & epw$V4 <= 18,0,NA))
+mean(epw$hot, na.rm = TRUE)
+
 library(scales)
 
 cols = c('Temperatura\nbulbo seco\nexterna' = 'gray','Média mensal\ntemperatura\nexterna' = 'black','Limite superior\ntemperatura\noperativa' = 'red',
@@ -1969,7 +2002,7 @@ ggplot(epw,aes(epw$data,epw$V7))+
   geom_line(aes(col='Temperatura\nbulbo seco\nexterna'))+
   geom_line(aes(epw$data,epw$mean.temp,col='Média mensal\ntemperatura\nexterna'))+
   geom_line(aes(epw$data,epw$t.sup,col='Limite superior\ntemperatura\noperativa')) +
-  geom_line(aes(epw$data,epw$t.inf,col='Limite inferior\ntemperatura\noperativa')) +
+  # geom_line(aes(epw$data,epw$t.inf,col='Limite inferior\ntemperatura\noperativa')) +
   scale_x_datetime(labels = date_format("%B")) +
   scale_colour_manual(name=NULL, values=cols) +
   ylab('Temperatura (°C)') +

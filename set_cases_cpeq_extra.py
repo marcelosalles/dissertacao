@@ -59,6 +59,7 @@ start_time = datetime.datetime.now()
 col_names = list(PARAMETERS)
 samples_x_cluster = SIZE/NUM_CLUSTERS
 name_length = '{:0'+str(len(str(SIZE)))+'.0f}'
+name_length_cluster = '{:0'+str(len(str(NUM_CLUSTERS)))+'.0f}'
 
 def add_crack(file_name, crack_fac=.1):
     
@@ -84,7 +85,7 @@ print('\nCREATING DIRECTORIES\n')
 
 os.system('mkdir '+FOLDER)
 for i in range(NUM_CLUSTERS):
-    os.system('mkdir '+FOLDER+'/cluster'+str(i))
+    os.system('mkdir '+FOLDER+'/cluster'+name_length_cluster.format(i))
     
 # Generate sample
 print('\nGENERATING SAMPLE\n')
@@ -128,8 +129,8 @@ for i in range(len(sample)):
     
     case = name_length.format(line)
     
-    # output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD+'_{}.epJSON'.format(case))
-    # df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD+'_{}.epJSON'.format(case)]],columns=col_names+['folder','file']))
+    output = (FOLDER+'/cluster'+name_length_cluster.format(cluster_n)+'/'+NAME_STDRD+'_{}.epJSON'.format(case))
+    df = df.append(pd.DataFrame([sample_line+['cluster'+name_length_cluster.format(cluster_n),NAME_STDRD+'_{}.epJSON'.format(case)]],columns=col_names+['folder','file']))
     # print(output)
     # whole_gen.main(
         # zone_area = model_values['area'],
@@ -165,74 +166,74 @@ for i in range(len(sample)):
         else:
             azi = azimuth_right
     
-        output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD_2+'_noeq_01'+'_{}_'.format(case)+str(i)+'.epJSON')
-        df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD_2+'_noeq_01'+'_{}_'.format(case)+str(i)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
-        singlezone_diss.main(
-            zone_area = model_values['area'], 
-            zone_ratio = model_values['ratio'],
-            zone_height = model_values['zone_height'],
-            absorptance = model_values['absorptance'],
-            shading = model_values['shading'],
-            azimuth = azi,
-            bldg_ratio = model_values['bldg_ratio'],
-            wall_u = model_values['wall_u'], 
-            wall_ct = model_values['wall_ct'], 
-            zn=i,
-            floor_height = model_values['floor_height'],
-            corner_window = corner_window,
-            ground=ground,
-            roof=roof, 
-            people=model_values['people'],
-            glass_fs=model_values['glass'],
-            wwr=model_values['wwr'],
-            door=False,
-            cp_eq = False,
-            open_fac=model_values['open_fac'],
-            input_file=INPUT ,
-            output=output,
-            outdoors=False
-        )
+        output = (FOLDER+'/cluster'+name_length_cluster.format(cluster_n)+'/'+NAME_STDRD_2+'_noeq_01'+'_{}_'.format(case)+str(i)+'.epJSON')
+        df = df.append(pd.DataFrame([sample_line+['cluster'+name_length_cluster.format(cluster_n),NAME_STDRD_2+'_noeq_01'+'_{}_'.format(case)+str(i)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
+        # singlezone_diss.main(
+            # zone_area = model_values['area'], 
+            # zone_ratio = model_values['ratio'],
+            # zone_height = model_values['zone_height'],
+            # absorptance = model_values['absorptance'],
+            # shading = model_values['shading'],
+            # azimuth = azi,
+            # bldg_ratio = model_values['bldg_ratio'],
+            # wall_u = model_values['wall_u'], 
+            # wall_ct = model_values['wall_ct'], 
+            # zn=i,
+            # floor_height = model_values['floor_height'],
+            # corner_window = corner_window,
+            # ground=ground,
+            # roof=roof, 
+            # people=model_values['people'],
+            # glass_fs=model_values['glass'],
+            # wwr=model_values['wwr'],
+            # door=False,
+            # cp_eq = False,
+            # open_fac=model_values['open_fac'],
+            # input_file=INPUT ,
+            # output=output,
+            # outdoors=False
+        # )
         
-        add_crack(output, .01)
+        # add_crack(output, .01)
         
-        output = (FOLDER+'/cluster'+'{:01.0f}'.format(cluster_n)+'/'+NAME_STDRD_2+'_cpeq_01'+'_{}_'.format(case)+str(i)+'.epJSON')
-        df = df.append(pd.DataFrame([sample_line+['cluster'+'{:01.0f}'.format(cluster_n),NAME_STDRD_2+'_cpeq_01'+'_{}_'.format(case)+str(i)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
-        singlezone_diss.main(
-            zone_area = model_values['area'], 
-            zone_ratio = model_values['ratio'],
-            zone_height = model_values['zone_height'],
-            absorptance = model_values['absorptance'],
-            shading = model_values['shading'],
-            azimuth = azi,
-            bldg_ratio = model_values['bldg_ratio'],
-            wall_u = model_values['wall_u'], 
-            wall_ct = model_values['wall_ct'], 
-            zn=i,
-            floor_height=model_values['floor_height'],
-            corner_window=corner_window,
-            ground=ground,
-            roof=roof, 
-            people=model_values['people'],
-            glass_fs=model_values['glass'],
-            wwr=model_values['wwr'],
-            door=False,
-            cp_eq = True,
-            open_fac=model_values['open_fac'],
-            input_file=INPUT,
-            output=output,
-            outdoors=False
-        )
+        output = (FOLDER+'/cluster'+name_length_cluster.format(cluster_n)+'/'+NAME_STDRD_2+'_cpeq_01'+'_{}_'.format(case)+str(i)+'.epJSON')
+        df = df.append(pd.DataFrame([sample_line+['cluster'+name_length_cluster.format(cluster_n),NAME_STDRD_2+'_cpeq_01'+'_{}_'.format(case)+str(i)+'.epJSON'.format(case)]],columns=col_names+['folder','file']))
+        # singlezone_diss.main(
+            # zone_area = model_values['area'], 
+            # zone_ratio = model_values['ratio'],
+            # zone_height = model_values['zone_height'],
+            # absorptance = model_values['absorptance'],
+            # shading = model_values['shading'],
+            # azimuth = azi,
+            # bldg_ratio = model_values['bldg_ratio'],
+            # wall_u = model_values['wall_u'], 
+            # wall_ct = model_values['wall_ct'], 
+            # zn=i,
+            # floor_height=model_values['floor_height'],
+            # corner_window=corner_window,
+            # ground=ground,
+            # roof=roof, 
+            # people=model_values['people'],
+            # glass_fs=model_values['glass'],
+            # wwr=model_values['wwr'],
+            # door=False,
+            # cp_eq = True,
+            # open_fac=model_values['open_fac'],
+            # input_file=INPUT,
+            # output=output,
+            # outdoors=False
+        # )
         
-        add_crack(output, .01)
+        # add_crack(output, .01)
     
     line += 1
 
 df = other_crack_fac.main(df,folder=FOLDER, pattern='_01_')
 
 os.chdir(FOLDER)
-print('\nRUNNING SIMULATIONS\n')
-list_epjson_names = runep_subprocess.gen_list_epjson_names(NUM_CLUSTERS, EXTENSION)
-runep_subprocess.main(list_epjson_names, NUM_CLUSTERS, EXTENSION, REMOVE_ALL_BUT, epw_name=EPW_NAME)
+# print('\nRUNNING SIMULATIONS\n')
+# list_epjson_names = runep_subprocess.gen_list_epjson_names(NUM_CLUSTERS, EXTENSION)
+# runep_subprocess.main(list_epjson_names, NUM_CLUSTERS, EXTENSION, REMOVE_ALL_BUT, epw_name=EPW_NAME)
 
 print('\nPROCESSING OUTPUT\n')
 output_processing2.main(df, MONTH_MEANS, OUTPUT_PROCESSED)
