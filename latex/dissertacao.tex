@@ -475,7 +475,7 @@ A temperatura média do ar externo representa o ambiente climático externo com 
 comportamentalmente e psicologicamente adaptados. Essa variável de entrada é baseada na média aritmética das temperaturas médias externas diárias em um período de dias, e pode ser considerada como a temperatura média mensal.
 
 O movimento do ar influencia no conforto térmico, causando desconforto por frio em algumas situações, mas também reduzindo o desconforto por calor.
-Isso ocorre devido ao aumento da convecção sobre as superfícies, o que causa maior evaporação, fenômeno endotérmico. Devido a essa influência no conforto térmico, a \citeonline{ASHRAEStandard552017} permite considerar a velocidade do ar como um fator determinante na busca por um ambiente termicamente confortável. Essa consideração é baseada nos valores do  \textit{Standard Effective Temperature} (SET), que relaciona a velocidade do ar e a temperatura operativa do ambiente para ambientes climatizados.
+Isso ocorre devido ao aumento da convecção sobre as superfícies, o que causa maior evaporação, fenômeno endotérmico. As Equações \ref{eq:limInf} e \ref{eq:limSup} não consideram os efeitos do movimento do ar. No entanto, a \citeonline{ASHRAEStandard552017} permite considerar a velocidade do ar como um fator determinante na busca por um ambiente termicamente confortável, baseando-se nos valores do  \textit{Standard Effective Temperature} (SET), que relaciona a velocidade do ar e a temperatura operativa do ambiente para ambientes climatizados.
 
 \citeonline{DeVecchi2015} aplicaram o método adaptativo da \citeonline{ASHRAEStandard552013} para o contexto climático brasileiro, caracterizado como quente e úmido. Os resultados indicam que é possível encontrar níveis aceitabilidade térmica significativamente abaixo dos limites inferiores do método adaptativo. Essa tolerância a temperaturas mais baixas deve-se ao aumento de vestimentas por parte dos ocupantes, antes de se recorrer ao aquecimento artificial. Os autores sugerem que a fixação do limite inferior de temperatura operativa em no máximo 19,5 $^{\circ}$C, para umidade relativa de 80\%, representaria mais adequadamente o comportamento dos usuários no contexto climático brasileiro.
 
@@ -514,7 +514,7 @@ No entanto, a variação de determinadas características das edificações pode
 
 \section{Análise de sensibilidade}
 
-\Acrfull{as} é uma ferramenta valiosa na simulação termoenergética de edificações. Por isso, a \acrshort{as} é usada amplamente para explorar as características do desempenho térmico em edificações em diversas aplicações, como projetos, calibração de modelos, \textit{retrofits}, impacto das mudanças climáticas, entre outros \cite{Tian2013a}. A metodologia para a aplicação da \acrshort{as} tipicamente adota os seguintes passos: determinar as variações dos dados de entrada; determinar os modelos das edificações; executar as simulações dos modelos; coletar os resultados; executar a \acrshort{as}; apresentar os resultados da \acrshort{as}. Os métodos de \acrshort{as} podem ser divididos entre as abordagens local e global. A \acrshort{as} local é focada nos efeitos da incerteza de parâmetros de entrada em torno de um caso base, enquanto a \acrshort{as} global é mais interessada na influência dos parâmetros de entrada sobre todo o espaço de parâmetros de entrada possíveis. Por isso, a \acrshort{as} global é considerada mais confiável. A \acrshort{as} global inclui métodos de regressão, baseados em screening, em variância e metamodelos.
+A \acrfull{as} é uma ferramenta que permite avaliar como diferentes parâmetros de entrada de um modelo influenciam nos parâmetros de saída. Na simulação termoenergética de edificações, a \acrshort{as} é usada amplamente para explorar as características do desempenho térmico em diversas aplicações, como projetos, calibração de modelos, \textit{retrofits}, impacto das mudanças climáticas, entre outros \cite{Tian2013a}. A metodologia para a aplicação da \acrshort{as} tipicamente adota os seguintes passos: determinar as variações dos dados de entrada; determinar os modelos das edificações; executar as simulações dos modelos; coletar os resultados; executar a \acrshort{as}; apresentar os resultados da \acrshort{as}. Os métodos de \acrshort{as} podem ser divididos entre as abordagens local e global. A \acrshort{as} local é focada nos efeitos da incerteza de parâmetros de entrada em torno de um caso base, enquanto a \acrshort{as} global é mais interessada na influência dos parâmetros de entrada sobre todo o espaço de parâmetros de entrada possíveis. Por isso, a \acrshort{as} global é considerada mais confiável. A \acrshort{as} global inclui métodos de regressão, baseados em screening, em variância e metamodelos.
 
 O primeiro passo para realizar uma \acrshort{as} é determinar a faixa dos dados de entrada. Quando o objetivo é determinar diferentes opções de projeto,  \citeonline{Tian2013a} sugere distribuições uniformes nos dados de entrada, pois assume-se que os diferentes valores para os dados de entrada são igualmente prováveis.
 
@@ -783,7 +783,7 @@ As dimensões das janelas das salas foram parametrizadas de acordo com o \acrful
 %Além da área da abertura ter influência direta nas trocas de ar das zonas, a altura também pode ter influência devido à força de empuxo causada pelas diferenças de densidade do ar. Devido a isso, a altura da janela também foi parametrizada.
 %		Para o vidro das janelas considerou-se diferentes valores para o fator solar.
 %		\subsection{Ventilação natural no modelo preliminar}
-O controle das janelas foi estabelecido pela diferença de temperatura entre o ar externo e o ar da zona.
+O controle das janelas foi estabelecido de maneira independente para cada zona térmica, pela diferença de temperatura entre o ar externo e o ar da zona.
 As trocas de ar nas portas foram modeladas apenas por frestas, por considerar-se que portas de escritórios não ficam abertas normalmente.  % MELHORAR!!!
 Os coeficientes de pressão nos nós externos à edificação foram definidos através da base de dados da \acrlong{tpu} \cite{TPU2018}, e para cada janela foi utilizado o valor médio dos pontos disponíveis para sua área na fachada. No o exemplo da Figura \ref{fig:tpuwindows}, considerando-se uma edificação com proporções B:L:H, e um pavimento na altura h, o \acrshort{cp} da janela A seria igual à média dos valores disponíveis para os pontos vermelhos, o \acrshort{cp} da janela B seria igual à média dos valores dos pontos verdes, e assim por diante.
 %		A altura dos pontos a serem utilizadas foi escolhida de acordo com a altura definida para o pavimento simulado e  a altura do pédireito em relação às proporções do edifício.
@@ -801,7 +801,7 @@ Os coeficientes de pressão nos nós externos à edificação foram definidos at
 Nesta etapa do método, buscou-se simplificar o modelo de escritório desenvolvido no EnergyPlus, atentando-se às limitações relacionadas à simplificação do modelo.
 O objetivo de gerar um metamodelo por meio de \acrfull{ann} para se obter o \acrshort{ehf} faz com que se busque parametrizar ao máximo as simulações no EnergyPlus.
 Essa parametrização pode facilitar o desenvolvimento de amostras para a pesquisa, assim como garantir uma relação mais direta dos parâmetros de entrada com os dados de saída. 
-Dentre as simplificações consideradas, estão:
+As seguintes simplificações foram consideradas, e serão explicadas nesta seção:
 
 \begin{itemize}
 	\item cálculo do \acrshort{cp} através do \acrlong{ma}, em vez dos valores obtidos por medições em túnel de vento pela \acrshort{tpu};
@@ -1269,11 +1269,12 @@ A definição dos parâmetros de entrada para o desenvolvimento do metamodelo fo
 
 \section{Simulações simplificadas}
 
-\subsection{Cálculo do coeficiente de pressão pelo método analítico}
+\subsection*{Cálculo do coeficiente de pressão pelo método analítico}
 
 Ao comparar os valores dos \acrfull{cp} das medições em túnel de vento da \acrfull{tpu} e os valores dos \acrshort{cp} obtidos pelo \acrlong{ma}, obteve-se gráficos de pontos. 
-A Figura \ref{fig:cp_diff_scatter}a apresenta a comparação para as 25 proporções geométricas disponibilizadas pela \acrshort{tpu}, para cada fachada, e para cada ponto na fachada.
-Como os valores calculados pelo \acrlong{ma} são únicos para cada fachada, e a \acrshort{tpu} oferece valores diferentes para diversos pontos ao longo das fachadas, os pontos no gráfico da Figura \ref{fig:cp_diff_scatter} distribuem-se horizontalmente. 
+A Figura \ref{fig:cp_diff_scatter}a apresenta a comparação para as 25 proporções geométricas disponibilizadas pela \acrshort{tpu}, para cada fachada, direção do vento, e para cada ponto na fachada.
+Como os valores calculados pelo \acrlong{ma} são únicos para cada fachada, e a \acrshort{tpu} oferece valores diferentes para diversos pontos ao longo das fachadas, os pontos no gráfico da Figura \ref{fig:cp_diff_scatter} distribuem-se horizontalmente.
+Os pontos vermelhos representam os valores médios da \acrshort{tpu}, para cada geometria, fachada e direção do vento.
 %		A Figura \ref{fig:cp_diff_scatter_facade} apresenta a comparação considerando-se os valores médios do \acrshort{cp} para cada fachada. 
 É possível observar que a faixa de valores dos \acrshort{cp} disponibilizados pela \acrshort{tpu} é maior do que  faixa de valores calculados pelo \acrlong{ma}. Enquanto o menor valor de \acrshort{cp} disponibilizado pela \acrshort{tpu} é \mbox{-1,40}, e o maior valor é 1,08, pelo \acrlong{ma} o valor mínimo é igual a -0,96 e o máximo é igual a 0,60.
 
@@ -1368,7 +1369,7 @@ Portanto, considerou-se que a utilização do \acrlong{ma} para calcular os valo
 %	%			\end{flushleft}
 %\end{figure}
 
-\subsection{Representação da envoltória com duas camadas}
+\subsection*{Representação da envoltória com duas camadas}
 
 Os resultados das simulações com as paredes equivalentes subestimaram o \acrshort{ehf} em 0,0107 na média, quando comparados aos resultados das simulações com as paredes de referência. 
 Os resultados das simulações para a parede de gesso com isolamento resultaram em um erro médio igual a 0,0099, e um \acrshort{ae95} igual a 0,0304 para o \acrshort{ehf} (Figura \ref{fig:par3_scatter}). O erro absoluto médio foi igual a 0,0100.
@@ -1412,7 +1413,7 @@ Por mais que as diferenças sejam pouco expressivas, observou-se que utilizar o 
 O caso com as maiores diferenças no \acrshort{ehf} foi para uma edificação em contato com o solo, com cobertura exposta, e um fator de abertura da janela igual a 0,23.
 Apesar das diferenças nos resultados, o uso da parede equivalente facilita a parametrização da transmitância térmica e da capacidade térmica. Por esse motivo, considerou-se as diferenças pouco significativas, e a parede equivalente foi adotada para simplificar as simulações.
 
-\subsection{Condição de contorno das paredes adjacentes à edificação}
+\subsection*{Condição de contorno das paredes adjacentes à edificação}
 
 A simplificação das simulações adotando-se apenas uma zona térmica foi avaliada para duas condições de contorno. Os resultados mostram que a maneira mais adequada de representar as paredes adjacentes à circulação da edificação é considerando-as como adiabáticas (sem trocas de calor pela superfície).
 Considerar as paredes adjacentes à circulação como \textit{Outdoors} (voltada para o lado externo, sem incidência de radiação solar ou vento), faz com que os resultados do \acrshort{ehf} sejam subestimados em 0,0868 em média, como \acrshort{ae95} igual a 0,1865 (Figura \ref{fig:szout}a).
@@ -1458,7 +1459,7 @@ Os resultados das simulações considerando-se as paredes voltadas para o corred
 
 A partir dos resultados obtidos, definiu-se as paredes voltadas para a circulação como adiabáticas no desenvolvimento das simulações simplificadas.
 
-\subsection{Modelagem da ventilação natural na simulação simplificada}
+\subsection*{Modelagem da ventilação natural na simulação simplificada}
 
 Nesta etapa do trabalho, as simulações foram conduzidas para se obter duas respostas:
 (1) se é adequado o uso do \acrfull{cpeq} para ser associado à porta da zona térmica; (2) qual deveria ser o coeficiente de vazão mássica de ar adotado para o objeto \textit{AirflowNetwork:MultiZone:Surface:Crack}.
@@ -1499,6 +1500,10 @@ A Figura \ref{fig:crack01} apresenta a comparação dos resultados de \acrshort{
 	\end{minipage}
 	\label{fig:crack01}
 \end{figure}
+
+\phantom{Linha}
+
+Ao analisar as diferenças resultantes nas simulações simplificadas em relação às simulações detalhadas, considerou-se adequado utilizar as simplificações para a elaboração do metamodelo, e o modelo de simulação simplificada foi utilizado para as etapas posteriores: a análise de sensibilidade e o desenvolvimento do metamodelo.
 
 \newpage
 
@@ -1641,7 +1646,7 @@ O erro absoluto médio do \acrshort{ehf} para os casos de validação foi 0,0091
 Para essa amostra, a \acrshort{ann} não superestimou, nem subestimou significativamente os resultados, revelando uma diferença média entre os resultados preditos e simulados igual a 0,0003.
 
 \begin{figure}[h]
-	\caption{Comparação entre os resultados de EHF estimados e simulados pelo metamodelo}
+	\caption{Comparação entre os resultados de EHF estimados pelo metamodelo e simulados pelo Energyplus}
 	\begin{minipage}{.5\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{img/ann_validation.png}
@@ -1742,9 +1747,9 @@ Em situações em que há a necessidade de respostas rápidas, sem a possibilida
 As limitações seguintes foram identificadas no desenvolvimento deste estudo:
 
 \begin{itemize}
-%	\item Parede equivalente;
-	
-	\item O método de conforto térmico adaptativo utilizado neste trabalho é indicado para edificações naturalmente ventiladas. Os estudos abordados na revisão de literatura, assim como a base de dados de edifícios de escritórios da cidade de São Paulo, utilizada para o desenvolvimento do trabalho, abordam predominantemente o uso de modo misto (\acrshort{vn} e condicionamento artificial de ar). Devido à ausência de normas de conforto térmico voltadas para edificações de modo misto, optou-se por analisar exclusivamente o desempenho térmico das edificações com o uso da \acrshort{vn};
+	\item O método de conforto térmico adaptativo utilizado neste trabalho é indicado para edificações naturalmente ventiladas. Os estudos abordados na revisão de literatura, assim como a base de dados de edifícios de escritórios da cidade de São Paulo, utilizada para o desenvolvimento do trabalho, abordam predominantemente o uso de modo misto (\acrshort{vn} e condicionamento artificial de ar). Devido à ausência de normas de conforto térmico voltadas para edificações de modo misto, optou-se por analisar exclusivamente o desempenho térmico das edificações com o uso da \acrshort{vn}.
+	Outra limitação do indicador de conforto térmico escolhido é que ele é capaz de estimar a fração de horas ocupadas em desconforto térmico, porém sem avaliar o quanto as temperaturas ultrapassam os limites estabelecidos.
+	Esse fator impede que casos com temperaturas excessivamente quentes nos escritósejam identificados;
 	
 	\item Devido ao aumento de vestimentas em épocas mais frias do ano, no contexto brasileiro, o desconforto térmico por frio foi desconsiderado neste trabalho. Os padrões de ocupação tipicamente diurnos e as cargas térmicas presentes em edifícios de escritórios indicam maior relevância ao desconforto térmico por calor. Metamodelos semelhantes ao desenvolvido neste trabalho seriam capazes de estimar o desconforto térmico por frio;
 	
@@ -1754,7 +1759,9 @@ As limitações seguintes foram identificadas no desenvolvimento deste estudo:
 	O \acrfull{cd} depende não só da esquadria utilizada, mas de fração da abertura da esquadria, que pode variar em diferentes momentos, e de fatores como a direção incidente do vento, que varia a cada instante.
 	A velocidade do ar não é modelada dentro das zonas térmicas, o que impede a consideração do movimento do ar para o aumento dos limites superiores de temperatura operativa para garantir o conforto térmico. 
 	Por essa razão, o movimento do ar foi considerado apenas pela utilização de ventiladores.
-	O programa EnergyPlus integra o \acrshort{afn} aos seus algorítimos, mas a integração é falha em relação à abertura dos vidros. Mesmo em momentos em que o \acrshort{afn} considera as janelas abertas, o vidro é considerado presente na envoltória da edificação, o que resulta em uma modelagem inadequada das trocas de radiação com o entorno, da absorção de radiação solar.
+	O programa EnergyPlus integra o \acrshort{afn} aos seus algorítimos, mas a integração é falha em relação à abertura dos vidros. Mesmo em momentos em que o \acrshort{afn} considera as janelas abertas, o vidro é considerado presente na envoltória da edificação, o que resulta em uma modelagem inadequada das trocas de radiação com o entorno, da absorção de radiação solar;
+	
+	\item As simplificações assumidas para o desenvolvimento das simulações pelo Energyplus podem comprometer a exatidão dos resultados para alguns casos. Entretanto, essas simplificações facilitam o desenvolvimento, tanto das simulações, quanto do metamodelo de \acrlong{ann}. Portanto, a simplificações foram consideradas adequadas para o desenvolvimento do trabalho.
 	
 \end{itemize}
 

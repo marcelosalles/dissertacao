@@ -1,0 +1,47 @@
+% ----------------------------------------------------------
+\chapter{Introdução}
+\label{chapter:introducao}
+
+De acordo com a \acrlong{iea} \cite{IEA2018a}, no ano de 2017 o setor de edificações representou mais de 30\% do consumo final total de energia no mundo. 
+O relatória da \citeonline{IEA2018} aponta que a demanda por energia destinada ao resfriamento de ar em edificações mais que triplicou do ano de 1990 a 2016 e, se não houver mudanças no cenário atual, estima-se que essa demanda mais que triplicará até o ano de 2050, representando 37\% do aumento no consumo de eletricidade em edificações. Isso corresponderá a 11,5\% do consumo de energia total em edificações comerciais. 
+O potencial de aumento na demanda por energia destinada ao resfriamento de ar em países de clima quente é ainda mais expressivo. Das 2,8 bilhões de pessoas que vivem nas partes mais quentes do mundo hoje, apenas 8\% possuem sistema de condicionamento de ar \cite{IEA2018}. No Brasil, a parcela do resfriamento de ar nas cargas de pico das redes elétricas em 2016 correspondia a 7,6\% do total, e a estimativa, considerando-se o cenário base, é de que essa parcela represente 30,8\% da carga de pico até o ano de 2050 \cite{IEA2018}. 
+%No Brasil, desde 2009 o INMETRO possui um programa de etiquetagem de edificações voltado para padrões de eficiência energética de edificações \cite{BRASIL2009}.
+
+Esse contexto evidencia a necessidade de medidas mitigadoras relacionadas ao consumo energético destinado ao resfriamento de edificações. O uso de técnicas de resfriamento passivo, como a \acrfull{vn}, pode ser uma solução. O resfriamento passivo é um conjunto de técnicas sustentáveis para resfriar edifícios por meios naturais \cite{Samani2016}, que consiste em qualquer sistema que busca minimizar, ou eliminar, se possível, o uso de sistemas de condicionamento de ar, com o objetivo de reduzir as altas temperaturas internas e o consumo de energia para resfriamento, proporcionando conforto térmico aos ocupantes.
+
+Técnicas de \acrshort{vn} são encontradas ao longo de toda a história na arquitetura vernacular \cite{Pesic2018}, e hoje vêm sendo atualizadas de acordo com novos estudos no campo de conforto térmico e projetos sustentáveis de edificações.
+Além de assegurar a qualidade do ar, a \acrshort{vn} promove o resfriamento da edificação, proporcionando conforto térmico aos usuários quando as condições do clima externo são favoráveis \cite{Yao2009}.
+
+Apesar de um quinto da energia elétrica brasileira ser destinada a edificações comerciais, de serviços e públicas \cite{EPE2018}, o uso de \acrshort{vn} em edifícios de escritórios vem diminuindo gradualmente no Brasil. De acordo com \citeonline{Alves2017}, apesar do uso de sistemas de condicionamento de ar e iluminação mais eficientes, edifícios da cidade de Belo Horizonte construídos a partir dos anos 2000 tendem a ser os maiores consumidores de energia, por não adotarem estratégias de resfriamento passivo.
+
+Para que o conforto térmico dos usuários seja garantido sem um consumo significativo de energia, é importante entender como ocorrem as variações térmicas em um edifício antes de construí-lo. Análises durante os estágios iniciais de projeto de uma edificação com \acrshort{vn} apontam decisões fundamentais para o desempenho térmico. No estágio inicial de projeto, o potencial de otimização é significativo, e nesta etapa qualquer estimativa do conforto e desempenho energético da edificação pode refletir nas tomadas de decisão \cite{Belleri2014, Roetzel2014}.
+
+O método mais avançado de se estimar o desempenho termoenergético de edificações atualmente é por meio de simulações computacionais. No entanto, esse processo exige o conhecimento técnico de um especialista, pois simulações termoenergéticas dinâmicas requerem modelos detalhados e enfrentam diversos problemas, associados principalmente a informações necessárias para dados de entrada do modelo processado \cite{Corgnati2013}. No contexto brasileiro, a análise do desempenho térmico de edificações por meio de simulações computacionais é uma medida relevante, pois, assim como em outros países em desenvolvimento, a falta de acessibilidade a dados relacionados a padrões de consumo de energia e atributos físicos e operacionais de edifícios de escritório dificulta as análises a partir de bancos de dados \cite{Alves2018}. Uma alternativa para contornar essas questões é o desenvolvimento de modelos a partir de simulações computacionais, os metamodelos. Por meio de metamodelos é possível se obter resultados próximos aos de simulações complexas de desempenho energético.
+
+Metamodelos para eficiência energética de edificações podem ser desenvolvidos a partir de diferentes métodos \cite{Ostergard2018}. A solução mais apropriada depende do contexto e propósitos de cada aplicação.
+\citeonline{Versage2015} foi capaz de estimar as cargas térmicas de edificações comerciais através de diferentes métodos de metamodelagem.
+\citeonline{Melo2016} desenvolveram um modelo de \acrfull{ann} para estimar graus hora de resfriamento e cargas térmicas de aquecimento e resfriamento em edificações residenciais.
+O desenvolvimento de um metamodelo de máquina de vetores de suporte capaz de estimar conforto térmico em edificações comerciais foi proposto por \citeonline{Rackes2016}. Voltado principalmente a tipologias de escolas, o metamodelo estima a fração de horas em desconforto por calor dos ocupantes ao longo do ano.
+%
+%A \acrshort{vn} em edificações apresenta comportamentos complexos e a avaliação do seu potencial de resfriamento faz-se necessária desde a fase inicial de projeto. Possibilitar esse tipo de análise de forma simples e rápida é fundamental nas tomadas de decisão em projetos de edificações e na aplicação de políticas públicas voltadas à eficiência energética. Por meio de ferramentas de aprendizagem automática, surge a oportunidade de se desenvolver metamodelos capazes de obter resultados de conforto térmico em edificações.
+
+O consumo de energia para resfriamento de edificações é expressivo no mundo, e a expectativa é de que a demanda por energia continue crescendo nas próximas décadas, principalmente em países de climas quentes.
+Neste contexto, o uso de técnicas de \acrfull{vn} apresenta-se como uma solução para mitigar o uso de condicionamento de ar.
+Entretanto, o desempenho térmico das edificações apresenta fenômenos termofísicos complexos, fazendo com que estimativas de conforto térmico devam ser consideradas preferencialmente desde as etapas iniciais de projeto. 	
+Na busca por uma ferramenta capaz de auxiliar projetistas de maneira rápida e simples, surge a possibilidade de utilizar-se metamodelos.
+Portanto, este trabalho apresenta o desenvolvimento de um metamodelo capaz de estimar o conforto térmico em edifícios de escritórios ventilados naturalmente.
+
+\section{Objetivos}
+\subsection{Objetivo geral}
+
+O objetivo deste estudo é desenvolver um metamodelo capaz de estimar o conforto térmico em edifícios de escritórios ventilados naturalmente.
+
+\subsection{Objetivos específicos}
+
+Dentre os objetivos específicos deste trabalho, destacam-se:
+
+\begin{itemize}
+	\item Identificar as características construtivas encontradas em edifícios de escritórios ventilados naturalmente na cidade de São Paulo;
+	\item Desenvolver um modelo de simulação termoenergética simplificado, com apenas uma zona térmica, capaz de representar as trocas térmicas de uma sala em um edifício de escritórios;
+	\item Definir as variáveis com maior e menor influência no desempenho térmico dos edifícios ventilados naturalmente.
+\end{itemize}

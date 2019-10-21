@@ -1,0 +1,97 @@
+\chapter{Conclusões}
+\label{chapter:conclusoes}
+
+A disponibilidade de um banco de dados com informações das características construtivas de edifícios de escritórios com \acrfull{vn} na cidade de São Paulo foi fundamental para a definição dos parâmetros incluídos nas simulações termoenergéticas, com seus limites mínimos e máximos. 
+As informações relacionadas à geometria das edificações permitiu o desenvolvimento de simulações paramétricas, capazes de explorar amplamente o espaço de possibilidades existente em edificações reais mapeadas no estudo.
+Alguns parâmetros apresentados no banco de dados, como o tipo de esquadria utilizado nos edifícios, não puderam ser diretamente modelados na simulações. Contudo, todas as informações analisadas contribuíram para o desenvolvimento das simulações termoenergéticas.
+
+O indicador de conforto térmico escolhido para o estudo foi a \acrfull{ehf}. As variações térmicas dentro das edificações ventiladas naturalmente, assim como a expectativa dos ocupantes em relação às temperaturas médias externas, faz com que o método de conforto térmico adaptativo proposto pela \citeonline{ASHRAEStandard552017} seja o mais adequado para definir os limites de temperaturas operativas nas zonas térmicas.
+
+Simulações simplificadas foram desenvolvidas, buscando-se meios de melhorar a parametrização dos modelos e agilizar o tempo das simulações.	
+O uso de \acrfull{cp} disponibilizados pelo banco de dados da \acrfull{tpu} apresentam-se como fontes mais confiáveis do que o uso de métodos analíticos, pois oferece valores obtidos a partir de medições em túnel de vento. No entanto, comparações entre os resultados de simulações utilizando-se ambas as fontes apresentaram diferenças pouco significativas no \acrshort{ehf}, com um erro médio inferior a 0,01.
+Além disso, o uso do método analítico permite a consideração de edificações com geometrias de diferentes proporções de maneira contínua, enquanto o banco de dados da \acrshort{tpu} oferece dados para geometrias com proporções específicas.
+Por apresentar-se como um método mais simples e mais genérico, o método analítico foi adotado como uma das simplificações nas simulações.
+
+O modelo de uma parede equivalente com duas camadas foi desenvolvido para possibilitar a representação de diferentes componentes construtivos, permitindo-se variar a transmitância e a capacidade térmica independentemente. A análise foi efetuada para dois tipos de parede: uma leve, e outra pesada. A parede de alvenaria (pesada) teve sua parede equivalente analisada considerando-se a capacidade térmica total da parede, e metade do valor da capacidade térmica.
+Os resultados apontam que a adoção de um modelo de parede equivalente faz com que o \acrshort{ehf} tenha uma diferença absoluta média no valor de 0,010, para a parede de gesso com isolamento (leve).
+No caso da parede de alvenaria, a adoção de um valor de capacidade térmica com metade do valor calculado para a parede de referência mostra-se mais adequado, apresentando um erro absoluto médio de 0,0189 no \acrshort{ehf}. A consideração da capacidade térmica total da parede de alvenaria de referência apresenta um erro absoluto médio de 0,0209 no \acrshort{ehf}.
+O modelo de parede de alvenaria utilizado no programa EnergyPlus possui uma camada de ar no meio da parede, que a separa em duas metades. Durante os processos termofísicos, a inércia térmica nas zonas simuladas não sofre influência significativa da parte da parede voltada para o ambiente externo, devido à camada de ar, que possui alta resistência térmica. Portanto, considerar apenas a metade do valor da capacidade térmica apresenta diferenças menores na adoção do modelo de parede equivalente.
+Apesar da consideração da metade do valor da capacidade térmica para a parede de alvenaria ser mais adequada, as diferenças entre as duas abordagens é pouco expressiva.
+Essa questão foi esclarecida durante a análise de sensibilidade, que mostrou uma influência pouco significativa da capacidade térmica da parede nos resultados analisados.
+
+Durante o processo de simplificação das simulações, a descrição dos modelos em apenas uma zona térmica foi fundamental para parametrizar as diferentes variáveis observadas no estudo, e para tornar as simulações mais rápidas.
+Definir uma zona térmica, buscando-se representar as trocas de calor com um edifício de escritórios, exige a adoção de condições de contorno para as paredes adjacentes à edificação. 
+As paredes adjacentes a outros escritórios foram definidas como adiabáticas, pois considera-se comportamentos térmicos semelhantes em zonas térmicas com um mesmo padrão de ocupação. 
+Por outro lado, as paredes voltadas para o corredor foram modeladas considerando-se duas condições de contorno: (1) paredes como adiabáticas (sem trocas de calor); (2) paredes \textit{Outdoors} (voltada para o ambiente externo, sem incidência de radiação solar e vento).
+As análises conduzidas apontaram que considerar as paredes voltadas para a circulação como adiabáticas é mais apropriado na representação de paredes adjacentes a um edifício, gerando diferenças médias no \acrshort{ehf} de 0,005.
+
+A última etapa para o desenvolvimento das simulações simplificadas foi adaptar a modelagem da \acrshort{vn} para um modelo de uma zona térmica.
+A adoção de um \acrshort{cp} equivalente, ou \acrshort{cpeq}, apresentou resultados de \acrfull{ach} mais robustos do que a adoção de valores de \acrshort{cp} calculados diretamente pelo métodos analítico do programa EnergyPlus. 
+Para definir o coeficiente de vazão mássica de ar, atribuído ao objeto \textit{crack} do \acrfull{afn}, diferentes valores foram analisados.
+O valor mais adequado foi definido buscando-se as menores raízes dos erros quadráticos médios (\acrshort{rmse}), relacionados ao \acrshort{ehf} e às médias anuais de \acrlong{ach}. 
+Observou-se uma fronteira de Pareto entre esses dois indicadores, a partir da qual definiu-se que o valor mais adequado para o coeficiente de vazão mássica de ar é 0,8 kg/sPa$^n$ em 1 Pa, pois este apresenta o menor \acrshort{rmse} para o \acrshort{ehf}, que é o dado de saída para o qual buscou-se minimizar ao máximo os erros.
+
+%	A comparação entre os resultados obtidos pelas simulações simplificadas e as simulações detalhadas em cada etapa permitiu entender os fatores que causam as maiores incertezas, assim 
+
+Após definir como seriam modeladas as simulações simplificadas, uma \acrfull{as} foi aplicada para entender quais parâmetros são os mais influentes para a obtenção dos resultados de conforto térmico em edifícios de escritórios ventilados naturalmente da cidade de São Paulo.
+Os valores de \acrshort{ehf} obtidos nesta etapa apontaram que o uso exclusivo de \acrshort{vn} como estratégia de resfriamento não é suficiente para garantir conforto térmico em todas as horas de ocupação ao longo do ano. 
+Entretanto, a variabilidade dos resultados obtidos evidencia como o potencial de conforto térmico depende da configuração adequada dos parâmetros de projeto.
+Por meio da análise de \citeonline{Sobol1993}, foi possível identificar os efeitos de primeira ordem, segunda ordem, e os efeitos totais de cada variável nos dados de saída da simulação.
+Quando aplicada nos resultados das médias anuais do \acrshort{ach}, a \acrshort{as} mostrou que os parâmetros relacionados às aberturas para ventilação da zona térmica são os mais influentes. O fator de abertura da janela mostrou-se significativamente mais influente do que os demais parâmetros, com interações de ordens superiores igualmente significativas.
+As análises de sensibilidade de Sobol aplicadas às temperaturas operativas médias das zonas e aos \acrshort{ehf} apresentaram resultados mais semelhantes entre si, pois o \acrshort{ehf} é um indicador derivado da temperatura operativa.
+Assim como na análise do \acrshort{ach}, o parâmetro mais influente nessas análises é o fator de abertura na janela.
+Entretanto, certas diferenças entre os resultados das \acrshort{as} são destacadas. 
+O contato com o solo apresenta-se como um parâmetro com influência mais significativa na temperatura operativa do que no \acrshort{ehf}. Esse resultado indica que as faixas de temperatura operativa mais impactadas pelo contato com o solo estão distantes dos limites superiores definidos pelo método adaptativo, pois não são capazes de alterar o \acrshort{ehf}.
+O \acrshort{ehf} apresenta um potencial de melhora significativo com o movimento do ar. O aumento no limite superior de temperatura considerando-se a velocidade do ar (\gls{tsupv}) mostrou-se como o segundo parâmetro mais impactante nos resultados de conforto térmico.
+
+A partir dos resultados obtidos pela \acrshort{as}, foi possível desenvolver um metamodelo considerando-se apenas os parâmetros mais impactantes no conforto térmico em edifícios de escritórios ventilados naturalmente da cidade de São Paulo.
+Através de 14 variáveis de entrada, o metamodelo desenvolvido por meio de \acrfull{ann} obteve resultados com erro absoluto médio de 0,009 para a amostra de validação.
+Mesmo nos casos onde as diferenças entre os resultados simulados e estimados pela \acrshort{ann} foram maiores, os erros não foram expressivos, pois o \acrfull{ae95} foi igual a 0,024.
+Para avaliar o desempenho da \acrshort{ann} com a variação de parâmetros não incluídos como variáveis de entrada, uma outra amostra de teste foi gerada e teve seu desempenho avaliado.
+Para essa amostra o erro absoluto médio foi 0,021, e o \acrshort{ae95} foi 0,087. Apesar de apresentar diferenças maiores em relação aos casos simulados, os resultados estimados não apresentaram erros expressivos.
+Esse comportamento da \acrshort{ann} confirma a influência pouco significativa dos parâmetros definidos como fixos na etapa da \acrshort{as}, pois a alteração dos parâmetros não incluídos no metamodelo não afetaram o desempenho da \acrshort{ann} significativamente.
+
+O metamodelo desenvolvido neste trabalho foi capaz de estimar o conforto térmico em edificações de escritórios ventilados naturalmente para a cidade de São Paulo com resultados próximos aos obtidos pelo programa de simulação computacional EnergyPlus.
+Esse metamodelo pode ser utilizado por projetistas como uma ferramenta de fácil aplicação no suporte à tomada de decisão em fases iniciais de projeto, pois é capaz de oferecer resultados rápidos.
+
+\section{Limitações e justificativas}
+
+As limitações seguintes foram identificadas no desenvolvimento deste estudo:
+
+\begin{itemize}
+	\item O método de conforto térmico adaptativo utilizado neste trabalho é indicado para edificações naturalmente ventiladas. Os estudos abordados na revisão de literatura, assim como a base de dados de edifícios de escritórios da cidade de São Paulo, utilizada para o desenvolvimento do trabalho, abordam predominantemente o uso de modo misto (\acrshort{vn} e condicionamento artificial de ar). Devido à ausência de normas de conforto térmico voltadas para edificações de modo misto, optou-se por analisar exclusivamente o desempenho térmico das edificações com o uso da \acrshort{vn}.
+	Outra limitação do indicador de conforto térmico escolhido é que ele é capaz de estimar a fração de horas ocupadas em desconforto térmico, porém sem avaliar o quanto as temperaturas ultrapassam os limites estabelecidos.
+	Esse fator impede que casos com temperaturas excessivamente quentes nos escritósejam identificados;
+	
+	\item Devido ao aumento de vestimentas em épocas mais frias do ano, no contexto brasileiro, o desconforto térmico por frio foi desconsiderado neste trabalho. Os padrões de ocupação tipicamente diurnos e as cargas térmicas presentes em edifícios de escritórios indicam maior relevância ao desconforto térmico por calor. Metamodelos semelhantes ao desenvolvido neste trabalho seriam capazes de estimar o desconforto térmico por frio;
+	
+	\item O \acrlong{afn}, utilizado para modelar a \acrshort{vn}, apresenta algumas limitações. 
+	As principais limitações estão relacionadas às incertezas na definição dos coeficientes utilizados na modelagem das redes de fluxo de ar. 
+	O \acrshort{cp} depende não só da geometria da edificação, mas da densidade de ocupação no entorno, a geografia local, e dos detalhes arquitetônicos nas fachadas dos edifícios.
+	O \acrfull{cd} depende não só da esquadria utilizada, mas de fração da abertura da esquadria, que pode variar em diferentes momentos, e de fatores como a direção incidente do vento, que varia a cada instante.
+	A velocidade do ar não é modelada dentro das zonas térmicas, o que impede a consideração do movimento do ar para o aumento dos limites superiores de temperatura operativa para garantir o conforto térmico. 
+	Por essa razão, o movimento do ar foi considerado apenas pela utilização de ventiladores.
+	O programa EnergyPlus integra o \acrshort{afn} aos seus algorítimos, mas a integração é falha em relação à abertura dos vidros. Mesmo em momentos em que o \acrshort{afn} considera as janelas abertas, o vidro é considerado presente na envoltória da edificação, o que resulta em uma modelagem inadequada das trocas de radiação com o entorno, da absorção de radiação solar;
+	
+	\item As simplificações assumidas para o desenvolvimento das simulações pelo Energyplus podem comprometer a exatidão dos resultados para alguns casos. Entretanto, essas simplificações facilitam o desenvolvimento, tanto das simulações, quanto do metamodelo de \acrlong{ann}. Portanto, a simplificações foram consideradas adequadas para o desenvolvimento do trabalho.
+	
+\end{itemize}
+
+\section{Sugestões para trabalhos futuros}
+
+De acordo com os resultados e conclusões decorrentes deste estudo, as seguintes sugestões para trabalhos futuros são indicadas:
+
+\begin{itemize}
+	\item O desenvolvimento de metamodelos capazes de estimar conforto térmico e carga térmica em edificações que operam em modo misto poderia estar mais adequado com o cenário brasileiro. No entanto, esse trabalho exige a modelagem adequada do comportamento dos ocupantes, que podem optar por ambas as estratégias de resfriamento, assim como um indicador de conforto térmico apropriado para edificações de modo misto;
+	
+	\item A influência das edificações no entorno da edificação analisada pode alterar os resultados de conforto térmico. Trabalhos futuros poderiam considerar o entorno da edificação, que além de influenciar no comportamento do vento, causa sombreamento nas fachadas do edifício, e fenômenos térmicos relacionados à ilha de calor;
+	
+	\item O metamodelo proposto neste trabalho é voltado para edificações de escritórios. Entretanto, o uso de \acrlong{vn} em edificações residenciais apresenta grande potencial. Um estudo aplicado à edificações residenciais deveria observar as maiores incertezas em relação aos padrões de ocupação. O uso de um \acrfull{cpeq} pode ser fundamental ao se explorar o uso de ventilação cruzada entre diferentes ambientes, considerando-se as portas abertas;
+	
+	\item Devido ao banco de dados disponível, este trabalho foi desenvolvido para o clima da cidade de São Paulo. O clima é fundamental no desempenho térmico de edificações ventiladas naturalmente. Expandir a aplicabilidade do metamodelo desenvolvido neste trabalho para outros climas exige a descrição adequada de diferentes parâmetros climáticos, como temperaturas externas, radiação solar, ou velocidade e direção do vento;
+	
+	%	\item O contato com o solo apresentou maior influência na temperatura operativa das zonas térmicas do que no indicador de conforto térmico. ;
+	
+	\item O metamodelo de \acrshort{ann} é capaz de simular o desempenho térmico em edificações de maneira simples e rápida. Para auxiliar nas fases de projeto de edificações, a integração de um algorítimo de otimização poderá encontrar combinações ótimas dos parâmetros construtivos, a partir de limitações impostas pelo projetista, como área construída, número de pavimentos, e áreas de abertura na fachada em relação às áreas de piso.
+	
+\end{itemize}
