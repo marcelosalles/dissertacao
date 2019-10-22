@@ -1,0 +1,30 @@
+\ifglsentryexists{[}{}%
+{%
+\gls@defglossaryentry{[}%
+{%
+name={\PackageError {glossaries}{name key required in \string \newglossaryentry \space for entry `\@glo@label '}{You haven't specified the entry name}},%
+sort={\PackageError {glossaries}{name key required in \string \newglossaryentry \space for entry `\@glo@label '}{You haven't specified the entry name}},%
+type={acronym},%
+first={\protect \GenericError  {(glossaries)\space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space }{Package glossaries Error: name key required in \newglossaryentry\space for entry `['}{See the glossaries package documentation for explanation.}{You haven't specified the entry name}},%
+firstplural={\protect \GenericError  {(glossaries)\space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space }{Package glossaries Error: name key required in \newglossaryentry\space for entry `['}{See the glossaries package documentation for explanation.}{You haven't specified the entry name}s},%
+text={\protect \GenericError  {(glossaries)\space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space }{Package glossaries Error: name key required in \newglossaryentry\space for entry `['}{See the glossaries package documentation for explanation.}{You haven't specified the entry name}},%
+plural={\protect \GenericError  {(glossaries)\space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space }{Package glossaries Error: name key required in \newglossaryentry\space for entry `['}{See the glossaries package documentation for explanation.}{You haven't specified the entry name}s},%
+description={\PackageError {glossaries} {description key required in \string \newglossaryentry \space for entry `\@glo@label '}{You haven't specified the entry description}},%
+descriptionplural={\PackageError {glossaries} {description key required in \string \newglossaryentry \space for entry `\@glo@label '}{You haven't specified the entry description}},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
