@@ -222,13 +222,12 @@ A Figura \ref{fig:cpaverage_ACH_scatter} apresenta a comparação entre as médi
 A comparação entre as médias anuais de \acrshort{ach} mostra que o \acrlong{ma} faz com que as trocas de ar sejam predominantemente subestimadas nas simulações, possivelmente devido aos menores valores dos \acrshort{cp} obtidos pelo método.
 A diferença média foi igual a 0,56 \acrshort{ach}, com o \acrfull{ae95} é igual a 5,23 \acrshort{ach}.
 
-Apesar dessas diferenças nas trocas de ar, a comparação entre as temperaturas operativas médias, apresentada na Figura \ref{fig:cpaverage_tempEHF_scatter}a, mostra que a diferença média da temperatura operativa é 0,04 $^{\circ}$C, sendo que o \acrshort{ae95} é igual a 0,31 $^{\circ}$C.
-Essas diferenças são confirmadas como pouco significativas ao se analisar a Figura \ref{fig:cpaverage_tempEHF_scatter}b, com a comparação da \acrfull{ehf}. A média de diferença do \acrshort{ehf} nos casos analisados foi igual a 0,0037, com o \acrshort{ae95} igual a 0,0277.
+Apesar dessas diferenças nas trocas de ar, a comparação entre as temperaturas operativas médias, apresentada na Figura \ref{fig:cpaverage_EHF_ACH}a, mostra que a diferença média da temperatura operativa é 0,04 $^{\circ}$C, sendo que o \acrshort{ae95} é igual a 0,31 $^{\circ}$C.
+Essas diferenças são confirmadas como pouco significativas ao se analisar a Figura \ref{fig:cpaverage_EHF_ACH}b, com a comparação da \acrfull{ehf}. A média de diferença do \acrshort{ehf} nos casos analisados foi igual a 0,0037, com o \acrshort{ae95} igual a 0,0277.
 Portanto, considerou-se que a utilização do \acrlong{ma} para calcular os valores dos \acrshort{cp} é uma alternativa adequada para a simplificação das simulações termoenergéticas.
 
 \begin{figure}[h]
 	\centering
-	\label{fig:cpaverage_tempEHF_scatter}
 	\caption{Comparação de temperaturas operativas e conforto térmico utilizando-se o método analítico e a base de dados da TPU}
 	\begin{minipage}{.5\textwidth}
 		\centering
@@ -246,6 +245,7 @@ Portanto, considerou-se que a utilização do \acrlong{ma} para calcular os valo
 			\small{(b) \acrlong{ehf}}
 		\end{center}
 	\end{minipage}
+	\label{fig:cpaverage_EHF_ACH}
 \end{figure}
 
 %\begin{figure}[H]
@@ -408,7 +408,7 @@ Ao analisar as diferenças resultantes nas simulações simplificadas em relaç�
 
 \section{Análise de sensibilidade}
 
-As análises de sensibilidade (\acrshort{as}) foram aplicadas a partir de 155.648 simulações termoenergéticas, a partir das quais se obteve valores de \acrshort{ehf} entre 0,01 e 1,00 (Figura \ref{fig:sobol_EHF}).
+As análises de sensibilidade (\acrshort{as}) foram aplicadas a partir de 155.648 simulações termoenergéticas, das quais se obteve valores de \acrshort{ehf} entre 0,01 e 1,00 (Figura \ref{fig:sobol_EHF}).
 A ausência de resultados de \acrshort{ehf} iguais a zero indica que, para o clima da cidade de São Paulo, o uso exclusivo de \acrshort{vn} como estratégia de resfriamento para edifícios de escritórios não é suficiente para garantir conforto térmico em todas as horas de ocupação ao longo do ano. Entretanto, a variabilidade dos resultados obtidos evidencia como o potencial de conforto térmico depende da configuração adequada dos parâmetros de projeto.
 Considerando-se que, em relação às temperaturas externas, o \acrshort{ehf} para São Paulo é igual a 0,12, qualquer edificação que obtenha valores de \acrshort{ehf} inferiores a 0,12 para suas zonas térmicas já apresenta um desempenho térmico capaz de manter as temperaturas internas à edificação inferiores às externas, mesmo considerando-se as cargas internas, relacionadas a pessoas e equipamentos.
 
@@ -461,7 +461,7 @@ A área da zona  térmica tem influência significativa, pois o cálculo das tro
 A altura do pavimento é determinante nos resultados do \acrshort{ach}, pois a velocidade do vento no EnergyPlus é calculada em função da altura da zona.
 A orientação da zona (azimute) não tem uma influência significativa de primeira ordem. No entanto, percebe-se uma influência mais significativa considerando-se os efeitos totais. 
 O azimute é determinante para a definição dos coeficientes de pressão sobre as fachadas da edificação. Por isso, a influência deste parâmetro nos resultados das simulações depende de outros parâmetros, relacionados ao posicionamento e às áreas das aberturas na zona.
-A velocidade do ar não influencia os resultados relacionados ao \acrshort{ach}, pois é considerada somente após o término das simulações, ao se calcular o \acrshort{ach}.
+A velocidade do ar não influencia os resultados relacionados ao \acrshort{ach}, pois é considerada somente após o término das simulações, ao se calcular o \acrshort{ehf}.
 A \acrshort{as} apresentou interações de segunda ordem significativas entre o fator de abertura das janelas e a presença de \acrshort{vn} cruzada ou unilateral, com um índice de sensibilidade igual a 0,121.
 Contudo, o parâmetro com maiores interações de segunda ordem relacionados ao \acrshort{ach} foi o \acrshort{paf}, com a soma dos índices de segunda ordem igual a 0,300.
 
@@ -538,7 +538,7 @@ Os demais parâmetros foram normalizados com valores entre -1 e 1.
 \end{figure}
 
 O modelo de \acrshort{ann} final foi definido com duas camadas, umas de 50 nós, e a outra com 20. 
-O algorítimo de otimização que obteve o melhor desempenho foi o \textit{Adagrad's Optimizer}, disponibilizado pela biblioteca \textit{TensorFlow} \cite{tensorflow2015}, com uma taxa de aprendizagem igual a 0,05. O treinamento foi interrompido após 150.000 iterações. Neste momento, os erros de obtidos para as estimativas da amostra de validação pararam de baixar, e continuar o processo poderia causar o um sobreajuste do metamodelo em relação à amostra de treinamento.
+O algorítimo de otimização que obteve o melhor desempenho foi o \textit{Adagrad's Optimizer}, disponibilizado pela biblioteca \textit{TensorFlow} \cite{tensorflow2015}, com uma taxa de aprendizagem igual a 0,05. O treinamento foi interrompido após 150.000 iterações. Neste momento, os erros de obtidos para as estimativas da amostra de validação pararam de baixar, e continuar o processo poderia causar o um sobreajuste (\textit{overfitting}) do metamodelo em relação à amostra de treinamento.
 
 A Figura \ref{fig:ann_validation} apresenta um gráfico de pontos comparando os resultados de \acrshort{ehf} obtidos para as simulações e para as estimativas da \acrshort{ann}, a partir da base de dados desenvolvida para a validação do metamodelo. A base de dados para a validação (Figura \ref{fig:ann_validation}a) teve apenas os parâmetros incluídos no treinamento da \acrshort{ann} variados. 
 O erro absoluto médio do \acrshort{ehf} para os casos de validação foi 0,0091, com o \acrshort{ae95} igual a 0,0244.

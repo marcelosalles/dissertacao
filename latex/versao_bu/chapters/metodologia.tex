@@ -281,7 +281,7 @@ Geometrias definidas como \textit{highrise} pela \acrshort{tpu} foram comparadas
 
 \begin{equation}
 \label{eq:Cpdiff}
-RMSE_{Cp} = \sqrt{\frac{\sum_{i=1}^{4}{\sum_{j=0}^{11}}{\sum_{k=0}^{N_d}{(\overline{Cp}^{TPU}_{f_i,\alpha_j,p_k} - Cp^{MA}_{f_i,\alpha_j}})^2}}{48}}
+RMSE_{Cp} = \sqrt{\frac{\sum_{i=1}^{4}{\sum_{j=0}^{11}}{\sum_{k=0}^{N_d}{(Cp^{TPU}_{f_i,\alpha_j,p_k} - Cp^{MA}_{f_i,\alpha_j}})^2}}{48}}
 \end{equation}
 
 Onde:
@@ -528,6 +528,7 @@ O método de \citeauthoronline{Sobol1993} \cite{Sobol1993} foi utilizado para a 
 
 A \acrshort{as} foi aplicada por meio de programação, utilizando-se a biblioteca \textit{SALib} \cite{Herman2017}, escrita na linguagem \citeonline{Python}, versão 3.
 Os casos simulados para conduzir a \acrshort{as} foram amostrados pelo método de amostragem específico da \acrshort{as} de Sobol, pelo qual gerou-se uma amostra de 155.648 casos.
+Não há uma recomendação específica para determinar o tamanho da amostra, mas os resultados são mais adequados para amostras maiores. Portanto, o número de casos foi escolhido de acordo com o tempo disponível e a capacidade de processamento do computador onde foram desenvolvidas as simulações.
 Os parâmetros variados e seus limites mínimos e máximos foram definidos pela metodologia do item \ref{subsec:par}. 
 %, que gera uma sequência quasi-randômica de baixa discrepância.é uma é feita a partir de uma amostra desenevolvida específica para essa análise é definida pelo próprio método, pela qual gerou-se 99.978 casos.		
 A partir dos dados de entrada de cada caso, e dos valores das médias anuais de \acrshort{ach}, médias anuais de temperatura operativa, e \acrshort{ehf} resultantes das simulações termoenergéticas, obteve-se índices de sensibilidade para análise de primeira ordem, segunda ordem, e efeitos totais.
@@ -536,7 +537,7 @@ A partir dos dados de entrada de cada caso, e dos valores das médias anuais de 
 
 \section{Desenvolvimento do metamodelo}
 
-O metamodelo foi desenvolvido por meio de \acrfull{ann}, utilizando a biblioteca \textit{TensorFlow} \cite{tensorflow2015}, disponibilizada para \citeonline{Python}.
+O metamodelo foi desenvolvido por meio de \acrfull{ann}, utilizando-se a biblioteca \textit{TensorFlow} \cite{tensorflow2015}, disponibilizada para \citeonline{Python}.
 A maneira como se descreve as variáveis de entrada dos modelos simulados para o metamodelo a ser desenvolvido pode influenciar na sua precisão e na representação adequada dos fenômenos termofísicos.
 Portanto, no processo de definição das variáveis de entrada do metamodelo, busca-se a melhor forma de descrever as diversas características das zonas térmicas.
 Esse é um processo iterativo, que envolve diferentes variáveis, utilizando-se transformações, normalizações e funções destas. 

@@ -29,7 +29,7 @@ A última etapa para o desenvolvimento das simulações simplificadas foi adapta
 A adoção de um \acrshort{cp} equivalente, ou \acrshort{cpeq}, apresentou resultados de \acrfull{ach} mais robustos do que a adoção de valores de \acrshort{cp} calculados diretamente pelo métodos analítico do programa EnergyPlus. 
 Para definir o coeficiente de vazão mássica de ar, atribuído ao objeto \textit{crack} do \acrfull{afn}, diferentes valores foram analisados.
 O valor mais adequado foi definido buscando-se as menores raízes dos erros quadráticos médios (\acrshort{rmse}), relacionados ao \acrshort{ehf} e às médias anuais de \acrlong{ach}. 
-Observou-se uma fronteira de Pareto entre esses dois indicadores, a partir da qual definiu-se que o valor mais adequado para o coeficiente de vazão mássica de ar é 0,8 kg/sPa$^n$ em 1 Pa, pois este apresenta o menor \acrshort{rmse} para o \acrshort{ehf}, que é o dado de saída para o qual buscou-se minimizar ao máximo os erros.
+Observou-se que o valor mais adequado para o coeficiente de vazão mássica de ar é 0,1 kg/sPa$^n$ em 1 Pa, pois este apresenta o menor \acrshort{rmse} para o \acrshort{ehf}.
 
 %	A comparação entre os resultados obtidos pelas simulações simplificadas e as simulações detalhadas em cada etapa permitiu entender os fatores que causam as maiores incertezas, assim 
 
@@ -61,7 +61,7 @@ As limitações seguintes foram identificadas no desenvolvimento deste estudo:
 \begin{itemize}
 	\item O método de conforto térmico adaptativo utilizado neste trabalho é indicado para edificações naturalmente ventiladas. Os estudos abordados na revisão de literatura, assim como a base de dados de edifícios de escritórios da cidade de São Paulo, utilizada para o desenvolvimento do trabalho, abordam predominantemente o uso de modo misto (\acrshort{vn} e condicionamento artificial de ar). Devido à ausência de normas de conforto térmico voltadas para edificações de modo misto, optou-se por analisar exclusivamente o desempenho térmico das edificações com o uso da \acrshort{vn}.
 	Outra limitação do indicador de conforto térmico escolhido é que ele é capaz de estimar a fração de horas ocupadas em desconforto térmico, porém sem avaliar o quanto as temperaturas ultrapassam os limites estabelecidos.
-	Esse fator impede que casos com temperaturas excessivamente quentes nos escritósejam identificados;
+	Esse fator impede que casos com temperaturas excessivamente quentes nos escritórios sejam identificados;
 	
 	\item Devido ao aumento de vestimentas em épocas mais frias do ano, no contexto brasileiro, o desconforto térmico por frio foi desconsiderado neste trabalho. Os padrões de ocupação tipicamente diurnos e as cargas térmicas presentes em edifícios de escritórios indicam maior relevância ao desconforto térmico por calor. Metamodelos semelhantes ao desenvolvido neste trabalho seriam capazes de estimar o desconforto térmico por frio;
 	
@@ -73,7 +73,10 @@ As limitações seguintes foram identificadas no desenvolvimento deste estudo:
 	Por essa razão, o movimento do ar foi considerado apenas pela utilização de ventiladores.
 	O programa EnergyPlus integra o \acrshort{afn} aos seus algorítimos, mas a integração é falha em relação à abertura dos vidros. Mesmo em momentos em que o \acrshort{afn} considera as janelas abertas, o vidro é considerado presente na envoltória da edificação, o que resulta em uma modelagem inadequada das trocas de radiação com o entorno, da absorção de radiação solar;
 	
-	\item As simplificações assumidas para o desenvolvimento das simulações pelo Energyplus podem comprometer a exatidão dos resultados para alguns casos. Entretanto, essas simplificações facilitam o desenvolvimento, tanto das simulações, quanto do metamodelo de \acrlong{ann}. Portanto, a simplificações foram consideradas adequadas para o desenvolvimento do trabalho.
+	\item A consideração dos materiais da envoltória através de duas camadas (material isolante no lado externo e material com massa térmica no lado interno da zona) poderia gerar resultados diferentes caso a ordem dos materiais das camadas fosse trocada. Avaliar a simplificação da simulação modelando as camadas em ordens diferentes poderia resultar em diferenças inferiores relacionadas à modelagem detalhada;
+	
+	\item As simplificações assumidas para o desenvolvimento das simulações pelo Energyplus podem comprometer a exatidão dos resultados para alguns casos. Entretanto, essas simplificações facilitam o desenvolvimento, tanto das simulações, quanto do metamodelo de \acrlong{ann}. 
+	Portanto, as simplificações foram consideradas adequadas para o desenvolvimento do trabalho.
 	
 \end{itemize}
 
