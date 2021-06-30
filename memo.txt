@@ -1,5 +1,0 @@
-28/06
-- FS na SA!!!
-- controle da janela no AFN
-- timesteps ao longo de 1 ano
-- adicionar desenho do Cpeq
