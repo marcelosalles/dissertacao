@@ -26,7 +26,7 @@ def afn_surface(surface_name, open_fac=1, schedule_name="Sch_Ocupacao",
     
     return(afn_dict)
 
-def zone_list(model_values):
+def zone_list(model_values, n_zones):
     
     zone_feat = {
         'people': [],
@@ -34,7 +34,7 @@ def zone_list(model_values):
         'open_fac': [],
         'glass': []
     }
-    for i in range(6):
+    for i in range(n_zones):
         zone_feat['people'].append(model_values['people'])
         zone_feat['wwr'].append(model_values['wwr'])
         zone_feat['open_fac'].append(model_values['open_fac'])

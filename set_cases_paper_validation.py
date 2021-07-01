@@ -26,7 +26,9 @@ MONTH_MEANS = '/media/marcelo/OS/LabEEE_1-2/idf-creator/month_means_8760.csv'
 OUTPUT_PROCESSED = 'means_'+FOLDER
 CONCRETE_EPS = False
 SOBOL =  False  # True
-# CRACK = .8
+
+ZONES_X_FLOOR = 6
+N_FLOORS = 3
 
 PARAMETERS = {
     'open_fac':[0.2,1],
@@ -130,7 +132,8 @@ for i in range(len(sample)):
     else:
         par_file = 'parede_eq/par_3.json'
 
-    zone_feat = whole_gen.zone_list(model_values)
+    n_zones = ZONES_X_FLOOR*N_FLOORS  # 6 zones, 3 floors
+    zone_feat = whole_gen.zone_list(model_values,n_zones)
     
     cluster_n = int(line//samples_x_cluster)
     
@@ -153,8 +156,8 @@ for i in range(len(sample)):
         stairs = 0, 
         zone_feat = zone_feat, 
         concrete_eps=CONCRETE_EPS,
-        zones_x_floor = 6, 
-        n_floors = 3, 
+        zones_x_floor = ZONES_X_FLOOR, 
+        n_floors = N_FLOORS, 
         corner_window=corner_window,  
         input_file = INPUT,
         output = output
